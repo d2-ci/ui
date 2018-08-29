@@ -312,7 +312,7 @@ function (_Component) {
 Tabs.defaultProps = {
   tabItems: [],
   contained: false,
-  position: 'sticky',
+  position: 'relative',
   clustered: null,
   stackedTabs: false
 };
