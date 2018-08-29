@@ -33,13 +33,11 @@ require("core-js/modules/es6.array.find");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _bemClassNames = _interopRequireDefault(require("../../dist/utils/bemClassNames"));
-
 require("./tabs.css");
 
 var _Tab = _interopRequireDefault(require("./Tab"));
 
-var _Icon = _interopRequireDefault(require("../../dist/Icon"));
+var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _TabIndicator = _interopRequireDefault(require("./TabIndicator"));
 
@@ -73,7 +71,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var bem = (0, _bemClassNames.default)('d2ui-tabs');
+var bem = (0, _utils.bemClassNames)('d2ui-tabs');
 
 var Tabs =
 /*#__PURE__*/
@@ -233,19 +231,49 @@ function (_Component) {
           scrolledToEnd: scrolledToEnd
         });
       }
+    }
+  }, {
+    key: "getAdditionalTabProps",
+    value: function getAdditionalTabProps(index) {
+      var _this$props = this.props,
+          stackedTabs = _this$props.stackedTabs,
+          activeTabIndex = _this$props.activeTabIndex;
+      return {
+        stacked: stackedTabs,
+        active: index === activeTabIndex,
+        addTabRef: this.addTabRef
+      };
+    }
+  }, {
+    key: "renderTabItems",
+    value: function renderTabItems() {
+      var _this2 = this;
+
+      var tabItems = this.props.tabItems;
+      return tabItems.map(function (tab, index) {
+        return _react.default.createElement(_Tab.default, _extends({
+          key: "tab-".concat(index)
+        }, _this2.getAdditionalTabProps(index), tab));
+      });
+    }
+  }, {
+    key: "renderChildren",
+    value: function renderChildren() {
+      var _this3 = this;
+
+      var children = this.props.children;
+      return _react.Children.map(children, function (child, index) {
+        return (0, _react.cloneElement)(child, _this3.getAdditionalTabProps(index));
+      });
     } // Rendering
 
   }, {
     key: "renderTabBar",
     value: function renderTabBar() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          clustered = _this$props.clustered,
-          contained = _this$props.contained,
-          tabItems = _this$props.tabItems,
-          stackedTabs = _this$props.stackedTabs,
-          activeTabIndex = _this$props.activeTabIndex;
+      var _this$props2 = this.props,
+          clustered = _this$props2.clustered,
+          contained = _this$props2.contained,
+          children = _this$props2.children;
       var showTabIndicator = this.state.showTabIndicator;
       var className = bem.e('tab-container', // A scrollable tabBar cannot be clustered
       _defineProperty({}, "clustered-".concat(clustered), clustered && contained), {
@@ -253,14 +281,7 @@ function (_Component) {
       });
       return _react.default.createElement("div", {
         className: className
-      }, tabItems.map(function (tab, index) {
-        return _react.default.createElement(_Tab.default, _extends({
-          key: "tab-".concat(index),
-          stacked: stackedTabs,
-          active: index === activeTabIndex,
-          addTabRef: _this2.addTabRef
-        }, tab));
-      }), _react.default.createElement(_TabIndicator.default, {
+      }, children ? this.renderChildren() : this.renderTabItems(), _react.default.createElement(_TabIndicator.default, {
         getActiveTabRef: this.getActiveTabRef,
         visible: showTabIndicator
       }));
@@ -271,9 +292,9 @@ function (_Component) {
       var _this$state = this.state,
           scrolledToStart = _this$state.scrolledToStart,
           scrolledToEnd = _this$state.scrolledToEnd;
-      var _this$props2 = this.props,
-          position = _this$props2.position,
-          contained = _this$props2.contained;
+      var _this$props3 = this.props,
+          position = _this$props3.position,
+          contained = _this$props3.contained;
       var tabBar = this.renderTabBar();
 
       if (!contained) {
