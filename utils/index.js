@@ -35,6 +35,12 @@ Object.defineProperty(exports, "wrapTextNodesInSpans", {
     return _wrapTextNodesInSpans.default;
   }
 });
+Object.defineProperty(exports, "noop", {
+  enumerable: true,
+  get: function get() {
+    return _noop.default;
+  }
+});
 
 var _isRtl = _interopRequireDefault(require("./isRtl"));
 
@@ -45,5 +51,7 @@ var _animatedScrollTo = _interopRequireDefault(require("./animatedScrollTo"));
 var _bemClassNames = _interopRequireDefault(require("./bemClassNames"));
 
 var _wrapTextNodesInSpans = _interopRequireDefault(require("./wrapTextNodesInSpans"));
+
+var _noop = _interopRequireDefault(require("./noop"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

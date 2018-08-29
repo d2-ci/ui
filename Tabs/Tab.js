@@ -22,7 +22,7 @@ var bem = (0, _utils.bemClassNames)('d2ui-tab');
 var Tab = function Tab(_ref) {
   var icon = _ref.icon,
       label = _ref.label,
-      selectHandler = _ref.selectHandler,
+      onClick = _ref.onClick,
       active = _ref.active,
       disabled = _ref.disabled,
       stacked = _ref.stacked,
@@ -34,7 +34,7 @@ var Tab = function Tab(_ref) {
       disabled: disabled,
       stacked: stacked
     }), " d2ui-align-icon"),
-    onClick: selectHandler,
+    onClick: onClick,
     ref: addTabRef
   }, children ? children : (icon && _react.default.createElement(_Icon.default, {
     name: icon
@@ -44,7 +44,8 @@ var Tab = function Tab(_ref) {
 Tab.defaultProps = {
   active: false,
   disabled: false,
-  stacked: false
+  stacked: false,
+  onClick: _utils.noop
 };
 var _default = Tab;
 exports.default = _default;
