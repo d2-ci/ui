@@ -11,18 +11,6 @@ Object.defineProperty(exports, "isRtl", {
     return _isRtl.default;
   }
 });
-Object.defineProperty(exports, "debounce", {
-  enumerable: true,
-  get: function get() {
-    return _debounce.default;
-  }
-});
-Object.defineProperty(exports, "throttle", {
-  enumerable: true,
-  get: function get() {
-    return _throttle.default;
-  }
-});
 Object.defineProperty(exports, "easings", {
   enumerable: true,
   get: function get() {
@@ -49,10 +37,6 @@ Object.defineProperty(exports, "wrapTextNodesInSpans", {
 });
 
 var _isRtl = _interopRequireDefault(require("./isRtl"));
-
-var _debounce = _interopRequireDefault(require("./debounce"));
-
-var _throttle = _interopRequireDefault(require("./throttle"));
 
 var _easings = _interopRequireDefault(require("./easings"));
 
