@@ -271,12 +271,12 @@ function (_Component) {
     key: "renderTabBar",
     value: function renderTabBar() {
       var _this$props2 = this.props,
-          clustered = _this$props2.clustered,
+          cluster = _this$props2.cluster,
           contained = _this$props2.contained,
           children = _this$props2.children;
       var showTabIndicator = this.state.showTabIndicator;
       var className = bem.e('tab-container', // A scrollable tabBar cannot be clustered
-      _defineProperty({}, "clustered-".concat(clustered), clustered && contained), {
+      _defineProperty({}, "cluster-".concat(cluster), cluster && contained), {
         contained: contained
       });
       return _react.default.createElement("div", {
@@ -334,7 +334,7 @@ Tabs.defaultProps = {
   tabItems: [],
   contained: false,
   position: 'relative',
-  clustered: null,
+  cluster: null,
   stackedTabs: false
 };
 var _default = Tabs;
