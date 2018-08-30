@@ -17,9 +17,17 @@ Object.defineProperty(exports, "RadioButton", {
     return _RadioButton.default;
   }
 });
+Object.defineProperty(exports, "Switch", {
+  enumerable: true,
+  get: function get() {
+    return _Switch.default;
+  }
+});
 
 var _Checkbox = _interopRequireDefault(require("./Checkbox"));
 
 var _RadioButton = _interopRequireDefault(require("./RadioButton"));
+
+var _Switch = _interopRequireDefault(require("./Switch"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
