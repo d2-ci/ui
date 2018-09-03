@@ -11,6 +11,8 @@ var _react = _interopRequireDefault(require("react"));
 
 require("./switch.css");
 
+require("./togglerwrap.css");
+
 var _utils = require("../utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -23,7 +25,7 @@ var Switch = function Switch(_ref) {
       disabled = _ref.disabled,
       onChange = _ref.onChange;
   return _react.default.createElement("label", {
-    className: bem.e('label-wrap')
+    className: "".concat(bem.e('label-wrap'), " d2ui-toggler-wrap")
   }, _react.default.createElement("div", {
     className: bem.b({
       checked: value,

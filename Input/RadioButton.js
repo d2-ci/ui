@@ -11,6 +11,8 @@ var _react = _interopRequireDefault(require("react"));
 
 require("./radiobutton.css");
 
+require("./togglerwrap.css");
+
 var _utils = require("../utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -20,7 +22,7 @@ var bem = (0, _utils.bemClassNames)('d2ui-radio-button');
 var RadioButton = function RadioButton(_ref) {
   var children = _ref.children;
   return _react.default.createElement("label", {
-    className: bem.e('label-wrap')
+    className: "".concat(bem.e('label-wrap'), " d2ui-toggler-wrap")
   }, _react.default.createElement("div", {
     className: bem.b()
   }, _react.default.createElement("input", {
