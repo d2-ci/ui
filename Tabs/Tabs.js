@@ -90,8 +90,8 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getActiveTabRef", function () {
-      var activeTabIndex = _this.props.activeTabIndex;
-      return _this.nodes.tabs[activeTabIndex];
+      var selected = _this.props.selected;
+      return _this.nodes.tabs[selected];
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setScrollBoxRef", function (node) {
@@ -177,7 +177,7 @@ function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (!this.props.contained && this.props.activeTabIndex !== prevProps.activeTabIndex && this.scrollRequiredToReachActiveTab()) {
+      if (!this.props.contained && this.props.selected !== prevProps.selected && this.scrollRequiredToReachActiveTab()) {
         this.scrollToTab(this.getActiveTabRef());
       }
     }
@@ -236,21 +236,21 @@ function (_Component) {
     key: "getAdditionalTabProps",
     value: function getAdditionalTabProps(index) {
       var _this$props = this.props,
-          stackedTabs = _this$props.stackedTabs,
-          activeTabIndex = _this$props.activeTabIndex;
+          stacked = _this$props.stacked,
+          selected = _this$props.selected;
       return {
-        stacked: stackedTabs,
-        active: index === activeTabIndex,
+        stacked: stacked,
+        active: index === selected,
         addTabRef: this.addTabRef
       };
     }
   }, {
-    key: "renderTabItems",
-    value: function renderTabItems() {
+    key: "renderitems",
+    value: function renderitems() {
       var _this2 = this;
 
-      var tabItems = this.props.tabItems;
-      return tabItems.map(function (tab, index) {
+      var items = this.props.items;
+      return items.map(function (tab, index) {
         return _react.default.createElement(_Tab.default, _extends({
           key: "tab-".concat(index)
         }, _this2.getAdditionalTabProps(index), tab));
@@ -281,7 +281,7 @@ function (_Component) {
       });
       return _react.default.createElement("div", {
         className: className
-      }, children ? this.renderChildren() : this.renderTabItems(), _react.default.createElement(_TabIndicator.default, {
+      }, children ? this.renderChildren() : this.renderitems(), _react.default.createElement(_TabIndicator.default, {
         getActiveTabRef: this.getActiveTabRef,
         visible: showTabIndicator
       }));
@@ -333,11 +333,11 @@ function (_Component) {
 }(_react.Component);
 
 Tabs.defaultProps = {
-  tabItems: [],
+  items: [],
   contained: false,
   position: 'relative',
   cluster: null,
-  stackedTabs: false
+  stacked: false
 };
 var _default = Tabs;
 exports.default = _default;
