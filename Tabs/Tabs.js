@@ -306,12 +306,14 @@ function (_Component) {
         }, _react.default.createElement(_Icon.default, {
           name: "keyboard_arrow_left"
         })), _react.default.createElement("div", {
+          className: bem.e('scroll-box-clipper')
+        }, _react.default.createElement("div", {
           className: bem.e('scroll-box'),
           ref: this.setScrollBoxRef
         }, _react.default.createElement("div", {
           className: bem.e('scroll-area'),
           ref: this.setScrollAreaRef
-        }, tabBar)), _react.default.createElement("button", {
+        }, tabBar))), _react.default.createElement("button", {
           onClick: this.scrollRight,
           className: bem.e('scroll-button', {
             hidden: scrolledToEnd
