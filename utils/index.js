@@ -41,6 +41,12 @@ Object.defineProperty(exports, "noop", {
     return _noop.default;
   }
 });
+Object.defineProperty(exports, "throttle", {
+  enumerable: true,
+  get: function get() {
+    return _throttle.default;
+  }
+});
 
 var _isRtl = _interopRequireDefault(require("./isRtl"));
 
@@ -53,5 +59,7 @@ var _bemClassNames = _interopRequireDefault(require("./bemClassNames"));
 var _wrapTextNodesInSpans = _interopRequireDefault(require("./wrapTextNodesInSpans"));
 
 var _noop = _interopRequireDefault(require("./noop"));
+
+var _throttle = _interopRequireDefault(require("./throttle"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

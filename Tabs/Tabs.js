@@ -31,6 +31,8 @@ require("core-js/modules/es6.array.map");
 
 require("core-js/modules/es6.array.find");
 
+require("core-js/modules/es6.function.bind");
+
 var _react = _interopRequireWildcard(require("react"));
 
 require("./tabs.css");
@@ -102,10 +104,6 @@ function (_Component) {
       _this.nodes.scrollArea = node;
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSideScroll", function () {
-      _this.toggleScrollButtonVisibility();
-    });
-
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "scrollLeft", function () {
       var _this$nodes = _this.nodes,
           scrollBox = _this$nodes.scrollBox,
@@ -128,10 +126,16 @@ function (_Component) {
       _this.scrollToTab(targetTab);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "showTabIndicator", function () {
-      _this.setState({
-        showTabIndicator: true
-      });
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "attachSideScrollListener", function () {
+      _this.nodes.scrollBox.addEventListener('scroll', _this.handleSideScroll);
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateScrollableUiAfterMount", function () {
+      _this.showTabIndicator();
+
+      _this.toggleScrollButtonVisibility();
+
+      _this.attachSideScrollListener();
     });
 
     _this.nodes = {
@@ -145,6 +149,7 @@ function (_Component) {
       scrolledToEnd: true,
       showTabIndicator: false
     };
+    _this.handleSideScroll = (0, _utils.throttle)(_this.toggleScrollButtonVisibility.bind(_assertThisInitialized(_assertThisInitialized(_this))));
     return _this;
   } // Lifecycle hooks
 
@@ -157,21 +162,14 @@ function (_Component) {
         return;
       }
 
-      this.nodes.scrollBox.addEventListener('scroll', this.handleSideScroll);
-
       if (this.scrollRequiredToReachActiveTab()) {
-        // If a scroll is required the scroll event is triggered and
-        // the scroll button visibility is updated as a result
-        var scrollParams = {
+        var scrollProps = {
           duration: 1,
-          // no animation
-          callback: this.showTabIndicator
+          callback: this.updateScrollableUiAfterMount
         };
-        this.scrollToTab(this.getActiveTabRef(), scrollParams);
+        this.scrollToTab(this.getActiveTabRef(), scrollProps);
       } else {
-        // If no scroll is required the scrollButtons need to be updated manually
-        this.toggleScrollButtonVisibility();
-        this.showTabIndicator();
+        this.updateScrollableUiAfterMount();
       }
     }
   }, {
@@ -190,8 +188,20 @@ function (_Component) {
     } // Refs
 
   }, {
-    key: "getTabAtOffsetLeft",
+    key: "showTabIndicator",
     // Methods
+    value: function showTabIndicator() {
+      this.setState({
+        showTabIndicator: true
+      });
+    }
+  }, {
+    key: "removeSideScrollListener",
+    value: function removeSideScrollListener() {
+      this.nodes.scrollBox.removeEventListener('scroll', this.handleSideScroll);
+    }
+  }, {
+    key: "getTabAtOffsetLeft",
     value: function getTabAtOffsetLeft(offsetLeft) {
       return this.nodes.tabs.find(function (tab) {
         return offsetLeft >= tab.offsetLeft && offsetLeft <= tab.offsetLeft + tab.offsetWidth;
@@ -209,12 +219,15 @@ function (_Component) {
   }, {
     key: "scrollToTab",
     value: function scrollToTab(tab) {
-      var scrollParams = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var scrollProps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+        callback: this.attachSideScrollListener
+      };
+      this.removeSideScrollListener();
       (0, _utils.animatedScrollTo)(_objectSpread({
         to: tab,
         scrollBox: this.nodes.scrollBox,
         direction: 'horizontal'
-      }, scrollParams));
+      }, scrollProps));
     }
   }, {
     key: "toggleScrollButtonVisibility",
