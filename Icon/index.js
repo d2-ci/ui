@@ -16,9 +16,10 @@ require("./icon.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Icon = function Icon(_ref) {
-  var name = _ref.name;
+  var name = _ref.name,
+      className = _ref.className;
   return _react.default.createElement("i", {
-    className: "material-icons"
+    className: "material-icons ".concat(className)
   }, name);
 };
 
