@@ -23,10 +23,10 @@ Object.defineProperty(exports, "wrapTextNodesInSpans", {
     return _wrapTextNodesInSpans.default;
   }
 });
-Object.defineProperty(exports, "setDirAndThemeAttributes", {
+Object.defineProperty(exports, "setTextDirection", {
   enumerable: true,
   get: function get() {
-    return _setDirAndThemeAttributes.default;
+    return _setTextDirection.default;
   }
 });
 
@@ -36,6 +36,6 @@ var _bemClassNames = _interopRequireDefault(require("./bemClassNames"));
 
 var _wrapTextNodesInSpans = _interopRequireDefault(require("./wrapTextNodesInSpans"));
 
-var _setDirAndThemeAttributes = _interopRequireDefault(require("./setDirAndThemeAttributes"));
+var _setTextDirection = _interopRequireDefault(require("./setTextDirection"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
