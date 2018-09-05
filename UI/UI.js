@@ -19,16 +19,13 @@ var bem = (0, _utils.bemClassNames)('d2ui-app');
 
 var UI = function UI(_ref) {
   var theme = _ref.theme,
-      direction = _ref.direction,
       children = _ref.children;
   return _react.default.createElement("div", {
-    dir: direction,
     className: bem.b(theme)
   }, children);
 };
 
 UI.defaultProps = {
-  direction: 'ltr',
   theme: 'default'
 };
 var _default = UI;
