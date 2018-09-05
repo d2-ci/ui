@@ -1,18 +1,28 @@
 "use strict";
 
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = _default;
 exports.RIGHT = exports.CENTER = exports.LEFT = exports.BOTTOM = exports.MIDDLE = exports.TOP = void 0;
 
-require("core-js/modules/web.dom.iterable");
-
 require("core-js/modules/es6.array.for-each");
 
+require("core-js/modules/es6.array.filter");
+
+require("core-js/modules/web.dom.iterable");
+
+require("core-js/modules/es6.array.iterator");
+
+require("core-js/modules/es6.object.keys");
+
+require("core-js/modules/es6.object.define-property");
+
 var _utils = require("../utils");
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var TOP = 'top';
 exports.TOP = TOP;
@@ -24,28 +34,39 @@ var LEFT = 'left';
 exports.LEFT = LEFT;
 var CENTER = 'center';
 exports.CENTER = CENTER;
-var RIGHT = 'right';
+var RIGHT = 'right'; // Enough to make sure the popop doesn't hide under a scroll-bar
+
 exports.RIGHT = RIGHT;
 var EDGE_MARGIN = 18;
 
 function _default(targetEl, anchorEl, anchorAttachPoint, popoverAttachPoint) {
+  var flippedAnchorAttachPoint, flippedPopoverAttachPoint;
+
   if ((0, _utils.isRtl)()) {
-    flipHorizontal([anchorAttachPoint, popoverAttachPoint]);
+    flippedAnchorAttachPoint = flipHorizontal(anchorAttachPoint);
+    flippedPopoverAttachPoint = flipHorizontal(popoverAttachPoint);
+  } else {
+    flippedAnchorAttachPoint = anchorAttachPoint;
+    flippedPopoverAttachPoint = popoverAttachPoint;
   }
 
-  var anchorPosition = getAnchorPosition(anchorEl, anchorAttachPoint);
-  var virtualPosition = getRelativePosition(targetEl, anchorPosition, popoverAttachPoint);
+  var anchorPosition = getAnchorPosition(anchorEl, flippedAnchorAttachPoint);
+  var virtualPosition = getRelativePosition(targetEl, anchorPosition, flippedPopoverAttachPoint);
   var restrictedPosition = getWindowContainedPosition(virtualPosition);
   return restrictedPosition;
 }
 
-function flipHorizontal(attachPoints) {
-  attachPoints.forEach(function (point) {
-    if (point.horizontal === LEFT) {
-      point.horizontal = RIGHT;
-    } else if (point.horizontal === RIGHT) {
-      point.horizontal = LEFT;
-    }
+function flipHorizontal(attachPoint) {
+  var horizontal = attachPoint.horizontal;
+
+  if (attachPoint.horizontal === LEFT) {
+    horizontal = RIGHT;
+  } else if (attachPoint.horizontal === RIGHT) {
+    horizontal = LEFT;
+  }
+
+  return _objectSpread({}, attachPoint, {
+    horizontal: horizontal
   });
 }
 
