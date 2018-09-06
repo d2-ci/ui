@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var bem = (0, _utils.bemClassNames)('d2ui-checkbox');
 
 var Checkbox = function Checkbox(_ref) {
-  var children = _ref.children;
+  var label = _ref.label;
   return _react.default.createElement("label", {
     className: "".concat(bem.e('label-wrap'), " d2ui-toggler-wrap")
   }, _react.default.createElement("div", {
@@ -41,7 +41,7 @@ var Checkbox = function Checkbox(_ref) {
     className: bem.e('mixedmark')
   }))), _react.default.createElement("span", {
     className: bem.e('label-text')
-  }, children));
+  }, label));
 };
 
 var _default = Checkbox;

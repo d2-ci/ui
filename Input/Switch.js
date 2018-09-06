@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var bem = (0, _utils.bemClassNames)('d2ui-switch');
 
 var Switch = function Switch(_ref) {
-  var children = _ref.children,
+  var label = _ref.label,
       value = _ref.value,
       disabled = _ref.disabled,
       onChange = _ref.onChange;
@@ -47,7 +47,7 @@ var Switch = function Switch(_ref) {
     role: "switch"
   })))), _react.default.createElement("span", {
     className: bem.e('label-text')
-  }, children));
+  }, label));
 };
 
 Switch.defaultProps = {
