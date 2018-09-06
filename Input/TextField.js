@@ -15,6 +15,8 @@ require("./textfield.css");
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
+var _FormField = _interopRequireDefault(require("./FormField"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var bem = (0, _utils.bemClassNames)('d2ui-text-field');
@@ -50,7 +52,9 @@ var TextField = function TextField(_ref) {
       error = _ref.error,
       valid = _ref.valid,
       warning = _ref.warning,
-      disabled = _ref.disabled;
+      disabled = _ref.disabled,
+      fullWidth = _ref.fullWidth,
+      helpText = _ref.helpText;
   var computedTrailingIcon = computeTrailingIcon(trailingIcon, error, warning, valid);
   var focusIndicator = variant === OUTLINED ? 'notched-outline' : 'bottom-line';
   var wrapperClassName = bem.b(variant, {
@@ -63,7 +67,15 @@ var TextField = function TextField(_ref) {
     warning: warning,
     disabled: disabled
   });
-  return _react.default.createElement("label", {
+  return _react.default.createElement(_FormField.default, {
+    valid: valid,
+    warning: warning,
+    disabled: disabled,
+    error: error,
+    dense: dense,
+    fullWidth: fullWidth,
+    helpText: helpText
+  }, _react.default.createElement("label", {
     className: wrapperClassName
   }, _react.default.createElement("input", {
     className: bem.e('input'),
@@ -81,7 +93,7 @@ var TextField = function TextField(_ref) {
     className: bem.e('icon', 'trailing')
   }), _react.default.createElement("span", {
     className: bem.e('floating-label')
-  }, label));
+  }, label)));
 };
 
 TextField.defaultProps = {

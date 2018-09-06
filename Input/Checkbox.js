@@ -17,6 +17,8 @@ var _utils = require("../utils");
 
 var _ToggleField = _interopRequireDefault(require("../../build/Input/ToggleField"));
 
+var _FormField = _interopRequireDefault(require("./FormField"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var bem = (0, _utils.bemClassNames)('d2ui-checkbox');
@@ -24,9 +26,21 @@ var bem = (0, _utils.bemClassNames)('d2ui-checkbox');
 var Checkbox = function Checkbox(_ref) {
   var label = _ref.label,
       checked = _ref.checked,
+      valid = _ref.valid,
+      warning = _ref.warning,
+      error = _ref.error,
       disabled = _ref.disabled,
-      onChange = _ref.onChange;
-  return _react.default.createElement(_ToggleField.default, {
+      onChange = _ref.onChange,
+      dense = _ref.dense,
+      helpText = _ref.helpText;
+  return _react.default.createElement(_FormField.default, {
+    valid: valid,
+    warning: warning,
+    disabled: disabled,
+    error: error,
+    dense: dense,
+    helpText: helpText
+  }, _react.default.createElement(_ToggleField.default, {
     disabled: disabled
   }, _react.default.createElement("div", {
     className: bem.b({
@@ -53,7 +67,7 @@ var Checkbox = function Checkbox(_ref) {
     className: bem.e('label-text', {
       disabled: disabled
     })
-  }, label));
+  }, label)));
 };
 
 Checkbox.defaultProps = {

@@ -15,20 +15,34 @@ require("./switch.css");
 
 var _utils = require("../utils");
 
+var _FormField = _interopRequireDefault(require("./FormField"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var bem = (0, _utils.bemClassNames)('d2ui-switch');
 
 var Switch = function Switch(_ref) {
   var label = _ref.label,
-      value = _ref.value,
+      checked = _ref.checked,
+      valid = _ref.valid,
+      warning = _ref.warning,
+      error = _ref.error,
       disabled = _ref.disabled,
-      onChange = _ref.onChange;
-  return _react.default.createElement(_ToggleField.default, {
+      onChange = _ref.onChange,
+      dense = _ref.dense,
+      helpText = _ref.helpText;
+  return _react.default.createElement(_FormField.default, {
+    valid: valid,
+    warning: warning,
+    disabled: disabled,
+    error: error,
+    dense: dense,
+    helpText: helpText
+  }, _react.default.createElement(_ToggleField.default, {
     disabled: disabled
   }, _react.default.createElement("div", {
     className: bem.b({
-      checked: value,
+      checked: checked,
       disabled: disabled
     })
   }, _react.default.createElement("div", {
@@ -42,19 +56,19 @@ var Switch = function Switch(_ref) {
     type: "checkbox",
     id: "basic-switch",
     className: bem.e('native-control'),
-    "aria-checked": value,
-    checked: value,
+    "aria-checked": checked,
+    checked: checked,
     role: "switch",
     disabled: disabled
   })))), _react.default.createElement("span", {
     className: bem.e('label-text', {
       disabled: disabled
     })
-  }, label));
+  }, label)));
 };
 
 Switch.defaultProps = {
-  value: false,
+  checked: false,
   disabled: false
 };
 var _default = Switch;
