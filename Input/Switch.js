@@ -30,6 +30,7 @@ var Switch = function Switch(_ref) {
       disabled = _ref.disabled,
       onChange = _ref.onChange,
       dense = _ref.dense,
+      fullWidth = _ref.fullWidth,
       helpText = _ref.helpText;
   return _react.default.createElement(_FormField.default, {
     valid: valid,
@@ -37,6 +38,7 @@ var Switch = function Switch(_ref) {
     disabled: disabled,
     error: error,
     dense: dense,
+    fullWidth: fullWidth,
     helpText: helpText
   }, _react.default.createElement(_ToggleField.default, {
     disabled: disabled
