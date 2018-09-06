@@ -22,6 +22,22 @@ var FILLED = 'filled';
 var OUTLINED = 'outlined';
 var MINIMAL = 'minimal';
 
+var computeTrailingIcon = function computeTrailingIcon(trailingIcon, error, warning, valid) {
+  switch (true) {
+    case error:
+      return 'error';
+
+    case warning:
+      return 'warning';
+
+    case valid:
+      return 'check_circle';
+
+    default:
+      return trailingIcon;
+  }
+};
+
 var TextField = function TextField(_ref) {
   var variant = _ref.variant,
       type = _ref.type,
@@ -30,28 +46,38 @@ var TextField = function TextField(_ref) {
       value = _ref.value,
       onChange = _ref.onChange,
       leadingIcon = _ref.leadingIcon,
-      trailingIcon = _ref.trailingIcon;
+      trailingIcon = _ref.trailingIcon,
+      error = _ref.error,
+      valid = _ref.valid,
+      warning = _ref.warning,
+      disabled = _ref.disabled;
+  var computedTrailingIcon = computeTrailingIcon(trailingIcon, error, warning, valid);
+  var focusIndicator = variant === OUTLINED ? 'notched-outline' : 'bottom-line';
   var wrapperClassName = bem.b(variant, {
     'with-value': value !== '',
-    'with-trailing-icon': trailingIcon,
+    'with-trailing-icon': computedTrailingIcon,
     'with-leading-icon': leadingIcon,
-    dense: dense
+    dense: dense,
+    error: error,
+    valid: valid,
+    warning: warning,
+    disabled: disabled
   });
-  var focusIndicator = variant === OUTLINED ? 'notched-outline' : 'bottom-line';
   return _react.default.createElement("label", {
     className: wrapperClassName
   }, _react.default.createElement("input", {
     className: bem.e('input'),
     value: value,
     onChange: onChange,
-    type: type
+    type: type,
+    disabled: disabled
   }), _react.default.createElement("div", {
     className: bem.e(focusIndicator)
   }), leadingIcon && _react.default.createElement(_Icon.default, {
     name: leadingIcon,
     className: bem.e('icon', 'leading')
-  }), trailingIcon && _react.default.createElement(_Icon.default, {
-    name: trailingIcon,
+  }), computedTrailingIcon && _react.default.createElement(_Icon.default, {
+    name: computedTrailingIcon,
     className: bem.e('icon', 'trailing')
   }), _react.default.createElement("span", {
     className: bem.e('floating-label')
