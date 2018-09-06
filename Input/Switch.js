@@ -9,9 +9,9 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./switch.css");
+var _ToggleField = _interopRequireDefault(require("./ToggleField"));
 
-require("./togglerwrap.css");
+require("./switch.css");
 
 var _utils = require("../utils");
 
@@ -24,8 +24,8 @@ var Switch = function Switch(_ref) {
       value = _ref.value,
       disabled = _ref.disabled,
       onChange = _ref.onChange;
-  return _react.default.createElement("label", {
-    className: "".concat(bem.e('label-wrap'), " d2ui-toggler-wrap")
+  return _react.default.createElement(_ToggleField.default, {
+    disabled: disabled
   }, _react.default.createElement("div", {
     className: bem.b({
       checked: value,
@@ -44,9 +44,12 @@ var Switch = function Switch(_ref) {
     className: bem.e('native-control'),
     "aria-checked": value,
     checked: value,
-    role: "switch"
+    role: "switch",
+    disabled: disabled
   })))), _react.default.createElement("span", {
-    className: bem.e('label-text')
+    className: bem.e('label-text', {
+      disabled: disabled
+    })
   }, label));
 };
 
