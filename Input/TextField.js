@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.bem = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -20,6 +20,7 @@ var _FormField = _interopRequireDefault(require("./FormField"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var bem = (0, _utils.bemClassNames)('d2ui-text-field');
+exports.bem = bem;
 var FILLED = 'filled';
 var OUTLINED = 'outlined';
 var MINIMAL = 'minimal';
@@ -54,7 +55,8 @@ var TextField = function TextField(_ref) {
       warning = _ref.warning,
       disabled = _ref.disabled,
       fullWidth = _ref.fullWidth,
-      helpText = _ref.helpText;
+      helpText = _ref.helpText,
+      inputComponent = _ref.inputComponent;
   var computedTrailingIcon = computeTrailingIcon(trailingIcon, error, warning, valid);
   var focusIndicator = variant === OUTLINED ? 'notched-outline' : 'bottom-line';
   var wrapperClassName = bem.b(variant, {
@@ -77,7 +79,7 @@ var TextField = function TextField(_ref) {
     helpText: helpText
   }, _react.default.createElement("label", {
     className: wrapperClassName
-  }, _react.default.createElement("input", {
+  }, inputComponent || _react.default.createElement("input", {
     className: bem.e('input'),
     value: value,
     onChange: onChange,

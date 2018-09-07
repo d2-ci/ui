@@ -29,6 +29,12 @@ Object.defineProperty(exports, "setTextDirection", {
     return _setTextDirection.default;
   }
 });
+Object.defineProperty(exports, "noop", {
+  enumerable: true,
+  get: function get() {
+    return _noop.default;
+  }
+});
 
 var _isRtl = _interopRequireDefault(require("./isRtl"));
 
@@ -37,5 +43,7 @@ var _bemClassNames = _interopRequireDefault(require("./bemClassNames"));
 var _wrapTextNodesInSpans = _interopRequireDefault(require("./wrapTextNodesInSpans"));
 
 var _setTextDirection = _interopRequireDefault(require("./setTextDirection"));
+
+var _noop = _interopRequireDefault(require("./noop"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
