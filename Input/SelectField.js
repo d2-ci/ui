@@ -55,17 +55,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var bem = (0, _utils.bemClassNames)('d2ui-select');
 
-var Select =
+var SelectField =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Select, _Component);
+  _inherits(SelectField, _Component);
 
-  function Select(props) {
+  function SelectField(props) {
     var _this;
 
-    _classCallCheck(this, Select);
+    _classCallCheck(this, SelectField);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Select).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectField).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openDropdown", function () {
       _this.setState({
@@ -100,7 +100,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Select, [{
+  _createClass(SelectField, [{
     key: "renderCustomSelect",
     value: function renderCustomSelect(displayValue) {
       var className = "".concat(bem.e('input'), " ").concat(_TextField.bem.e('input'));
@@ -183,8 +183,8 @@ function (_Component) {
     }
   }]);
 
-  return Select;
+  return SelectField;
 }(_react.Component);
 
-var _default = Select;
+var _default = SelectField;
 exports.default = _default;
