@@ -5,11 +5,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("core-js/modules/es6.object.assign");
+
+require("core-js/modules/es6.string.iterator");
+
+require("core-js/modules/es6.array.from");
+
+require("core-js/modules/es6.regexp.to-string");
+
+require("core-js/modules/es6.date.to-string");
+
 require("core-js/modules/es7.symbol.async-iterator");
 
 require("core-js/modules/es6.symbol");
 
-require("core-js/modules/es6.object.assign");
+require("core-js/modules/web.dom.iterable");
+
+require("core-js/modules/es6.array.is-array");
 
 require("core-js/modules/es6.object.define-property");
 
@@ -18,6 +30,8 @@ require("core-js/modules/es6.object.create");
 require("core-js/modules/es6.object.set-prototype-of");
 
 require("core-js/modules/es6.array.find");
+
+require("core-js/modules/es6.array.map");
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -34,6 +48,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -77,14 +99,16 @@ function (_Component) {
       _this.setState({
         dropdownOpen: false
       });
+
+      _this.inputRef.focus();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setAnchorRef", function (node) {
-      _this.anchorRef = node;
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setInputRef", function (node) {
+      _this.inputRef = node;
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getAnchorRef", function () {
-      return _this.anchorRef;
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getInputRef", function () {
+      return _this.inputRef;
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "selectHandler", function (event, value) {
@@ -93,31 +117,51 @@ function (_Component) {
       _this.props.onChange(value);
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "nativeSelectHandler", function (event) {
+      _this.props.onChange(event.target.value);
+    });
+
     _this.state = {
       dropdownOpen: false
     };
-    _this.anchorRef = null;
+    _this.inputRef = null;
+    _this.inputClassName = "".concat(bem.e('input'), " ").concat(_TextField.bem.e('input'));
     return _this;
   }
 
   _createClass(SelectField, [{
     key: "renderCustomSelect",
     value: function renderCustomSelect(displayValue) {
-      var className = "".concat(bem.e('input'), " ").concat(_TextField.bem.e('input'));
       return _react.default.createElement("input", {
-        className: className,
+        className: this.inputClassName,
         value: displayValue,
         onClick: this.openDropdown // input type "button" is focusable, which ensures the correct :focus styles are applied
         // input type "button" does not show a caret when focussed
         ,
         type: "button",
-        ref: this.setAnchorRef
+        ref: this.setInputRef
       });
     }
   }, {
     key: "renderNativeSelect",
     value: function renderNativeSelect() {
-      return _react.default.createElement("div", null, "Not implemented yet");
+      var options = [{
+        value: null,
+        label: ''
+      }].concat(_toConsumableArray(this.props.options));
+      return _react.default.createElement("select", {
+        ref: this.setInputRef,
+        className: this.inputClassName,
+        onChange: this.nativeSelectHandler,
+        value: this.props.value
+      }, options.map(function (_ref) {
+        var value = _ref.value,
+            label = _ref.label;
+        return _react.default.createElement("option", {
+          key: value,
+          value: value
+        }, label);
+      }));
     }
   }, {
     key: "getLabelOfValue",
@@ -157,27 +201,29 @@ function (_Component) {
         warning: warning
       };
       return _react.default.createElement("div", {
-        className: bem.b()
+        className: bem.b({
+          native: native
+        })
       }, _react.default.createElement(_TextField.default, _extends({
         inputComponent: inputComponent,
         onChange: _utils.noop,
         value: displayValue,
         trailingIcon: "keyboard_arrow_down"
-      }, textFieldProps)), _react.default.createElement(_Menu.PopoverMenu, {
+      }, textFieldProps)), !native && _react.default.createElement(_Menu.PopoverMenu, {
         menuProps: {
           options: options,
           selectHandler: this.selectHandler
         },
-        getAnchorRef: this.getAnchorRef,
+        getAnchorRef: this.getInputRef,
         open: this.state.dropdownOpen,
         closePopover: this.closeDropdown,
         anchorAttachPoint: {
-          vertical: 'bottom',
-          horizontal: 'right'
+          vertical: 'top',
+          horizontal: 'center'
         },
         popoverAttachPoint: {
           vertical: 'top',
-          horizontal: 'right'
+          horizontal: 'center'
         }
       }));
     }

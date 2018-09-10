@@ -19,7 +19,7 @@ var Icon = function Icon(_ref) {
   var name = _ref.name,
       className = _ref.className;
   return _react.default.createElement("i", {
-    className: "material-icons ".concat(className)
+    className: "material-icons ".concat(className ? ' ' + className : '')
   }, name);
 };
 
