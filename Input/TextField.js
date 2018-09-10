@@ -85,7 +85,7 @@ var TextField = function TextField(_ref) {
     onChange: onChange,
     type: type,
     disabled: disabled
-  }), _react.default.createElement("div", {
+  }), _react.default.createElement("span", {
     className: bem.e(focusIndicator)
   }), leadingIcon && _react.default.createElement(_Icon.default, {
     name: leadingIcon,
