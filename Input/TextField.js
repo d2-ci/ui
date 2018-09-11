@@ -27,6 +27,9 @@ var MINIMAL = 'minimal';
 
 var computeTrailingIcon = function computeTrailingIcon(trailingIcon, error, warning, valid) {
   switch (true) {
+    case Boolean(trailingIcon):
+      return trailingIcon;
+
     case error:
       return 'error';
 
@@ -37,7 +40,7 @@ var computeTrailingIcon = function computeTrailingIcon(trailingIcon, error, warn
       return 'check_circle';
 
     default:
-      return trailingIcon;
+      return null;
   }
 };
 
@@ -57,6 +60,7 @@ var TextField = function TextField(_ref) {
       fullWidth = _ref.fullWidth,
       helpText = _ref.helpText,
       inputComponent = _ref.inputComponent;
+  console.log(trailingIcon);
   var computedTrailingIcon = computeTrailingIcon(trailingIcon, error, warning, valid);
   var focusIndicator = variant === OUTLINED ? 'notched-outline' : 'bottom-line';
   var wrapperClassName = bem.b(variant, {
