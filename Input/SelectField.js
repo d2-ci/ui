@@ -75,7 +75,10 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var bem = (0, _utils.bemClassNames)('d2ui-select');
+var bem = (0, _utils.bemClassNames)('d2ui-select'); // React uses a "value" property on the <select/> which can't be null so we use this magig string instead
+
+var EMPTY_NATIVE_OPTION_VALUE = '#^NONE^#';
+var DEFAULT_EMPTY_OPTION_TEXT = '--------';
 
 var SelectField =
 /*#__PURE__*/
@@ -114,11 +117,14 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "selectHandler", function (event, value) {
       _this.closeDropdown();
 
-      _this.props.onChange(value);
+      _this.changeHandler(value);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "nativeSelectHandler", function (event) {
-      _this.props.onChange(event.target.value);
+      var elValue = event.target.value;
+      var value = elValue === EMPTY_NATIVE_OPTION_VALUE ? null : elValue;
+
+      _this.changeHandler(value);
     });
 
     _this.state = {
@@ -126,10 +132,43 @@ function (_Component) {
     };
     _this.inputRef = null;
     _this.inputClassName = "".concat(bem.e('input'), " ").concat(_TextField.bem.e('input'));
+    _this.selectedEmptyOption = false;
     return _this;
   }
 
   _createClass(SelectField, [{
+    key: "changeHandler",
+    value: function changeHandler(value) {
+      var _this$props = this.props,
+          includeEmpty = _this$props.includeEmpty,
+          onChange = _this$props.onChange;
+      this.selectedEmptyOption = includeEmpty & value === null ? true : false;
+      onChange(value);
+    }
+  }, {
+    key: "getOptions",
+    value: function getOptions() {
+      var _this$props2 = this.props,
+          includeEmpty = _this$props2.includeEmpty,
+          emptyOptionText = _this$props2.emptyOptionText,
+          options = _this$props2.options,
+          native = _this$props2.native;
+
+      if (!includeEmpty) {
+        return options;
+      }
+
+      var label = emptyOptionText || DEFAULT_EMPTY_OPTION_TEXT;
+      var emptyOption = native ? {
+        value: EMPTY_NATIVE_OPTION_VALUE,
+        label: label
+      } : {
+        value: null,
+        label: label
+      };
+      return [emptyOption].concat(_toConsumableArray(options));
+    }
+  }, {
     key: "renderCustomSelect",
     value: function renderCustomSelect(displayValue) {
       return _react.default.createElement("input", {
@@ -145,15 +184,13 @@ function (_Component) {
   }, {
     key: "renderNativeSelect",
     value: function renderNativeSelect() {
-      var options = [{
-        value: null,
-        label: ''
-      }].concat(_toConsumableArray(this.props.options));
+      var options = this.getOptions();
+      var value = this.props.value || EMPTY_NATIVE_OPTION_VALUE;
       return _react.default.createElement("select", {
         ref: this.setInputRef,
         className: this.inputClassName,
         onChange: this.nativeSelectHandler,
-        value: this.props.value
+        value: value
       }, options.map(function (_ref) {
         var value = _ref.value,
             label = _ref.label;
@@ -166,28 +203,39 @@ function (_Component) {
   }, {
     key: "getLabelOfValue",
     value: function getLabelOfValue() {
-      var _this$props = this.props,
-          options = _this$props.options,
-          value = _this$props.value;
+      var _this$props3 = this.props,
+          options = _this$props3.options,
+          value = _this$props3.value,
+          emptyOptionText = _this$props3.emptyOptionText;
       var selectedOption = options.find(function (option) {
         return option.value === value;
-      });
-      return selectedOption ? selectedOption.label : '';
+      }); // If some valid option is selected always display this
+
+      if (selectedOption && selectedOption.label) {
+        return selectedOption.label;
+      } // If the user selected the "None" option, display it
+
+
+      if (this.selectedEmptyOption) {
+        return emptyOptionText || DEFAULT_EMPTY_OPTION_TEXT;
+      } // Otherwise return an empty value so the floating label text shows
+
+
+      return '';
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          options = _this$props2.options,
-          label = _this$props2.label,
-          variant = _this$props2.variant,
-          leadingIcon = _this$props2.leadingIcon,
-          helpText = _this$props2.helpText,
-          dense = _this$props2.dense,
-          valid = _this$props2.valid,
-          error = _this$props2.error,
-          warning = _this$props2.warning,
-          native = _this$props2.native;
+      var _this$props4 = this.props,
+          label = _this$props4.label,
+          variant = _this$props4.variant,
+          leadingIcon = _this$props4.leadingIcon,
+          helpText = _this$props4.helpText,
+          dense = _this$props4.dense,
+          valid = _this$props4.valid,
+          error = _this$props4.error,
+          warning = _this$props4.warning,
+          native = _this$props4.native;
       var displayValue = this.getLabelOfValue();
       var inputComponent = native ? this.renderNativeSelect() : this.renderCustomSelect(displayValue);
       var textFieldProps = {
@@ -211,7 +259,7 @@ function (_Component) {
         trailingIcon: "keyboard_arrow_down"
       }, textFieldProps)), !native && _react.default.createElement(_Menu.PopoverMenu, {
         menuProps: {
-          options: options,
+          options: this.getOptions(),
           selectHandler: this.selectHandler
         },
         getAnchorRef: this.getInputRef,
