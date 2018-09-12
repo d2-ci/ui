@@ -85,7 +85,7 @@ function (_Component) {
       var translateX = "translateX(".concat(activeTabNode.offsetLeft, "px)");
       var scaleX = "scaleX(".concat(activeTabNode.offsetWidth, ")");
       return {
-        transform: "".concat(translateX, " ").concat(scaleX)
+        transform: "".concat(translateX, " translateY(2px) ").concat(scaleX)
       };
     }
   }, {
