@@ -52,9 +52,9 @@ function classNames(prefix, modifierArgs) {
 
       var argType = _typeof(arg);
 
-      if (argType === 'number' || argType === 'string') {
+      if (arg && argType === 'number' || argType === 'string') {
         classes.push("".concat(prefix, "--").concat(arg));
-      } else if (argType === 'object' && !Array.isArray(arg)) {
+      } else if (arg && argType === 'object' && !Array.isArray(arg)) {
         var _arr = Object.keys(arg);
 
         for (var _i = 0; _i < _arr.length; _i++) {
