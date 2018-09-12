@@ -27,24 +27,26 @@ var PopoverMenu = function PopoverMenu(_ref) {
       getAnchorRef = _ref.getAnchorRef,
       menuProps = _ref.menuProps,
       open = _ref.open,
-      popoverAttachPoint = _ref.popoverAttachPoint;
+      popoverAttachPoint = _ref.popoverAttachPoint,
+      appearAnimation = _ref.appearAnimation;
   return _react.default.createElement(_Popover.default, {
     anchorAttachPoint: anchorAttachPoint,
     closePopover: closePopover,
     getAnchorRef: getAnchorRef,
     open: open,
-    popoverAttachPoint: popoverAttachPoint
+    popoverAttachPoint: popoverAttachPoint,
+    appearAnimation: appearAnimation
   }, _react.default.createElement(_Menu.default, _extends({
     closePopover: closePopover
   }, menuProps)));
 };
 
 PopoverMenu.defaultProps = {
+  open: _propTypes.default.bool.isRequired,
   anchorAttachPoint: {
     vertical: 'middle',
     horizontal: 'center'
   },
-  open: _propTypes.default.bool.isRequired,
   popoverAttachPoint: {
     vertical: 'middle',
     horizontal: 'center'

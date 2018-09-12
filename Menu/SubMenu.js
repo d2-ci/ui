@@ -125,7 +125,8 @@ function (_Component) {
         getAnchorRef: this.getAnchorRef,
         open: this.state.popoverOpen,
         menuProps: menuProps,
-        popoverAttachPoint: popoverAttachPoint
+        popoverAttachPoint: popoverAttachPoint,
+        appearAnimation: "slide-x-y"
       }));
     }
   }]);

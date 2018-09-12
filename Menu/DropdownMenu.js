@@ -104,7 +104,8 @@ function (_Component) {
         popoverAttachPoint: {
           vertical: 'top',
           horizontal: 'right'
-        }
+        },
+        appearAnimation: "slide-down"
       }));
     }
   }]);
