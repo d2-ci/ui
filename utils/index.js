@@ -47,6 +47,12 @@ Object.defineProperty(exports, "throttle", {
     return _throttle.default;
   }
 });
+Object.defineProperty(exports, "setTextDirection", {
+  enumerable: true,
+  get: function get() {
+    return _setTextDirection.default;
+  }
+});
 
 var _isRtl = _interopRequireDefault(require("./isRtl"));
 
@@ -61,5 +67,7 @@ var _wrapTextNodesInSpans = _interopRequireDefault(require("./wrapTextNodesInSpa
 var _noop = _interopRequireDefault(require("./noop"));
 
 var _throttle = _interopRequireDefault(require("./throttle"));
+
+var _setTextDirection = _interopRequireDefault(require("./setTextDirection"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

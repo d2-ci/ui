@@ -17,28 +17,22 @@ require("core-js/modules/es6.string.includes");
 
 require("core-js/modules/es6.array.map");
 
-require("core-js/modules/es6.array.is-array");
+var _react = _interopRequireWildcard(require("react"));
 
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 // CSS selectors like :first-child, :only-child, :last-child do not take text nodes
 // into account, so wrapping text nodes in spans simplifies the CSS file a lot.
 function _default(children) {
-  return Array.isArray(children) ? children.map(wrapTextNodeInSpan) : wrapTextNodeInSpan(children);
-}
+  return _react.Children.map(children, function (child, index) {
+    if (['string', 'number'].includes(_typeof(child))) {
+      return _react.default.createElement("span", {
+        key: "key-".concat(index)
+      }, child);
+    }
 
-function wrapTextNodeInSpan(child) {
-  var index = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-
-  if (['string', 'number'].includes(_typeof(child))) {
-    return _react.default.createElement("span", {
-      key: "key-".concat(index)
-    }, child);
-  }
-
-  return child;
+    return child;
+  });
 }
