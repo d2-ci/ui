@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.bem = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -45,6 +45,8 @@ var _TabIndicator = _interopRequireDefault(require("./TabIndicator"));
 
 var _utils = require("../utils");
 
+var _computeHorizontalScrollbarHeight = _interopRequireDefault(require("./computeHorizontalScrollbarHeight"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -74,6 +76,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var bem = (0, _utils.bemClassNames)('d2ui-tabs');
+exports.bem = bem;
 
 var Tabs =
 /*#__PURE__*/
@@ -149,6 +152,7 @@ function (_Component) {
       scrolledToEnd: true,
       showTabIndicator: false
     };
+    _this.horizontalScrollbarHeight = (0, _computeHorizontalScrollbarHeight.default)();
     _this.handleSideScroll = (0, _utils.throttle)(_this.toggleScrollButtonVisibility.bind(_assertThisInitialized(_assertThisInitialized(_this))));
     return _this;
   } // Lifecycle hooks
@@ -308,6 +312,9 @@ function (_Component) {
       var _this$props3 = this.props,
           position = _this$props3.position,
           contained = _this$props3.contained;
+      var scrollBoxStyle = {
+        marginBottom: -this.horizontalScrollbarHeight
+      };
       var tabBar = this.renderTabBar();
 
       if (!contained) {
@@ -322,7 +329,8 @@ function (_Component) {
           className: bem.e('scroll-box-clipper')
         }, _react.default.createElement("div", {
           className: bem.e('scroll-box'),
-          ref: this.setScrollBoxRef
+          ref: this.setScrollBoxRef,
+          style: scrollBoxStyle
         }, _react.default.createElement("div", {
           className: bem.e('scroll-area'),
           ref: this.setScrollAreaRef
