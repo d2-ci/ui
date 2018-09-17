@@ -15,7 +15,7 @@ require("./textfield.css");
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _FormField = _interopRequireDefault(require("./FormField"));
+var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60,7 +60,6 @@ var TextField = function TextField(_ref) {
       fullWidth = _ref.fullWidth,
       helpText = _ref.helpText,
       inputComponent = _ref.inputComponent;
-  console.log(trailingIcon);
   var computedTrailingIcon = computeTrailingIcon(trailingIcon, error, warning, valid);
   var focusIndicator = variant === OUTLINED ? 'notched-outline' : 'bottom-line';
   var wrapperClassName = bem.b(variant, {
@@ -73,7 +72,7 @@ var TextField = function TextField(_ref) {
     warning: warning,
     disabled: disabled
   });
-  return _react.default.createElement(_FormField.default, {
+  return _react.default.createElement(_FieldWrap.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,

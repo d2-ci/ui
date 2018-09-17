@@ -23,7 +23,7 @@ var _utils = require("../utils");
 
 var _RadioButton = _interopRequireDefault(require("./RadioButton"));
 
-var _FormField = _interopRequireDefault(require("./FormField"));
+var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
 
 require("./radiobuttongroup.css");
 
@@ -50,7 +50,7 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
       warning = _ref.warning,
       error = _ref.error,
       helpText = _ref.helpText;
-  return _react.default.createElement(_FormField.default, {
+  return _react.default.createElement(_FieldWrap.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,

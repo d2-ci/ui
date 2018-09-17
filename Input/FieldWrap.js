@@ -11,13 +11,13 @@ var _react = _interopRequireDefault(require("react"));
 
 var _utils = require("../utils");
 
-require("./formfield.css");
+require("./fieldwrap.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var bem = (0, _utils.bemClassNames)('d2ui-form-field');
 
-var FormField = function FormField(_ref) {
+var FieldWrap = function FieldWrap(_ref) {
   var children = _ref.children,
       valid = _ref.valid,
       warning = _ref.warning,
@@ -40,5 +40,5 @@ var FormField = function FormField(_ref) {
   }, helpText));
 };
 
-var _default = FormField;
+var _default = FieldWrap;
 exports.default = _default;

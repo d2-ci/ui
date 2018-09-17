@@ -17,7 +17,7 @@ var _utils = require("../utils");
 
 var _ToggleField = _interopRequireDefault(require("../../build/Input/ToggleField"));
 
-var _FormField = _interopRequireDefault(require("./FormField"));
+var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,7 +34,7 @@ var Checkbox = function Checkbox(_ref) {
       dense = _ref.dense,
       fullWidth = _ref.fullWidth,
       helpText = _ref.helpText;
-  return _react.default.createElement(_FormField.default, {
+  return _react.default.createElement(_FieldWrap.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,
