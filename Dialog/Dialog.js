@@ -126,9 +126,9 @@ function (_Component) {
       }
 
       var isText = ['string', 'number'].includes(_typeof(title));
-      return _react.default.createElement("div", {
+      return _react.default.createElement("header", {
         className: bem.e('title')
-      }, isText ? _react.default.createElement("h4", null, title) : title);
+      }, isText ? _react.default.createElement("h6", null, title) : title);
     }
   }, {
     key: "renderFooter",
@@ -139,7 +139,7 @@ function (_Component) {
         return null;
       }
 
-      return _react.default.createElement("div", {
+      return _react.default.createElement("footer", {
         className: bem.e('footer')
       }, _react.default.Children.toArray(actions));
     }
@@ -171,8 +171,8 @@ function (_Component) {
       }, animateOutProps)), _react.default.createElement("div", {
         className: bem.e('window', size, animateOutClass)
       }, _react.default.createElement(_Paper.default, {
-        elevation: 12
-      }, this.renderTitle(), _react.default.createElement("div", {
+        elevation: 24
+      }, this.renderTitle(), _react.default.createElement("section", {
         className: bem.e('content')
       }, content), this.renderFooter()))), document.body);
     }
