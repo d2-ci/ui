@@ -65,12 +65,18 @@ var Dialog =
 function (_Component) {
   _inherits(Dialog, _Component);
 
-  function Dialog(props) {
+  function Dialog() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, Dialog);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Dialog).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Dialog)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBackdropClick", function () {
       var _this$props = _this.props,
@@ -79,17 +85,6 @@ function (_Component) {
       dismissible && closeHandler && closeHandler();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "animationEndHandler", function () {
-      _this.updateBodyScroll();
-
-      _this.setState({
-        isAnimatingOut: false
-      });
-    });
-
-    _this.state = {
-      isAnimatingOut: false
-    };
     return _this;
   }
 
@@ -97,16 +92,6 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.updateBodyScroll();
-    }
-  }, {
-    key: "shouldComponentUpdate",
-    value: function shouldComponentUpdate(nextProps) {
-      if (!nextProps.open && this.props.open && !this.state.isAnimatingOut) {
-        this.animateOut();
-        return false;
-      }
-
-      return true;
     }
   }, {
     key: "componentDidUpdate",
@@ -121,18 +106,15 @@ function (_Component) {
   }, {
     key: "updateBodyScroll",
     value: function updateBodyScroll(forceOff) {
-      if (forceOff || !this.props.open && !this.state.isAnimatingOut) {
+      var _this$props2 = this.props,
+          open = _this$props2.open,
+          isAnimatingOut = _this$props2.isAnimatingOut;
+
+      if (forceOff || !open && !isAnimatingOut) {
         document.body.classList.remove(BODY_SCROLL_DISABLED_CLASS);
       } else {
         document.body.classList.add(BODY_SCROLL_DISABLED_CLASS);
       }
-    }
-  }, {
-    key: "animateOut",
-    value: function animateOut() {
-      this.setState({
-        isAnimatingOut: true
-      });
     }
   }, {
     key: "renderTitle",
@@ -164,11 +146,12 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          size = _this$props2.size,
-          content = _this$props2.content,
-          open = _this$props2.open;
-      var isAnimatingOut = this.state.isAnimatingOut;
+      var _this$props3 = this.props,
+          size = _this$props3.size,
+          content = _this$props3.content,
+          open = _this$props3.open,
+          isAnimatingOut = _this$props3.isAnimatingOut,
+          onAnimationEnd = _this$props3.onAnimationEnd;
 
       if (!open && !isAnimatingOut) {
         return null;
@@ -178,7 +161,7 @@ function (_Component) {
         'animate-out': isAnimatingOut
       };
       var animateOutProps = isAnimatingOut ? {
-        onAnimationEnd: this.animationEndHandler
+        onAnimationEnd: onAnimationEnd
       } : null;
       return _reactDom.default.createPortal(_react.default.createElement("div", {
         className: bem.b()
@@ -202,5 +185,7 @@ Dialog.defaultProps = {
   size: 'medium',
   dismissible: true
 };
-var _default = Dialog;
+
+var _default = (0, _utils.withAnimatedClose)(Dialog, {});
+
 exports.default = _default;
