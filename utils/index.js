@@ -53,6 +53,18 @@ Object.defineProperty(exports, "setTextDirection", {
     return _setTextDirection.default;
   }
 });
+Object.defineProperty(exports, "withAnimatedClose", {
+  enumerable: true,
+  get: function get() {
+    return _withAnimatedCloseHOC.default;
+  }
+});
+Object.defineProperty(exports, "defer", {
+  enumerable: true,
+  get: function get() {
+    return _defer.default;
+  }
+});
 
 var _isRtl = _interopRequireDefault(require("./isRtl"));
 
@@ -69,5 +81,9 @@ var _noop = _interopRequireDefault(require("./noop"));
 var _throttle = _interopRequireDefault(require("./throttle"));
 
 var _setTextDirection = _interopRequireDefault(require("./setTextDirection"));
+
+var _withAnimatedCloseHOC = _interopRequireDefault(require("./withAnimatedCloseHOC"));
+
+var _defer = _interopRequireDefault(require("./defer"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
