@@ -114,7 +114,8 @@ function (_Component) {
       var _this$props2 = this.props,
           open = _this$props2.open,
           children = _this$props2.children,
-          closePopover = _this$props2.closePopover;
+          closePopover = _this$props2.closePopover,
+          appearAnimation = _this$props2.appearAnimation;
       var popupComputedStyle = this.state.popupComputedStyle;
 
       if (!open) {
@@ -125,7 +126,7 @@ function (_Component) {
         className: bem.e('overlay'),
         onClick: closePopover
       }), _react.default.createElement("div", {
-        className: bem.b(),
+        className: bem.b(appearAnimation),
         ref: this.onPopupRendered,
         style: popupComputedStyle
       }, children)), document.body);
@@ -148,7 +149,8 @@ Popover.defaultProps = {
   popoverAttachPoint: {
     vertical: 'middle',
     horizontal: 'center'
-  }
+  },
+  appearAnimation: 'fade-in'
 };
 var _default = Popover;
 exports.default = _default;

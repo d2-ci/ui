@@ -17,13 +17,9 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _utils = require("../utils");
+var _bemClassNames = _interopRequireDefault(require("../utils/bemClassNames"));
 
-var _PopoverMenu = _interopRequireDefault(require("./PopoverMenu"));
-
-var _MenuItem = _interopRequireDefault(require("./MenuItem"));
-
-var _Icon = _interopRequireDefault(require("../Icon"));
+require("./tabindicator.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39,100 +35,74 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+var bem = (0, _bemClassNames.default)('d2ui-tab-indicator');
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var anchorAttachPoint = {
-  vertical: 'top',
-  horizontal: 'right'
-};
-var popoverAttachPoint = {
-  vertical: 'top',
-  horizontal: 'left'
-};
-
-var SubMenu =
+var TabIndicator =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(SubMenu, _Component);
+  _inherits(TabIndicator, _Component);
 
-  function SubMenu(props) {
+  function TabIndicator(props) {
     var _this;
 
-    _classCallCheck(this, SubMenu);
+    _classCallCheck(this, TabIndicator);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SubMenu).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openPopover", function () {
-      _this.setState({
-        popoverOpen: true
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closePopover", function () {
-      _this.setState({
-        popoverOpen: false
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getAnchorRef", function () {
-      return _this.anchorRef;
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setAnchorRef", function (node) {
-      return _this.anchorRef = node;
-    });
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TabIndicator).call(this, props));
     _this.state = {
-      popoverOpen: false
+      animated: false
     };
     return _this;
   }
 
-  _createClass(SubMenu, [{
+  _createClass(TabIndicator, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      // The tabindicator should not move with a CSS transition when it is first positioned into place
+      // The tick after the visibility is true, the animation should start
+      if (!prevProps.visible && this.props.visible) {
+        this.setState({
+          animated: true
+        });
+      }
+    }
+  }, {
+    key: "getTransformStyle",
+    value: function getTransformStyle() {
+      var activeTabNode = this.props.getActiveTabRef();
+
+      if (!activeTabNode) {
+        return null;
+      }
+
+      var translateX = "translateX(".concat(activeTabNode.offsetLeft, "px)");
+      var scaleX = "scaleX(".concat(activeTabNode.offsetWidth, ")");
+      return {
+        transform: "".concat(translateX, " translateY(2px) ").concat(scaleX)
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          children = _this$props.children,
-          label = _this$props.label,
-          icon = _this$props.icon,
-          menuItems = _this$props.menuItems;
-      var arrowIconName = (0, _utils.isRtl)() ? 'keyboard_arrow_left' : 'keyboard_arrow_right'; // There MUST be a better way of doing this!
-
-      var menuProps = (0, _react.isValidElement)(menuItems[0]) ? {
-        children: menuItems
-      } : {
-        options: menuItems
-      };
-      return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_MenuItem.default, {
-        ref: this.setAnchorRef,
-        onClick: this.openPopover
-      }, children ? children : [icon && _react.default.createElement(_Icon.default, {
-        key: "icon",
-        name: icon
-      }), label], _react.default.createElement(_Icon.default, {
-        name: arrowIconName
-      })), _react.default.createElement(_PopoverMenu.default, {
-        anchorAttachPoint: anchorAttachPoint,
-        closePopover: this.closePopover,
-        getAnchorRef: this.getAnchorRef,
-        open: this.state.popoverOpen,
-        menuProps: menuProps,
-        popoverAttachPoint: popoverAttachPoint,
-        appearAnimation: "slide-x-y"
-      }));
+      return _react.default.createElement("span", {
+        className: bem.b({
+          visible: this.props.visible,
+          animated: this.state.animated
+        }),
+        style: this.getTransformStyle()
+      });
     }
   }]);
 
-  return SubMenu;
+  return TabIndicator;
 }(_react.Component);
 
-var _default = SubMenu;
+var _default = TabIndicator;
 exports.default = _default;

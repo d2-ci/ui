@@ -1,1 +1,40 @@
-[dir] .d2ui-menu{padding:.5rem 0}.d2ui-menu-item{-ms-flex-pack:start;-o-transition:background-color .15s ease-in-out;display:-ms-flexbox;display:flex;font-size:1rem;font-weight:400;justify-content:flex-start;line-height:2.25rem;min-width:9.375rem;transition:background-color .15s ease-in-out;vertical-align:baseline}[dir] .d2ui-menu-item{-webkit-transition:background-color .15s ease-in-out;cursor:pointer;padding:.25rem 1rem 0}[dir] .d2ui-menu-item:hover{background-color:#eceff1}.d2ui-menu-item .material-icons{line-height:2rem;pointer-events:none}[dir=ltr] .d2ui-menu-item .material-icons{margin-right:.75rem}[dir=rtl] .d2ui-menu-item .material-icons{margin-left:.75rem}[dir=ltr] .d2ui-menu-item .material-icons:last-child{margin-left:auto;margin-right:0}[dir=rtl] .d2ui-menu-item .material-icons:last-child{margin-left:0;margin-right:auto}.d2ui-menu-item--disabled{color:rgba(0,0,0,.3);pointer-events:none}[dir] .d2ui-menu-item--disabled:hover{background-color:inherit}
+.d2ui-menu {
+    padding: 0.5rem 0;
+}
+.d2ui-menu-item {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.25rem 1rem 0 1rem;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.6, 1);
+    cursor: pointer;
+    min-width: 9.375rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 2.25rem;
+    vertical-align: baseline;
+
+    &:hover {
+        background-color: #eceff1;
+    }
+
+    .material-icons {
+        /* To make sure event.target of the click handler is always the list item */
+        pointer-events: none;
+        line-height: 2rem;
+        margin-right: 0.75rem;
+
+        &:last-child {
+            margin-left: auto;
+            margin-right: 0;
+        }
+    }
+
+    &--disabled {
+        color: rgba(0, 0, 0, 0.3);
+        pointer-events: none;
+
+        &:hover {
+            background-color: inherit;
+        }
+    }
+}

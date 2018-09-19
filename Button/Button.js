@@ -36,7 +36,7 @@ var Button = function Button(_ref) {
       type = _ref.type,
       variant = _ref.variant;
   return _react.default.createElement("button", _extends({
-    className: bem.b(variant, size)
+    className: "".concat(bem.b(variant, size), " d2ui-align-icon")
   }, {
     disabled: disabled,
     onClick: onClick,
