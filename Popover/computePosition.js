@@ -40,20 +40,9 @@ exports.RIGHT = RIGHT;
 var EDGE_MARGIN = 18;
 
 function _default(targetEl, anchorEl, anchorAttachPoint, popoverAttachPoint) {
-  var flippedAnchorAttachPoint, flippedPopoverAttachPoint;
-
-  if ((0, _utils.isRtl)()) {
-    flippedAnchorAttachPoint = flipHorizontal(anchorAttachPoint);
-    flippedPopoverAttachPoint = flipHorizontal(popoverAttachPoint);
-  } else {
-    flippedAnchorAttachPoint = anchorAttachPoint;
-    flippedPopoverAttachPoint = popoverAttachPoint;
-  }
-
-  var anchorPosition = getAnchorPosition(anchorEl, flippedAnchorAttachPoint);
-  var virtualPosition = getRelativePosition(targetEl, anchorPosition, flippedPopoverAttachPoint);
-  var restrictedPosition = getWindowContainedPosition(virtualPosition);
-  return restrictedPosition;
+  var anchorPosition = getAnchorPosition(anchorEl, (0, _utils.isRtl)() ? flipHorizontal(anchorAttachPoint) : anchorAttachPoint);
+  var relativePosition = getRelativePosition(targetEl, anchorPosition, (0, _utils.isRtl)() ? flipHorizontal(popoverAttachPoint) : popoverAttachPoint);
+  return getWindowContainedPosition(relativePosition);
 }
 
 function flipHorizontal(attachPoint) {
