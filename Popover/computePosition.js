@@ -194,6 +194,7 @@ function getWindowContainedPosition(_ref) {
   var windowRightEdge = window.innerWidth + scrollLeft - clientLeft - EDGE_MARGIN;
   var containedTop = top;
   var containedLeft = left;
+  console.log(top, height, windowBottomEdge);
 
   if (top + height > windowBottomEdge) {
     containedTop = windowBottomEdge - height;
