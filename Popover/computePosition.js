@@ -70,11 +70,10 @@ function flipHorizontal(attachPoint) {
   });
 }
 
-function getAnchorPosition(el, anchorAttachPoint) {
-  var x, y;
+function getAnchorPosition(el, _ref) {
+  var horizontal = _ref.horizontal,
+      vertical = _ref.vertical;
   var rect = el.getBoundingClientRect();
-  var horizontal = anchorAttachPoint.horizontal,
-      vertical = anchorAttachPoint.vertical;
 
   var _getScrolllAndClientO = getScrolllAndClientOffset(),
       scrollTop = _getScrolllAndClientO.scrollTop,
@@ -82,105 +81,68 @@ function getAnchorPosition(el, anchorAttachPoint) {
       clientTop = _getScrolllAndClientO.clientTop,
       clientLeft = _getScrolllAndClientO.clientLeft;
 
-  if (typeof horizontal === 'number') {
-    x = rect.left + horizontal;
-  } else {
-    switch (horizontal) {
-      case LEFT:
-        x = rect.left;
-        break;
-
-      case CENTER:
-        x = rect.left + rect.width / 2;
-        break;
-
-      case RIGHT:
-      default:
-        x = rect.right;
-    }
-  }
-
-  if (typeof vertical === 'number') {
-    y = rect.top + vertical;
-  } else {
-    switch (vertical) {
-      case TOP:
-        y = rect.top;
-        break;
-
-      case MIDDLE:
-        y = rect.top + rect.height / 2;
-        break;
-
-      case BOTTOM:
-      default:
-        y = rect.top + rect.height;
-    }
-  }
-
-  x += scrollLeft - clientLeft;
-  y += scrollTop - clientTop;
   return {
-    x: x,
-    y: y
+    left: getHorizontalPosition(horizontal, el, rect) + scrollLeft - clientLeft,
+    top: getVerticalPosition(vertical, el, rect) + scrollTop - clientTop
   };
 }
 
-function getRelativePosition(el, anchor, popoverAttachPoint) {
-  var top, left;
-  var horizontal = popoverAttachPoint.horizontal,
-      vertical = popoverAttachPoint.vertical;
-  var rect = el.getBoundingClientRect();
-
-  if (typeof horizontal === 'number') {
-    left = rect.left + horizontal;
-  } else {
-    switch (horizontal) {
-      case LEFT:
-        left = anchor.x;
-        break;
-
-      case CENTER:
-        left = anchor.x - rect.width / 2;
-        break;
-
-      case RIGHT:
-      default:
-        left = anchor.x - rect.width;
-    }
-  }
-
-  if (typeof vertical === 'number') {
-    top = rect.top + vertical;
-  } else {
-    switch (vertical) {
-      case TOP:
-        top = anchor.y;
-        break;
-
-      case MIDDLE:
-        top = anchor.y - rect.height / 2;
-        break;
-
-      case BOTTOM:
-      default:
-        top = anchor.y - rect.height;
-    }
-  }
-
+function getRelativePosition(el, anchor, _ref2) {
+  var horizontal = _ref2.horizontal,
+      vertical = _ref2.vertical;
   return {
-    top: top,
-    left: left,
-    width: rect.width,
-    height: rect.height
+    top: getVerticalPosition(vertical, el, anchor, true),
+    left: getHorizontalPosition(horizontal, el, anchor, true),
+    width: el.offsetWidth,
+    height: el.offsetHeight
   };
 }
 
-function getWindowContainedPosition(_ref) {
-  var top = _ref.top,
-      left = _ref.left,
-      width = _ref.width,
-      height = _ref.height;
+function getHorizontalPosition(horizontal, el, rect, toLeft) {
+  var multiplier = toLeft ? -1 : 1;
+
+  if (typeof horizontal === 'number') {
+    return rect.left + horizontal;
+  } else {
+    switch (horizontal) {
+      case LEFT:
+        return rect.left;
+
+      case CENTER:
+        return rect.left + multiplier * (el.offsetWidth / 2);
+
+      case RIGHT:
+      default:
+        return rect.left + multiplier * el.offsetWidth;
+    }
+  }
+}
+
+function getVerticalPosition(vertical, el, rect, toLeft) {
+  var multiplier = toLeft ? -1 : 1;
+
+  if (typeof vertical === 'number') {
+    return rect.top + vertical;
+  } else {
+    switch (vertical) {
+      case TOP:
+        return rect.top;
+
+      case MIDDLE:
+        return rect.top + multiplier * (el.offsetHeight / 2);
+
+      case BOTTOM:
+      default:
+        return rect.top + multiplier * el.offsetHeight;
+    }
+  }
+}
+
+function getWindowContainedPosition(_ref3) {
+  var top = _ref3.top,
+      left = _ref3.left,
+      width = _ref3.width,
+      height = _ref3.height;
 
   var _getScrolllAndClientO2 = getScrolllAndClientOffset(),
       scrollTop = _getScrolllAndClientO2.scrollTop,
@@ -194,7 +156,6 @@ function getWindowContainedPosition(_ref) {
   var windowRightEdge = window.innerWidth + scrollLeft - clientLeft - EDGE_MARGIN;
   var containedTop = top;
   var containedLeft = left;
-  console.log(top, height, windowBottomEdge);
 
   if (top + height > windowBottomEdge) {
     containedTop = windowBottomEdge - height;
