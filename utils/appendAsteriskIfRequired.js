@@ -7,6 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _default;
 
-function _default() {
-  return document.documentElement.getAttribute('dir') === 'rtl';
+function _default(text, required) {
+  return required ? "".concat(text, " *") : text;
 }
