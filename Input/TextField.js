@@ -5,44 +5,21 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.bem = void 0;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _utils = require("../utils");
-
-require("./textfield.css");
-
-var _Icon = _interopRequireDefault(require("../Icon"));
-
 var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
+
+var _Field = _interopRequireWildcard(require("./Field"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var bem = (0, _utils.bemClassNames)('d2ui-text-field');
-exports.bem = bem;
 var FILLED = 'filled';
 var OUTLINED = 'outlined';
 var MINIMAL = 'minimal';
-
-var computeTrailingIcon = function computeTrailingIcon(trailingIcon, error, warning, valid) {
-  switch (true) {
-    case Boolean(trailingIcon):
-      return trailingIcon;
-
-    case error:
-      return 'error';
-
-    case warning:
-      return 'warning';
-
-    case valid:
-      return 'check_circle';
-
-    default:
-      return null;
-  }
-};
 
 var TextField = function TextField(_ref) {
   var variant = _ref.variant,
@@ -57,48 +34,44 @@ var TextField = function TextField(_ref) {
       valid = _ref.valid,
       warning = _ref.warning,
       disabled = _ref.disabled,
-      fullWidth = _ref.fullWidth,
-      helpText = _ref.helpText,
-      inputComponent = _ref.inputComponent;
-  var computedTrailingIcon = computeTrailingIcon(trailingIcon, error, warning, valid);
-  var focusIndicator = variant === OUTLINED ? 'notched-outline' : 'bottom-line';
-  var wrapperClassName = bem.b(variant, {
-    'with-value': value !== '',
-    'with-trailing-icon': computedTrailingIcon,
-    'with-leading-icon': leadingIcon,
-    dense: dense,
-    error: error,
-    valid: valid,
-    warning: warning,
+      block = _ref.block,
+      multiline = _ref.multiline,
+      required = _ref.required,
+      helpText = _ref.helpText;
+  var InputTag = multiline ? 'textarea' : 'input';
+
+  var inputComponent = _react.default.createElement(InputTag, {
+    className: _Field.bem.e('input'),
+    value: value,
+    onChange: onChange,
+    type: type,
     disabled: disabled
   });
+
   return _react.default.createElement(_FieldWrap.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,
     error: error,
     dense: dense,
-    fullWidth: fullWidth,
+    block: block,
     helpText: helpText
-  }, _react.default.createElement("label", {
-    className: wrapperClassName
-  }, inputComponent || _react.default.createElement("input", {
-    className: bem.e('input'),
+  }, _react.default.createElement(_Field.default, {
+    variant: variant,
+    dense: dense,
+    label: label,
     value: value,
-    onChange: onChange,
-    type: type,
-    disabled: disabled
-  }), _react.default.createElement("span", {
-    className: bem.e(focusIndicator)
-  }), leadingIcon && _react.default.createElement(_Icon.default, {
-    name: leadingIcon,
-    className: bem.e('icon', 'leading')
-  }), computedTrailingIcon && _react.default.createElement(_Icon.default, {
-    name: computedTrailingIcon,
-    className: bem.e('icon', 'trailing')
-  }), _react.default.createElement("span", {
-    className: bem.e('floating-label')
-  }, label)));
+    leadingIcon: leadingIcon,
+    trailingIcon: trailingIcon,
+    error: error,
+    valid: valid,
+    warning: warning,
+    disabled: disabled,
+    inputComponent: inputComponent,
+    block: block,
+    multiline: multiline,
+    required: required
+  }));
 };
 
 TextField.defaultProps = {

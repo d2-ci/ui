@@ -30,18 +30,20 @@ var Switch = function Switch(_ref) {
       disabled = _ref.disabled,
       onChange = _ref.onChange,
       dense = _ref.dense,
-      fullWidth = _ref.fullWidth,
-      helpText = _ref.helpText;
+      block = _ref.block,
+      helpText = _ref.helpText,
+      required = _ref.required;
   return _react.default.createElement(_FieldWrap.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,
     error: error,
     dense: dense,
-    fullWidth: fullWidth,
+    block: block,
     helpText: helpText
   }, _react.default.createElement(_ToggleField.default, {
-    disabled: disabled
+    disabled: disabled,
+    dense: dense
   }, _react.default.createElement("div", {
     className: bem.b({
       checked: checked,
@@ -66,7 +68,7 @@ var Switch = function Switch(_ref) {
     className: bem.e('label-text', {
       disabled: disabled
     })
-  }, label)));
+  }, (0, _utils.appendAsteriskIfRequired)(label, required))));
 };
 
 Switch.defaultProps = {

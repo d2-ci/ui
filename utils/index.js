@@ -29,6 +29,12 @@ Object.defineProperty(exports, "setTextDirection", {
     return _setTextDirection.default;
   }
 });
+Object.defineProperty(exports, "appendAsteriskIfRequired", {
+  enumerable: true,
+  get: function get() {
+    return _appendAsteriskIfRequired.default;
+  }
+});
 Object.defineProperty(exports, "noop", {
   enumerable: true,
   get: function get() {
@@ -43,6 +49,8 @@ var _bemClassNames = _interopRequireDefault(require("./bemClassNames"));
 var _wrapTextNodesInSpans = _interopRequireDefault(require("./wrapTextNodesInSpans"));
 
 var _setTextDirection = _interopRequireDefault(require("./setTextDirection"));
+
+var _appendAsteriskIfRequired = _interopRequireDefault(require("./appendAsteriskIfRequired"));
 
 var _noop = _interopRequireDefault(require("./noop"));
 

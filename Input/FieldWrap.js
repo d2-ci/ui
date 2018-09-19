@@ -15,7 +15,7 @@ require("./fieldwrap.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var bem = (0, _utils.bemClassNames)('d2ui-form-field');
+var bem = (0, _utils.bemClassNames)('d2ui-field-wrap');
 
 var FieldWrap = function FieldWrap(_ref) {
   var children = _ref.children,
@@ -24,17 +24,24 @@ var FieldWrap = function FieldWrap(_ref) {
       disabled = _ref.disabled,
       error = _ref.error,
       dense = _ref.dense,
-      fullWidth = _ref.fullWidth,
-      helpText = _ref.helpText;
+      block = _ref.block,
+      helpText = _ref.helpText,
+      className = _ref.className;
+  var computedClassName = bem.b({
+    valid: valid,
+    warning: warning,
+    disabled: disabled,
+    error: error,
+    dense: dense,
+    'full-width': block
+  });
+
+  if (className) {
+    computedClassName += " ".concat(className);
+  }
+
   return _react.default.createElement("div", {
-    className: bem.b({
-      valid: valid,
-      warning: warning,
-      disabled: disabled,
-      error: error,
-      dense: dense,
-      'full-width': fullWidth
-    })
+    className: computedClassName
   }, children, helpText && _react.default.createElement("div", {
     className: bem.e('help-text')
   }, helpText));

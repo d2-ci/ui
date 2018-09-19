@@ -49,14 +49,15 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
       valid = _ref.valid,
       warning = _ref.warning,
       error = _ref.error,
-      helpText = _ref.helpText;
+      helpText = _ref.helpText,
+      required = _ref.required;
   return _react.default.createElement(_FieldWrap.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,
     error: error,
     dense: dense,
-    fullWidth: true,
+    block: true,
     helpText: helpText
   }, _react.default.createElement("p", {
     className: bem.e('description', {
@@ -64,7 +65,7 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
       valid: valid,
       warning: warning
     })
-  }, label), _react.default.createElement("div", {
+  }, (0, _utils.appendAsteriskIfRequired)(label, required)), _react.default.createElement("div", {
     className: bem.b({
       error: error,
       warning: warning,
@@ -78,7 +79,7 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
       name: name || randomName(),
       value: option.value,
       checked: option.value === value,
-      fullWidth: !inline,
+      block: !inline,
       onChange: function onChange() {
         return _onChange(option.value);
       },

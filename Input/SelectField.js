@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-require("core-js/modules/es6.object.assign");
-
 require("core-js/modules/es6.string.iterator");
 
 require("core-js/modules/es6.array.from");
@@ -35,7 +33,9 @@ require("core-js/modules/es6.array.map");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _TextField = _interopRequireWildcard(require("./TextField"));
+var _Field = _interopRequireWildcard(require("./Field"));
+
+var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
 
 var _Menu = require("../Menu");
 
@@ -43,11 +43,11 @@ var _utils = require("../utils");
 
 require("./selectfield.css");
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -75,10 +75,10 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var bem = (0, _utils.bemClassNames)('d2ui-select'); // React uses a "value" property on the <select/> which can't be null so we use this magic string instead
+var bem = (0, _utils.bemClassNames)('d2ui-select');
+var inputClassName = "".concat(bem.e('input'), " ").concat(_Field.bem.e('input')); // React uses a "value" property on the <select/> which can't be null so we use this magic string instead
 
 var EMPTY_NATIVE_OPTION_VALUE = '#^NONE^#';
-var DEFAULT_EMPTY_OPTION_TEXT = '--------';
 
 var SelectField =
 /*#__PURE__*/
@@ -131,8 +131,7 @@ function (_Component) {
       dropdownOpen: false
     };
     _this.inputRef = null;
-    _this.inputClassName = "".concat(bem.e('input'), " ").concat(_TextField.bem.e('input'));
-    _this.selectedEmptyOption = false;
+    _this.isEmptyOptionSelected = false;
     return _this;
   }
 
@@ -140,39 +139,37 @@ function (_Component) {
     key: "changeHandler",
     value: function changeHandler(value) {
       var _this$props = this.props,
-          includeEmpty = _this$props.includeEmpty,
+          emptyOption = _this$props.emptyOption,
           onChange = _this$props.onChange;
-      this.selectedEmptyOption = includeEmpty & value === null ? true : false;
+      this.isEmptyOptionSelected = emptyOption && value === null ? true : false;
       onChange(value);
     }
   }, {
     key: "getOptions",
     value: function getOptions() {
       var _this$props2 = this.props,
-          includeEmpty = _this$props2.includeEmpty,
-          emptyOptionText = _this$props2.emptyOptionText,
+          emptyOption = _this$props2.emptyOption,
           options = _this$props2.options,
           native = _this$props2.native;
 
-      if (!includeEmpty) {
+      if (!emptyOption) {
         return options;
       }
 
-      var label = emptyOptionText || DEFAULT_EMPTY_OPTION_TEXT;
-      var emptyOption = native ? {
+      var emptyOptionObject = native ? {
         value: EMPTY_NATIVE_OPTION_VALUE,
-        label: label
+        label: emptyOption
       } : {
         value: null,
-        label: label
+        label: emptyOption
       };
-      return [emptyOption].concat(_toConsumableArray(options));
+      return [emptyOptionObject].concat(_toConsumableArray(options));
     }
   }, {
     key: "renderCustomSelect",
     value: function renderCustomSelect(displayValue) {
       return _react.default.createElement("input", {
-        className: this.inputClassName,
+        className: inputClassName,
         value: displayValue,
         onClick: this.openDropdown // input type "button" is focusable, which ensures the correct :focus styles are applied
         // input type "button" does not show a caret when focussed
@@ -188,7 +185,7 @@ function (_Component) {
       var value = this.props.value || EMPTY_NATIVE_OPTION_VALUE;
       return _react.default.createElement("select", {
         ref: this.setInputRef,
-        className: this.inputClassName,
+        className: inputClassName,
         onChange: this.nativeSelectHandler,
         value: value
       }, options.map(function (_ref) {
@@ -206,7 +203,7 @@ function (_Component) {
       var _this$props3 = this.props,
           options = _this$props3.options,
           value = _this$props3.value,
-          emptyOptionText = _this$props3.emptyOptionText;
+          emptyOption = _this$props3.emptyOption;
       var selectedOption = options.find(function (option) {
         return option.value === value;
       }); // If some valid option is selected always display this
@@ -216,8 +213,8 @@ function (_Component) {
       } // If the user selected the "None" option, display it
 
 
-      if (this.selectedEmptyOption) {
-        return emptyOptionText || DEFAULT_EMPTY_OPTION_TEXT;
+      if (this.isEmptyOptionSelected) {
+        return emptyOption;
       } // Otherwise return an empty value so the floating label text shows
 
 
@@ -235,29 +232,38 @@ function (_Component) {
           valid = _this$props4.valid,
           error = _this$props4.error,
           warning = _this$props4.warning,
-          native = _this$props4.native;
+          native = _this$props4.native,
+          disabled = _this$props4.disabled,
+          required = _this$props4.required,
+          block = _this$props4.block;
       var displayValue = this.getLabelOfValue();
       var inputComponent = native ? this.renderNativeSelect() : this.renderCustomSelect(displayValue);
-      var textFieldProps = {
-        variant: variant,
-        label: label,
-        leadingIcon: leadingIcon,
-        helpText: helpText,
-        dense: dense,
+      return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_FieldWrap.default, {
         valid: valid,
+        warning: warning,
+        disabled: disabled,
         error: error,
-        warning: warning
-      };
-      return _react.default.createElement("div", {
+        dense: dense,
+        block: block,
+        helpText: helpText,
         className: bem.b({
           native: native
         })
-      }, _react.default.createElement(_TextField.default, _extends({
-        inputComponent: inputComponent,
-        onChange: _utils.noop,
+      }, _react.default.createElement(_Field.default, {
+        variant: variant,
+        dense: dense,
+        label: label,
         value: displayValue,
-        trailingIcon: "keyboard_arrow_down"
-      }, textFieldProps)), !native && _react.default.createElement(_Menu.PopoverMenu, {
+        leadingIcon: leadingIcon,
+        trailingIcon: 'keyboard_arrow_down',
+        error: error,
+        valid: valid,
+        warning: warning,
+        disabled: disabled,
+        inputComponent: inputComponent,
+        block: block,
+        required: required
+      })), !native && _react.default.createElement(_Menu.PopoverMenu, {
         menuProps: {
           options: this.getOptions(),
           selectHandler: this.selectHandler

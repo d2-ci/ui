@@ -19,10 +19,12 @@ var bem = (0, _utils.bemClassNames)('d2ui-toggle-field');
 
 var ToggleField = function ToggleField(_ref) {
   var children = _ref.children,
-      disabled = _ref.disabled;
+      disabled = _ref.disabled,
+      dense = _ref.dense;
   return _react.default.createElement("label", {
     className: bem.b({
-      disabled: disabled
+      disabled: disabled,
+      dense: dense
     })
   }, children);
 };
