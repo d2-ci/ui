@@ -13,8 +13,6 @@ var _react = _interopRequireDefault(require("react"));
 
 require("./radiobutton.css");
 
-require("./togglerwrap.css");
-
 var _utils = require("../utils");
 
 var _ToggleField = _interopRequireDefault(require("../../build/Input/ToggleField"));
