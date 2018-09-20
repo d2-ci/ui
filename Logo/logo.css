@@ -1,0 +1,7 @@
+.d2ui-logo {
+    width: 11.25rem;
+
+    &.icon {
+        width: 2.5rem;
+    }
+}
