@@ -5,22 +5,16 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "isRtl", {
-  enumerable: true,
-  get: function get() {
-    return _isRtl.default;
-  }
-});
-Object.defineProperty(exports, "easings", {
-  enumerable: true,
-  get: function get() {
-    return _easings.default;
-  }
-});
 Object.defineProperty(exports, "animatedScrollTo", {
   enumerable: true,
   get: function get() {
     return _animatedScrollTo.default;
+  }
+});
+Object.defineProperty(exports, "appendAsteriskIfRequired", {
+  enumerable: true,
+  get: function get() {
+    return _appendAsteriskIfRequired.default;
   }
 });
 Object.defineProperty(exports, "bemClassNames", {
@@ -29,10 +23,22 @@ Object.defineProperty(exports, "bemClassNames", {
     return _bemClassNames.default;
   }
 });
-Object.defineProperty(exports, "wrapTextNodesInSpans", {
+Object.defineProperty(exports, "defer", {
   enumerable: true,
   get: function get() {
-    return _wrapTextNodesInSpans.default;
+    return _defer.default;
+  }
+});
+Object.defineProperty(exports, "easings", {
+  enumerable: true,
+  get: function get() {
+    return _easings.default;
+  }
+});
+Object.defineProperty(exports, "isRtl", {
+  enumerable: true,
+  get: function get() {
+    return _isRtl.default;
   }
 });
 Object.defineProperty(exports, "noop", {
@@ -41,16 +47,16 @@ Object.defineProperty(exports, "noop", {
     return _noop.default;
   }
 });
-Object.defineProperty(exports, "throttle", {
-  enumerable: true,
-  get: function get() {
-    return _throttle.default;
-  }
-});
 Object.defineProperty(exports, "setTextDirection", {
   enumerable: true,
   get: function get() {
     return _setTextDirection.default;
+  }
+});
+Object.defineProperty(exports, "throttle", {
+  enumerable: true,
+  get: function get() {
+    return _throttle.default;
   }
 });
 Object.defineProperty(exports, "withAnimatedClose", {
@@ -59,31 +65,33 @@ Object.defineProperty(exports, "withAnimatedClose", {
     return _withAnimatedCloseHOC.default;
   }
 });
-Object.defineProperty(exports, "defer", {
+Object.defineProperty(exports, "wrapTextNodesInSpans", {
   enumerable: true,
   get: function get() {
-    return _defer.default;
+    return _wrapTextNodesInSpans.default;
   }
 });
 
-var _isRtl = _interopRequireDefault(require("./isRtl"));
-
-var _easings = _interopRequireDefault(require("./easings"));
-
 var _animatedScrollTo = _interopRequireDefault(require("./animatedScrollTo"));
+
+var _appendAsteriskIfRequired = _interopRequireDefault(require("./appendAsteriskIfRequired"));
 
 var _bemClassNames = _interopRequireDefault(require("./bemClassNames"));
 
-var _wrapTextNodesInSpans = _interopRequireDefault(require("./wrapTextNodesInSpans"));
+var _defer = _interopRequireDefault(require("./defer"));
+
+var _easings = _interopRequireDefault(require("./easings"));
+
+var _isRtl = _interopRequireDefault(require("./isRtl"));
 
 var _noop = _interopRequireDefault(require("./noop"));
 
-var _throttle = _interopRequireDefault(require("./throttle"));
-
 var _setTextDirection = _interopRequireDefault(require("./setTextDirection"));
+
+var _throttle = _interopRequireDefault(require("./throttle"));
 
 var _withAnimatedCloseHOC = _interopRequireDefault(require("./withAnimatedCloseHOC"));
 
-var _defer = _interopRequireDefault(require("./defer"));
+var _wrapTextNodesInSpans = _interopRequireDefault(require("./wrapTextNodesInSpans"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

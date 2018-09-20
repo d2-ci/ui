@@ -22,22 +22,19 @@ var CircularProgress = function CircularProgress(_ref) {
       center = _ref.center;
 
   var circularProgress = _react.default.createElement("div", {
+    role: "progressbar",
     className: bem.b(size)
-  }, _react.default.createElement("div", {
-    className: bem.e('spinner-layer')
-  }, _react.default.createElement("div", {
-    className: bem.e('circle-clipper', 'left')
-  }, _react.default.createElement("div", {
-    className: bem.e('circle')
-  })), _react.default.createElement("div", {
-    className: bem.e('gap-patch')
-  }, _react.default.createElement("div", {
-    className: bem.e('circle')
-  })), _react.default.createElement("div", {
-    className: bem.e('circle-clipper', 'right')
-  }, _react.default.createElement("div", {
-    className: bem.e('circle')
-  }))));
+  }, _react.default.createElement("svg", {
+    viewBox: "22 22 44 44",
+    className: bem.e('viewbox')
+  }, _react.default.createElement("circle", {
+    className: bem.e('circle'),
+    cx: "44",
+    cy: "44",
+    r: "20.2",
+    fill: "none",
+    strokeWidth: "3.6"
+  })));
 
   if (center) {
     return _react.default.createElement("div", {
