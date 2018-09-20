@@ -40,7 +40,7 @@ var Chip = function Chip(_ref) {
     disabled: disabled,
     dragging: dragging
   });
-  var clickProps = onClick ? {
+  var clickProps = onClick && !disabled ? {
     onClick: onClick
   } : null;
   return _react.default.createElement("div", _extends({
@@ -54,7 +54,7 @@ var Chip = function Chip(_ref) {
     className: bem.e('remove-button'),
     onClick: onRemoveClick
   }, _react.default.createElement(_Icon.default, {
-    name: "close",
+    name: "cancel",
     className: bem.e('remove-icon')
   })));
 };
