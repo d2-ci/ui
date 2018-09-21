@@ -50,9 +50,7 @@ var Logo = function Logo(_ref) {
     alt: altText,
     src: src,
     className: bem.b(version),
-    style: {
-      style: style
-    }
+    style: style
   });
 };
 
