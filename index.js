@@ -47,6 +47,12 @@ Object.defineProperty(exports, "Tooltip", {
     return _Tooltip.default;
   }
 });
+Object.defineProperty(exports, "HeaderBar", {
+  enumerable: true,
+  get: function get() {
+    return _HeaderBar.default;
+  }
+});
 
 var _Button = _interopRequireDefault(require("./Button"));
 
@@ -61,5 +67,7 @@ var _Paper = _interopRequireDefault(require("./Paper"));
 var _Popover = _interopRequireDefault(require("./Popover"));
 
 var _Tooltip = _interopRequireDefault(require("./Tooltip"));
+
+var _HeaderBar = _interopRequireDefault(require("./HeaderBar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
