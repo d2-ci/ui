@@ -17,6 +17,7 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/** @format */
 function TextIcon(_ref) {
   var name = _ref.name;
   var title = name[0];

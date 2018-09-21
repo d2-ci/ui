@@ -15,6 +15,7 @@ require("./circular-progress.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/** @format */
 var bem = (0, _utils.bemClassNames)('d2ui-circular-progress');
 
 var CircularProgress = function CircularProgress(_ref) {

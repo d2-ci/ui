@@ -15,6 +15,7 @@ require("./fieldwrap.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/** @format */
 var bem = (0, _utils.bemClassNames)('d2ui-field-wrap');
 
 var FieldWrap = function FieldWrap(_ref) {

@@ -13,6 +13,7 @@ var _Icon = _interopRequireDefault(require("../Icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/** @format */
 function NotificationIcon(_ref) {
   var icon = _ref.icon,
       count = _ref.count;

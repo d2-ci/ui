@@ -9,6 +9,7 @@ exports.default = _default;
 
 require("core-js/modules/es6.date.now");
 
+/** @format */
 function _default(fn) {
   var threshhold = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 150;
   var scope = arguments.length > 2 ? arguments[2] : undefined;

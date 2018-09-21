@@ -15,6 +15,7 @@ require("../theme/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/** @format */
 var bem = (0, _utils.bemClassNames)('d2ui-app');
 
 var UI = function UI(_ref) {
