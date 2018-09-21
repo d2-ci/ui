@@ -7,5 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _default;
 
+/** @format */
 function _default() {// Do nothing
 }

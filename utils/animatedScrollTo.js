@@ -11,6 +11,7 @@ var _easings = _interopRequireDefault(require("./easings"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/** @format */
 var HORIZONTAL = 'horizontal';
 var VERTICAL = 'vertical';
 var END = 'end';

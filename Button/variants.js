@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.CIRCLE = exports.OUTLINED = exports.PRIMARY = exports.RAISED = exports.FLAT = void 0;
+
+/** @format */
 var FLAT = 'flat';
 exports.FLAT = FLAT;
 var RAISED = 'raised';

@@ -9,6 +9,7 @@ exports.default = _default;
 
 var _Tabs = require("./Tabs");
 
+/** @format */
 var horizontalScrollbarHeight;
 
 function _default() {

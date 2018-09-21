@@ -23,6 +23,7 @@ var _dhis2_logo_rgb_positive = _interopRequireDefault(require("./svg/dhis2_logo_
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/** @format */
 var bem = (0, _utils.bemClassNames)('d2ui-logo');
 var imageLookup = {
   logo: {

@@ -13,6 +13,7 @@ var _Icon = _interopRequireDefault(require("../Icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/** @format */
 function Apps() {
   return _react.default.createElement("div", {
     className: "apps"

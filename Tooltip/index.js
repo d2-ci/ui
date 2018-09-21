@@ -11,5 +11,6 @@ var _Tooltip = _interopRequireDefault(require("./Tooltip"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/** @format */
 var _default = _Tooltip.default;
 exports.default = _default;

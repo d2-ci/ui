@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _default;
 
+/** @format */
 function _default() {
   return document.documentElement.getAttribute('dir') === 'rtl';
 }
