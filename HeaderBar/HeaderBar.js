@@ -7,6 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+require("core-js/modules/es6.function.name");
+
 var _react = _interopRequireDefault(require("react"));
 
 var _Logo = _interopRequireDefault(require("../Logo"));
@@ -29,7 +31,10 @@ var bem = (0, _utils.bemClassNames)('d2ui-headerbar');
 function HeaderBar(_ref) {
   var type = _ref.type,
       title = _ref.title,
-      selection = _ref.selection;
+      selection = _ref.selection,
+      name = _ref.name,
+      email = _ref.email,
+      src = _ref.src;
   return _react.default.createElement("div", {
     className: bem.b(type)
   }, _react.default.createElement("div", {
@@ -52,13 +57,15 @@ function HeaderBar(_ref) {
   }), _react.default.createElement(_NotificationIcon.default, {
     icon: "email",
     count: 4
-  }), _react.default.createElement(_Apps.default, null), _react.default.createElement(_Profile.default, null)));
+  }), _react.default.createElement(_Apps.default, null), _react.default.createElement(_Profile.default, {
+    name: name,
+    email: email,
+    src: src
+  })));
 }
 
 HeaderBar.defaultProps = {
-  type: 'blue',
-  title: 'Instance name',
-  selection: 'ANC: 1-4 visits by districts this year'
+  type: 'blue'
 };
 var _default = HeaderBar;
 exports.default = _default;
