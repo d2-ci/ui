@@ -28,7 +28,7 @@ var DEFAULT_PREFIX = 'd2ui-';
 
 function bemClassNames(blockName) {
   if (!blockName.startsWith(DEFAULT_PREFIX)) {
-    blockName = "".concat(DEFAULT_PREFIX, "-").concat(blockName);
+    blockName = "".concat(DEFAULT_PREFIX).concat(blockName);
   }
 
   return {

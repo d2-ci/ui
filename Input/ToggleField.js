@@ -16,7 +16,7 @@ var _utils = require("../utils");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('d2ui-toggle-field');
+var bem = (0, _utils.bemClassNames)('toggle-field');
 
 var ToggleField = function ToggleField(_ref) {
   var children = _ref.children,

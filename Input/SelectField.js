@@ -75,7 +75,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var bem = (0, _utils.bemClassNames)('d2ui-select');
+var bem = (0, _utils.bemClassNames)('select');
 var inputClassName = "".concat(bem.e('input'), " ").concat(_Field.bem.e('input')); // React uses a "value" property on the <select/> which can't be null so we use this magic string instead
 
 var EMPTY_NATIVE_OPTION_VALUE = '#^NONE^#';
