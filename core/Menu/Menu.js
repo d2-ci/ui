@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Menu = void 0;
 
 require("core-js/modules/es6.object.assign");
 
@@ -56,5 +56,4 @@ var Menu = function Menu(_ref) {
   })));
 };
 
-var _default = Menu;
-exports.default = _default;
+exports.Menu = Menu;

@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.PopoverMenu = void 0;
 
 require("core-js/modules/es6.object.assign");
 
@@ -41,6 +41,7 @@ var PopoverMenu = function PopoverMenu(_ref) {
   }, menuProps)));
 };
 
+exports.PopoverMenu = PopoverMenu;
 PopoverMenu.defaultProps = {
   open: _propTypes.default.bool.isRequired,
   anchorAttachPoint: {
@@ -52,5 +53,3 @@ PopoverMenu.defaultProps = {
     horizontal: 'center'
   }
 };
-var _default = PopoverMenu;
-exports.default = _default;

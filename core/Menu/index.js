@@ -1,41 +1,63 @@
 "use strict";
 
+require("core-js/modules/es6.array.iterator");
+
+require("core-js/modules/es6.object.keys");
+
+require("core-js/modules/web.dom.iterable");
+
+require("core-js/modules/es6.array.for-each");
+
 require("core-js/modules/es6.object.define-property");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "DropdownMenu", {
-  enumerable: true,
-  get: function get() {
-    return _DropdownMenu.default;
-  }
-});
-Object.defineProperty(exports, "Menu", {
-  enumerable: true,
-  get: function get() {
-    return _Menu.default;
-  }
-});
-Object.defineProperty(exports, "MenuItem", {
-  enumerable: true,
-  get: function get() {
-    return _MenuItem.default;
-  }
-});
-Object.defineProperty(exports, "PopoverMenu", {
-  enumerable: true,
-  get: function get() {
-    return _PopoverMenu.default;
-  }
+
+var _DropdownMenu = require("./DropdownMenu");
+
+Object.keys(_DropdownMenu).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _DropdownMenu[key];
+    }
+  });
 });
 
-var _DropdownMenu = _interopRequireDefault(require("./DropdownMenu"));
+var _Menu = require("./Menu");
 
-var _Menu = _interopRequireDefault(require("./Menu"));
+Object.keys(_Menu).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Menu[key];
+    }
+  });
+});
 
-var _MenuItem = _interopRequireDefault(require("./MenuItem"));
+var _MenuItem = require("./MenuItem");
 
-var _PopoverMenu = _interopRequireDefault(require("./PopoverMenu"));
+Object.keys(_MenuItem).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _MenuItem[key];
+    }
+  });
+});
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _PopoverMenu = require("./PopoverMenu");
+
+Object.keys(_PopoverMenu).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _PopoverMenu[key];
+    }
+  });
+});

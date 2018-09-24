@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.SubMenu = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -134,5 +134,4 @@ function (_Component) {
   return SubMenu;
 }(_react.Component);
 
-var _default = SubMenu;
-exports.default = _default;
+exports.SubMenu = SubMenu;

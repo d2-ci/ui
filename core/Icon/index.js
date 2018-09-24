@@ -5,13 +5,13 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Icon = void 0;
 
 require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./icon.css");
+require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24,5 +24,4 @@ var Icon = function Icon(_ref) {
   }, name);
 };
 
-var _default = Icon;
-exports.default = _default;
+exports.Icon = Icon;
