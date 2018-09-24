@@ -56,20 +56,20 @@ Object.defineProperty(exports, "HeaderBar", {
 
 require("typeface-roboto");
 
-var _Button = _interopRequireDefault(require("./Button"));
+var _Button = _interopRequireDefault(require("./core/Button"));
 
-var _Icon = _interopRequireDefault(require("./Icon"));
+var _Icon = _interopRequireDefault(require("./core/Icon"));
 
-var _Logo = _interopRequireDefault(require("./Logo"));
+var _Logo = _interopRequireDefault(require("./core/Logo"));
 
-var _Menu = _interopRequireDefault(require("./Menu"));
+var _Menu = _interopRequireDefault(require("./core/Menu"));
 
-var _Paper = _interopRequireDefault(require("./Paper"));
+var _Paper = _interopRequireDefault(require("./core/Paper"));
 
-var _Popover = _interopRequireDefault(require("./Popover"));
+var _Popover = _interopRequireDefault(require("./core/Popover"));
 
-var _Tooltip = _interopRequireDefault(require("./Tooltip"));
+var _Tooltip = _interopRequireDefault(require("./core/Tooltip"));
 
-var _HeaderBar = _interopRequireDefault(require("./HeaderBar"));
+var _HeaderBar = _interopRequireDefault(require("./widgets/HeaderBar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
