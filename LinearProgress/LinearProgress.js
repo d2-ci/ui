@@ -16,7 +16,7 @@ require("./linear-progress.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('d2ui-linear-progress');
+var bem = (0, _utils.bemClassNames)('linear-progress');
 
 var LinearProgress = function LinearProgress(_ref) {
   var progress = _ref.progress,

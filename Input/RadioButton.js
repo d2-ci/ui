@@ -22,7 +22,7 @@ var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('d2ui-radio-button');
+var bem = (0, _utils.bemClassNames)('radio-button');
 
 var RadioButton = function RadioButton(_ref) {
   var label = _ref.label,

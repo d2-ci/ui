@@ -26,7 +26,7 @@ require("./styles.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('d2ui-headerbar');
+var bem = (0, _utils.bemClassNames)('headerbar');
 
 function HeaderBar(_ref) {
   var type = _ref.type,
