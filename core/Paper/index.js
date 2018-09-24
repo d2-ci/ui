@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Paper = void 0;
+exports.default = exports.Paper = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -34,3 +34,5 @@ Paper.defaultProps = {
   elevation: 1,
   padded: false
 };
+var _default = Paper;
+exports.default = _default;

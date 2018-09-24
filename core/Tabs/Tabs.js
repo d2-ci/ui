@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.bem = void 0;
+exports.default = exports.Tabs = exports.bem = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -353,6 +353,7 @@ function (_Component) {
   return Tabs;
 }(_react.Component);
 
+exports.Tabs = Tabs;
 Tabs.defaultProps = {
   items: [],
   contained: false,

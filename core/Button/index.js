@@ -17,7 +17,7 @@ Object.defineProperty(exports, "DropdownButton", {
     return _DropdownButton.default;
   }
 });
-exports.CircleButton = exports.OutlinedButton = exports.PrimaryButton = exports.RaisedButton = exports.FlatButton = void 0;
+exports.default = exports.CircleButton = exports.OutlinedButton = exports.PrimaryButton = exports.RaisedButton = exports.FlatButton = void 0;
 
 require("core-js/modules/es6.object.assign");
 
@@ -75,3 +75,5 @@ var CircleButton = function CircleButton(props) {
 };
 
 exports.CircleButton = CircleButton;
+var _default = _Button.default;
+exports.default = _default;

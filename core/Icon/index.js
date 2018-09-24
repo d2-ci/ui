@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Icon = void 0;
+exports.default = exports.Icon = void 0;
 
 require("core-js/modules/es6.function.name");
 
@@ -25,3 +25,5 @@ var Icon = function Icon(_ref) {
 };
 
 exports.Icon = Icon;
+var _default = Icon;
+exports.default = _default;

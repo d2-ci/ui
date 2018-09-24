@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Popover = void 0;
+exports.default = exports.Popover = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -154,3 +154,5 @@ Popover.defaultProps = {
   },
   appearAnimation: 'fade-in'
 };
+var _default = Popover;
+exports.default = _default;

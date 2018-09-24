@@ -5,7 +5,8 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Logo = void 0;
+exports.Logo = Logo;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -36,7 +37,7 @@ var imageLookup = {
   }
 };
 
-var Logo = function Logo(_ref) {
+function Logo(_ref) {
   var reverse = _ref.reverse,
       icon = _ref.icon,
       width = _ref.width,
@@ -53,11 +54,12 @@ var Logo = function Logo(_ref) {
     className: bem.b(version),
     style: style
   });
-};
+}
 
-exports.Logo = Logo;
 Logo.defaultProps = {
   reverse: false,
   icon: false,
   altText: 'DHIS2 Logo'
 };
+var _default = Logo;
+exports.default = _default;
