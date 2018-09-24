@@ -19,10 +19,18 @@ require("core-js/modules/es6.symbol");
 
 require("core-js/modules/web.dom.iterable");
 
+require("core-js/modules/es6.string.starts-with");
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /** @format */
+var DEFAULT_PREFIX = 'd2ui-';
+
 function bemClassNames(blockName) {
+  if (!blockName.startsWith(DEFAULT_PREFIX)) {
+    blockName = "".concat(DEFAULT_PREFIX, "-").concat(blockName);
+  }
+
   return {
     b: function b() {
       for (var _len = arguments.length, modifierArgs = new Array(_len), _key = 0; _key < _len; _key++) {
