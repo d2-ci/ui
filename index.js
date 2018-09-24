@@ -54,20 +54,22 @@ Object.defineProperty(exports, "HeaderBar", {
   }
 });
 
-var _Button = _interopRequireDefault(require("./Button"));
+require("typeface-roboto");
 
-var _Icon = _interopRequireDefault(require("./Icon"));
+var _Button = _interopRequireDefault(require("./core/Button"));
 
-var _Logo = _interopRequireDefault(require("./Logo"));
+var _Icon = _interopRequireDefault(require("./core/Icon"));
 
-var _Menu = _interopRequireDefault(require("./Menu"));
+var _Logo = _interopRequireDefault(require("./core/Logo"));
 
-var _Paper = _interopRequireDefault(require("./Paper"));
+var _Menu = _interopRequireDefault(require("./core/Menu"));
 
-var _Popover = _interopRequireDefault(require("./Popover"));
+var _Paper = _interopRequireDefault(require("./core/Paper"));
 
-var _Tooltip = _interopRequireDefault(require("./Tooltip"));
+var _Popover = _interopRequireDefault(require("./core/Popover"));
 
-var _HeaderBar = _interopRequireDefault(require("./HeaderBar"));
+var _Tooltip = _interopRequireDefault(require("./core/Tooltip"));
+
+var _HeaderBar = _interopRequireDefault(require("./widgets/HeaderBar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
