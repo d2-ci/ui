@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = _default;
+exports.default = bemClassNames;
 
 require("core-js/modules/es6.array.iterator");
 
@@ -22,7 +22,7 @@ require("core-js/modules/web.dom.iterable");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /** @format */
-function _default(blockName) {
+function bemClassNames(blockName) {
   return {
     b: function b() {
       for (var _len = arguments.length, modifierArgs = new Array(_len), _key = 0; _key < _len; _key++) {
