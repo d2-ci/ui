@@ -54,6 +54,8 @@ Object.defineProperty(exports, "HeaderBar", {
   }
 });
 
+require("typeface-roboto");
+
 var _Button = _interopRequireDefault(require("./Button"));
 
 var _Icon = _interopRequireDefault(require("./Icon"));
