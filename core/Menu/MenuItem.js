@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MenuItem = void 0;
+exports.default = exports.MenuItem = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -17,7 +17,7 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 var _SubMenu = _interopRequireDefault(require("./SubMenu"));
 
@@ -47,7 +47,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var bem = (0, _index.bemClassNames)('menu-item');
+var bem = (0, _utils.bemClassNames)('menu-item');
 
 var MenuItem =
 /*#__PURE__*/
@@ -105,7 +105,7 @@ function (_Component) {
           disabled: disabled
         }),
         onClick: this.selectHandler
-      }, children ? (0, _index.wrapTextNodesInSpans)(children) : _react.default.createElement(_react.Fragment, null, icon && _react.default.createElement(_Icon.default, {
+      }, children ? (0, _utils.wrapTextNodesInSpans)(children) : _react.default.createElement(_react.Fragment, null, icon && _react.default.createElement(_Icon.default, {
         name: icon
       }), _react.default.createElement("span", null, label)));
     }
@@ -115,3 +115,5 @@ function (_Component) {
 }(_react.Component);
 
 exports.MenuItem = MenuItem;
+var _default = MenuItem;
+exports.default = _default;

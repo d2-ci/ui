@@ -18,7 +18,7 @@ require("core-js/modules/es6.object.keys");
 
 require("core-js/modules/es6.object.define-property");
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
@@ -40,8 +40,8 @@ exports.RIGHT = RIGHT;
 var EDGE_MARGIN = 18;
 
 function _default(targetEl, anchorEl, anchorAttachPoint, popoverAttachPoint) {
-  var anchorPosition = getAnchorPosition(anchorEl, (0, _index.isRtl)() ? flipHorizontal(anchorAttachPoint) : anchorAttachPoint);
-  var relativePosition = getRelativePosition(targetEl, anchorPosition, (0, _index.isRtl)() ? flipHorizontal(popoverAttachPoint) : popoverAttachPoint);
+  var anchorPosition = getAnchorPosition(anchorEl, (0, _utils.isRtl)() ? flipHorizontal(anchorAttachPoint) : anchorAttachPoint);
+  var relativePosition = getRelativePosition(targetEl, anchorPosition, (0, _utils.isRtl)() ? flipHorizontal(popoverAttachPoint) : popoverAttachPoint);
   return getWindowContainedPosition(relativePosition);
 }
 

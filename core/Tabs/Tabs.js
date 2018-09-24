@@ -43,7 +43,7 @@ var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _TabIndicator = _interopRequireDefault(require("./TabIndicator"));
 
-var _utils = require("../utils");
+var _utils = require("../../utils");
 
 var _computeHorizontalScrollbarHeight = _interopRequireDefault(require("./computeHorizontalScrollbarHeight"));
 

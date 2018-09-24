@@ -10,14 +10,14 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _index.bemClassNames)('linear-progress');
+var bem = (0, _utils.bemClassNames)('linear-progress');
 
 function LinearProgress(_ref) {
   var progress = _ref.progress,

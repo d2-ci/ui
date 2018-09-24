@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.RadioButton = void 0;
 
 require("core-js/modules/es6.function.name");
 
@@ -13,9 +13,9 @@ var _react = _interopRequireDefault(require("react"));
 
 require("./radiobutton.css");
 
-var _utils = require("../utils");
+var _utils = require("../../utils");
 
-var _ToggleField = _interopRequireDefault(require("../../build/Input/ToggleField"));
+var _ToggleField = _interopRequireDefault(require("./ToggleField"));
 
 var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
 
@@ -74,6 +74,7 @@ var RadioButton = function RadioButton(_ref) {
   }, (0, _utils.appendAsteriskIfRequired)(label, required))));
 };
 
+exports.RadioButton = RadioButton;
 RadioButton.defaultProps = {
   disabled: false
 };

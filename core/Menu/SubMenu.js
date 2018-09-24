@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SubMenu = void 0;
+exports.default = exports.SubMenu = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -17,7 +17,7 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 var _PopoverMenu = _interopRequireDefault(require("./PopoverMenu"));
 
@@ -104,7 +104,7 @@ function (_Component) {
           label = _this$props.label,
           icon = _this$props.icon,
           menuItems = _this$props.menuItems;
-      var arrowIconName = (0, _index.isRtl)() ? 'keyboard_arrow_left' : 'keyboard_arrow_right'; // There MUST be a better way of doing this!
+      var arrowIconName = (0, _utils.isRtl)() ? 'keyboard_arrow_left' : 'keyboard_arrow_right'; // There MUST be a better way of doing this!
 
       var menuProps = (0, _react.isValidElement)(menuItems[0]) ? {
         children: menuItems
@@ -135,3 +135,5 @@ function (_Component) {
 }(_react.Component);
 
 exports.SubMenu = SubMenu;
+var _default = SubMenu;
+exports.default = _default;

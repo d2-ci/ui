@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.TabIndicator = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -104,5 +104,6 @@ function (_Component) {
   return TabIndicator;
 }(_react.Component);
 
+exports.TabIndicator = TabIndicator;
 var _default = TabIndicator;
 exports.default = _default;

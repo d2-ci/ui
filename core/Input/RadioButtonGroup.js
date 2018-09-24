@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.RadioButtonGroup = void 0;
 
 require("core-js/modules/es6.object.assign");
 
@@ -19,7 +19,7 @@ require("core-js/modules/es6.date.to-string");
 
 var _react = _interopRequireDefault(require("react"));
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 var _RadioButton = _interopRequireDefault(require("./RadioButton"));
 
@@ -31,7 +31,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var bem = (0, _index.bemClassNames)('radio-button-group');
+var bem = (0, _utils.bemClassNames)('radio-button-group');
 
 var randomName = function randomName() {
   return Math.random().toString(36).substring(2, 15);
@@ -65,7 +65,7 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
       valid: valid,
       warning: warning
     })
-  }, (0, _index.appendAsteriskIfRequired)(label, required)), _react.default.createElement("div", {
+  }, (0, _utils.appendAsteriskIfRequired)(label, required)), _react.default.createElement("div", {
     className: bem.b({
       error: error,
       warning: warning,
@@ -93,5 +93,6 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
   })));
 };
 
+exports.RadioButtonGroup = RadioButtonGroup;
 var _default = RadioButtonGroup;
 exports.default = _default;

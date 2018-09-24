@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.SelectField = void 0;
 
 require("core-js/modules/es6.string.iterator");
 
@@ -37,9 +37,9 @@ var _Field = _interopRequireWildcard(require("./Field"));
 
 var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
 
-var _index = require("../Menu/index");
+var _Menu = require("../Menu");
 
-var _index2 = require("../../utils/index");
+var _utils = require("../../utils");
 
 require("./selectfield.css");
 
@@ -75,7 +75,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var bem = (0, _index2.bemClassNames)('select');
+var bem = (0, _utils.bemClassNames)('select');
 var inputClassName = "".concat(bem.e('input'), " ").concat(_Field.bem.e('input')); // React uses a "value" property on the <select/> which can't be null so we use this magic string instead
 
 var EMPTY_NATIVE_OPTION_VALUE = '#^NONE^#';
@@ -263,7 +263,7 @@ function (_Component) {
         inputComponent: inputComponent,
         block: block,
         required: required
-      })), !native && _react.default.createElement(_index.PopoverMenu, {
+      })), !native && _react.default.createElement(_Menu.PopoverMenu, {
         menuProps: {
           options: this.getOptions(),
           selectHandler: this.selectHandler
@@ -287,5 +287,6 @@ function (_Component) {
   return SelectField;
 }(_react.Component);
 
+exports.SelectField = SelectField;
 var _default = SelectField;
 exports.default = _default;

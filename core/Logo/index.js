@@ -10,7 +10,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 var _dhis2_icon_rgb_negative = _interopRequireDefault(require("./svg/dhis2_icon_rgb_negative.svg"));
 
@@ -25,7 +25,7 @@ require("./styles.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _index.bemClassNames)('logo');
+var bem = (0, _utils.bemClassNames)('logo');
 var imageLookup = {
   logo: {
     positive: _dhis2_logo_rgb_positive.default,

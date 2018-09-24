@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Menu = void 0;
+exports.default = exports.Menu = void 0;
 
 require("core-js/modules/es6.object.assign");
 
@@ -23,7 +23,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _MenuItem = _interopRequireDefault(require("./MenuItem"));
 
-var _index = _interopRequireDefault(require("../Paper/index"));
+var _Paper = _interopRequireDefault(require("../Paper"));
 
 require("./menu.css");
 
@@ -40,7 +40,7 @@ var Menu = function Menu(_ref) {
       selectHandler = _ref.selectHandler,
       closePopover = _ref.closePopover,
       children = _ref.children;
-  return _react.default.createElement(_index.default, {
+  return _react.default.createElement(_Paper.default, {
     elevation: 4
   }, _react.default.createElement("ul", {
     className: "d2ui-menu"
@@ -57,3 +57,5 @@ var Menu = function Menu(_ref) {
 };
 
 exports.Menu = Menu;
+var _default = Menu;
+exports.default = _default;

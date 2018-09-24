@@ -15,9 +15,9 @@ require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
-var _index = _interopRequireDefault(require("../../core/Icon/index"));
+var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
-var _index2 = _interopRequireDefault(require("../../core/Paper/index"));
+var _Paper = _interopRequireDefault(require("../../core/Paper"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -97,7 +97,7 @@ function Item(_ref4) {
     onClick: function onClick() {
       return _onClick2(name);
     }
-  }, _react.default.createElement(_index.default, {
+  }, _react.default.createElement(_Icon.default, {
     name: name
   }), _react.default.createElement("div", {
     className: "label"
@@ -120,7 +120,7 @@ function Profile(_ref5) {
     name: name
   }), _react.default.createElement("div", {
     className: "contents"
-  }, _react.default.createElement(_index2.default, null, _react.default.createElement(Header, {
+  }, _react.default.createElement(_Paper.default, null, _react.default.createElement(Header, {
     name: name,
     img: img,
     email: email,

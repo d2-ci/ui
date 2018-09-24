@@ -1,57 +1,87 @@
 "use strict";
 
+require("core-js/modules/es6.array.iterator");
+
+require("core-js/modules/es6.object.keys");
+
+require("core-js/modules/web.dom.iterable");
+
+require("core-js/modules/es6.array.for-each");
+
 require("core-js/modules/es6.object.define-property");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "Checkbox", {
-  enumerable: true,
-  get: function get() {
-    return _Checkbox.default;
-  }
-});
-Object.defineProperty(exports, "RadioButton", {
-  enumerable: true,
-  get: function get() {
-    return _RadioButton.default;
-  }
-});
-Object.defineProperty(exports, "Switch", {
-  enumerable: true,
-  get: function get() {
-    return _Switch.default;
-  }
-});
-Object.defineProperty(exports, "TextField", {
-  enumerable: true,
-  get: function get() {
-    return _TextField.default;
-  }
-});
-Object.defineProperty(exports, "SelectField", {
-  enumerable: true,
-  get: function get() {
-    return _SelectField.default;
-  }
-});
-Object.defineProperty(exports, "RadioButtonGroup", {
-  enumerable: true,
-  get: function get() {
-    return _RadioButtonGroup.default;
-  }
+
+var _Checkbox = require("./Checkbox");
+
+Object.keys(_Checkbox).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Checkbox[key];
+    }
+  });
 });
 
-var _Checkbox = _interopRequireDefault(require("./Checkbox"));
+var _RadioButton = require("./RadioButton");
 
-var _RadioButton = _interopRequireDefault(require("./RadioButton"));
+Object.keys(_RadioButton).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _RadioButton[key];
+    }
+  });
+});
 
-var _Switch = _interopRequireDefault(require("./Switch"));
+var _Switch = require("./Switch");
 
-var _TextField = _interopRequireDefault(require("./TextField"));
+Object.keys(_Switch).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Switch[key];
+    }
+  });
+});
 
-var _SelectField = _interopRequireDefault(require("./SelectField"));
+var _TextField = require("./TextField");
 
-var _RadioButtonGroup = _interopRequireDefault(require("./RadioButtonGroup"));
+Object.keys(_TextField).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _TextField[key];
+    }
+  });
+});
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _SelectField = require("./SelectField");
+
+Object.keys(_SelectField).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _SelectField[key];
+    }
+  });
+});
+
+var _RadioButtonGroup = require("./RadioButtonGroup");
+
+Object.keys(_RadioButtonGroup).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _RadioButtonGroup[key];
+    }
+  });
+});

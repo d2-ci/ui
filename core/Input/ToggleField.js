@@ -5,13 +5,13 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.ToggleField = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 require("./togglefield.css");
 
-var _utils = require("../utils");
+var _utils = require("../../utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,5 +30,6 @@ var ToggleField = function ToggleField(_ref) {
   }, children);
 };
 
+exports.ToggleField = ToggleField;
 var _default = ToggleField;
 exports.default = _default;

@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.TextField = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -75,6 +75,7 @@ var TextField = function TextField(_ref) {
   }));
 };
 
+exports.TextField = TextField;
 TextField.defaultProps = {
   value: '',
   dense: false,

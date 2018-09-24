@@ -9,7 +9,7 @@ exports.default = Apps;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _index = _interopRequireDefault(require("../../core/Icon/index"));
+var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Apps() {
   return _react.default.createElement("div", {
     className: "apps"
-  }, _react.default.createElement(_index.default, {
+  }, _react.default.createElement(_Icon.default, {
     name: "menu"
   }));
 }

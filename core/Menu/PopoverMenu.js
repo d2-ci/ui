@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.PopoverMenu = void 0;
+exports.default = exports.PopoverMenu = void 0;
 
 require("core-js/modules/es6.object.assign");
 
@@ -15,7 +15,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Menu = _interopRequireDefault(require("./Menu"));
 
-var _index = _interopRequireDefault(require("../Popover/index"));
+var _Popover = _interopRequireDefault(require("../Popover"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,7 +29,7 @@ var PopoverMenu = function PopoverMenu(_ref) {
       open = _ref.open,
       popoverAttachPoint = _ref.popoverAttachPoint,
       appearAnimation = _ref.appearAnimation;
-  return _react.default.createElement(_index.default, {
+  return _react.default.createElement(_Popover.default, {
     anchorAttachPoint: anchorAttachPoint,
     closePopover: closePopover,
     getAnchorRef: getAnchorRef,
@@ -53,3 +53,5 @@ PopoverMenu.defaultProps = {
     horizontal: 'center'
   }
 };
+var _default = PopoverMenu;
+exports.default = _default;

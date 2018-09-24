@@ -5,13 +5,14 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.HeaderBar = HeaderBar;
 exports.default = void 0;
 
 require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
-var _index = _interopRequireDefault(require("../../core/Logo/index"));
+var _Logo = _interopRequireDefault(require("../../core/Logo"));
 
 var _NotificationIcon = _interopRequireDefault(require("./NotificationIcon"));
 
@@ -19,14 +20,14 @@ var _Apps = _interopRequireDefault(require("./Apps"));
 
 var _Profile = _interopRequireDefault(require("./Profile"));
 
-var _index2 = require("../../utils/index");
+var _utils = require("../../utils");
 
 require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _index2.bemClassNames)('headerbar');
+var bem = (0, _utils.bemClassNames)('headerbar');
 
 function HeaderBar(_ref) {
   var type = _ref.type,
@@ -41,7 +42,7 @@ function HeaderBar(_ref) {
     className: "left"
   }, _react.default.createElement("div", {
     className: "logo"
-  }, _react.default.createElement(_index.default, {
+  }, _react.default.createElement(_Logo.default, {
     reverse: type === 'blue',
     icon: true,
     width: 27.5
