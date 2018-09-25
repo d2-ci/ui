@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DropdownMenu = void 0;
+exports.default = exports.DropdownMenu = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -17,7 +17,7 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _index = require("../Button/index");
+var _Button = require("../Button");
 
 var _variants = require("../Button/variants");
 
@@ -87,7 +87,7 @@ function (_Component) {
           getAnchorRef = _this$props.getAnchorRef,
           menuProps = _this$props.menuProps;
       var popoverOpen = this.state.popoverOpen;
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_index.Button, {
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Button.Button, {
         variant: buttonVariant,
         onClick: this.openPopover
       }, _react.default.createElement(_Icon.default, {
@@ -114,3 +114,5 @@ function (_Component) {
 }(_react.Component);
 
 exports.DropdownMenu = DropdownMenu;
+var _default = DropdownMenu;
+exports.default = _default;

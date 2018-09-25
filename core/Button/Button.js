@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.Button = void 0;
 
 require("core-js/modules/es6.object.assign");
 
@@ -13,7 +13,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var VARIANTS = _interopRequireWildcard(require("./variants"));
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 require("./styles.css");
 
@@ -23,7 +23,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var bem = (0, _index.bemClassNames)('button');
+var bem = (0, _utils.bemClassNames)('button');
 
 var Button = function Button(_ref) {
   var children = _ref.children,
@@ -44,9 +44,10 @@ var Button = function Button(_ref) {
     title: title,
     type: type,
     role: role
-  }), (0, _index.wrapTextNodesInSpans)(children));
+  }), (0, _utils.wrapTextNodesInSpans)(children));
 };
 
+exports.Button = Button;
 Button.defaultProps = {
   type: 'button',
   size: 'medium',

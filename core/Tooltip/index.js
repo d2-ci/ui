@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Tooltip = Tooltip;
+exports.default = void 0;
 
 require("core-js/modules/es6.object.assign");
 
@@ -44,3 +45,5 @@ Tooltip.defaultProps = {
   position: 'bottom',
   multiline: false
 };
+var _default = Tooltip;
+exports.default = _default;

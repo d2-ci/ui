@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.DropdownButton = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -29,7 +29,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _Button = _interopRequireDefault(require("./Button"));
 
-var _index = require("../Menu/index");
+var _Menu = require("../Menu");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -97,7 +97,7 @@ function (_Component) {
       return _react.default.createElement("div", {
         ref: this.setAnchorRef,
         className: "d2ui-dropdown-button"
-      }, _react.default.createElement(_Button.default, buttonProps, children), _react.default.createElement(_index.DropdownMenu, {
+      }, _react.default.createElement(_Button.default, buttonProps, children), _react.default.createElement(_Menu.DropdownMenu, {
         buttonVariant: buttonProps.variant,
         getAnchorRef: this.getAnchorRef,
         menuProps: mergedMenuProps
@@ -108,5 +108,6 @@ function (_Component) {
   return DropdownButton;
 }(_react.Component);
 
+exports.DropdownButton = DropdownButton;
 var _default = DropdownButton;
 exports.default = _default;

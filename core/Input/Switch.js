@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.Switch = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -13,7 +13,7 @@ var _ToggleField = _interopRequireDefault(require("./ToggleField"));
 
 require("./switch.css");
 
-var _utils = require("../utils");
+var _utils = require("../../utils");
 
 var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
 
@@ -72,6 +72,7 @@ var Switch = function Switch(_ref) {
   }, (0, _utils.appendAsteriskIfRequired)(label, required))));
 };
 
+exports.Switch = Switch;
 Switch.defaultProps = {
   checked: false,
   disabled: false

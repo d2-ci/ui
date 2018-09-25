@@ -9,14 +9,14 @@ exports.default = exports.CircularProgress = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _index.bemClassNames)('circular-progress');
+var bem = (0, _utils.bemClassNames)('circular-progress');
 
 var CircularProgress = function CircularProgress(_ref) {
   var size = _ref.size,

@@ -5,11 +5,11 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.bem = void 0;
+exports.default = exports.Field = exports.bem = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 require("./field.css");
 
@@ -18,7 +18,7 @@ var _Icon = _interopRequireDefault(require("../Icon"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _index.bemClassNames)('field');
+var bem = (0, _utils.bemClassNames)('field');
 exports.bem = bem;
 var FILLED = 'filled';
 var OUTLINED = 'outlined';
@@ -84,9 +84,10 @@ var Field = function Field(_ref) {
     className: bem.e('icon', 'trailing')
   }), _react.default.createElement("span", {
     className: bem.e('floating-label')
-  }, (0, _index.appendAsteriskIfRequired)(label, required)));
+  }, (0, _utils.appendAsteriskIfRequired)(label, required)));
 };
 
+exports.Field = Field;
 Field.defaultProps = {
   value: '',
   dense: false,

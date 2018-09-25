@@ -5,15 +5,15 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.Checkbox = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 require("./checkbox.css");
 
-var _utils = require("../utils");
+var _utils = require("../../utils");
 
-var _ToggleField = _interopRequireDefault(require("../../build/Input/ToggleField"));
+var _ToggleField = _interopRequireDefault(require("./ToggleField"));
 
 var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
 
@@ -73,6 +73,7 @@ var Checkbox = function Checkbox(_ref) {
   }, (0, _utils.appendAsteriskIfRequired)(label, required))));
 };
 
+exports.Checkbox = Checkbox;
 Checkbox.defaultProps = {
   value: false,
   disabled: false

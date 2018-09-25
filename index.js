@@ -14,8 +14,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-require("typeface-roboto");
-
 var _Button = require("./core/Button");
 
 Object.keys(_Button).forEach(function (key) {

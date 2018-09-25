@@ -31,7 +31,7 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 var _computePosition = _interopRequireWildcard(require("./computePosition"));
 
@@ -63,7 +63,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var bem = (0, _index.bemClassNames)('popover');
+var bem = (0, _utils.bemClassNames)('popover');
 
 var Popover =
 /*#__PURE__*/

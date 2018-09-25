@@ -11,14 +11,14 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _index = require("../../utils/index");
+var _utils = require("../../utils");
 
 require("./tab.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _index.bemClassNames)('tab');
+var bem = (0, _utils.bemClassNames)('tab');
 
 var Tab = function Tab(_ref) {
   var icon = _ref.icon,
@@ -47,7 +47,7 @@ Tab.defaultProps = {
   active: false,
   disabled: false,
   stacked: false,
-  onClick: _index.noop
+  onClick: _utils.noop
 };
 var _default = Tab;
 exports.default = _default;

@@ -9,7 +9,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _index = _interopRequireDefault(require("../../core/Icon/index"));
+var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21,7 +21,7 @@ function NotificationIcon(_ref) {
     className: "notification ".concat(icon)
   }, count > 0 && _react.default.createElement("div", {
     className: "count"
-  }, count), _react.default.createElement(_index.default, {
+  }, count), _react.default.createElement(_Icon.default, {
     name: icon
   }));
 }
