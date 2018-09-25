@@ -13,6 +13,8 @@ var _utils = require("../../utils");
 
 require("typeface-roboto");
 
+require("material-design-icons/iconfont/material-icons.css");
+
 require("./theme/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
