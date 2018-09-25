@@ -16,8 +16,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /** @format */
 function Apps() {
   return _react.default.createElement("div", {
-    className: "apps"
+    className: "apps-container"
   }, _react.default.createElement(_Icon.default, {
-    name: "menu"
+    name: "apps"
   }));
 }
