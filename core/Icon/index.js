@@ -18,12 +18,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /** @format */
 var Icon = function Icon(_ref) {
   var name = _ref.name,
-      className = _ref.className;
+      className = _ref.className,
+      onClick = _ref.onClick;
   return _react.default.createElement("i", {
-    className: "material-icons ".concat(className ? ' ' + className : '')
+    className: "material-icons ".concat(className),
+    onClick: onClick
   }, name);
 };
 
 exports.Icon = Icon;
+Icon.defaultProps = {
+  className: ''
+};
 var _default = Icon;
 exports.default = _default;
