@@ -20,19 +20,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var bem = (0, _utils.bemClassNames)('linear-progress');
 
 function LinearProgress(_ref) {
-  var progress = _ref.progress,
+  var amount = _ref.amount,
       padded = _ref.padded;
-  var progressClass = typeof progress === 'undefined' ? 'indeterminate' : 'determinate';
-  var progressStyle = progress ? {
-    width: "".concat(progress, "%")
+  var type = typeof amount === 'undefined' ? 'indeterminate' : 'determinate';
+  var style = amount ? {
+    width: "".concat(amount, "%")
   } : null;
   return _react.default.createElement("div", {
     className: bem.b({
       padded: padded
     })
   }, _react.default.createElement("div", {
-    className: bem.e('progress', progressClass),
-    style: progressStyle
+    style: style,
+    className: bem.e('progress', type)
   }));
 }
 
