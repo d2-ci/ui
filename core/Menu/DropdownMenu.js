@@ -19,8 +19,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _Button = require("../Button");
 
-var _variants = require("../Button/variants");
-
 var _PopoverMenu = _interopRequireDefault(require("./PopoverMenu"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
@@ -83,12 +81,12 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          buttonVariant = _this$props.buttonVariant,
+          buttonKind = _this$props.buttonKind,
           getAnchorRef = _this$props.getAnchorRef,
           menuProps = _this$props.menuProps;
       var popoverOpen = this.state.popoverOpen;
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Button.Button, {
-        variant: buttonVariant,
+        kind: buttonKind,
         onClick: this.openPopover
       }, _react.default.createElement(_Icon.default, {
         name: "keyboard_arrow_down"

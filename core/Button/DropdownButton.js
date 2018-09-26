@@ -62,28 +62,33 @@ var DropdownButton =
 function (_Component) {
   _inherits(DropdownButton, _Component);
 
-  function DropdownButton(props) {
+  function DropdownButton() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, DropdownButton);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownButton).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropdownButton)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "anchorRef", null);
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getAnchorRef", function () {
       return _this.anchorRef;
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setAnchorRef", function (node) {
-      return _this.anchorRef = node;
-    });
-
-    _this.anchorRef = null;
     return _this;
   }
 
   _createClass(DropdownButton, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           options = _this$props.options,
           buttonProps = _this$props.buttonProps,
@@ -95,10 +100,12 @@ function (_Component) {
       });
 
       return _react.default.createElement("div", {
-        ref: this.setAnchorRef,
+        ref: function ref(c) {
+          return _this2.anchorRef = c;
+        },
         className: "d2ui-dropdown-button"
       }, _react.default.createElement(_Button.default, buttonProps, children), _react.default.createElement(_Menu.DropdownMenu, {
-        buttonVariant: buttonProps.variant,
+        buttonKind: buttonProps.kind,
         getAnchorRef: this.getAnchorRef,
         menuProps: mergedMenuProps
       }));
