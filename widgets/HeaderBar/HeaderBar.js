@@ -45,7 +45,7 @@ function HeaderBar(_ref) {
   }, _react.default.createElement(_Logo.default, {
     color: type === 'blue' ? 'white' : 'blue',
     type: "icon",
-    width: 27.5
+    width: "27.5px"
   })), _react.default.createElement("div", {
     className: "title"
   }, title)), selection && _react.default.createElement("div", {

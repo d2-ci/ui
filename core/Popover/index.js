@@ -103,7 +103,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      if (!this.state.open) {
+      if (!this.props.open) {
         return null;
       }
 

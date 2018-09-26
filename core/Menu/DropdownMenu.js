@@ -94,18 +94,14 @@ function (_React$Component) {
   _createClass(DropdownMenu, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          buttonKind = _this$props.buttonKind,
-          getAnchorRef = _this$props.getAnchorRef,
-          menuProps = _this$props.menuProps;
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Button.Button, {
-        kind: buttonKind,
+        kind: this.props.buttonKind,
         onClick: this.openMenu
       }, _react.default.createElement(_Icon.default, {
         name: "keyboard_arrow_down"
       })), _react.default.createElement(_PopoverMenu.default, {
-        menuProps: menuProps,
-        getAnchorRef: getAnchorRef,
+        menuProps: this.props.menuProps,
+        getAnchorRef: this.props.getAnchorRef,
         open: this.state.open,
         closePopover: this.closeMenu,
         appearAnimation: "slide-down",
