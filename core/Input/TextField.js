@@ -19,8 +19,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /** @format */
 var FILLED = 'filled';
-var OUTLINED = 'outlined';
-var MINIMAL = 'minimal';
 
 var TextField = function TextField(_ref) {
   var variant = _ref.variant,

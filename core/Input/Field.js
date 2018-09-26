@@ -22,7 +22,6 @@ var bem = (0, _utils.bemClassNames)('field');
 exports.bem = bem;
 var FILLED = 'filled';
 var OUTLINED = 'outlined';
-var MINIMAL = 'minimal';
 
 var computeTrailingIcon = function computeTrailingIcon(trailingIcon, error, warning, valid) {
   switch (true) {

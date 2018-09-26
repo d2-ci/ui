@@ -29,8 +29,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _utils = require("../../utils");
 
 var _computePosition = _interopRequireWildcard(require("./computePosition"));
@@ -137,12 +135,6 @@ function (_Component) {
 }(_react.Component);
 
 exports.Popover = Popover;
-
-var attachPointPropType = _propTypes.default.shape({
-  vertical: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.oneOf([_computePosition.TOP, _computePosition.MIDDLE, _computePosition.BOTTOM])]).isRequired,
-  horizontal: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.oneOf([_computePosition.LEFT, _computePosition.CENTER, _computePosition.RIGHT])]).isRequired
-});
-
 Popover.defaultProps = {
   anchorAttachPoint: {
     vertical: 'middle',
