@@ -23,20 +23,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function PopoverMenu(_ref) {
-  var anchorAttachPoint = _ref.anchorAttachPoint,
+  var anchorPosition = _ref.anchorPosition,
       closePopover = _ref.closePopover,
       getAnchorRef = _ref.getAnchorRef,
       menuProps = _ref.menuProps,
       open = _ref.open,
-      popoverAttachPoint = _ref.popoverAttachPoint,
+      popoverPosition = _ref.popoverPosition,
       appearAnimation = _ref.appearAnimation;
   return _react.default.createElement(_Popover.default, {
-    anchorAttachPoint: anchorAttachPoint,
+    anchorPosition: anchorPosition,
     closePopover: closePopover,
     getAnchorRef: getAnchorRef,
     open: open,
-    popoverAttachPoint: popoverAttachPoint,
-    appearAnimation: appearAnimation
+    popoverPosition: popoverPosition,
+    animation: appearAnimation
   }, _react.default.createElement(_Menu.default, _extends({
     closePopover: closePopover
   }, menuProps)));
@@ -44,11 +44,11 @@ function PopoverMenu(_ref) {
 
 PopoverMenu.defaultProps = {
   open: _propTypes.default.bool.isRequired,
-  anchorAttachPoint: {
+  anchorPosition: {
     vertical: 'middle',
     horizontal: 'center'
   },
-  popoverAttachPoint: {
+  popoverPosition: {
     vertical: 'middle',
     horizontal: 'center'
   }

@@ -88,15 +88,14 @@ function (_Component) {
     key: "adjustPosition",
     value: function adjustPosition() {
       var _this$props = this.props,
-          getAnchorRef = _this$props.getAnchorRef,
-          anchorAttachPoint = _this$props.anchorAttachPoint,
-          popoverAttachPoint = _this$props.popoverAttachPoint;
+          anchorPosition = _this$props.anchorPosition,
+          popoverPosition = _this$props.popoverPosition;
 
-      var anchorEl = _reactDom.default.findDOMNode(getAnchorRef());
+      var anchorEl = _reactDom.default.findDOMNode(this.props.getAnchorRef());
 
       if (anchorEl && this.elContainer) {
         this.setState({
-          style: (0, _computePosition.default)(this.elContainer, anchorEl, anchorAttachPoint, popoverAttachPoint)
+          style: (0, _computePosition.default)(this.elContainer, anchorEl, anchorPosition, popoverPosition)
         });
       }
     }
@@ -126,15 +125,15 @@ function (_Component) {
 
 exports.Popover = Popover;
 Popover.defaultProps = {
-  anchorAttachPoint: {
+  anchorPosition: {
     vertical: 'middle',
     horizontal: 'center'
   },
-  popoverAttachPoint: {
+  popoverPosition: {
     vertical: 'middle',
     horizontal: 'center'
   },
-  appearAnimation: 'fade-in'
+  animation: 'fade-in'
 };
 var _default = Popover;
 exports.default = _default;

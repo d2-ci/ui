@@ -45,11 +45,11 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var anchorAttachPoint = {
+var anchorPosition = {
   vertical: 'bottom',
   horizontal: 'right'
 };
-var popoverAttachPoint = {
+var popoverPosition = {
   vertical: 'top',
   horizontal: 'right'
 };
@@ -104,9 +104,9 @@ function (_React$Component) {
         getAnchorRef: this.props.getAnchorRef,
         open: this.state.open,
         closePopover: this.closeMenu,
-        appearAnimation: "slide-down",
-        anchorAttachPoint: anchorAttachPoint,
-        popoverAttachPoint: popoverAttachPoint
+        animation: "slide-down",
+        anchorPosition: anchorPosition,
+        popoverPosition: popoverPosition
       }));
     }
   }]);

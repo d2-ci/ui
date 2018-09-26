@@ -26,22 +26,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 // Enough to make sure the popop doesn't hide under a scroll-bar
 var EDGE_MARGIN = 18;
 
-function computePosition(targetEl, anchorEl, anchorAttachPoint, popoverAttachPoint) {
-  var anchorPosition = getAnchorPosition(anchorEl, (0, _utils.isRtl)() ? flipHorizontal(anchorAttachPoint) : anchorAttachPoint);
-  var relativePosition = getRelativePosition(targetEl, anchorPosition, (0, _utils.isRtl)() ? flipHorizontal(popoverAttachPoint) : popoverAttachPoint);
+function computePosition(targetEl, anchorEl, anchorPosition, popoverPosition) {
+  var position = getAnchorPosition(anchorEl, (0, _utils.isRtl)() ? flipHorizontal(anchorPosition) : anchorPosition);
+  var relativePosition = getRelativePosition(targetEl, position, (0, _utils.isRtl)() ? flipHorizontal(popoverPosition) : popoverPosition);
   return getWindowContainedPosition(relativePosition);
 }
 
-function flipHorizontal(attachPoint) {
-  var horizontal = attachPoint.horizontal;
+function flipHorizontal(position) {
+  var horizontal = position.horizontal;
 
-  if (attachPoint.horizontal === 'left') {
+  if (position.horizontal === 'left') {
     horizontal = 'right';
-  } else if (attachPoint.horizontal === 'right') {
+  } else if (position.horizontal === 'right') {
     horizontal = 'left';
   }
 
-  return _objectSpread({}, attachPoint, {
+  return _objectSpread({}, position, {
     horizontal: horizontal
   });
 }
