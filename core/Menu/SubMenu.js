@@ -104,7 +104,7 @@ function (_Component) {
           label = _this$props.label,
           icon = _this$props.icon,
           menuItems = _this$props.menuItems;
-      var arrowIconName = (0, _utils.isRtl)() ? 'keyboard_arrow_left' : 'keyboard_arrow_right'; // There MUST be a better way of doing this!
+      var arrowIconName = (0, _utils.isRTL)() ? 'keyboard_arrow_left' : 'keyboard_arrow_right'; // There MUST be a better way of doing this!
 
       var menuProps = (0, _react.isValidElement)(menuItems[0]) ? {
         children: menuItems

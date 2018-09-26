@@ -6,14 +6,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = _default;
+exports.isRTL = isRTL;
+exports.RTL_LANGUAGES = void 0;
 
-require("core-js/modules/web.dom.iterable");
+require("core-js/modules/es7.array.includes");
 
-require("core-js/modules/es6.array.iterator");
-
-require("core-js/modules/es6.string.iterator");
-
-require("core-js/modules/es6.set");
+require("core-js/modules/es6.string.includes");
 
 require("core-js/modules/es6.regexp.split");
 
@@ -29,10 +27,15 @@ require("core-js/modules/es6.regexp.split");
 function _default(userSettings) {
   // Will produce "en" from "en_EN" as well as "en"
   var uiLanguage = userSettings.keyUiLocale.split('_')[0];
-  var dir = RTL_LANGUAGES.has(uiLanguage) ? 'rtl' : 'ltr';
+  var dir = RTL_LANGUAGES.includes(uiLanguage) ? 'rtl' : 'ltr';
   document.documentElement.setAttribute('dir', dir);
   return userSettings;
 } // https://meta.wikimedia.org/wiki/Template:List_of_language_names_ordered_by_code
 
 
-var RTL_LANGUAGES = new Set(['ar', 'arc', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ku', 'ps', 'ur', 'yi']);
+var RTL_LANGUAGES = ['ar', 'arc', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ku', 'ps', 'ur', 'yi'];
+exports.RTL_LANGUAGES = RTL_LANGUAGES;
+
+function isRTL() {
+  return document.documentElement.getAttribute('dir') === 'rtl';
+}

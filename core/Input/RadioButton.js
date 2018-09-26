@@ -71,7 +71,7 @@ var RadioButton = function RadioButton(_ref) {
     className: bem.e('label-text', {
       disabled: disabled
     })
-  }, (0, _utils.appendAsteriskIfRequired)(label, required))));
+  }, (0, _utils.getRequiredText)(label, required))));
 };
 
 exports.RadioButton = RadioButton;
