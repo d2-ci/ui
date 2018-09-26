@@ -3,8 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = _default;
-exports.RIGHT = exports.CENTER = exports.LEFT = exports.BOTTOM = exports.MIDDLE = exports.TOP = void 0;
+exports.default = computePosition;
 
 require("core-js/modules/es6.array.for-each");
 
@@ -24,22 +23,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var TOP = 'top';
-exports.TOP = TOP;
-var MIDDLE = 'middle';
-exports.MIDDLE = MIDDLE;
-var BOTTOM = 'bottom';
-exports.BOTTOM = BOTTOM;
-var LEFT = 'left';
-exports.LEFT = LEFT;
-var CENTER = 'center';
-exports.CENTER = CENTER;
-var RIGHT = 'right'; // Enough to make sure the popop doesn't hide under a scroll-bar
-
-exports.RIGHT = RIGHT;
+// Enough to make sure the popop doesn't hide under a scroll-bar
 var EDGE_MARGIN = 18;
 
-function _default(targetEl, anchorEl, anchorAttachPoint, popoverAttachPoint) {
+function computePosition(targetEl, anchorEl, anchorAttachPoint, popoverAttachPoint) {
   var anchorPosition = getAnchorPosition(anchorEl, (0, _utils.isRtl)() ? flipHorizontal(anchorAttachPoint) : anchorAttachPoint);
   var relativePosition = getRelativePosition(targetEl, anchorPosition, (0, _utils.isRtl)() ? flipHorizontal(popoverAttachPoint) : popoverAttachPoint);
   return getWindowContainedPosition(relativePosition);
@@ -48,10 +35,10 @@ function _default(targetEl, anchorEl, anchorAttachPoint, popoverAttachPoint) {
 function flipHorizontal(attachPoint) {
   var horizontal = attachPoint.horizontal;
 
-  if (attachPoint.horizontal === LEFT) {
-    horizontal = RIGHT;
-  } else if (attachPoint.horizontal === RIGHT) {
-    horizontal = LEFT;
+  if (attachPoint.horizontal === 'left') {
+    horizontal = 'right';
+  } else if (attachPoint.horizontal === 'right') {
+    horizontal = 'left';
   }
 
   return _objectSpread({}, attachPoint, {
@@ -64,11 +51,11 @@ function getAnchorPosition(el, _ref) {
       vertical = _ref.vertical;
   var rect = el.getBoundingClientRect();
 
-  var _getScrolllAndClientO = getScrolllAndClientOffset(),
-      scrollTop = _getScrolllAndClientO.scrollTop,
-      scrollLeft = _getScrolllAndClientO.scrollLeft,
-      clientTop = _getScrolllAndClientO.clientTop,
-      clientLeft = _getScrolllAndClientO.clientLeft;
+  var _getScrollAndClientOf = getScrollAndClientOffset(),
+      scrollTop = _getScrollAndClientOf.scrollTop,
+      scrollLeft = _getScrollAndClientOf.scrollLeft,
+      clientTop = _getScrollAndClientOf.clientTop,
+      clientLeft = _getScrollAndClientOf.clientLeft;
 
   return {
     left: getHorizontalPosition(horizontal, el, rect) + scrollLeft - clientLeft,
@@ -94,13 +81,13 @@ function getHorizontalPosition(horizontal, el, rect, toLeft) {
     return rect.left + horizontal;
   } else {
     switch (horizontal) {
-      case LEFT:
+      case 'left':
         return rect.left;
 
-      case CENTER:
+      case 'center':
         return rect.left + multiplier * (el.offsetWidth / 2);
 
-      case RIGHT:
+      case 'right':
       default:
         return rect.left + multiplier * el.offsetWidth;
     }
@@ -114,13 +101,13 @@ function getVerticalPosition(vertical, el, rect, toLeft) {
     return rect.top + vertical;
   } else {
     switch (vertical) {
-      case TOP:
+      case 'top':
         return rect.top;
 
-      case MIDDLE:
+      case 'middle':
         return rect.top + multiplier * (el.offsetHeight / 2);
 
-      case BOTTOM:
+      case 'bottom':
       default:
         return rect.top + multiplier * el.offsetHeight;
     }
@@ -133,11 +120,11 @@ function getWindowContainedPosition(_ref3) {
       width = _ref3.width,
       height = _ref3.height;
 
-  var _getScrolllAndClientO2 = getScrolllAndClientOffset(),
-      scrollTop = _getScrolllAndClientO2.scrollTop,
-      scrollLeft = _getScrolllAndClientO2.scrollLeft,
-      clientTop = _getScrolllAndClientO2.clientTop,
-      clientLeft = _getScrolllAndClientO2.clientLeft;
+  var _getScrollAndClientOf2 = getScrollAndClientOffset(),
+      scrollTop = _getScrollAndClientOf2.scrollTop,
+      scrollLeft = _getScrollAndClientOf2.scrollLeft,
+      clientTop = _getScrollAndClientOf2.clientTop,
+      clientLeft = _getScrollAndClientOf2.clientLeft;
 
   var windowTopEdge = scrollTop - clientTop + EDGE_MARGIN;
   var windowBottomEdge = window.innerHeight + scrollTop - clientTop - EDGE_MARGIN;
@@ -164,11 +151,12 @@ function getWindowContainedPosition(_ref3) {
 
   return {
     top: containedTop,
-    left: containedLeft
+    left: containedLeft,
+    opacity: 1
   };
 }
 
-function getScrolllAndClientOffset() {
+function getScrollAndClientOffset() {
   var body = document.body;
   var docEl = document.documentElement;
   return {
