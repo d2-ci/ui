@@ -106,15 +106,12 @@ function (_Component) {
         return null;
       }
 
-      var _this$props2 = this.props,
-          closePopover = _this$props2.closePopover,
-          appearAnimation = _this$props2.appearAnimation;
       return _reactDom.default.createPortal(_react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
         className: bem.e('overlay'),
-        onClick: closePopover
+        onClick: this.props.closePopover
       }), _react.default.createElement("div", {
         ref: this.onRender,
-        className: bem.b(appearAnimation),
+        className: bem.b(this.props.animation),
         style: this.state.style
       }, this.props.children)), document.body);
     }
