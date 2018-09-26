@@ -52,28 +52,35 @@ var DropdownMenu =
 function (_Component) {
   _inherits(DropdownMenu, _Component);
 
-  function DropdownMenu(props) {
+  function DropdownMenu() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, DropdownMenu);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownMenu).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openPopover", function () {
-      _this.setState({
-        popoverOpen: true
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropdownMenu)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      open: false
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openMenu", function () {
+      return _this.setState({
+        open: true
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closePopover", function () {
-      _this.setState({
-        popoverOpen: false
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeMenu", function () {
+      return _this.setState({
+        open: false
       });
     });
 
-    _this.state = {
-      popoverOpen: false
-    };
     return _this;
   }
 
@@ -84,17 +91,16 @@ function (_Component) {
           buttonKind = _this$props.buttonKind,
           getAnchorRef = _this$props.getAnchorRef,
           menuProps = _this$props.menuProps;
-      var popoverOpen = this.state.popoverOpen;
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Button.Button, {
         kind: buttonKind,
-        onClick: this.openPopover
+        onClick: this.openMenu
       }, _react.default.createElement(_Icon.default, {
         name: "keyboard_arrow_down"
       })), _react.default.createElement(_PopoverMenu.default, {
         menuProps: menuProps,
         getAnchorRef: getAnchorRef,
-        open: popoverOpen,
-        closePopover: this.closePopover,
+        open: this.state.open,
+        closePopover: this.closeMenu,
         anchorAttachPoint: {
           vertical: 'bottom',
           horizontal: 'right'
