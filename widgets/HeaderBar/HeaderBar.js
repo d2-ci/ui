@@ -43,8 +43,8 @@ function HeaderBar(_ref) {
   }, _react.default.createElement("div", {
     className: "logo"
   }, _react.default.createElement(_Logo.default, {
-    reverse: type === 'blue',
-    icon: true,
+    color: type === 'blue' ? 'white' : 'blue',
+    type: "icon",
     width: 27.5
   })), _react.default.createElement("div", {
     className: "title"
