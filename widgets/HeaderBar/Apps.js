@@ -43,6 +43,16 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function isPointInRect(_ref, _ref2) {
+  var x = _ref.x,
+      y = _ref.y;
+  var left = _ref2.left,
+      right = _ref2.right,
+      top = _ref2.top,
+      bottom = _ref2.bottom;
+  return x >= left && x <= right && y >= top && y <= bottom;
+}
+
 var Apps =
 /*#__PURE__*/
 function (_React$Component) {
@@ -62,12 +72,31 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Apps)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      showPopup: false
+      show: false
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "togglePopup", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
+      if (_this.elContainer && _this.elApps) {
+        var target = {
+          x: evt.clientX,
+          y: evt.clientY
+        };
+
+        var apps = _this.elApps.getBoundingClientRect();
+
+        var container = _this.elContainer.getBoundingClientRect();
+
+        if (!isPointInRect(target, apps) && !isPointInRect(target, container)) {
+          _this.setState({
+            show: false
+          });
+        }
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
       return _this.setState({
-        showPopup: !_this.state.showPopup
+        show: !_this.state.show
       });
     });
 
@@ -75,15 +104,33 @@ function (_React$Component) {
   }
 
   _createClass(Apps, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.addEventListener('click', this.onDocClick);
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      document.removeEventListener('click', this.onDocClick);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return _react.default.createElement("div", {
-        className: "apps-container"
+        className: "apps-container",
+        ref: function ref(c) {
+          return _this2.elContainer = c;
+        }
       }, _react.default.createElement(_Icon.default, {
         name: "apps",
-        onClick: this.togglePopup
-      }), this.state.showPopup && _react.default.createElement("div", {
-        className: "contents"
+        onClick: this.onToggle
+      }), this.state.show && _react.default.createElement("div", {
+        className: "contents",
+        ref: function ref(c) {
+          return _this2.elApps = c;
+        }
       }, _react.default.createElement(_Paper.default, null, "apps list")));
     }
   }]);
