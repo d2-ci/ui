@@ -109,9 +109,10 @@ function _onClick2(actionType) {
 }
 
 function Profile(_ref5) {
-  var name = _ref5.name,
-      email = _ref5.email,
-      img = _ref5.img;
+  var _ref5$profile = _ref5.profile,
+      name = _ref5$profile.name,
+      email = _ref5$profile.email,
+      img = _ref5$profile.img;
   return _react.default.createElement("div", {
     className: "profile"
   }, img ? _react.default.createElement(ImageIcon, {
@@ -122,8 +123,8 @@ function Profile(_ref5) {
     className: "contents"
   }, _react.default.createElement(_Paper.default, null, _react.default.createElement(Header, {
     name: name,
-    img: img,
     email: email,
+    img: img,
     onClick: _onClick2
   }), _react.default.createElement("div", {
     className: "divider"

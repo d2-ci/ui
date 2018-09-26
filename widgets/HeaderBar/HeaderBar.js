@@ -8,8 +8,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.HeaderBar = HeaderBar;
 exports.default = void 0;
 
-require("core-js/modules/es6.function.name");
-
 var _react = _interopRequireDefault(require("react"));
 
 var _Logo = _interopRequireDefault(require("../../core/Logo"));
@@ -33,9 +31,7 @@ function HeaderBar(_ref) {
   var type = _ref.type,
       title = _ref.title,
       selection = _ref.selection,
-      name = _ref.name,
-      email = _ref.email,
-      src = _ref.src;
+      profile = _ref.profile;
   return _react.default.createElement("div", {
     className: bem.b(type)
   }, _react.default.createElement("div", {
@@ -59,9 +55,7 @@ function HeaderBar(_ref) {
     icon: "email",
     count: 4
   }), _react.default.createElement(_Apps.default, null), _react.default.createElement(_Profile.default, {
-    name: name,
-    email: email,
-    src: src
+    profile: profile
   })));
 }
 
