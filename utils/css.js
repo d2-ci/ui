@@ -32,6 +32,7 @@ function bemClassNames(blockName) {
     blockName = "".concat(DEFAULT_PREFIX).concat(blockName);
   }
 
+  var elementLookup = {};
   return {
     b: function b() {
       for (var _len = arguments.length, modifierArgs = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -41,11 +42,15 @@ function bemClassNames(blockName) {
       return modifierArgs.length === 0 ? blockName : classNames(blockName, modifierArgs);
     },
     e: function e(elementName) {
+      if (!elementLookup[elementName]) {
+        elementLookup[elementName] = "".concat(blockName, "__").concat(elementName);
+      }
+
       for (var _len2 = arguments.length, modifierArgs = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
         modifierArgs[_key2 - 1] = arguments[_key2];
       }
 
-      return modifierArgs.length === 0 ? "".concat(blockName, "__").concat(elementName) : classNames("".concat(blockName, "__").concat(elementName), modifierArgs);
+      return modifierArgs.length === 0 ? elementLookup[elementName] : classNames(elementLookup[elementName], modifierArgs);
     }
   };
 }
