@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = _default;
+exports.wrapTextNodesInSpans = wrapTextNodesInSpans;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -25,7 +25,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 // CSS selectors like :first-child, :only-child, :last-child do not take text nodes
 // into account, so wrapping text nodes in spans simplifies the CSS file a lot.
-function _default(children) {
+function wrapTextNodesInSpans(children) {
   return _react.Children.map(children, function (child, index) {
     if (['string', 'number'].includes(_typeof(child))) {
       return _react.default.createElement("span", {

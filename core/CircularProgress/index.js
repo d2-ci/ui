@@ -5,7 +5,8 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.CircularProgress = void 0;
+exports.CircularProgress = CircularProgress;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -18,37 +19,39 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /** @format */
 var bem = (0, _utils.bemClassNames)('circular-progress');
 
-var CircularProgress = function CircularProgress(_ref) {
+function CircularProgress(_ref) {
   var size = _ref.size,
-      center = _ref.center;
+      center = _ref.center,
+      dashed = _ref.dashed;
 
-  var circularProgress = _react.default.createElement("div", {
+  var progressBar = _react.default.createElement("div", {
     role: "progressbar",
     className: bem.b(size)
   }, _react.default.createElement("svg", {
     viewBox: "22 22 44 44",
     className: bem.e('viewbox')
   }, _react.default.createElement("circle", {
-    className: bem.e('circle'),
+    className: dashed ? bem.e('dashed') : '',
     cx: "44",
     cy: "44",
     r: "20.2",
     fill: "none",
-    strokeWidth: "3.6"
+    strokeWidth: "3.6",
+    strokeDashoffset: "0"
   })));
 
   if (center) {
     return _react.default.createElement("div", {
       className: bem.e('overlay')
-    }, circularProgress);
+    }, progressBar);
   }
 
-  return circularProgress;
-};
+  return progressBar;
+}
 
-exports.CircularProgress = CircularProgress;
 CircularProgress.defaultProps = {
-  size: 'medium'
+  size: 'medium',
+  dashed: true
 };
 var _default = CircularProgress;
 exports.default = _default;

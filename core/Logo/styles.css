@@ -1,1 +1,9 @@
-.d2ui-logo{width:11.25rem}.d2ui-logo.icon{width:2.5rem}
+/** @format */
+
+.d2ui-logo {
+    width: 11.25rem;
+}
+
+.d2ui-logo.icon {
+        width: 2.5rem;
+    }

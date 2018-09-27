@@ -49,11 +49,11 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var anchorAttachPoint = {
+var anchorPosition = {
   vertical: 'top',
   horizontal: 'right'
 };
-var popoverAttachPoint = {
+var popoverPosition = {
   vertical: 'top',
   horizontal: 'left'
 };
@@ -104,7 +104,7 @@ function (_Component) {
           label = _this$props.label,
           icon = _this$props.icon,
           menuItems = _this$props.menuItems;
-      var arrowIconName = (0, _utils.isRtl)() ? 'keyboard_arrow_left' : 'keyboard_arrow_right'; // There MUST be a better way of doing this!
+      var arrowIconName = (0, _utils.isRTL)() ? 'keyboard_arrow_left' : 'keyboard_arrow_right'; // There MUST be a better way of doing this!
 
       var menuProps = (0, _react.isValidElement)(menuItems[0]) ? {
         children: menuItems
@@ -120,13 +120,13 @@ function (_Component) {
       }), label], _react.default.createElement(_Icon.default, {
         name: arrowIconName
       })), _react.default.createElement(_PopoverMenu.default, {
-        anchorAttachPoint: anchorAttachPoint,
         closePopover: this.closePopover,
         getAnchorRef: this.getAnchorRef,
         open: this.state.popoverOpen,
         menuProps: menuProps,
-        popoverAttachPoint: popoverAttachPoint,
-        appearAnimation: "slide-x-y"
+        anchorPosition: anchorPosition,
+        popoverPosition: popoverPosition,
+        animation: "slide-x-y"
       }));
     }
   }]);

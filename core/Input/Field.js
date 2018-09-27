@@ -83,7 +83,7 @@ var Field = function Field(_ref) {
     className: bem.e('icon', 'trailing')
   }), _react.default.createElement("span", {
     className: bem.e('floating-label')
-  }, (0, _utils.appendAsteriskIfRequired)(label, required)));
+  }, (0, _utils.getRequiredText)(label, required)));
 };
 
 exports.Field = Field;

@@ -65,7 +65,7 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
       valid: valid,
       warning: warning
     })
-  }, (0, _utils.appendAsteriskIfRequired)(label, required)), _react.default.createElement("div", {
+  }, (0, _utils.getRequiredText)(label, required)), _react.default.createElement("div", {
     className: bem.b({
       error: error,
       warning: warning,

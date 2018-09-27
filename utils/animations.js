@@ -5,11 +5,9 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = animatedScrollTo;
+exports.animations = animations;
 
-var _easings = _interopRequireDefault(require("./easings"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _css = require("./css");
 
 /** @format */
 var HORIZONTAL = 'horizontal';
@@ -25,7 +23,7 @@ var START = 'start';
  * callback: is an optional function to execute when the scroll animation is done
  */
 
-function animatedScrollTo(_ref) {
+function animations(_ref) {
   var to = _ref.to,
       _ref$scrollBox = _ref.scrollBox,
       scrollBox = _ref$scrollBox === void 0 ? window : _ref$scrollBox,
@@ -40,7 +38,12 @@ function animatedScrollTo(_ref) {
   var scrollHandler = getScrollHandler(scrollBox, direction, isWindowScroll);
   var startValue = getStartValue(scrollBox, direction, isWindowScroll);
   var endValue = getEndValue(to, direction, scrollBox, offset, isWindowScroll, startValue);
-  var change = endValue - startValue;
+  var change = endValue - startValue; // Just scroll into place if duration is 0
+
+  if (duration === 0) {
+    scrollHandler(endValue);
+  }
+
   var startTimestamp, elapsedTime, scrollValue;
 
   function step(timestamp) {
@@ -49,7 +52,7 @@ function animatedScrollTo(_ref) {
     }
 
     elapsedTime = timestamp - startTimestamp;
-    scrollValue = _easings.default.easeInOutQuad(elapsedTime, startValue, change, duration);
+    scrollValue = (0, _css.easeInOutQuad)(elapsedTime, startValue, change, duration);
 
     if (elapsedTime >= duration) {
       if (scrollValue !== endValue) {
