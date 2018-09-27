@@ -29,14 +29,14 @@ function PopoverMenu(_ref) {
       menuProps = _ref.menuProps,
       open = _ref.open,
       popoverPosition = _ref.popoverPosition,
-      appearAnimation = _ref.appearAnimation;
+      animation = _ref.animation;
   return _react.default.createElement(_Popover.default, {
     anchorPosition: anchorPosition,
     closePopover: closePopover,
     getAnchorRef: getAnchorRef,
     open: open,
     popoverPosition: popoverPosition,
-    animation: appearAnimation
+    animation: animation
   }, _react.default.createElement(_Menu.default, _extends({
     closePopover: closePopover
   }, menuProps)));
