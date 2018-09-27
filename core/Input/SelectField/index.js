@@ -33,15 +33,15 @@ require("core-js/modules/es6.array.map");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Field = _interopRequireWildcard(require("./Field"));
+var _IconField = _interopRequireWildcard(require("../shared/IconField"));
 
-var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
+var _Field = _interopRequireDefault(require("../shared/Field"));
 
-var _Menu = require("../Menu");
+var _Menu = require("../../Menu");
 
-var _utils = require("../../utils");
+var _utils = require("../../../utils");
 
-require("./selectfield.css");
+require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -76,7 +76,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var bem = (0, _utils.bemClassNames)('select');
-var inputClassName = "".concat(bem.e('input'), " ").concat(_Field.bem.e('input')); // React uses a "value" property on the <select/> which can't be null so we use this magic string instead
+var inputClassName = "".concat(bem.e('input'), " ").concat(_IconField.bem.e('input')); // React uses a "value" property on the <select/> which can't be null so we use this magic string instead
 
 var EMPTY_NATIVE_OPTION_VALUE = '#^NONE^#';
 
@@ -244,7 +244,7 @@ function (_Component) {
           block = _this$props2.block;
       var displayValue = this.getLabelOfValue();
       var inputComponent = native ? this.renderNativeSelect() : this.renderCustomSelect(displayValue);
-      return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_FieldWrap.default, {
+      return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_Field.default, {
         valid: valid,
         warning: warning,
         disabled: disabled,
@@ -255,7 +255,7 @@ function (_Component) {
         className: bem.b({
           native: native
         })
-      }, _react.default.createElement(_Field.default, {
+      }, _react.default.createElement(_IconField.default, {
         variant: variant,
         dense: dense,
         label: label,

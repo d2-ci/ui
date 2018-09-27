@@ -161,6 +161,8 @@ function (_Component) {
   _createClass(Tabs, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       if (this.props.contained) {
         this.showTabIndicator();
         return;
@@ -168,10 +170,12 @@ function (_Component) {
 
       if (this.scrollRequiredToReachActiveTab()) {
         var scrollProps = {
-          duration: 1,
+          duration: 0,
           callback: this.updateScrollableUiAfterMount
         };
-        this.scrollToTab(this.getActiveTabRef(), scrollProps);
+        (0, _utils.defer)(function () {
+          return _this2.scrollToTab(_this2.getActiveTabRef(), scrollProps);
+        });
       } else {
         this.updateScrollableUiAfterMount();
       }
@@ -264,23 +268,23 @@ function (_Component) {
   }, {
     key: "renderitems",
     value: function renderitems() {
-      var _this2 = this;
+      var _this3 = this;
 
       var items = this.props.items;
       return items.map(function (tab, index) {
         return _react.default.createElement(_Tab.default, _extends({
           key: "tab-".concat(index)
-        }, _this2.getAdditionalTabProps(index), tab));
+        }, _this3.getAdditionalTabProps(index), tab));
       });
     }
   }, {
     key: "renderChildren",
     value: function renderChildren() {
-      var _this3 = this;
+      var _this4 = this;
 
       var children = this.props.children;
       return _react.Children.map(children, function (child, index) {
-        return (0, _react.cloneElement)(child, _this3.getAdditionalTabProps(index));
+        return (0, _react.cloneElement)(child, _this4.getAdditionalTabProps(index));
       });
     } // Rendering
 

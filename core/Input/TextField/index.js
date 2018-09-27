@@ -10,9 +10,9 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
+var _Field = _interopRequireDefault(require("../shared/Field"));
 
-var _Field = _interopRequireWildcard(require("./Field"));
+var _IconField = _interopRequireWildcard(require("../shared/IconField"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -39,14 +39,14 @@ function TextField(_ref) {
   var InputTag = multiline ? 'textarea' : 'input';
 
   var inputComponent = _react.default.createElement(InputTag, {
-    className: _Field.bem.e('input'),
+    className: _IconField.bem.e('input'),
     value: value,
     onChange: onChange,
     type: type,
     disabled: disabled
   });
 
-  return _react.default.createElement(_FieldWrap.default, {
+  return _react.default.createElement(_Field.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,
@@ -54,7 +54,7 @@ function TextField(_ref) {
     dense: dense,
     block: block,
     helpText: helpText
-  }, _react.default.createElement(_Field.default, {
+  }, _react.default.createElement(_IconField.default, {
     variant: variant,
     dense: dense,
     label: label,

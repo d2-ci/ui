@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = setTextDirection;
+exports.setTextDirection = setTextDirection;
 exports.isRTL = isRTL;
 exports.RTL_LANGUAGES = void 0;
 

@@ -5,20 +5,21 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.FieldWrap = void 0;
+exports.Field = Field;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _utils = require("../../utils");
+var _utils = require("../../../../utils");
 
-require("./fieldwrap.css");
+require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
 var bem = (0, _utils.bemClassNames)('field-wrap');
 
-var FieldWrap = function FieldWrap(_ref) {
+function Field(_ref) {
   var children = _ref.children,
       valid = _ref.valid,
       warning = _ref.warning,
@@ -46,8 +47,7 @@ var FieldWrap = function FieldWrap(_ref) {
   }, children, helpText && _react.default.createElement("div", {
     className: bem.e('help-text')
   }, helpText));
-};
+}
 
-exports.FieldWrap = FieldWrap;
-var _default = FieldWrap;
+var _default = Field;
 exports.default = _default;

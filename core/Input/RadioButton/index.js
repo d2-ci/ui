@@ -11,13 +11,13 @@ require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./radiobutton.css");
+var _utils = require("../../../utils");
 
-var _utils = require("../../utils");
+var _ToggleField = _interopRequireDefault(require("../ToggleField"));
 
-var _ToggleField = _interopRequireDefault(require("./ToggleField"));
+var _Field = _interopRequireDefault(require("../shared/Field"));
 
-var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
+require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38,7 +38,7 @@ var RadioButton = function RadioButton(_ref) {
       block = _ref.block,
       helpText = _ref.helpText,
       required = _ref.required;
-  return _react.default.createElement(_FieldWrap.default, {
+  return _react.default.createElement(_Field.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,
