@@ -30,7 +30,7 @@ function Paper(_ref) {
 
 Paper.defaultProps = {
   elevation: 1,
-  className: 'padded'
+  className: 'd2ui-paper-defaults'
 };
 var _default = Paper;
 exports.default = _default;

@@ -9,13 +9,13 @@ exports.default = exports.Checkbox = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./checkbox.css");
+require("./styles.css");
 
-var _utils = require("../../utils");
+var _utils = require("../../../utils");
 
-var _ToggleField = _interopRequireDefault(require("./ToggleField"));
+var _ToggleField = _interopRequireDefault(require("../ToggleField"));
 
-var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
+var _FieldWrap = _interopRequireDefault(require("../FieldWrap"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
