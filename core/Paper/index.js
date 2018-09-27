@@ -23,14 +23,15 @@ function Paper(_ref) {
   var elevation = _ref.elevation,
       children = _ref.children,
       className = _ref.className;
+  var elevationClass = bem.b("elevation-".concat(elevation));
   return _react.default.createElement("div", {
-    className: bem.b("elevation-".concat(elevation), className)
+    className: "".concat(elevationClass, " ").concat(className)
   }, children);
 }
 
 Paper.defaultProps = {
   elevation: 1,
-  className: 'defaults'
+  className: 'd2ui-paper-defaults'
 };
 var _default = Paper;
 exports.default = _default;
