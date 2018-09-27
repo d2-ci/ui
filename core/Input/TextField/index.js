@@ -37,15 +37,6 @@ function TextField(_ref) {
       required = _ref.required,
       helpText = _ref.helpText;
   var InputTag = multiline ? 'textarea' : 'input';
-
-  var inputComponent = _react.default.createElement(InputTag, {
-    className: _LabelField.bem.e('input'),
-    value: value,
-    onChange: onChange,
-    type: type,
-    disabled: disabled
-  });
-
   return _react.default.createElement(_LabelField.default, {
     variant: variant,
     dense: dense,
@@ -61,7 +52,13 @@ function TextField(_ref) {
     multiline: multiline,
     required: required,
     helpText: helpText
-  }, inputComponent);
+  }, _react.default.createElement(InputTag, {
+    className: _LabelField.bem.e('input'),
+    value: value,
+    onChange: onChange,
+    type: type,
+    disabled: disabled
+  }));
 }
 
 TextField.defaultProps = {
