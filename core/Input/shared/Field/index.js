@@ -17,7 +17,7 @@ require("./styles.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('field-wrap');
+var bem = (0, _utils.bemClassNames)('field');
 
 function Field(_ref) {
   var children = _ref.children,

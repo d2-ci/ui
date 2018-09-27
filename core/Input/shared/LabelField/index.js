@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Field = exports.bem = void 0;
+exports.default = exports.LabelField = exports.bem = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -13,15 +13,15 @@ var _utils = require("../../../../utils");
 
 var _Icon = _interopRequireDefault(require("../../../Icon"));
 
+var _Field = _interopRequireDefault(require("../Field"));
+
 require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('field');
+var bem = (0, _utils.bemClassNames)('label-field');
 exports.bem = bem;
-var FILLED = 'filled';
-var OUTLINED = 'outlined';
 
 var computeTrailingIcon = function computeTrailingIcon(trailingIcon, error, warning, valid) {
   switch (true) {
@@ -42,7 +42,7 @@ var computeTrailingIcon = function computeTrailingIcon(trailingIcon, error, warn
   }
 };
 
-var Field = function Field(_ref) {
+var LabelField = function LabelField(_ref) {
   var variant = _ref.variant,
       dense = _ref.dense,
       label = _ref.label,
@@ -56,9 +56,10 @@ var Field = function Field(_ref) {
       children = _ref.children,
       multiline = _ref.multiline,
       block = _ref.block,
-      required = _ref.required;
+      required = _ref.required,
+      helpText = _ref.helpText;
   var computedTrailingIcon = computeTrailingIcon(trailingIcon, error, warning, valid);
-  var focusIndicator = variant === OUTLINED ? 'notched-outline' : 'bottom-line';
+  var focusIndicator = variant === 'outlined' ? 'notched-outline' : 'bottom-line';
   var wrapperClassName = bem.b(variant, {
     'with-value': value !== '',
     'with-trailing-icon': computedTrailingIcon,
@@ -71,7 +72,15 @@ var Field = function Field(_ref) {
     disabled: disabled,
     multiline: multiline
   });
-  return _react.default.createElement("label", {
+  return _react.default.createElement(_Field.default, {
+    valid: valid,
+    warning: warning,
+    disabled: disabled,
+    error: error,
+    dense: dense,
+    block: block,
+    helpText: helpText
+  }, _react.default.createElement("label", {
     className: wrapperClassName
   }, children, _react.default.createElement("span", {
     className: bem.e(focusIndicator)
@@ -82,15 +91,15 @@ var Field = function Field(_ref) {
     name: computedTrailingIcon,
     className: bem.e('icon', 'trailing')
   }), _react.default.createElement("span", {
-    className: bem.e('floating-label')
-  }, (0, _utils.getRequiredText)(label, required)));
+    className: bem.e('floating')
+  }, (0, _utils.getRequiredText)(label, required))));
 };
 
-exports.Field = Field;
-Field.defaultProps = {
+exports.LabelField = LabelField;
+LabelField.defaultProps = {
   value: '',
   dense: false,
-  variant: FILLED
+  variant: 'filled'
 };
-var _default = Field;
+var _default = LabelField;
 exports.default = _default;

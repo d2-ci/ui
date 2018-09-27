@@ -23,9 +23,9 @@ function Paper(_ref) {
   var elevation = _ref.elevation,
       children = _ref.children,
       className = _ref.className;
-  var elevationClass = bem.b("elevation-".concat(elevation));
+  var bemClass = bem.b("elevation-".concat(elevation));
   return _react.default.createElement("div", {
-    className: "".concat(elevationClass, " ").concat(className)
+    className: "".concat(bemClass, " ").concat(className)
   }, children);
 }
 
