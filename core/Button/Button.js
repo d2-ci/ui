@@ -11,13 +11,9 @@ require("core-js/modules/es6.object.assign");
 
 var _react = _interopRequireDefault(require("react"));
 
-var VARIANTS = _interopRequireWildcard(require("./variants"));
-
 var _utils = require("../../utils");
 
 require("./styles.css");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,9 +30,9 @@ var Button = function Button(_ref) {
       size = _ref.size,
       title = _ref.title,
       type = _ref.type,
-      variant = _ref.variant;
+      kind = _ref.kind;
   return _react.default.createElement("button", _extends({
-    className: "".concat(bem.b(variant, size), " d2ui-align-icon")
+    className: "".concat(bem.b(kind, size), " d2ui-align-icon")
   }, {
     disabled: disabled,
     onClick: onClick,
@@ -51,7 +47,7 @@ exports.Button = Button;
 Button.defaultProps = {
   type: 'button',
   size: 'medium',
-  variant: VARIANTS.RAISED
+  kind: 'raised'
 };
 var _default = Button;
 exports.default = _default;

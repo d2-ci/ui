@@ -5,7 +5,8 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.UI = void 0;
+exports.UI = UI;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -24,15 +25,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // loaded for selective imports which might not import the root index
 var bem = (0, _utils.bemClassNames)('app');
 
-var UI = function UI(_ref) {
+function UI(_ref) {
   var theme = _ref.theme,
       children = _ref.children;
   return _react.default.createElement("div", {
     className: bem.b(theme)
   }, children);
-};
+}
 
-exports.UI = UI;
 UI.defaultProps = {
   theme: 'default'
 };

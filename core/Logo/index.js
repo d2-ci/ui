@@ -12,54 +12,48 @@ var _react = _interopRequireDefault(require("react"));
 
 var _utils = require("../../utils");
 
-var _dhis2_icon_rgb_negative = _interopRequireDefault(require("./svg/dhis2_icon_rgb_negative.svg"));
-
-var _dhis2_icon_rgb_positive = _interopRequireDefault(require("./svg/dhis2_icon_rgb_positive.svg"));
-
-var _dhis2_logo_rgb_negative = _interopRequireDefault(require("./svg/dhis2_logo_rgb_negative.svg"));
-
-var _dhis2_logo_rgb_positive = _interopRequireDefault(require("./svg/dhis2_logo_rgb_positive.svg"));
-
 require("./styles.css");
+
+var _iconBlue = _interopRequireDefault(require("./svg/icon-blue.svg"));
+
+var _iconWhite = _interopRequireDefault(require("./svg/icon-white.svg"));
+
+var _logoBlue = _interopRequireDefault(require("./svg/logo-blue.svg"));
+
+var _logoWhite = _interopRequireDefault(require("./svg/logo-white.svg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
 var bem = (0, _utils.bemClassNames)('logo');
-var imageLookup = {
-  logo: {
-    positive: _dhis2_logo_rgb_positive.default,
-    negative: _dhis2_logo_rgb_negative.default
-  },
-  icon: {
-    positive: _dhis2_icon_rgb_positive.default,
-    negative: _dhis2_icon_rgb_negative.default
-  }
+var images = {
+  'icon-blue': _iconBlue.default,
+  'icon-white': _iconWhite.default,
+  'logo-blue': _logoBlue.default,
+  'logo-white': _logoWhite.default
 };
 
 function Logo(_ref) {
-  var reverse = _ref.reverse,
-      icon = _ref.icon,
+  var type = _ref.type,
+      color = _ref.color,
       width = _ref.width,
-      altText = _ref.altText;
-  var version = icon ? 'icon' : 'logo';
-  var variant = reverse ? 'negative' : 'positive';
-  var src = imageLookup[version][variant];
+      alt = _ref.alt;
+  var src = images["".concat(type, "-").concat(color)];
   var style = width ? {
     width: width
   } : null;
   return _react.default.createElement("img", {
-    alt: altText,
+    alt: alt,
     src: src,
-    className: bem.b(version),
+    className: bem.b(type),
     style: style
   });
 }
 
 Logo.defaultProps = {
-  reverse: false,
-  icon: false,
-  altText: 'DHIS2 Logo'
+  type: 'icon',
+  color: 'blue',
+  alt: 'DHIS2 logo'
 };
 var _default = Logo;
 exports.default = _default;

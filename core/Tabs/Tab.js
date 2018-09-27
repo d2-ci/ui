@@ -46,8 +46,7 @@ exports.Tab = Tab;
 Tab.defaultProps = {
   active: false,
   disabled: false,
-  stacked: false,
-  onClick: _utils.noop
+  stacked: false
 };
 var _default = Tab;
 exports.default = _default;

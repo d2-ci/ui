@@ -5,7 +5,8 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Paper = void 0;
+exports.Paper = Paper;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -18,21 +19,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /** @format */
 var bem = (0, _utils.bemClassNames)('paper');
 
-var Paper = function Paper(_ref) {
+function Paper(_ref) {
   var elevation = _ref.elevation,
       children = _ref.children,
-      padded = _ref.padded;
+      width = _ref.width,
+      height = _ref.height,
+      padding = _ref.padding;
+  var style = {
+    width: width,
+    height: height,
+    padding: padding
+  };
   return _react.default.createElement("div", {
-    className: bem.b("elevation-".concat(elevation, "dp"), {
-      padded: padded
-    })
+    className: bem.b("elevation-".concat(elevation)),
+    style: style
   }, children);
-};
+}
 
-exports.Paper = Paper;
 Paper.defaultProps = {
   elevation: 1,
-  padded: false
+  padding: '0',
+  width: 'auto',
+  height: 'auto'
 };
 var _default = Paper;
 exports.default = _default;

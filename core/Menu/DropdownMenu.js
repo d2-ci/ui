@@ -15,19 +15,15 @@ require("core-js/modules/es6.object.create");
 
 require("core-js/modules/es6.object.set-prototype-of");
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
 var _Button = require("../Button");
-
-var _variants = require("../Button/variants");
 
 var _PopoverMenu = _interopRequireDefault(require("./PopoverMenu"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -49,69 +45,74 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var anchorPosition = {
+  vertical: 'bottom',
+  horizontal: 'right'
+};
+var popoverPosition = {
+  vertical: 'top',
+  horizontal: 'right'
+};
+
 var DropdownMenu =
 /*#__PURE__*/
-function (_Component) {
-  _inherits(DropdownMenu, _Component);
+function (_React$Component) {
+  _inherits(DropdownMenu, _React$Component);
 
-  function DropdownMenu(props) {
+  function DropdownMenu() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, DropdownMenu);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownMenu).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openPopover", function () {
-      _this.setState({
-        popoverOpen: true
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropdownMenu)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      open: false
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openMenu", function () {
+      return _this.setState({
+        open: true
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closePopover", function () {
-      _this.setState({
-        popoverOpen: false
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeMenu", function () {
+      return _this.setState({
+        open: false
       });
     });
 
-    _this.state = {
-      popoverOpen: false
-    };
     return _this;
   }
 
   _createClass(DropdownMenu, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          buttonVariant = _this$props.buttonVariant,
-          getAnchorRef = _this$props.getAnchorRef,
-          menuProps = _this$props.menuProps;
-      var popoverOpen = this.state.popoverOpen;
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Button.Button, {
-        variant: buttonVariant,
-        onClick: this.openPopover
+        kind: this.props.buttonKind,
+        onClick: this.openMenu
       }, _react.default.createElement(_Icon.default, {
         name: "keyboard_arrow_down"
       })), _react.default.createElement(_PopoverMenu.default, {
-        menuProps: menuProps,
-        getAnchorRef: getAnchorRef,
-        open: popoverOpen,
-        closePopover: this.closePopover,
-        anchorAttachPoint: {
-          vertical: 'bottom',
-          horizontal: 'right'
-        },
-        popoverAttachPoint: {
-          vertical: 'top',
-          horizontal: 'right'
-        },
-        appearAnimation: "slide-down"
+        menuProps: this.props.menuProps,
+        getAnchorRef: this.props.getAnchorRef,
+        open: this.state.open,
+        closePopover: this.closeMenu,
+        animation: "slide-down",
+        anchorPosition: anchorPosition,
+        popoverPosition: popoverPosition
       }));
     }
   }]);
 
   return DropdownMenu;
-}(_react.Component);
+}(_react.default.Component);
 
 exports.DropdownMenu = DropdownMenu;
 var _default = DropdownMenu;

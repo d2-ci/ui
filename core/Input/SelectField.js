@@ -85,29 +85,39 @@ var SelectField =
 function (_Component) {
   _inherits(SelectField, _Component);
 
-  function SelectField(props) {
+  function SelectField() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, SelectField);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SelectField).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openDropdown", function () {
-      _this.setState({
-        dropdownOpen: true
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SelectField)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      open: false
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "inputRef", null);
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "isEmptyOptionSelected", false);
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onOpen", function () {
+      return _this.setState({
+        open: true
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeDropdown", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClose", function () {
       _this.setState({
-        dropdownOpen: false
+        open: false
       });
 
       _this.inputRef.focus();
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setInputRef", function (node) {
-      _this.inputRef = node;
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getInputRef", function () {
@@ -115,7 +125,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "selectHandler", function (event, value) {
-      _this.closeDropdown();
+      _this.onClose();
 
       _this.changeHandler(value);
     });
@@ -127,30 +137,22 @@ function (_Component) {
       _this.changeHandler(value);
     });
 
-    _this.state = {
-      dropdownOpen: false
-    };
-    _this.inputRef = null;
-    _this.isEmptyOptionSelected = false;
     return _this;
   }
 
   _createClass(SelectField, [{
     key: "changeHandler",
     value: function changeHandler(value) {
-      var _this$props = this.props,
-          emptyOption = _this$props.emptyOption,
-          onChange = _this$props.onChange;
-      this.isEmptyOptionSelected = emptyOption && value === null ? true : false;
-      onChange(value);
+      this.isEmptyOptionSelected = this.props.emptyOption && value === null ? true : false;
+      this.props.onChange(value);
     }
   }, {
     key: "getOptions",
     value: function getOptions() {
-      var _this$props2 = this.props,
-          emptyOption = _this$props2.emptyOption,
-          options = _this$props2.options,
-          native = _this$props2.native;
+      var _this$props = this.props,
+          emptyOption = _this$props.emptyOption,
+          options = _this$props.options,
+          native = _this$props.native;
 
       if (!emptyOption) {
         return options;
@@ -168,23 +170,31 @@ function (_Component) {
   }, {
     key: "renderCustomSelect",
     value: function renderCustomSelect(displayValue) {
+      var _this2 = this;
+
       return _react.default.createElement("input", {
         className: inputClassName,
         value: displayValue,
-        onClick: this.openDropdown // input type "button" is focusable, which ensures the correct :focus styles are applied
+        onClick: this.onOpen // input type "button" is focusable, which ensures the correct :focus styles are applied
         // input type "button" does not show a caret when focussed
         ,
         type: "button",
-        ref: this.setInputRef
+        ref: function ref(c) {
+          return _this2.inputRef = c;
+        }
       });
     }
   }, {
     key: "renderNativeSelect",
     value: function renderNativeSelect() {
+      var _this3 = this;
+
       var options = this.getOptions();
       var value = this.props.value || EMPTY_NATIVE_OPTION_VALUE;
       return _react.default.createElement("select", {
-        ref: this.setInputRef,
+        ref: function ref(c) {
+          return _this3.inputRef = c;
+        },
         className: inputClassName,
         onChange: this.nativeSelectHandler,
         value: value
@@ -200,42 +210,38 @@ function (_Component) {
   }, {
     key: "getLabelOfValue",
     value: function getLabelOfValue() {
-      var _this$props3 = this.props,
-          options = _this$props3.options,
-          value = _this$props3.value,
-          emptyOption = _this$props3.emptyOption;
-      var selectedOption = options.find(function (option) {
-        return option.value === value;
-      }); // If some valid option is selected always display this
+      var _this4 = this;
 
-      if (selectedOption && selectedOption.label) {
-        return selectedOption.label;
-      } // If the user selected the "None" option, display it
+      var option = this.props.options.find(function (o) {
+        return o.value === _this4.props.value;
+      });
 
+      if (option && option.label) {
+        return option.label;
+      }
 
       if (this.isEmptyOptionSelected) {
-        return emptyOption;
-      } // Otherwise return an empty value so the floating label text shows
-
+        return this.props.emptyOption;
+      }
 
       return '';
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props4 = this.props,
-          label = _this$props4.label,
-          variant = _this$props4.variant,
-          leadingIcon = _this$props4.leadingIcon,
-          helpText = _this$props4.helpText,
-          dense = _this$props4.dense,
-          valid = _this$props4.valid,
-          error = _this$props4.error,
-          warning = _this$props4.warning,
-          native = _this$props4.native,
-          disabled = _this$props4.disabled,
-          required = _this$props4.required,
-          block = _this$props4.block;
+      var _this$props2 = this.props,
+          label = _this$props2.label,
+          variant = _this$props2.variant,
+          leadingIcon = _this$props2.leadingIcon,
+          helpText = _this$props2.helpText,
+          dense = _this$props2.dense,
+          valid = _this$props2.valid,
+          error = _this$props2.error,
+          warning = _this$props2.warning,
+          native = _this$props2.native,
+          disabled = _this$props2.disabled,
+          required = _this$props2.required,
+          block = _this$props2.block;
       var displayValue = this.getLabelOfValue();
       var inputComponent = native ? this.renderNativeSelect() : this.renderCustomSelect(displayValue);
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_FieldWrap.default, {
@@ -269,17 +275,17 @@ function (_Component) {
           selectHandler: this.selectHandler
         },
         getAnchorRef: this.getInputRef,
-        open: this.state.dropdownOpen,
-        closePopover: this.closeDropdown,
-        anchorAttachPoint: {
+        open: this.state.open,
+        closePopover: this.onClose,
+        anchorPosition: {
           vertical: 'top',
           horizontal: 'center'
         },
-        popoverAttachPoint: {
+        popoverPosition: {
           vertical: 'top',
           horizontal: 'center'
         },
-        appearAnimation: "slide-down"
+        animation: "slide-down"
       }));
     }
   }]);
