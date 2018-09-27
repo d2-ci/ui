@@ -3,27 +3,31 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.withAnimatedClose = withAnimatedClose;
+exports.default = exports.MenuItem = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
 require("core-js/modules/es6.symbol");
 
-require("core-js/modules/es6.object.assign");
+require("core-js/modules/es6.object.define-property");
 
 require("core-js/modules/es6.object.create");
 
 require("core-js/modules/es6.object.set-prototype-of");
 
-require("core-js/modules/es6.object.define-property");
-
 var _react = _interopRequireWildcard(require("react"));
+
+var _utils = require("../../utils");
+
+var _SubMenu = _interopRequireDefault(require("./SubMenu"));
+
+var _Icon = _interopRequireDefault(require("../Icon"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -43,72 +47,73 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/**
- * This HOC adds a "isAnimatingOut" (bool) and "onAnimationEnd" (fn) property
- * to a wrapped component. The "isAnimatingOut" can be used to add a CSS class
- * based keyframe animation to hide a component before it is removed from the DOM.
- * This HOC makes quite a few assumptions about the wrapped component, so won't be
- * suitable for any given situation:
- * 1. It has an "open" property which is used to toggle visiblity.
- * 2. It renders content if `open || isAnimatingOut` is true
- * 3. It adds some CSS class to an element if isAnimatingOut is true.
- * 4. This CSS class has a keyframe animation attached to it
- * 5. The animated element to wait for has an "onAnimationEnd" property with the
- *    callback from the HOC
- */
-function withAnimatedClose(WrappedComponent) {
-  return (
-    /*#__PURE__*/
-    function (_Component) {
-      _inherits(AnimatedClose, _Component);
+var bem = (0, _utils.bemClassNames)('menu-item');
 
-      function AnimatedClose(props) {
-        var _this;
+var MenuItem =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(MenuItem, _Component);
 
-        _classCallCheck(this, AnimatedClose);
+  function MenuItem() {
+    var _getPrototypeOf2;
 
-        _this = _possibleConstructorReturn(this, _getPrototypeOf(AnimatedClose).call(this, props));
+    var _this;
 
-        _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAnimationEnd", function () {
-          _this.setState({
-            isAnimatingOut: false
-          });
+    _classCallCheck(this, MenuItem);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(MenuItem)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "selectHandler", function (event) {
+      var _this$props = _this.props,
+          value = _this$props.value,
+          onClick = _this$props.onClick,
+          selectHandler = _this$props.selectHandler,
+          closePopover = _this$props.closePopover;
+      var handler = onClick || selectHandler;
+      handler(event, value, _this.props);
+      closePopover && closePopover();
+    });
+
+    return _this;
+  }
+
+  _createClass(MenuItem, [{
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          children = _this$props2.children,
+          disabled = _this$props2.disabled,
+          menuItems = _this$props2.menuItems,
+          label = _this$props2.label,
+          icon = _this$props2.icon;
+
+      if (menuItems) {
+        return _react.default.createElement(_SubMenu.default, {
+          children: children,
+          label: label,
+          icon: icon,
+          menuItems: menuItems
         });
-
-        _this.state = {
-          isAnimatingOut: false
-        };
-        return _this;
       }
 
-      _createClass(AnimatedClose, [{
-        key: "shouldComponentUpdate",
-        value: function shouldComponentUpdate(nextProps) {
-          if (!nextProps.open && this.props.open && !this.state.isAnimatingOut) {
-            this.onAnimationStart();
-            return false;
-          }
+      return _react.default.createElement("li", {
+        className: bem.b({
+          disabled: disabled
+        }),
+        onClick: this.selectHandler
+      }, children ? (0, _utils.wrapTextNodesInSpans)(children) : _react.default.createElement(_react.Fragment, null, icon && _react.default.createElement(_Icon.default, {
+        name: icon
+      }), _react.default.createElement("span", null, label)));
+    }
+  }]);
 
-          return true;
-        }
-      }, {
-        key: "onAnimationStart",
-        value: function onAnimationStart() {
-          this.setState({
-            isAnimatingOut: true
-          });
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          return _react.default.createElement(WrappedComponent, _extends({}, this.props, {
-            isAnimatingOut: this.state.isAnimatingOut,
-            onAnimationEnd: this.onAnimationEnd
-          }));
-        }
-      }]);
+  return MenuItem;
+}(_react.Component);
 
-      return AnimatedClose;
-    }(_react.Component)
-  );
-}
+exports.MenuItem = MenuItem;
+var _default = MenuItem;
+exports.default = _default;

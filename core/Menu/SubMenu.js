@@ -3,27 +3,33 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.withAnimatedClose = withAnimatedClose;
+exports.default = exports.SubMenu = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
 require("core-js/modules/es6.symbol");
 
-require("core-js/modules/es6.object.assign");
+require("core-js/modules/es6.object.define-property");
 
 require("core-js/modules/es6.object.create");
 
 require("core-js/modules/es6.object.set-prototype-of");
 
-require("core-js/modules/es6.object.define-property");
-
 var _react = _interopRequireWildcard(require("react"));
+
+var _utils = require("../../utils");
+
+var _PopoverMenu = _interopRequireDefault(require("./PopoverMenu"));
+
+var _MenuItem = _interopRequireDefault(require("./MenuItem"));
+
+var _Icon = _interopRequireDefault(require("../Icon"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -43,72 +49,91 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/**
- * This HOC adds a "isAnimatingOut" (bool) and "onAnimationEnd" (fn) property
- * to a wrapped component. The "isAnimatingOut" can be used to add a CSS class
- * based keyframe animation to hide a component before it is removed from the DOM.
- * This HOC makes quite a few assumptions about the wrapped component, so won't be
- * suitable for any given situation:
- * 1. It has an "open" property which is used to toggle visiblity.
- * 2. It renders content if `open || isAnimatingOut` is true
- * 3. It adds some CSS class to an element if isAnimatingOut is true.
- * 4. This CSS class has a keyframe animation attached to it
- * 5. The animated element to wait for has an "onAnimationEnd" property with the
- *    callback from the HOC
- */
-function withAnimatedClose(WrappedComponent) {
-  return (
-    /*#__PURE__*/
-    function (_Component) {
-      _inherits(AnimatedClose, _Component);
+var anchorPosition = {
+  vertical: 'top',
+  horizontal: 'right'
+};
+var popoverPosition = {
+  vertical: 'top',
+  horizontal: 'left'
+};
 
-      function AnimatedClose(props) {
-        var _this;
+var SubMenu =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(SubMenu, _Component);
 
-        _classCallCheck(this, AnimatedClose);
+  function SubMenu(props) {
+    var _this;
 
-        _this = _possibleConstructorReturn(this, _getPrototypeOf(AnimatedClose).call(this, props));
+    _classCallCheck(this, SubMenu);
 
-        _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAnimationEnd", function () {
-          _this.setState({
-            isAnimatingOut: false
-          });
-        });
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SubMenu).call(this, props));
 
-        _this.state = {
-          isAnimatingOut: false
-        };
-        return _this;
-      }
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openPopover", function () {
+      _this.setState({
+        popoverOpen: true
+      });
+    });
 
-      _createClass(AnimatedClose, [{
-        key: "shouldComponentUpdate",
-        value: function shouldComponentUpdate(nextProps) {
-          if (!nextProps.open && this.props.open && !this.state.isAnimatingOut) {
-            this.onAnimationStart();
-            return false;
-          }
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closePopover", function () {
+      _this.setState({
+        popoverOpen: false
+      });
+    });
 
-          return true;
-        }
-      }, {
-        key: "onAnimationStart",
-        value: function onAnimationStart() {
-          this.setState({
-            isAnimatingOut: true
-          });
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          return _react.default.createElement(WrappedComponent, _extends({}, this.props, {
-            isAnimatingOut: this.state.isAnimatingOut,
-            onAnimationEnd: this.onAnimationEnd
-          }));
-        }
-      }]);
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getAnchorRef", function () {
+      return _this.anchorRef;
+    });
 
-      return AnimatedClose;
-    }(_react.Component)
-  );
-}
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setAnchorRef", function (node) {
+      return _this.anchorRef = node;
+    });
+
+    _this.state = {
+      popoverOpen: false
+    };
+    return _this;
+  }
+
+  _createClass(SubMenu, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          children = _this$props.children,
+          label = _this$props.label,
+          icon = _this$props.icon,
+          menuItems = _this$props.menuItems;
+      var arrowIconName = (0, _utils.isRTL)() ? 'keyboard_arrow_left' : 'keyboard_arrow_right'; // There MUST be a better way of doing this!
+
+      var menuProps = (0, _react.isValidElement)(menuItems[0]) ? {
+        children: menuItems
+      } : {
+        options: menuItems
+      };
+      return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_MenuItem.default, {
+        ref: this.setAnchorRef,
+        onClick: this.openPopover
+      }, children ? children : [icon && _react.default.createElement(_Icon.default, {
+        key: "icon",
+        name: icon
+      }), label], _react.default.createElement(_Icon.default, {
+        name: arrowIconName
+      })), _react.default.createElement(_PopoverMenu.default, {
+        closePopover: this.closePopover,
+        getAnchorRef: this.getAnchorRef,
+        open: this.state.popoverOpen,
+        menuProps: menuProps,
+        anchorPosition: anchorPosition,
+        popoverPosition: popoverPosition,
+        animation: "slide-x-y"
+      }));
+    }
+  }]);
+
+  return SubMenu;
+}(_react.Component);
+
+exports.SubMenu = SubMenu;
+var _default = SubMenu;
+exports.default = _default;

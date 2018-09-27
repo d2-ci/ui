@@ -5,9 +5,9 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = _default;
+exports.getRequiredText = getRequiredText;
 
 /** @format */
-function _default(fn) {
-  setTimeout(fn, 1);
+function getRequiredText(text, required) {
+  return required ? "".concat(text, " *") : text;
 }

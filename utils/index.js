@@ -1,97 +1,99 @@
 "use strict";
 
+require("core-js/modules/es6.array.iterator");
+
+require("core-js/modules/es6.object.keys");
+
+require("core-js/modules/web.dom.iterable");
+
+require("core-js/modules/es6.array.for-each");
+
 require("core-js/modules/es6.object.define-property");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "animatedScrollTo", {
-  enumerable: true,
-  get: function get() {
-    return _animatedScrollTo.default;
-  }
-});
-Object.defineProperty(exports, "appendAsteriskIfRequired", {
-  enumerable: true,
-  get: function get() {
-    return _appendAsteriskIfRequired.default;
-  }
-});
-Object.defineProperty(exports, "bemClassNames", {
-  enumerable: true,
-  get: function get() {
-    return _bemClassNames.default;
-  }
-});
-Object.defineProperty(exports, "defer", {
-  enumerable: true,
-  get: function get() {
-    return _defer.default;
-  }
-});
-Object.defineProperty(exports, "easings", {
-  enumerable: true,
-  get: function get() {
-    return _easings.default;
-  }
-});
-Object.defineProperty(exports, "isRtl", {
-  enumerable: true,
-  get: function get() {
-    return _isRtl.default;
-  }
-});
-Object.defineProperty(exports, "noop", {
-  enumerable: true,
-  get: function get() {
-    return _noop.default;
-  }
-});
-Object.defineProperty(exports, "setTextDirection", {
-  enumerable: true,
-  get: function get() {
-    return _setTextDirection.default;
-  }
-});
-Object.defineProperty(exports, "throttle", {
-  enumerable: true,
-  get: function get() {
-    return _throttle.default;
-  }
-});
-Object.defineProperty(exports, "withAnimatedClose", {
-  enumerable: true,
-  get: function get() {
-    return _withAnimatedCloseHOC.default;
-  }
-});
-Object.defineProperty(exports, "wrapTextNodesInSpans", {
-  enumerable: true,
-  get: function get() {
-    return _wrapTextNodesInSpans.default;
-  }
+
+var _html = require("./html");
+
+Object.keys(_html).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _html[key];
+    }
+  });
 });
 
-var _animatedScrollTo = _interopRequireDefault(require("./animatedScrollTo"));
+var _css = require("./css");
 
-var _appendAsteriskIfRequired = _interopRequireDefault(require("./appendAsteriskIfRequired"));
+Object.keys(_css).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _css[key];
+    }
+  });
+});
 
-var _bemClassNames = _interopRequireDefault(require("./bemClassNames"));
+var _rtl = require("./rtl");
 
-var _defer = _interopRequireDefault(require("./defer"));
+Object.keys(_rtl).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _rtl[key];
+    }
+  });
+});
 
-var _easings = _interopRequireDefault(require("./easings"));
+var _text = require("./text");
 
-var _isRtl = _interopRequireDefault(require("./isRtl"));
+Object.keys(_text).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _text[key];
+    }
+  });
+});
 
-var _noop = _interopRequireDefault(require("./noop"));
+var _animations = require("./animations");
 
-var _setTextDirection = _interopRequireDefault(require("./setTextDirection"));
+Object.keys(_animations).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _animations[key];
+    }
+  });
+});
 
-var _throttle = _interopRequireDefault(require("./throttle"));
+var _timings = require("./timings");
 
-var _withAnimatedCloseHOC = _interopRequireDefault(require("./withAnimatedCloseHOC"));
+Object.keys(_timings).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _timings[key];
+    }
+  });
+});
 
-var _wrapTextNodesInSpans = _interopRequireDefault(require("./wrapTextNodesInSpans"));
+var _withAnimatedCloseHOC = require("./withAnimatedCloseHOC");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+Object.keys(_withAnimatedCloseHOC).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _withAnimatedCloseHOC[key];
+    }
+  });
+});
