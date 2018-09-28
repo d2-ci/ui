@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = _default;
+exports.setTextDirection = setTextDirection;
 exports.isRTL = isRTL;
 exports.RTL_LANGUAGES = void 0;
 
@@ -24,7 +24,7 @@ require("core-js/modules/es6.regexp.split");
  * @example
  * @param {Object} userSettings - The userSettings available in on the d2 object (d2.currentUser.userSettings.settings) or returned from the from the `getUserSettings` function exposed by d2
  */
-function _default(userSettings) {
+function setTextDirection(userSettings) {
   // Will produce "en" from "en_EN" as well as "en"
   var uiLanguage = userSettings.keyUiLocale.split('_')[0];
   var dir = RTL_LANGUAGES.includes(uiLanguage) ? 'rtl' : 'ltr';

@@ -38,7 +38,12 @@ function animations(_ref) {
   var scrollHandler = getScrollHandler(scrollBox, direction, isWindowScroll);
   var startValue = getStartValue(scrollBox, direction, isWindowScroll);
   var endValue = getEndValue(to, direction, scrollBox, offset, isWindowScroll, startValue);
-  var change = endValue - startValue;
+  var change = endValue - startValue; // Just scroll into place if duration is 0
+
+  if (duration === 0) {
+    scrollHandler(endValue);
+  }
+
   var startTimestamp, elapsedTime, scrollValue;
 
   function step(timestamp) {

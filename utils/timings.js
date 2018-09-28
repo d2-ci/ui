@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.throttle = throttle;
+exports.defer = defer;
 
 require("core-js/modules/es6.date.now");
 
@@ -32,4 +33,8 @@ function throttle(fn) {
       fn.apply(context, args);
     }
   };
+}
+
+function defer(fn) {
+  setTimeout(fn, 1);
 }
