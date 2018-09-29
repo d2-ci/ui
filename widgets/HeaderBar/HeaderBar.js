@@ -31,6 +31,7 @@ function HeaderBar(_ref) {
   var type = _ref.type,
       title = _ref.title,
       selection = _ref.selection,
+      apps = _ref.apps,
       profile = _ref.profile;
   return _react.default.createElement("header", {
     className: bem.b(type)
@@ -54,7 +55,9 @@ function HeaderBar(_ref) {
   }), _react.default.createElement(_NotificationIcon.default, {
     icon: "email",
     count: 4
-  }), _react.default.createElement(_Apps.default, null), _react.default.createElement(_Profile.default, {
+  }), _react.default.createElement(_Apps.default, {
+    apps: apps
+  }), _react.default.createElement(_Profile.default, {
     profile: profile
   })));
 }

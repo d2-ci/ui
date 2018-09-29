@@ -15,7 +15,15 @@ require("core-js/modules/es6.object.create");
 
 require("core-js/modules/es6.object.set-prototype-of");
 
+require("core-js/modules/es7.array.includes");
+
+require("core-js/modules/es6.string.includes");
+
+require("core-js/modules/es6.array.map");
+
 require("core-js/modules/es6.array.filter");
+
+require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -61,13 +69,48 @@ function Search(_ref) {
   }));
 }
 
-function isPointInRect(_ref2, _ref3) {
-  var x = _ref2.x,
-      y = _ref2.y;
-  var left = _ref3.left,
-      right = _ref3.right,
-      top = _ref3.top,
-      bottom = _ref3.bottom;
+function Item(_ref2) {
+  var name = _ref2.name,
+      path = _ref2.path,
+      img = _ref2.img;
+  return _react.default.createElement("a", {
+    href: path,
+    className: "app"
+  }, _react.default.createElement("img", {
+    src: img
+  }), _react.default.createElement("div", {
+    className: "name"
+  }, name));
+}
+
+function List(_ref3) {
+  var apps = _ref3.apps,
+      filter = _ref3.filter;
+  return _react.default.createElement("div", {
+    className: "apps"
+  }, apps.filter(function (_ref4) {
+    var name = _ref4.name;
+    return filter.length > 0 ? name.toLowerCase().includes(filter.toLowerCase()) : true;
+  }).map(function (_ref5) {
+    var name = _ref5.name,
+        path = _ref5.path,
+        img = _ref5.img;
+    return _react.default.createElement(Item, {
+      key: "app-".concat(name),
+      name: name,
+      path: path,
+      img: img
+    });
+  }));
+}
+
+function isPointInRect(_ref6, _ref7) {
+  var x = _ref6.x,
+      y = _ref6.y;
+  var left = _ref7.left,
+      right = _ref7.right,
+      top = _ref7.top,
+      bottom = _ref7.bottom;
   return x >= left && x <= right && y >= top && y <= bottom;
 }
 
@@ -90,7 +133,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Apps)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      show: true,
+      show: false,
       filter: ''
     });
 
@@ -162,6 +205,9 @@ function (_React$Component) {
       }, _react.default.createElement(Search, {
         value: this.state.filter,
         onChange: this.onChange
+      }), _react.default.createElement(List, {
+        apps: this.props.apps,
+        filter: this.state.filter
       }))));
     }
   }]);
