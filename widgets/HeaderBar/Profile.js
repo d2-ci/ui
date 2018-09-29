@@ -72,9 +72,7 @@ function Header(_ref3) {
 }
 
 function Menu() {
-  return _react.default.createElement("div", {
-    className: "menu"
-  }, _react.default.createElement(Item, {
+  return _react.default.createElement("nav", null, _react.default.createElement(Item, {
     name: "settings",
     label: "Settings"
   }), _react.default.createElement(Item, {

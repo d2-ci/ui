@@ -32,7 +32,7 @@ function HeaderBar(_ref) {
       title = _ref.title,
       selection = _ref.selection,
       profile = _ref.profile;
-  return _react.default.createElement("div", {
+  return _react.default.createElement("header", {
     className: bem.b(type)
   }, _react.default.createElement("div", {
     className: "left"

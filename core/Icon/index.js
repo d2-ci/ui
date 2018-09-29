@@ -22,13 +22,17 @@ function Icon(_ref) {
       className = _ref.className,
       onClick = _ref.onClick;
   return _react.default.createElement("i", {
-    className: "material-icons ".concat(className),
+    className: "material-icons ".concat(name, " ").concat(className),
     onClick: onClick
   }, name);
 }
 
 Icon.defaultProps = {
-  className: ''
+  name: '',
+  className: '',
+  onClick: function onClick() {
+    return null;
+  }
 };
 var _default = Icon;
 exports.default = _default;

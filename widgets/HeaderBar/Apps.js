@@ -15,11 +15,15 @@ require("core-js/modules/es6.object.create");
 
 require("core-js/modules/es6.object.set-prototype-of");
 
+require("core-js/modules/es6.array.filter");
+
 var _react = _interopRequireDefault(require("react"));
 
 var _Paper = _interopRequireDefault(require("../../core/Paper"));
 
 var _Icon = _interopRequireDefault(require("../../core/Icon"));
+
+var _TextField = _interopRequireDefault(require("../../core/Input/TextField"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43,13 +47,27 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function isPointInRect(_ref, _ref2) {
-  var x = _ref.x,
-      y = _ref.y;
-  var left = _ref2.left,
-      right = _ref2.right,
-      top = _ref2.top,
-      bottom = _ref2.bottom;
+function Search(_ref) {
+  var value = _ref.value,
+      onChange = _ref.onChange;
+  return _react.default.createElement("div", {
+    className: "search"
+  }, _react.default.createElement(_TextField.default, {
+    label: "Search apps",
+    value: value,
+    onChange: onChange
+  }), _react.default.createElement(_Icon.default, {
+    name: "settings"
+  }));
+}
+
+function isPointInRect(_ref2, _ref3) {
+  var x = _ref2.x,
+      y = _ref2.y;
+  var left = _ref3.left,
+      right = _ref3.right,
+      top = _ref3.top,
+      bottom = _ref3.bottom;
   return x >= left && x <= right && y >= top && y <= bottom;
 }
 
@@ -72,7 +90,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Apps)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      show: false
+      show: true,
+      filter: ''
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
@@ -97,6 +116,12 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
       return _this.setState({
         show: !_this.state.show
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
+      return _this.setState({
+        filter: evt.target.value
       });
     });
 
@@ -131,7 +156,13 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this2.elApps = c;
         }
-      }, _react.default.createElement(_Paper.default, null, "apps list")));
+      }, _react.default.createElement(_Paper.default, {
+        width: "416px",
+        height: "301px"
+      }, _react.default.createElement(Search, {
+        value: this.state.filter,
+        onChange: this.onChange
+      }))));
     }
   }]);
 
