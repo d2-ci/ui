@@ -26,7 +26,7 @@ function Paper(_ref) {
       children = _ref.children,
       className = _ref.className;
   var ele = "elevation-".concat(elevation);
-  var classes = "".concat(myst('d2ui-paper'), " ").concat(myst(ele), " ").concat(myst('defaults'));
+  var classes = "".concat(myst(ele), " ").concat(myst('defaults'));
   return _react.default.createElement("div", {
     className: classes
   }, children);

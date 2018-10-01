@@ -47,7 +47,7 @@ function Logo(_ref) {
   return _react.default.createElement("img", {
     alt: alt,
     src: src,
-    className: "".concat(myst('d2ui-logo'), " ").concat(myst(type)),
+    className: "".concat(myst(type)),
     style: style
   });
 }
