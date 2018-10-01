@@ -32,7 +32,9 @@ function HeaderBar(_ref) {
       title = _ref.title,
       selection = _ref.selection,
       apps = _ref.apps,
-      profile = _ref.profile;
+      profile = _ref.profile,
+      messages = _ref.messages,
+      interpretations = _ref.interpretations;
   return _react.default.createElement("header", {
     className: bem.b(type)
   }, _react.default.createElement("div", {
@@ -51,10 +53,10 @@ function HeaderBar(_ref) {
     className: "right"
   }, _react.default.createElement(_NotificationIcon.default, {
     icon: "message",
-    count: 8
+    count: interpretations.count
   }), _react.default.createElement(_NotificationIcon.default, {
     icon: "email",
-    count: 4
+    count: messages.count
   }), _react.default.createElement(_Apps.default, {
     apps: apps
   }), _react.default.createElement(_Profile.default, {
