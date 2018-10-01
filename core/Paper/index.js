@@ -22,25 +22,16 @@ var bem = (0, _utils.bemClassNames)('paper');
 function Paper(_ref) {
   var elevation = _ref.elevation,
       children = _ref.children,
-      width = _ref.width,
-      height = _ref.height,
-      padding = _ref.padding;
-  var style = {
-    width: width,
-    height: height,
-    padding: padding
-  };
+      className = _ref.className;
+  var bemClass = bem.b("elevation-".concat(elevation));
   return _react.default.createElement("div", {
-    className: bem.b("elevation-".concat(elevation)),
-    style: style
+    className: "".concat(bemClass, " ").concat(className)
   }, children);
 }
 
 Paper.defaultProps = {
   elevation: 1,
-  padding: '0',
-  width: 'auto',
-  height: 'auto'
+  className: 'd2ui-paper-defaults'
 };
 var _default = Paper;
 exports.default = _default;
