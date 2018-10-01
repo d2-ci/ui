@@ -91,12 +91,12 @@ function List(_ref3) {
   }, apps.filter(function (_ref4) {
     var name = _ref4.name;
     return filter.length > 0 ? name.toLowerCase().includes(filter.toLowerCase()) : true;
-  }).map(function (_ref5) {
+  }).map(function (_ref5, idx) {
     var name = _ref5.name,
         path = _ref5.path,
         img = _ref5.img;
     return _react.default.createElement(Item, {
-      key: "app-".concat(name),
+      key: "app-".concat(name, "-").concat(idx),
       name: name,
       path: path,
       img: img

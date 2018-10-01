@@ -58,6 +58,10 @@
             margin: 8px 24px 0 0;
         }
 
+.d2ui-headerbar > .right > .notification.message {
+                margin-top: 10px;
+            }
+
 .d2ui-headerbar > .right > .notification.email {
                 margin-right: 0;
             }
@@ -159,7 +163,7 @@
                             flex-direction: column;
                             justify-content: center;
                             align-items: center;
-                            width: 100px;
+                            width: calc(100% / 4);
                             height: 100px;
                             border-radius: 12px;
                             text-decoration: none;
