@@ -147,7 +147,7 @@ function (_React$Component) {
       var _fetch = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee2() {
-        var _ref, systemName, _ref2, modules, apps, i18n, _ref3, unreadInterpretations, unreadMessageConversations;
+        var _ref, systemName, _ref2, modules, apps, i18n, _ref3, unreadInterpretations, unreadMessageConversations, me;
 
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
@@ -174,7 +174,8 @@ function (_React$Component) {
                 modules = _ref2.modules;
                 apps = modules.filter(function (m) {
                   return typeof m.displayName !== 'undefined';
-                });
+                }); // Translations for module names
+
                 _context2.next = 12;
                 return (0, _utils.post)('i18n', JSON.stringify(apps.map(function (a) {
                   return a.name;
@@ -193,8 +194,13 @@ function (_React$Component) {
                 _ref3 = _context2.sent;
                 unreadInterpretations = _ref3.unreadInterpretations;
                 unreadMessageConversations = _ref3.unreadMessageConversations;
-                // const res = await get('me').then(r => r.json())
-                // console.log('res', res)
+                _context2.next = 20;
+                return (0, _utils.get)('me.json').then(function (r) {
+                  return r.json();
+                });
+
+              case 20:
+                me = _context2.sent;
                 this.setState({
                   title: systemName,
                   messages: {
@@ -209,22 +215,25 @@ function (_React$Component) {
                       path: appPath(a.defaultAction),
                       img: appIconPath(a.icon)
                     };
-                  })
+                  }),
+                  profile: {
+                    name: me.name,
+                    email: me.email
+                  }
                 });
-                _context2.next = 24;
+                _context2.next = 26;
                 break;
 
-              case 21:
-                _context2.prev = 21;
-                _context2.t0 = _context2["catch"](0);
-                console.error('HeaderBar(fetch)', _context2.t0);
-
               case 24:
+                _context2.prev = 24;
+                _context2.t0 = _context2["catch"](0);
+
+              case 26:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 21]]);
+        }, _callee2, this, [[0, 24]]);
       }));
 
       return function fetch() {
