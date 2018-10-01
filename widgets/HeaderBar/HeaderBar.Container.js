@@ -147,7 +147,7 @@ function (_React$Component) {
       var _fetch = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee2() {
-        var _ref, systemName, _ref2, modules, apps, i18n;
+        var _ref, systemName, _ref2, modules, apps, i18n, _ref3, unreadInterpretations, unreadMessageConversations;
 
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
@@ -177,42 +177,54 @@ function (_React$Component) {
                 });
                 _context2.next = 12;
                 return (0, _utils.post)('i18n', JSON.stringify(apps.map(function (a) {
-                  return a.displayName || a.name;
+                  return a.name;
                 }))).then(function (r) {
                   return r.json();
                 });
 
               case 12:
                 i18n = _context2.sent;
-                // const params =
-                //     ':all,organisationUnits[id],userGroups[id],userCredentials[:all,!user,userRoles[id]'
-                // const res = await get(`me?fields=${encodeURI(params)}`).then(r =>
-                //     r.json()
-                // )
+                _context2.next = 15;
+                return (0, _utils.get)('me/dashboard').then(function (r) {
+                  return r.json();
+                });
+
+              case 15:
+                _ref3 = _context2.sent;
+                unreadInterpretations = _ref3.unreadInterpretations;
+                unreadMessageConversations = _ref3.unreadMessageConversations;
+                // const res = await get('me').then(r => r.json())
+                // console.log('res', res)
                 this.setState({
                   title: systemName,
+                  messages: {
+                    count: unreadMessageConversations
+                  },
+                  interpretations: {
+                    count: unreadInterpretations
+                  },
                   apps: apps.map(function (a) {
                     return {
-                      name: i18n[a.displayName || a.name],
+                      name: i18n[a.name] || a.name,
                       path: appPath(a.defaultAction),
                       img: appIconPath(a.icon)
                     };
                   })
                 });
-                _context2.next = 19;
+                _context2.next = 24;
                 break;
 
-              case 16:
-                _context2.prev = 16;
+              case 21:
+                _context2.prev = 21;
                 _context2.t0 = _context2["catch"](0);
                 console.error('HeaderBar(fetch)', _context2.t0);
 
-              case 19:
+              case 24:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 16]]);
+        }, _callee2, this, [[0, 21]]);
       }));
 
       return function fetch() {
