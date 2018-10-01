@@ -1,0 +1,36 @@
+/** @format */
+
+.d2ui-radio-button-group {
+    border: 1px solid transparent;
+    transition: border-color 180ms cubic-bezier(0.4, 0, 0.6, 1);
+    border-radius: 0.3125rem;
+    display: inline-flex;
+    width: auto;
+    align-self: flex-start;
+}
+
+.d2ui-radio-button-group--stacked {
+        flex-direction: column;
+        padding: 0.2rem 1rem 0.2rem 0.2rem;
+        min-width: 9.375rem;
+    }
+
+.d2ui-radio-button-group--stacked .d2ui-field-wrap--full-width {
+            margin: 0 !important;
+        }
+
+.d2ui-radio-button-group--stacked .d2ui-field-wrap--full-width .d2ui-toggle-field {
+                padding: 0;
+            }
+
+.d2ui-radio-button-group--valid {
+        border: 1px solid #1976d2;
+    }
+
+.d2ui-radio-button-group--warning {
+        border: 1px solid #f19c02;
+    }
+
+.d2ui-radio-button-group--error {
+        border: 1px solid #e53935;
+    }
