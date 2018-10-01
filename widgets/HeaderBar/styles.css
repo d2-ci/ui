@@ -273,6 +273,7 @@
                             cursor: pointer;
                             font-size: 12px;
                             text-decoration: underline;
+                            color: rgba(0, 0, 0, 0.87);
                         }
 
 .d2ui-headerbar > .right > .profile .contents .divider {

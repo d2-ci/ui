@@ -221,14 +221,15 @@ function (_React$Component) {
                     email: me.email
                   }
                 });
-                _context2.next = 26;
+                _context2.next = 27;
                 break;
 
               case 24:
                 _context2.prev = 24;
                 _context2.t0 = _context2["catch"](0);
+                console.error('HeaderBar(fetch)', _context2.t0);
 
-              case 26:
+              case 27:
               case "end":
                 return _context2.stop();
             }
@@ -252,6 +253,7 @@ function (_React$Component) {
           apps = _this$state.apps,
           profile = _this$state.profile;
       return _react.default.createElement(_HeaderBar.default, {
+        baseURL: _utils.serverURL,
         type: type,
         title: title,
         selection: selection,

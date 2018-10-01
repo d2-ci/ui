@@ -29,6 +29,7 @@ var bem = (0, _utils.bemClassNames)('headerbar');
 
 function HeaderBar(_ref) {
   var type = _ref.type,
+      baseURL = _ref.baseURL,
       title = _ref.title,
       selection = _ref.selection,
       apps = _ref.apps,
@@ -60,7 +61,8 @@ function HeaderBar(_ref) {
   }), _react.default.createElement(_Apps.default, {
     apps: apps
   }), _react.default.createElement(_Profile.default, {
-    profile: profile
+    profile: profile,
+    baseURL: baseURL
   })));
 }
 

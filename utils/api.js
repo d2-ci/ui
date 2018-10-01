@@ -53,8 +53,7 @@ function getPath() {
 function _config() {
   return {
     method: 'GET',
-    credentials: 'include',
-    headers: {}
+    credentials: 'include'
   };
 }
 

@@ -7,6 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Profile;
 
+require("core-js/modules/es6.array.map");
+
 require("core-js/modules/es6.regexp.split");
 
 require("core-js/modules/es6.array.index-of");
@@ -50,7 +52,7 @@ function Header(_ref3) {
   var name = _ref3.name,
       email = _ref3.email,
       img = _ref3.img,
-      _onClick = _ref3.onClick;
+      baseURL = _ref3.baseURL;
   return _react.default.createElement("div", {
     className: "header"
   }, img ? _react.default.createElement(ImageIcon, {
@@ -63,38 +65,59 @@ function Header(_ref3) {
     className: "name"
   }, name), _react.default.createElement("div", {
     className: "email"
-  }, email), _react.default.createElement("div", {
+  }, email), _react.default.createElement("a", {
     className: "edit_profile",
-    onClick: function onClick() {
-      return _onClick('edit_profile');
-    }
+    href: "".concat(baseURL, "/dhis-web-user-profile/#/profile")
   }, "Edit profile")));
 }
 
-function Menu() {
-  return _react.default.createElement("nav", null, _react.default.createElement(Item, {
-    name: "settings",
-    label: "Settings"
-  }), _react.default.createElement(Item, {
-    name: "account_box",
-    label: "Account"
-  }), _react.default.createElement(Item, {
-    name: "help",
-    label: "Help"
-  }), _react.default.createElement(Item, {
-    name: "exit_to_app",
-    label: "Logout"
+function Menu(_ref4) {
+  var baseURL = _ref4.baseURL;
+  var list = [{
+    name: 'settings',
+    label: 'Settings',
+    onClick: function onClick() {
+      return _onClick(baseURL, 'settings');
+    }
+  }, {
+    name: 'account_box',
+    label: 'Account',
+    onClick: function onClick() {
+      return _onClick(baseURL, 'account');
+    }
+  }, {
+    name: 'help',
+    label: 'Help',
+    onClick: function onClick() {
+      return _onClick(baseURL, 'help');
+    }
+  }, {
+    name: 'exit_to_app',
+    label: 'Logout',
+    onClick: function onClick() {
+      return _onClick(baseURL, 'logout');
+    }
+  }];
+  return _react.default.createElement("nav", null, list.map(function (_ref5) {
+    var name = _ref5.name,
+        label = _ref5.label,
+        onClick = _ref5.onClick;
+    return _react.default.createElement(Item, {
+      key: "profile-mi-".concat(name),
+      name: name,
+      label: label,
+      onClick: onClick
+    });
   }));
 }
 
-function Item(_ref4) {
-  var name = _ref4.name,
-      label = _ref4.label;
+function Item(_ref6) {
+  var name = _ref6.name,
+      label = _ref6.label,
+      onClick = _ref6.onClick;
   return _react.default.createElement("div", {
     className: "item",
-    onClick: function onClick() {
-      return _onClick2(name);
-    }
+    onClick: onClick
   }, _react.default.createElement(_Icon.default, {
     name: name
   }), _react.default.createElement("div", {
@@ -102,15 +125,28 @@ function Item(_ref4) {
   }, label));
 }
 
-function _onClick2(actionType) {
-  console.log('onClick', actionType);
+function _onClick(baseURL, actionType) {
+  var paths = {
+    edit_profile: "".concat(baseURL, "/dhis-web-user-profile/#/profile"),
+    settings: "".concat(baseURL, "/dhis-web-user-profile/#/settings"),
+    account: "".concat(baseURL, "/dhis-web-user-profile/#/account"),
+    help: 'https://docs.dhis2.org/master/en/user/html/dhis2_user_manual_en.html',
+    logout: "".concat(baseURL, "/dhis-web-commons-security/logout.action")
+  };
+
+  if (typeof paths[actionType] !== 'undefined') {
+    window.location = paths[actionType];
+  } else {
+    console.warn('onClick: not implemented', actionType);
+  }
 }
 
-function Profile(_ref5) {
-  var _ref5$profile = _ref5.profile,
-      name = _ref5$profile.name,
-      email = _ref5$profile.email,
-      img = _ref5$profile.img;
+function Profile(_ref7) {
+  var baseURL = _ref7.baseURL,
+      _ref7$profile = _ref7.profile,
+      name = _ref7$profile.name,
+      email = _ref7$profile.email,
+      img = _ref7$profile.img;
   return _react.default.createElement("div", {
     className: "profile"
   }, img ? _react.default.createElement(ImageIcon, {
@@ -123,8 +159,13 @@ function Profile(_ref5) {
     name: name,
     email: email,
     img: img,
-    onClick: _onClick2
+    baseURL: baseURL,
+    onClick: function onClick() {
+      return _onClick(baseURL);
+    }
   }), _react.default.createElement("div", {
     className: "divider"
-  }), _react.default.createElement(Menu, null))));
+  }), _react.default.createElement(Menu, {
+    baseURL: baseURL
+  }))));
 }
