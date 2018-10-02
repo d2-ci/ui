@@ -41,6 +41,11 @@ function wrapTextNodesInSpans(nodes) {
     return node;
   });
 }
+/**
+ * get <html> or the <body> element in document
+ * @returns {HTMLElement}
+ */
+
 
 function getDoc() {
   return document.documentElement || document.body;
