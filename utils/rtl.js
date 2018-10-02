@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.setDir = setDir;
+exports.setDocDir = setDocDir;
 exports.isDocRTL = isDocRTL;
 exports.RTL_LANGS = void 0;
 
@@ -33,7 +33,7 @@ var RTL_LANGS = ['ar', 'arc', 'dv', 'fa', 'ha', 'he', 'khw', 'ks', 'ku', 'ps', '
 
 exports.RTL_LANGS = RTL_LANGS;
 
-function setDir(locale) {
+function setDocDir(locale) {
   var uiLanguage = locale.includes('_') ? locale.split('_')[0] : locale;
   var dir = RTL_LANGS.includes(uiLanguage) ? 'rtl' : 'ltr';
   (0, _html.getDoc)().setAttribute('dir', dir);

@@ -10,15 +10,11 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _utils = require("../../utils");
-
-require("./styles.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('circular-progress');
-
 function CircularProgress(_ref) {
   var size = _ref.size,
       center = _ref.center,
@@ -26,12 +22,12 @@ function CircularProgress(_ref) {
 
   var progressBar = _react.default.createElement("div", {
     role: "progressbar",
-    className: bem.b(size)
+    className: (0, _styles.default)('container', size)
   }, _react.default.createElement("svg", {
     viewBox: "22 22 44 44",
-    className: bem.e('viewbox')
+    className: (0, _styles.default)('viewbox')
   }, _react.default.createElement("circle", {
-    className: dashed ? bem.e('dashed') : '',
+    className: dashed ? (0, _styles.default)('dashed') : '',
     cx: "44",
     cy: "44",
     r: "20.2",
@@ -42,7 +38,7 @@ function CircularProgress(_ref) {
 
   if (center) {
     return _react.default.createElement("div", {
-      className: bem.e('overlay')
+      className: (0, _styles.default)('overlay')
     }, progressBar);
   }
 
