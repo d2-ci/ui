@@ -27,7 +27,9 @@ function CircularProgress(_ref) {
     viewBox: "22 22 44 44",
     className: (0, _styles.default)('viewbox')
   }, _react.default.createElement("circle", {
-    className: dashed ? (0, _styles.default)('dashed') : '',
+    className: (0, _styles.default)({
+      dashed: dashed
+    }),
     cx: "44",
     cy: "44",
     r: "20.2",
