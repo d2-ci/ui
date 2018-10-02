@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.animations = animations;
 
-var _css = require("../css");
+var _easing = require("./easing");
 
 var _html = require("../html");
 
@@ -54,7 +54,7 @@ function animations(_ref) {
     }
 
     elapsedTime = timestamp - startTimestamp;
-    scrollValue = (0, _css.easeInOutQuad)(elapsedTime, startValue, change, duration);
+    scrollValue = (0, _easing.easeInOutQuad)(elapsedTime, startValue, change, duration);
 
     if (elapsedTime >= duration) {
       if (scrollValue !== endValue) {
