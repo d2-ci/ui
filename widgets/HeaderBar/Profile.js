@@ -21,6 +21,8 @@ var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
 var _Paper = _interopRequireDefault(require("../../core/Paper"));
 
+var _styles = _interopRequireDefault(require("./styles"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
@@ -33,16 +35,16 @@ function TextIcon(_ref) {
   }
 
   return _react.default.createElement("div", {
-    className: "icon"
+    className: (0, _styles.default)('icon')
   }, _react.default.createElement("div", {
-    className: "initials"
+    className: (0, _styles.default)('initials')
   }, title));
 }
 
 function ImageIcon(_ref2) {
   var src = _ref2.src;
   return _react.default.createElement("div", {
-    className: "icon"
+    className: (0, _styles.default)('icon')
   }, _react.default.createElement("img", {
     src: src
   }));
@@ -54,19 +56,19 @@ function Header(_ref3) {
       img = _ref3.img,
       baseURL = _ref3.baseURL;
   return _react.default.createElement("div", {
-    className: "header"
+    className: (0, _styles.default)('header')
   }, img ? _react.default.createElement(ImageIcon, {
     src: img
   }) : _react.default.createElement(TextIcon, {
     name: name
   }), _react.default.createElement("div", {
-    className: "details"
+    className: (0, _styles.default)('details')
   }, _react.default.createElement("div", {
-    className: "name"
+    className: (0, _styles.default)('name')
   }, name), _react.default.createElement("div", {
-    className: "email"
+    className: (0, _styles.default)('email')
   }, email), _react.default.createElement("a", {
-    className: "edit_profile",
+    className: (0, _styles.default)('edit_profile'),
     href: "".concat(baseURL, "/dhis-web-user-profile/#/profile")
   }, "Edit profile")));
 }
@@ -116,12 +118,12 @@ function Item(_ref6) {
       label = _ref6.label,
       onClick = _ref6.onClick;
   return _react.default.createElement("div", {
-    className: "item",
+    className: (0, _styles.default)('item'),
     onClick: onClick
   }, _react.default.createElement(_Icon.default, {
     name: name
   }), _react.default.createElement("div", {
-    className: "label"
+    className: (0, _styles.default)('label')
   }, label));
 }
 
@@ -148,13 +150,13 @@ function Profile(_ref7) {
       email = _ref7$profile.email,
       img = _ref7$profile.img;
   return _react.default.createElement("div", {
-    className: "profile"
+    className: (0, _styles.default)('profile')
   }, img ? _react.default.createElement(ImageIcon, {
     src: img
   }) : _react.default.createElement(TextIcon, {
     name: name
   }), _react.default.createElement("div", {
-    className: "contents"
+    className: (0, _styles.default)('contents')
   }, _react.default.createElement(_Paper.default, null, _react.default.createElement(Header, {
     name: name,
     email: email,
@@ -164,7 +166,7 @@ function Profile(_ref7) {
       return _onClick(baseURL);
     }
   }), _react.default.createElement("div", {
-    className: "divider"
+    className: (0, _styles.default)('divider')
   }), _react.default.createElement(Menu, {
     baseURL: baseURL
   }))));

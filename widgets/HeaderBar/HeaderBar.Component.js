@@ -18,15 +18,11 @@ var _Apps = _interopRequireDefault(require("./Apps"));
 
 var _Profile = _interopRequireDefault(require("./Profile"));
 
-var _utils = require("../../utils");
-
-require("./styles.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('headerbar');
-
 function HeaderBar(_ref) {
   var type = _ref.type,
       baseURL = _ref.baseURL,
@@ -37,21 +33,21 @@ function HeaderBar(_ref) {
       messages = _ref.messages,
       interpretations = _ref.interpretations;
   return _react.default.createElement("header", {
-    className: bem.b(type)
+    className: (0, _styles.default)('container', type)
   }, _react.default.createElement("div", {
-    className: "left"
+    className: (0, _styles.default)('first')
   }, _react.default.createElement("div", {
-    className: "logo"
+    className: (0, _styles.default)('logo')
   }, _react.default.createElement(_Logo.default, {
     color: type === 'blue' ? 'white' : 'blue',
     type: "icon",
     width: "27.5px"
   })), _react.default.createElement("div", {
-    className: "title"
+    className: (0, _styles.default)('title')
   }, title)), selection && _react.default.createElement("div", {
-    className: "current-selection"
+    className: (0, _styles.default)('current-selection')
   }, selection), _react.default.createElement("div", {
-    className: "right"
+    className: (0, _styles.default)('last')
   }, _react.default.createElement(_NotificationIcon.default, {
     icon: "message",
     count: interpretations.count

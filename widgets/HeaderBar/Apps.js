@@ -33,6 +33,8 @@ var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
 var _TextField = _interopRequireDefault(require("../../core/Input/TextField"));
 
+var _styles = _interopRequireDefault(require("./styles"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -55,17 +57,20 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+console.log("s('search')", (0, _styles.default)('search'));
+
 function Search(_ref) {
   var value = _ref.value,
       onChange = _ref.onChange;
   return _react.default.createElement("div", {
-    className: "search"
+    className: (0, _styles.default)('search')
   }, _react.default.createElement(_TextField.default, {
     label: "Search apps",
     value: value,
     onChange: onChange
   }), _react.default.createElement(_Icon.default, {
-    name: "settings"
+    name: "settings",
+    className: (0, _styles.default)('settings')
   }));
 }
 
@@ -75,11 +80,11 @@ function Item(_ref2) {
       img = _ref2.img;
   return _react.default.createElement("a", {
     href: path,
-    className: "app"
+    className: (0, _styles.default)('app')
   }, _react.default.createElement("img", {
     src: img
   }), _react.default.createElement("div", {
-    className: "name"
+    className: (0, _styles.default)('name')
   }, name));
 }
 
@@ -87,7 +92,7 @@ function List(_ref3) {
   var apps = _ref3.apps,
       filter = _ref3.filter;
   return _react.default.createElement("div", {
-    className: "apps"
+    className: (0, _styles.default)('modules')
   }, apps.filter(function (_ref4) {
     var name = _ref4.name;
     return filter.length > 0 ? name.toLowerCase().includes(filter.toLowerCase()) : true;
@@ -187,7 +192,7 @@ function (_React$Component) {
       var _this2 = this;
 
       return _react.default.createElement("div", {
-        className: "apps-container",
+        className: (0, _styles.default)('apps'),
         ref: function ref(c) {
           return _this2.elContainer = c;
         }
@@ -195,7 +200,7 @@ function (_React$Component) {
         name: "apps",
         onClick: this.onToggle
       }), this.state.show && _react.default.createElement("div", {
-        className: "contents",
+        className: (0, _styles.default)('contents'),
         ref: function ref(c) {
           return _this2.elApps = c;
         }
