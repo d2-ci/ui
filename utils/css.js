@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.bemClassNames = bemClassNames;
-exports.componentStyles = componentStyles;
 
 require("core-js/modules/es6.array.iterator");
 
@@ -99,10 +98,4 @@ function classNames(prefix, modifierArgs) {
   }
 
   return classes.join(' ');
-}
-
-function componentStyles(styles) {
-  return function classNames(classy) {
-    return styles[classy];
-  };
 }
