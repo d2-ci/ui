@@ -7,7 +7,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.animations = animations;
 
-var _css = require("./css");
+var _easing = require("./easing");
+
+var _html = require("../html");
 
 /** @format */
 var HORIZONTAL = 'horizontal';
@@ -52,7 +54,7 @@ function animations(_ref) {
     }
 
     elapsedTime = timestamp - startTimestamp;
-    scrollValue = (0, _css.easeInOutQuad)(elapsedTime, startValue, change, duration);
+    scrollValue = (0, _easing.easeInOutQuad)(elapsedTime, startValue, change, duration);
 
     if (elapsedTime >= duration) {
       if (scrollValue !== endValue) {
@@ -99,7 +101,7 @@ function getScrollHandler(scrollBox, direction, isWindowScroll) {
 }
 
 function getStartValue(scrollBox, direction, isWindowScroll) {
-  var doc = getDoc();
+  var doc = (0, _html.getDoc)();
 
   switch (true) {
     case !isWindowScroll && direction === HORIZONTAL:
@@ -118,7 +120,7 @@ function getStartValue(scrollBox, direction, isWindowScroll) {
 }
 
 function getEndValue(to, direction, scrollBox, offset, isWindowScroll, startValue) {
-  var doc = getDoc();
+  var doc = (0, _html.getDoc)();
   var scrollingToElement = Boolean(to.nodeType);
 
   switch (true) {
@@ -144,7 +146,7 @@ function getElemEndValue(el, direction, scrollBox, offset, isWindowScroll, start
       width = _el$getBoundingClient.width,
       height = _el$getBoundingClient.height;
 
-  var doc = getDoc();
+  var doc = (0, _html.getDoc)();
   var typeSelector = isWindowScroll ? 'window' : 'element';
   var movementSelector = direction === HORIZONTAL && el.offsetLeft > startValue || direction === VERTICAL && el.offsetTop > startValue ? 'forward' : 'back';
   var lookup = {
@@ -170,8 +172,4 @@ function getElemEndValue(el, direction, scrollBox, offset, isWindowScroll, start
     }
   };
   return Math.round(lookup[typeSelector][direction][movementSelector]);
-}
-
-function getDoc() {
-  return document.documentElement || document.body;
 }

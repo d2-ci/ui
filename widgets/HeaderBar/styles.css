@@ -107,6 +107,7 @@
             }
 
 .d2ui-headerbar > .right > .apps-container .contents > .d2ui-paper {
+                    padding: 0;
                     width: 416px;
                     height: 301px;
                 }
@@ -238,6 +239,10 @@
                 top: 36px;
                 width: 310px;
             }
+
+.d2ui-headerbar > .right > .profile .contents > .d2ui-paper {
+                    padding: 0;
+                }
 
 .d2ui-headerbar > .right > .profile .contents .header {
                     display: flex;

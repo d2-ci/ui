@@ -5,25 +5,29 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Checkbox = void 0;
+exports.default = exports.RadioButton = void 0;
+
+require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./checkbox.css");
+var _utils = require("../../../utils");
 
-var _utils = require("../../utils");
+var _ToggleField = _interopRequireDefault(require("../ToggleField"));
 
-var _ToggleField = _interopRequireDefault(require("./ToggleField"));
+var _Field = _interopRequireDefault(require("../shared/Field"));
 
-var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
+require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('checkbox');
+var bem = (0, _utils.bemClassNames)('radio-button');
 
-var Checkbox = function Checkbox(_ref) {
+var RadioButton = function RadioButton(_ref) {
   var label = _ref.label,
+      name = _ref.name,
+      value = _ref.value,
       checked = _ref.checked,
       valid = _ref.valid,
       warning = _ref.warning,
@@ -34,7 +38,7 @@ var Checkbox = function Checkbox(_ref) {
       block = _ref.block,
       helpText = _ref.helpText,
       required = _ref.required;
-  return _react.default.createElement(_FieldWrap.default, {
+  return _react.default.createElement(_Field.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,
@@ -50,22 +54,19 @@ var Checkbox = function Checkbox(_ref) {
       disabled: disabled
     })
   }, _react.default.createElement("input", {
-    type: "checkbox",
     className: bem.e('native-control'),
+    type: "radio",
+    name: name,
+    value: value,
     checked: checked,
-    disabled: disabled,
-    onChange: onChange
+    onChange: onChange,
+    disabled: disabled
   }), _react.default.createElement("div", {
     className: bem.e('background')
-  }, _react.default.createElement("svg", {
-    className: bem.e('checkmark'),
-    viewBox: "0 0 24 24"
-  }, _react.default.createElement("path", {
-    className: bem.e('checkmark-path'),
-    fill: "none",
-    d: "M1.73,12.91 8.1,19.28 22.79,4.59"
-  })), _react.default.createElement("div", {
-    className: bem.e('mixedmark')
+  }, _react.default.createElement("div", {
+    className: bem.e('outer-circle')
+  }), _react.default.createElement("div", {
+    className: bem.e('inner-circle')
   }))), _react.default.createElement("span", {
     className: bem.e('label-text', {
       disabled: disabled
@@ -73,10 +74,9 @@ var Checkbox = function Checkbox(_ref) {
   }, (0, _utils.getRequiredText)(label, required))));
 };
 
-exports.Checkbox = Checkbox;
-Checkbox.defaultProps = {
-  value: false,
+exports.RadioButton = RadioButton;
+RadioButton.defaultProps = {
   disabled: false
 };
-var _default = Checkbox;
+var _default = RadioButton;
 exports.default = _default;

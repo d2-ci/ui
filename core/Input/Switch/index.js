@@ -9,13 +9,13 @@ exports.default = exports.Switch = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _ToggleField = _interopRequireDefault(require("./ToggleField"));
+var _ToggleField = _interopRequireDefault(require("../ToggleField"));
 
-require("./switch.css");
+require("./styles.css");
 
-var _utils = require("../../utils");
+var _utils = require("../../../utils");
 
-var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
+var _Field = _interopRequireDefault(require("../shared/Field"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,7 +34,7 @@ var Switch = function Switch(_ref) {
       block = _ref.block,
       helpText = _ref.helpText,
       required = _ref.required;
-  return _react.default.createElement(_FieldWrap.default, {
+  return _react.default.createElement(_Field.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,

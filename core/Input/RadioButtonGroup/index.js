@@ -19,13 +19,13 @@ require("core-js/modules/es6.date.to-string");
 
 var _react = _interopRequireDefault(require("react"));
 
-var _utils = require("../../utils");
+var _utils = require("../../../utils");
 
-var _RadioButton = _interopRequireDefault(require("./RadioButton"));
+var _RadioButton = _interopRequireDefault(require("../RadioButton"));
 
-var _FieldWrap = _interopRequireDefault(require("./FieldWrap"));
+var _Field = _interopRequireDefault(require("../shared/Field"));
 
-require("./radiobuttongroup.css");
+require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51,7 +51,7 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
       error = _ref.error,
       helpText = _ref.helpText,
       required = _ref.required;
-  return _react.default.createElement(_FieldWrap.default, {
+  return _react.default.createElement(_Field.default, {
     valid: valid,
     warning: warning,
     disabled: disabled,
