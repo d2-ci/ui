@@ -10,11 +10,9 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _LabelField = _interopRequireWildcard(require("../shared/LabelField"));
+var _LabelField = _interopRequireDefault(require("../shared/LabelField"));
 
-var _utils = require("../../../utils");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _styles = _interopRequireDefault(require("../shared/LabelField/styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53,7 +51,7 @@ function TextField(_ref) {
     required: required,
     helpText: helpText
   }, _react.default.createElement(InputTag, {
-    className: _LabelField.bem.e('input'),
+    className: (0, _styles.default)('input'),
     value: value,
     onChange: onChange,
     type: type,

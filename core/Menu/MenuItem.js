@@ -23,6 +23,8 @@ var _SubMenu = _interopRequireDefault(require("./SubMenu"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
+var _styles = _interopRequireDefault(require("./styles"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -47,8 +49,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var bem = (0, _utils.bemClassNames)('menu-item');
-
 var MenuItem =
 /*#__PURE__*/
 function (_Component) {
@@ -67,7 +67,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(MenuItem)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "selectHandler", function (event) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (event) {
       var _this$props = _this.props,
           value = _this$props.value,
           onClick = _this$props.onClick,
@@ -101,10 +101,10 @@ function (_Component) {
       }
 
       return _react.default.createElement("li", {
-        className: bem.b({
+        className: (0, _styles.default)('item', {
           disabled: disabled
         }),
-        onClick: this.selectHandler
+        onClick: this.onClick
       }, children ? (0, _utils.wrapTextNodesInSpans)(children) : _react.default.createElement(_react.Fragment, null, icon && _react.default.createElement(_Icon.default, {
         name: icon
       }), _react.default.createElement("span", null, label)));

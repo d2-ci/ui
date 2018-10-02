@@ -10,9 +10,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _utils = require("../../utils");
-
-require("./styles.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 var _iconBlue = _interopRequireDefault(require("./svg/icon-blue.svg"));
 
@@ -25,7 +23,6 @@ var _logoWhite = _interopRequireDefault(require("./svg/logo-white.svg"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('logo');
 var images = {
   'icon-blue': _iconBlue.default,
   'icon-white': _iconWhite.default,
@@ -45,7 +42,7 @@ function Logo(_ref) {
   return _react.default.createElement("img", {
     alt: alt,
     src: src,
-    className: bem.b(type),
+    className: (0, _styles.default)(type),
     style: style
   });
 }

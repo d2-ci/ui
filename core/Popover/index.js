@@ -35,7 +35,7 @@ var _utils = require("../../utils");
 
 var _computePosition = _interopRequireDefault(require("./computePosition"));
 
-require("./styles.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64,8 +64,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var bem = (0, _utils.bemClassNames)('d2ui-popover');
 
 var Popover =
 /*#__PURE__*/
@@ -142,10 +140,10 @@ function (_Component) {
         onAnimationEnd: onAnimationEnd
       } : null;
       return (0, _reactDom.createPortal)(_react.default.createElement(_react.Fragment, null, _react.default.createElement("div", {
-        className: bem.e('overlay'),
+        className: (0, _styles.default)('overlay'),
         onClick: closePopover
       }), _react.default.createElement("div", _extends({
-        className: bem.b(animation, {
+        className: (0, _styles.default)('container', animation, {
           'animate-out': isAnimatingOut
         }),
         ref: this.setElContainer,

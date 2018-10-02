@@ -10,28 +10,21 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _utils = require("../../utils");
-
-require("./styles.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('paper');
-
 function Paper(_ref) {
   var elevation = _ref.elevation,
-      children = _ref.children,
-      className = _ref.className;
-  var bemClass = bem.b("elevation-".concat(elevation));
+      children = _ref.children;
   return _react.default.createElement("div", {
-    className: "".concat(bemClass, " ").concat(className)
+    className: (0, _styles.default)('container', "elevation-".concat(elevation))
   }, children);
 }
 
 Paper.defaultProps = {
-  elevation: 1,
-  className: 'd2ui-paper-defaults'
+  elevation: 1
 };
 var _default = Paper;
 exports.default = _default;

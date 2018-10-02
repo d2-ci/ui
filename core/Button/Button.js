@@ -13,13 +13,11 @@ var _react = _interopRequireDefault(require("react"));
 
 var _utils = require("../../utils");
 
-require("./styles.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var bem = (0, _utils.bemClassNames)('button');
 
 var Button = function Button(_ref) {
   var children = _ref.children,
@@ -32,7 +30,7 @@ var Button = function Button(_ref) {
       type = _ref.type,
       kind = _ref.kind;
   return _react.default.createElement("button", _extends({
-    className: "".concat(bem.b(kind, size), " d2ui-align-icon")
+    className: (0, _styles.default)('button', 'align-icon', kind, size)
   }, {
     disabled: disabled,
     onClick: onClick,
