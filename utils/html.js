@@ -18,23 +18,27 @@ require("core-js/modules/es6.string.includes");
 
 require("core-js/modules/es6.array.map");
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-// CSS selectors like :first-child, :only-child, :last-child do not take text nodes
-// into account, so wrapping text nodes in spans simplifies the CSS file a lot.
-function wrapTextNodesInSpans(children) {
-  return _react.Children.map(children, function (child, index) {
-    if (['string', 'number'].includes(_typeof(child))) {
+/**
+ * CSS selectors like :first-child, :only-child, :last-child do not take text nodes
+ * into account, so wrapping text nodes in spans simplifies the CSS file a lot.
+ *
+ * @param nodes list of text nodes
+ */
+function wrapTextNodesInSpans(nodes) {
+  return _react.default.Children.map(nodes, function (node, idx) {
+    if (['string', 'number'].includes(_typeof(node))) {
       return _react.default.createElement("span", {
-        key: "key-".concat(index)
-      }, child);
+        key: "key-".concat(idx)
+      }, node);
     }
 
-    return child;
+    return node;
   });
 }
 /**
