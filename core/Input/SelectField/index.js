@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exports.SelectField = void 0;
 
+require("core-js/modules/es6.object.assign");
+
 require("core-js/modules/es6.string.iterator");
 
 require("core-js/modules/es6.array.from");
@@ -33,17 +35,21 @@ require("core-js/modules/es6.array.map");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _LabelField = _interopRequireWildcard(require("../shared/LabelField"));
+var _LabelField = _interopRequireDefault(require("../shared/LabelField"));
+
+var _styles = _interopRequireDefault(require("../shared/LabelField/styles"));
 
 var _Menu = require("../../Menu");
 
-var _utils = require("../../../utils");
+var _styles2 = _interopRequireDefault(require("./styles"));
 
-require("./styles.css");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -71,8 +77,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var bem = (0, _utils.bemClassNames)('select');
-var inputClassName = "".concat(bem.e('input'), " ").concat(_LabelField.bem.e('input')); // React uses a "value" property on the <select/> which can't be null so we use this magic string instead
+var inputClassName = "".concat((0, _styles2.default)('input'), " ").concat((0, _styles.default)('input')); // React uses a "value" property on the <select/> which can't be null so we use this magic string instead
 
 var EMPTY_NATIVE_OPTION_VALUE = '#^NONE^#';
 
@@ -187,14 +192,11 @@ function (_Component) {
 
       var options = this.getOptions();
       var value = this.props.value || EMPTY_NATIVE_OPTION_VALUE;
-      var nativeClass = inputClassName + ' ' + bem.b({
-        native: true
-      });
       return _react.default.createElement("select", {
         ref: function ref(c) {
           return _this3.inputRef = c;
         },
-        className: nativeClass,
+        className: (0, _styles2.default)('native', inputClassName),
         onChange: this.nativeSelectHandler,
         value: value
       }, options.map(function (_ref) {
@@ -243,7 +245,9 @@ function (_Component) {
           block = _this$props2.block;
       var displayValue = this.getLabelOfValue();
       var inputComponent = native ? this.renderNativeSelect() : this.renderCustomSelect(displayValue);
-      return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_LabelField.default, {
+      return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_LabelField.default, _extends({
+        className: (0, _styles2.default)('container')
+      }, {
         variant: variant,
         dense: dense,
         label: label,
@@ -257,7 +261,7 @@ function (_Component) {
         block: block,
         required: required,
         helpText: helpText
-      }, inputComponent), !native && _react.default.createElement(_Menu.PopoverMenu, {
+      }), inputComponent), !native && _react.default.createElement(_Menu.PopoverMenu, {
         menuProps: {
           options: this.getOptions(),
           selectHandler: this.selectHandler
