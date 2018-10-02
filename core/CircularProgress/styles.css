@@ -1,0 +1,96 @@
+/**
+ * /* rtl:begin:ignore
+ *
+ * @format
+ */
+
+.d2ui-circular-progress {
+    display: inline-block;
+    color: #1976d2;
+    line-height: 1;
+    margin: 1rem;
+    stroke: currentColor;
+    stroke-dashoffset: 0;
+    stroke-dasharray: 80px, 200px;
+    -webkit-animation: d2ui-circular-progress-rotate 1.4s linear infinite;
+            animation: d2ui-circular-progress-rotate 1.4s linear infinite;
+}
+
+.d2ui-circular-progress--small {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+.d2ui-circular-progress--medium {
+        width: 3.125rem;
+        height: 3.125rem;
+    }
+
+.d2ui-circular-progress--large {
+        width: 5rem;
+        height: 5rem;
+    }
+
+.d2ui-circular-progress__dashed {
+        -webkit-animation: d2ui-circular-progress-dash 1.4s ease-in-out infinite;
+                animation: d2ui-circular-progress-dash 1.4s ease-in-out infinite;
+    }
+
+.d2ui-circular-progress__overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+@-webkit-keyframes d2ui-circular-progress-rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+}
+
+@keyframes d2ui-circular-progress-rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes d2ui-circular-progress-dash {
+    0% {
+        stroke-dasharray: 1px, 200px;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 100px, 200px;
+        stroke-dashoffset: -15px;
+    }
+    100% {
+        stroke-dasharray: 100px, 200px;
+        stroke-dashoffset: -120px;
+    }
+}
+
+@keyframes d2ui-circular-progress-dash {
+    0% {
+        stroke-dasharray: 1px, 200px;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 100px, 200px;
+        stroke-dashoffset: -15px;
+    }
+    100% {
+        stroke-dasharray: 100px, 200px;
+        stroke-dashoffset: -120px;
+    }
+}
+
+/* rtl:end:ignore */
