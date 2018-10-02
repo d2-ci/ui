@@ -27,8 +27,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var EDGE_MARGIN = 18;
 
 function computePosition(targetEl, anchorEl, anchorPosition, popoverPosition) {
-  var position = getAnchorPosition(anchorEl, (0, _utils.isRTL)() ? flipHorizontal(anchorPosition) : anchorPosition);
-  var relativePosition = getRelativePosition(targetEl, position, (0, _utils.isRTL)() ? flipHorizontal(popoverPosition) : popoverPosition);
+  var position = getAnchorPosition(anchorEl, (0, _utils.isDocRTL)() ? flipHorizontal(anchorPosition) : anchorPosition);
+  var relativePosition = getRelativePosition(targetEl, position, (0, _utils.isDocRTL)() ? flipHorizontal(popoverPosition) : popoverPosition);
   return getWindowContainedPosition(relativePosition);
 }
 

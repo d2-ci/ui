@@ -17,9 +17,9 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 require("core-js/modules/es6.object.define-property");
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -49,6 +49,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * based keyframe animation to hide a component before it is removed from the DOM.
  * This HOC makes quite a few assumptions about the wrapped component, so won't be
  * suitable for any given situation:
+ *
  * 1. It has an "open" property which is used to toggle visiblity.
  * 2. It renders content if `open || isAnimatingOut` is true
  * 3. It adds some CSS class to an element if isAnimatingOut is true.
@@ -59,25 +60,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 function withAnimatedClose(WrappedComponent) {
   return (
     /*#__PURE__*/
-    function (_Component) {
-      _inherits(AnimatedClose, _Component);
+    function (_React$Component) {
+      _inherits(AnimatedClose, _React$Component);
 
-      function AnimatedClose(props) {
+      function AnimatedClose() {
+        var _getPrototypeOf2;
+
         var _this;
 
         _classCallCheck(this, AnimatedClose);
 
-        _this = _possibleConstructorReturn(this, _getPrototypeOf(AnimatedClose).call(this, props));
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AnimatedClose)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+        _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+          isAnimatingOut: false
+        });
+
+        _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAnimationStart", function () {
+          return _this.setState({
+            isAnimatingOut: true
+          });
+        });
 
         _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAnimationEnd", function () {
-          _this.setState({
+          return _this.setState({
             isAnimatingOut: false
           });
         });
 
-        _this.state = {
-          isAnimatingOut: false
-        };
         return _this;
       }
 
@@ -92,13 +106,6 @@ function withAnimatedClose(WrappedComponent) {
           return true;
         }
       }, {
-        key: "onAnimationStart",
-        value: function onAnimationStart() {
-          this.setState({
-            isAnimatingOut: true
-          });
-        }
-      }, {
         key: "render",
         value: function render() {
           return _react.default.createElement(WrappedComponent, _extends({}, this.props, {
@@ -109,6 +116,6 @@ function withAnimatedClose(WrappedComponent) {
       }]);
 
       return AnimatedClose;
-    }(_react.Component)
+    }(_react.default.Component)
   );
 }

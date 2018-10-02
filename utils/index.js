@@ -62,18 +62,6 @@ Object.keys(_text).forEach(function (key) {
   });
 });
 
-var _animations = require("./animations");
-
-Object.keys(_animations).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _animations[key];
-    }
-  });
-});
-
 var _timings = require("./timings");
 
 Object.keys(_timings).forEach(function (key) {
@@ -86,14 +74,14 @@ Object.keys(_timings).forEach(function (key) {
   });
 });
 
-var _withAnimatedCloseHOC = require("./withAnimatedCloseHOC");
+var _index = require("./animations/index");
 
-Object.keys(_withAnimatedCloseHOC).forEach(function (key) {
+Object.keys(_index).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _withAnimatedCloseHOC[key];
+      return _index[key];
     }
   });
 });
