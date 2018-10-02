@@ -25,7 +25,7 @@ var _RadioButton = _interopRequireDefault(require("../RadioButton"));
 
 var _Field = _interopRequireDefault(require("../shared/Field"));
 
-var _styles = _interopRequireDefault(require("./styles.css"));
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

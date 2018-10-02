@@ -12,7 +12,7 @@ require("core-js/modules/es6.object.assign");
 
 var _react = _interopRequireDefault(require("react"));
 
-var _styles = _interopRequireDefault(require("./styles.css"));
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
