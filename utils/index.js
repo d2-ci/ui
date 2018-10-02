@@ -74,6 +74,18 @@ Object.keys(_timings).forEach(function (key) {
   });
 });
 
+var _api = require("./api");
+
+Object.keys(_api).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _api[key];
+    }
+  });
+});
+
 var _index = require("./animations/index");
 
 Object.keys(_index).forEach(function (key) {

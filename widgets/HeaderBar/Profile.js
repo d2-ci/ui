@@ -7,6 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = Profile;
 
+require("core-js/modules/es6.array.map");
+
 require("core-js/modules/es6.regexp.split");
 
 require("core-js/modules/es6.array.index-of");
@@ -18,6 +20,8 @@ var _react = _interopRequireDefault(require("react"));
 var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
 var _Paper = _interopRequireDefault(require("../../core/Paper"));
+
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31,16 +35,16 @@ function TextIcon(_ref) {
   }
 
   return _react.default.createElement("div", {
-    className: "icon"
+    className: (0, _styles.default)('icon')
   }, _react.default.createElement("div", {
-    className: "initials"
+    className: (0, _styles.default)('initials')
   }, title));
 }
 
 function ImageIcon(_ref2) {
   var src = _ref2.src;
   return _react.default.createElement("div", {
-    className: "icon"
+    className: (0, _styles.default)('icon')
   }, _react.default.createElement("img", {
     src: src
   }));
@@ -50,82 +54,120 @@ function Header(_ref3) {
   var name = _ref3.name,
       email = _ref3.email,
       img = _ref3.img,
-      _onClick = _ref3.onClick;
+      baseURL = _ref3.baseURL;
   return _react.default.createElement("div", {
-    className: "header"
+    className: (0, _styles.default)('header')
   }, img ? _react.default.createElement(ImageIcon, {
     src: img
   }) : _react.default.createElement(TextIcon, {
     name: name
   }), _react.default.createElement("div", {
-    className: "details"
+    className: (0, _styles.default)('details')
   }, _react.default.createElement("div", {
-    className: "name"
+    className: (0, _styles.default)('name')
   }, name), _react.default.createElement("div", {
-    className: "email"
-  }, email), _react.default.createElement("div", {
-    className: "edit_profile",
-    onClick: function onClick() {
-      return _onClick('edit_profile');
-    }
+    className: (0, _styles.default)('email')
+  }, email), _react.default.createElement("a", {
+    className: (0, _styles.default)('edit_profile'),
+    href: "".concat(baseURL, "/dhis-web-user-profile/#/profile")
   }, "Edit profile")));
 }
 
-function Menu() {
-  return _react.default.createElement("div", {
-    className: "menu"
-  }, _react.default.createElement(Item, {
-    name: "settings",
-    label: "Settings"
-  }), _react.default.createElement(Item, {
-    name: "account_box",
-    label: "Account"
-  }), _react.default.createElement(Item, {
-    name: "help",
-    label: "Help"
-  }), _react.default.createElement(Item, {
-    name: "exit_to_app",
-    label: "Logout"
+function Menu(_ref4) {
+  var baseURL = _ref4.baseURL;
+  var list = [{
+    name: 'settings',
+    label: 'Settings',
+    onClick: function onClick() {
+      return _onClick(baseURL, 'settings');
+    }
+  }, {
+    name: 'account_box',
+    label: 'Account',
+    onClick: function onClick() {
+      return _onClick(baseURL, 'account');
+    }
+  }, {
+    name: 'help',
+    label: 'Help',
+    onClick: function onClick() {
+      return _onClick(baseURL, 'help');
+    }
+  }, {
+    name: 'exit_to_app',
+    label: 'Logout',
+    onClick: function onClick() {
+      return _onClick(baseURL, 'logout');
+    }
+  }];
+  return _react.default.createElement("nav", null, list.map(function (_ref5) {
+    var name = _ref5.name,
+        label = _ref5.label,
+        onClick = _ref5.onClick;
+    return _react.default.createElement(Item, {
+      key: "profile-mi-".concat(name),
+      name: name,
+      label: label,
+      onClick: onClick
+    });
   }));
 }
 
-function Item(_ref4) {
-  var name = _ref4.name,
-      label = _ref4.label;
+function Item(_ref6) {
+  var name = _ref6.name,
+      label = _ref6.label,
+      onClick = _ref6.onClick;
   return _react.default.createElement("div", {
-    className: "item",
-    onClick: function onClick() {
-      return _onClick2(name);
-    }
+    className: (0, _styles.default)('item'),
+    onClick: onClick
   }, _react.default.createElement(_Icon.default, {
     name: name
   }), _react.default.createElement("div", {
-    className: "label"
+    className: (0, _styles.default)('label')
   }, label));
 }
 
-function _onClick2(actionType) {
-  console.log('onClick', actionType);
+function _onClick(baseURL, actionType) {
+  var paths = {
+    edit_profile: "".concat(baseURL, "/dhis-web-user-profile/#/profile"),
+    settings: "".concat(baseURL, "/dhis-web-user-profile/#/settings"),
+    account: "".concat(baseURL, "/dhis-web-user-profile/#/account"),
+    help: 'https://docs.dhis2.org/master/en/user/html/dhis2_user_manual_en.html',
+    logout: "".concat(baseURL, "/dhis-web-commons-security/logout.action")
+  };
+
+  if (typeof paths[actionType] !== 'undefined') {
+    window.location = paths[actionType];
+  } else {
+    console.warn('onClick: not implemented', actionType);
+  }
 }
 
-function Profile(_ref5) {
-  var name = _ref5.name,
-      email = _ref5.email,
-      img = _ref5.img;
+function Profile(_ref7) {
+  var baseURL = _ref7.baseURL,
+      _ref7$profile = _ref7.profile,
+      name = _ref7$profile.name,
+      email = _ref7$profile.email,
+      img = _ref7$profile.img;
   return _react.default.createElement("div", {
-    className: "profile"
+    className: (0, _styles.default)('profile')
   }, img ? _react.default.createElement(ImageIcon, {
     src: img
   }) : _react.default.createElement(TextIcon, {
     name: name
   }), _react.default.createElement("div", {
-    className: "contents"
+    className: (0, _styles.default)('contents')
   }, _react.default.createElement(_Paper.default, null, _react.default.createElement(Header, {
     name: name,
-    img: img,
     email: email,
-    onClick: _onClick2
+    img: img,
+    baseURL: baseURL,
+    onClick: function onClick() {
+      return _onClick(baseURL);
+    }
   }), _react.default.createElement("div", {
-    className: "divider"
-  }), _react.default.createElement(Menu, null))));
+    className: (0, _styles.default)('divider')
+  }), _react.default.createElement(Menu, {
+    baseURL: baseURL
+  }))));
 }

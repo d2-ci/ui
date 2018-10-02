@@ -8,8 +8,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.HeaderBar = HeaderBar;
 exports.default = void 0;
 
-require("core-js/modules/es6.function.name");
-
 var _react = _interopRequireDefault(require("react"));
 
 var _Logo = _interopRequireDefault(require("../../core/Logo"));
@@ -20,48 +18,47 @@ var _Apps = _interopRequireDefault(require("./Apps"));
 
 var _Profile = _interopRequireDefault(require("./Profile"));
 
-var _utils = require("../../utils");
-
-require("./styles.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('headerbar');
-
 function HeaderBar(_ref) {
   var type = _ref.type,
+      baseURL = _ref.baseURL,
       title = _ref.title,
       selection = _ref.selection,
-      name = _ref.name,
-      email = _ref.email,
-      src = _ref.src;
-  return _react.default.createElement("div", {
-    className: bem.b(type)
+      apps = _ref.apps,
+      profile = _ref.profile,
+      messages = _ref.messages,
+      interpretations = _ref.interpretations;
+  return _react.default.createElement("header", {
+    className: (0, _styles.default)('container', type)
   }, _react.default.createElement("div", {
-    className: "left"
+    className: (0, _styles.default)('first')
   }, _react.default.createElement("div", {
-    className: "logo"
+    className: (0, _styles.default)('logo')
   }, _react.default.createElement(_Logo.default, {
     color: type === 'blue' ? 'white' : 'blue',
     type: "icon",
     width: "27.5px"
   })), _react.default.createElement("div", {
-    className: "title"
+    className: (0, _styles.default)('title')
   }, title)), selection && _react.default.createElement("div", {
-    className: "current-selection"
+    className: (0, _styles.default)('current-selection')
   }, selection), _react.default.createElement("div", {
-    className: "right"
+    className: (0, _styles.default)('last')
   }, _react.default.createElement(_NotificationIcon.default, {
     icon: "message",
-    count: 8
+    count: interpretations.count
   }), _react.default.createElement(_NotificationIcon.default, {
     icon: "email",
-    count: 4
-  }), _react.default.createElement(_Apps.default, null), _react.default.createElement(_Profile.default, {
-    name: name,
-    email: email,
-    src: src
+    count: messages.count
+  }), _react.default.createElement(_Apps.default, {
+    apps: apps
+  }), _react.default.createElement(_Profile.default, {
+    profile: profile,
+    baseURL: baseURL
   })));
 }
 
