@@ -8,11 +8,9 @@ exports.default = void 0;
 
 require("core-js/modules/es6.object.define-property");
 
-require("core-js/modules/es6.function.bind");
-
 var _react = _interopRequireDefault(require("react"));
 
-var _bind = _interopRequireDefault(require("classnames/bind"));
+var _css = _interopRequireDefault(require("../../utils/css"));
 
 require("./styles.css");
 
@@ -22,7 +20,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var cx = _bind.default.bind(_styles2.default);
+var cx = (0, _css.default)(_styles2.default);
 
 function Paper(_ref) {
   var _cx;

@@ -9,13 +9,11 @@ exports.default = exports.Button = void 0;
 
 require("core-js/modules/es6.object.assign");
 
-require("core-js/modules/es6.function.bind");
-
 var _react = _interopRequireDefault(require("react"));
 
 var _utils = require("../../utils");
 
-var _bind = _interopRequireDefault(require("classnames/bind"));
+var _css = _interopRequireDefault(require("../../utils/css"));
 
 require("./styles.css");
 
@@ -25,7 +23,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var cx = _bind.default.bind(_styles2.default);
+var cx = (0, _css.default)(_styles2.default);
 
 var Button = function Button(_ref) {
   var children = _ref.children,
