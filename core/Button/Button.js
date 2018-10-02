@@ -30,7 +30,7 @@ var Button = function Button(_ref) {
       type = _ref.type,
       kind = _ref.kind;
   return _react.default.createElement("button", _extends({
-    className: (0, _styles.default)('button', 'd2ui-align-icon', kind, size)
+    className: (0, _styles.default)('button', 'align-icon', kind, size)
   }, {
     disabled: disabled,
     onClick: onClick,
