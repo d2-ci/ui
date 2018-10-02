@@ -25,13 +25,11 @@ var _RadioButton = _interopRequireDefault(require("../RadioButton"));
 
 var _Field = _interopRequireDefault(require("../shared/Field"));
 
-require("./styles.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-var bem = (0, _utils.bemClassNames)('radio-button-group');
 
 var randomName = function randomName() {
   return Math.random().toString(36).substring(2, 15);
@@ -51,7 +49,9 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
       error = _ref.error,
       helpText = _ref.helpText,
       required = _ref.required;
-  return _react.default.createElement(_Field.default, {
+  return _react.default.createElement(_Field.default, _extends({
+    className: (0, _styles.default)('container')
+  }, {
     valid: valid,
     warning: warning,
     disabled: disabled,
@@ -59,14 +59,14 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
     dense: dense,
     block: true,
     helpText: helpText
-  }, _react.default.createElement("p", {
-    className: bem.e('description', {
+  }), _react.default.createElement("p", {
+    className: (0, _styles.default)('description', {
       error: error,
       valid: valid,
       warning: warning
     })
   }, (0, _utils.getRequiredText)(label, required)), _react.default.createElement("div", {
-    className: bem.b({
+    className: (0, _styles.default)({
       error: error,
       warning: warning,
       valid: valid,

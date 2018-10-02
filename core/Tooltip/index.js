@@ -12,7 +12,7 @@ require("core-js/modules/es6.object.assign");
 
 var _react = _interopRequireDefault(require("react"));
 
-require("./styles.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28,16 +28,16 @@ function Tooltip(_ref) {
       multiline = _ref.multiline,
       children = _ref.children;
   var tooltipProps = {
-    'data-d2ui-tooltip': text,
-    'data-d2ui-tooltip-position': position
+    data: text,
+    'data-position': position
   };
 
   if (multiline) {
-    tooltipProps['data-d2ui-tooltip-multiline'] = true;
+    tooltipProps['data-multiline'] = true;
   }
 
   return _react.default.createElement("a", _extends({
-    className: "d2ui-tooltip"
+    className: (0, _styles.default)('container')
   }, tooltipProps), children);
 }
 

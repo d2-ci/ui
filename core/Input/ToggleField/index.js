@@ -10,21 +10,17 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _utils = require("../../../utils");
-
-require("./styles.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('toggle-field');
-
 function ToggleField(_ref) {
   var children = _ref.children,
       disabled = _ref.disabled,
       dense = _ref.dense;
   return _react.default.createElement("label", {
-    className: bem.b({
+    className: (0, _styles.default)('container', {
       disabled: disabled,
       dense: dense
     })

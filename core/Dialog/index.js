@@ -27,7 +27,7 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _utils = require("../../utils");
 
-require("./dialog.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 var _Paper = _interopRequireDefault(require("../Paper"));
 
@@ -57,8 +57,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var bem = (0, _utils.bemClassNames)('d2ui-dialog');
-var BODY_SCROLL_DISABLED_CLASS = 'd2ui-scroll-disabled';
+var disableScrollingClass = (0, _styles.default)('disable-scroll');
 
 var Dialog =
 /*#__PURE__*/
@@ -111,9 +110,9 @@ function (_Component) {
           isAnimatingOut = _this$props2.isAnimatingOut;
 
       if (forceOff || !open && !isAnimatingOut) {
-        document.body.classList.remove(BODY_SCROLL_DISABLED_CLASS);
+        document.body.classList.remove(disableScrollingClass);
       } else {
-        document.body.classList.add(BODY_SCROLL_DISABLED_CLASS);
+        document.body.classList.add(disableScrollingClass);
       }
     }
   }, {
@@ -127,7 +126,7 @@ function (_Component) {
 
       var isText = ['string', 'number'].includes(_typeof(title));
       return _react.default.createElement("header", {
-        className: bem.e('title')
+        className: (0, _styles.default)('title')
       }, isText ? _react.default.createElement("h6", null, title) : title);
     }
   }, {
@@ -140,7 +139,7 @@ function (_Component) {
       }
 
       return _react.default.createElement("footer", {
-        className: bem.e('footer')
+        className: (0, _styles.default)('footer')
       }, _react.default.Children.toArray(actions));
     }
   }, {
@@ -157,23 +156,22 @@ function (_Component) {
         return null;
       }
 
-      var animateOutClass = {
-        'animate-out': isAnimatingOut
-      };
+      var animateOutClass = _defineProperty({}, (0, _styles.default)('animate-out'), isAnimatingOut);
+
       var animateOutProps = isAnimatingOut ? {
         onAnimationEnd: onAnimationEnd
       } : null;
       return _reactDom.default.createPortal(_react.default.createElement("div", {
-        className: bem.b()
+        className: (0, _styles.default)('container')
       }, _react.default.createElement("div", _extends({
-        className: bem.e('backdrop', animateOutClass),
+        className: (0, _styles.default)('backdrop', animateOutClass),
         onClick: this.onBackdropClick
       }, animateOutProps)), _react.default.createElement("div", {
-        className: bem.e('window', size, animateOutClass)
+        className: (0, _styles.default)('window', size, animateOutClass)
       }, _react.default.createElement(_Paper.default, {
         elevation: 24
       }, this.renderTitle(), _react.default.createElement("section", {
-        className: bem.e('content')
+        className: (0, _styles.default)('content')
       }, content), this.renderFooter()))), document.body);
     }
   }]);

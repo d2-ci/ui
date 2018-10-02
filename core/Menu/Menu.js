@@ -5,7 +5,8 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Menu = void 0;
+exports.Menu = Menu;
+exports.default = void 0;
 
 require("core-js/modules/es6.object.assign");
 
@@ -25,7 +26,7 @@ var _MenuItem = _interopRequireDefault(require("./MenuItem"));
 
 var _Paper = _interopRequireDefault(require("../Paper"));
 
-require("./menu.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35,27 +36,35 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var Menu = function Menu(_ref) {
+function Menu(_ref) {
   var options = _ref.options,
       selectHandler = _ref.selectHandler,
       closePopover = _ref.closePopover,
       children = _ref.children;
+
+  if (children) {
+    return _react.default.createElement(_Paper.default, {
+      elevation: 4
+    }, _react.default.createElement("ul", {
+      className: (0, _styles.default)('container')
+    }, children));
+  }
+
   return _react.default.createElement(_Paper.default, {
     elevation: 4
   }, _react.default.createElement("ul", {
-    className: "d2ui-menu"
-  }, children ? children : options.map(function (_ref2, index) {
+    className: (0, _styles.default)('container')
+  }, options.map(function (_ref2, idx) {
     var onClick = _ref2.onClick,
         rest = _objectWithoutProperties(_ref2, ["onClick"]);
 
     return _react.default.createElement(_MenuItem.default, _extends({
-      key: "key-".concat(index),
+      key: "mi-".concat(idx),
       onClick: onClick || selectHandler,
       closePopover: closePopover
     }, rest));
   })));
-};
+}
 
-exports.Menu = Menu;
 var _default = Menu;
 exports.default = _default;
