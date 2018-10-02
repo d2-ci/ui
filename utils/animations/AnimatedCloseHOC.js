@@ -49,6 +49,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * based keyframe animation to hide a component before it is removed from the DOM.
  * This HOC makes quite a few assumptions about the wrapped component, so won't be
  * suitable for any given situation:
+ *
  * 1. It has an "open" property which is used to toggle visiblity.
  * 2. It renders content if `open || isAnimatingOut` is true
  * 3. It adds some CSS class to an element if isAnimatingOut is true.
