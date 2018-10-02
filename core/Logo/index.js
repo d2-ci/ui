@@ -8,11 +8,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.Logo = Logo;
 exports.default = void 0;
 
-require("core-js/modules/es6.function.bind");
-
 var _react = _interopRequireDefault(require("react"));
-
-require("./styles.css");
 
 var _iconBlue = _interopRequireDefault(require("./svg/icon-blue.svg"));
 
@@ -22,15 +18,11 @@ var _logoBlue = _interopRequireDefault(require("./svg/logo-blue.svg"));
 
 var _logoWhite = _interopRequireDefault(require("./svg/logo-white.svg"));
 
-var _bind = _interopRequireDefault(require("classnames/bind"));
-
-var _styles2 = _interopRequireDefault(require("./styles.json"));
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var cx = _bind.default.bind(_styles2.default);
-
 var images = {
   'icon-blue': _iconBlue.default,
   'icon-white': _iconWhite.default,
@@ -50,7 +42,7 @@ function Logo(_ref) {
   return _react.default.createElement("img", {
     alt: alt,
     src: src,
-    className: "".concat(cx(type)),
+    className: (0, _styles.default)(type),
     style: style
   });
 }
