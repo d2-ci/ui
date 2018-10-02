@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.wrapTextNodesInSpans = wrapTextNodesInSpans;
+exports.getDoc = getDoc;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -35,4 +36,8 @@ function wrapTextNodesInSpans(children) {
 
     return child;
   });
+}
+
+function getDoc() {
+  return document.documentElement || document.body;
 }
