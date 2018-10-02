@@ -6,6 +6,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.bemClassNames = bemClassNames;
+exports.default = classNames;
+
+require("core-js/modules/es6.function.bind");
 
 require("core-js/modules/es6.array.iterator");
 
@@ -21,9 +24,12 @@ require("core-js/modules/web.dom.iterable");
 
 require("core-js/modules/es6.string.starts-with");
 
+var _bind = _interopRequireDefault(require("classnames/bind"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-/** @format */
 var DEFAULT_PREFIX = 'd2ui-';
 
 function bemClassNames(blockName) {
@@ -38,7 +44,7 @@ function bemClassNames(blockName) {
         modifierArgs[_key] = arguments[_key];
       }
 
-      return modifierArgs.length === 0 ? blockName : classNames(blockName, modifierArgs);
+      return modifierArgs.length === 0 ? blockName : bemClass(blockName, modifierArgs);
     },
     e: function e(elementName) {
       if (!elementLookup[elementName]) {
@@ -49,12 +55,12 @@ function bemClassNames(blockName) {
         modifierArgs[_key2 - 1] = arguments[_key2];
       }
 
-      return modifierArgs.length === 0 ? elementLookup[elementName] : classNames(elementLookup[elementName], modifierArgs);
+      return modifierArgs.length === 0 ? elementLookup[elementName] : bemClass(elementLookup[elementName], modifierArgs);
     }
   };
 }
 
-function classNames(prefix, modifierArgs) {
+function bemClass(prefix, modifierArgs) {
   var classes = [prefix];
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
@@ -98,4 +104,8 @@ function classNames(prefix, modifierArgs) {
   }
 
   return classes.join(' ');
+}
+
+function classNames(styles) {
+  return _bind.default.bind(styles);
 }
