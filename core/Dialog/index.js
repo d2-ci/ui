@@ -168,8 +168,8 @@ function (_Component) {
         onClick: this.onBackdropClick
       }, animateOutProps)), _react.default.createElement("div", {
         className: (0, _styles.default)('window', size, animateOutClass)
-      }, _react.default.createElement(_Paper.default, {
-        elevation: 24
+      }, _react.default.createElement("div", {
+        className: (0, _styles.default)('scroll-box')
       }, this.renderTitle(), _react.default.createElement("section", {
         className: (0, _styles.default)('content')
       }, content), this.renderFooter()))), document.body);
