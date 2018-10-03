@@ -35,8 +35,6 @@ require("core-js/modules/es6.function.bind");
 
 var _react = _interopRequireWildcard(require("react"));
 
-require("./tabs.css");
-
 var _Tab = _interopRequireDefault(require("./Tab"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
