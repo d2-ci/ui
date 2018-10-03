@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Tabs = exports.bem = void 0;
+exports.default = exports.Tabs = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -45,7 +45,9 @@ var _TabIndicator = _interopRequireDefault(require("./TabIndicator"));
 
 var _utils = require("../../utils");
 
-var _computeHorizontalScrollbarHeight = _interopRequireDefault(require("./computeHorizontalScrollbarHeight"));
+var _computeHorizontalScrollbarHeight = require("./computeHorizontalScrollbarHeight");
+
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -74,9 +76,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var bem = (0, _utils.bemClassNames)('tabs');
-exports.bem = bem;
 
 var Tabs =
 /*#__PURE__*/
@@ -152,11 +151,10 @@ function (_Component) {
       scrolledToEnd: true,
       showTabIndicator: false
     };
-    _this.horizontalScrollbarHeight = (0, _computeHorizontalScrollbarHeight.default)();
+    _this.horizontalScrollbarHeight = (0, _computeHorizontalScrollbarHeight.computeHorizontalScrollbarHeight)();
     _this.handleSideScroll = (0, _utils.throttle)(_this.toggleScrollButtonVisibility.bind(_assertThisInitialized(_assertThisInitialized(_this))));
     return _this;
-  } // Lifecycle hooks
-
+  }
 
   _createClass(Tabs, [{
     key: "componentDidMount",
@@ -296,12 +294,11 @@ function (_Component) {
           contained = _this$props2.contained,
           children = _this$props2.children;
       var showTabIndicator = this.state.showTabIndicator;
-      var className = bem.e('tab-container', // A scrollable tabBar cannot be clustered
-      _defineProperty({}, "cluster-".concat(cluster), cluster && contained), {
-        contained: contained
-      });
       return _react.default.createElement("div", {
-        className: className
+        className: (0, _styles.default)('tab-container', _defineProperty({
+          contained: contained
+        }, "cluster-".concat(cluster), cluster && contained) // A scrollable tabBar cannot be clustered
+        )
       }, children ? this.renderChildren() : this.renderitems(), _react.default.createElement(_TabIndicator.default, {
         getActiveTabRef: this.getActiveTabRef,
         visible: showTabIndicator
@@ -324,23 +321,23 @@ function (_Component) {
       if (!contained) {
         tabBar = _react.default.createElement(_react.Fragment, null, _react.default.createElement("button", {
           onClick: this.scrollLeft,
-          className: bem.e('scroll-button', {
+          className: (0, _styles.default)('scroll-button', {
             hidden: scrolledToStart
           })
         }, _react.default.createElement(_Icon.default, {
           name: "keyboard_arrow_left"
         })), _react.default.createElement("div", {
-          className: bem.e('scroll-box-clipper')
+          className: (0, _styles.default)('scroll-box-clipper')
         }, _react.default.createElement("div", {
-          className: bem.e('scroll-box'),
+          className: (0, _styles.default)('scroll-box'),
           ref: this.setScrollBoxRef,
           style: scrollBoxStyle
         }, _react.default.createElement("div", {
-          className: bem.e('scroll-area'),
+          className: (0, _styles.default)('scroll-area'),
           ref: this.setScrollAreaRef
         }, tabBar))), _react.default.createElement("button", {
           onClick: this.scrollRight,
-          className: bem.e('scroll-button', {
+          className: (0, _styles.default)('scroll-button', {
             hidden: scrolledToEnd
           })
         }, _react.default.createElement(_Icon.default, {
@@ -349,7 +346,7 @@ function (_Component) {
       }
 
       return _react.default.createElement("div", {
-        className: bem.b(position)
+        className: (0, _styles.default)('container', position)
       }, tabBar);
     }
   }]);

@@ -17,9 +17,7 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _bemClassNames = _interopRequireDefault(require("../../utils/bemClassNames"));
-
-require("./tabindicator.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -42,8 +40,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var bem = (0, _bemClassNames.default)('tab-indicator');
 
 var TabIndicator =
 /*#__PURE__*/
@@ -92,7 +88,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return _react.default.createElement("span", {
-        className: bem.b({
+        className: (0, _styles.default)('tab-indicator', {
           visible: this.props.visible,
           animated: this.state.animated
         }),

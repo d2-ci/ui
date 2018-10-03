@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.animations = animations;
+exports.animatedScrollTo = animatedScrollTo;
 
 var _easing = require("./easing");
 
@@ -25,7 +25,7 @@ var START = 'start';
  * callback: is an optional function to execute when the scroll animation is done
  */
 
-function animations(_ref) {
+function animatedScrollTo(_ref) {
   var to = _ref.to,
       _ref$scrollBox = _ref.scrollBox,
       scrollBox = _ref$scrollBox === void 0 ? window : _ref$scrollBox,

@@ -5,22 +5,19 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Tab = void 0;
+exports.Tab = Tab;
+exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _utils = require("../../utils");
-
-require("./tab.css");
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-var bem = (0, _utils.bemClassNames)('tab');
-
-var Tab = function Tab(_ref) {
+function Tab(_ref) {
   var icon = _ref.icon,
       label = _ref.label,
       onClick = _ref.onClick,
@@ -30,19 +27,18 @@ var Tab = function Tab(_ref) {
       addTabRef = _ref.addTabRef,
       children = _ref.children;
   return _react.default.createElement("button", {
-    className: "".concat(bem.b({
+    className: (0, _styles.default)('tab', 'align-icon', {
       active: active,
       disabled: disabled,
       stacked: stacked
-    }), " d2ui-align-icon"),
+    }),
     onClick: onClick,
     ref: addTabRef
   }, children ? children : (icon && _react.default.createElement(_Icon.default, {
     name: icon
   }), label && _react.default.createElement("span", null, label)));
-};
+}
 
-exports.Tab = Tab;
 Tab.defaultProps = {
   active: false,
   disabled: false,
