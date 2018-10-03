@@ -80,8 +80,8 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBackdropClick", function () {
       var _this$props = _this.props,
           dismissible = _this$props.dismissible,
-          closeHandler = _this$props.closeHandler;
-      dismissible && closeHandler && closeHandler();
+          onClose = _this$props.onClose;
+      dismissible && onClose && onClose();
     });
 
     return _this;
@@ -168,11 +168,9 @@ function (_Component) {
         onClick: this.onBackdropClick
       }, animateOutProps)), _react.default.createElement("div", {
         className: (0, _styles.default)('window', size, animateOutClass)
-      }, _react.default.createElement("div", {
-        className: (0, _styles.default)('scroll-box')
       }, this.renderTitle(), _react.default.createElement("section", {
         className: (0, _styles.default)('content')
-      }, content), this.renderFooter()))), document.body);
+      }, content), this.renderFooter())), document.body);
     }
   }]);
 
