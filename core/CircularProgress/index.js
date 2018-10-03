@@ -15,35 +15,27 @@ var _styles = _interopRequireDefault(require("./styles"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /** @format */
-function Circle(_ref) {
-  var dashed = _ref.dashed;
+function Circle() {
   return _react.default.createElement("svg", {
-    viewBox: "22 22 44 44",
-    className: (0, _styles.default)('viewbox')
+    viewBox: "22 22 44 44"
   }, _react.default.createElement("circle", {
-    className: (0, _styles.default)({
-      dashed: dashed
-    }),
+    className: (0, _styles.default)('circle'),
     cx: "44",
     cy: "44",
     r: "20.2",
     fill: "none",
-    strokeWidth: "3.6",
-    strokeDashoffset: "0"
+    strokeWidth: "3.6"
   }));
 }
 
-function CircularProgress(_ref2) {
-  var size = _ref2.size,
-      center = _ref2.center,
-      dashed = _ref2.dashed;
+function CircularProgress(_ref) {
+  var size = _ref.size,
+      center = _ref.center;
 
   var loader = _react.default.createElement("div", {
     role: "progressbar",
     className: (0, _styles.default)('container', size)
-  }, _react.default.createElement(Circle, {
-    dashed: dashed
-  }));
+  }, _react.default.createElement(Circle, null));
 
   if (center) {
     return _react.default.createElement("div", {
@@ -55,8 +47,7 @@ function CircularProgress(_ref2) {
 }
 
 CircularProgress.defaultProps = {
-  size: 'medium',
-  dashed: true
+  size: 'medium'
 };
 var _default = CircularProgress;
 exports.default = _default;
