@@ -45,7 +45,7 @@ var _TabIndicator = _interopRequireDefault(require("./TabIndicator"));
 
 var _utils = require("../../utils");
 
-var _computeHorizontalScrollbarHeight = _interopRequireDefault(require("./computeHorizontalScrollbarHeight"));
+var _computeHorizontalScrollbarHeight = require("./computeHorizontalScrollbarHeight");
 
 var _styles = _interopRequireDefault(require("./styles"));
 
@@ -151,7 +151,7 @@ function (_Component) {
       scrolledToEnd: true,
       showTabIndicator: false
     };
-    _this.horizontalScrollbarHeight = (0, _computeHorizontalScrollbarHeight.default)();
+    _this.horizontalScrollbarHeight = (0, _computeHorizontalScrollbarHeight.computeHorizontalScrollbarHeight)();
     _this.handleSideScroll = (0, _utils.throttle)(_this.toggleScrollButtonVisibility.bind(_assertThisInitialized(_assertThisInitialized(_this))));
     return _this;
   }

@@ -5,7 +5,7 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = _default;
+exports.computeHorizontalScrollbarHeight = computeHorizontalScrollbarHeight;
 
 var _styles = _interopRequireDefault(require("./styles"));
 
@@ -14,7 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /** @format */
 var horizontalScrollbarHeight;
 
-function _default() {
+function computeHorizontalScrollbarHeight() {
   if (horizontalScrollbarHeight) {
     return horizontalScrollbarHeight;
   }
