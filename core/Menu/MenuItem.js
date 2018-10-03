@@ -17,8 +17,6 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _utils = require("../../utils");
-
 var _SubMenu = _interopRequireDefault(require("./SubMenu"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
@@ -85,7 +83,6 @@ function (_Component) {
     key: "render",
     value: function render() {
       var _this$props2 = this.props,
-          children = _this$props2.children,
           disabled = _this$props2.disabled,
           menuItems = _this$props2.menuItems,
           label = _this$props2.label,
@@ -93,7 +90,7 @@ function (_Component) {
 
       if (menuItems) {
         return _react.default.createElement(_SubMenu.default, {
-          children: children,
+          children: this.props.children,
           label: label,
           icon: icon,
           menuItems: menuItems
@@ -105,7 +102,7 @@ function (_Component) {
           disabled: disabled
         }),
         onClick: this.onClick
-      }, children ? (0, _utils.wrapTextNodesInSpans)(children) : _react.default.createElement(_react.Fragment, null, icon && _react.default.createElement(_Icon.default, {
+      }, this.props.children || _react.default.createElement(_react.Fragment, null, icon && _react.default.createElement(_Icon.default, {
         name: icon
       }), _react.default.createElement("span", null, label)));
     }
