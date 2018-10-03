@@ -23,17 +23,15 @@ function Icon(_ref) {
       className = _ref.className,
       onClick = _ref.onClick;
   return _react.default.createElement("i", {
-    className: (0, _styles.default)('container', className, _defineProperty({}, name, true)),
-    onClick: onClick
+    onClick: onClick,
+    className: (0, _styles.default)('container', _defineProperty({}, className, !!className))
   }, name);
 }
 
 Icon.defaultProps = {
   name: '',
   className: '',
-  onClick: function onClick() {
-    return null;
-  }
+  onClick: undefined
 };
 var _default = Icon;
 exports.default = _default;
