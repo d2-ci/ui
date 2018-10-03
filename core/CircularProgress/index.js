@@ -17,16 +17,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /** @format */
 function Circle() {
   return _react.default.createElement("svg", {
-    viewBox: "22 22 44 44",
-    className: (0, _styles.default)('viewbox')
+    viewBox: "22 22 44 44"
   }, _react.default.createElement("circle", {
     className: (0, _styles.default)('circle'),
     cx: "44",
     cy: "44",
     r: "20.2",
     fill: "none",
-    strokeWidth: "3.6",
-    strokeDashoffset: "0"
+    strokeWidth: "3.6"
   }));
 }
 
