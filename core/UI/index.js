@@ -10,11 +10,11 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _utils = require("../../utils");
-
 require("typeface-roboto");
 
 require("material-design-icons/iconfont/material-icons.css");
+
+require("./base/index.css");
 
 require("./theme/index.css");
 
@@ -23,18 +23,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /** @format */
 // import as part of the UI component to make sure that the font is
 // loaded for selective imports which might not import the root index
-var bem = (0, _utils.bemClassNames)('app');
-
 function UI(_ref) {
   var theme = _ref.theme,
       children = _ref.children;
   return _react.default.createElement("div", {
-    className: bem.b(theme)
+    className: theme
   }, children);
 }
 
 UI.defaultProps = {
-  theme: 'default'
+  theme: 'blue'
 };
 var _default = UI;
 exports.default = _default;
