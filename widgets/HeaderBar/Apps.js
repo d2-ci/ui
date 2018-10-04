@@ -33,6 +33,8 @@ var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
 var _TextField = _interopRequireDefault(require("../../core/Input/TextField"));
 
+var _utils = require("../../utils");
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -107,16 +109,6 @@ function List(_ref3) {
   }));
 }
 
-function isPointInRect(_ref6, _ref7) {
-  var x = _ref6.x,
-      y = _ref6.y;
-  var left = _ref7.left,
-      right = _ref7.right,
-      top = _ref7.top,
-      bottom = _ref7.bottom;
-  return x >= left && x <= right && y >= top && y <= bottom;
-}
-
 var Apps =
 /*#__PURE__*/
 function (_React$Component) {
@@ -151,7 +143,7 @@ function (_React$Component) {
 
         var container = _this.elContainer.getBoundingClientRect();
 
-        if (!isPointInRect(target, apps) && !isPointInRect(target, container)) {
+        if (!(0, _utils.isPointInRect)(target, apps) && !(0, _utils.isPointInRect)(target, container)) {
           _this.setState({
             show: false
           });

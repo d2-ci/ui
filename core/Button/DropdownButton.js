@@ -19,9 +19,13 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _Button = _interopRequireDefault(require("./Button"));
 
-var _Menu = require("../Menu");
-
 var _styles = _interopRequireDefault(require("./styles"));
+
+var _Icon = _interopRequireDefault(require("../Icon"));
+
+var _Menu = _interopRequireDefault(require("../Menu/Menu"));
+
+var _utils = require("../../utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47,6 +51,9 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+/**
+ * list of menu items opens up on clicking KeyDown icon on the right side
+ */
 var DropdownButton =
 /*#__PURE__*/
 function (_Component) {
@@ -65,34 +72,83 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropdownButton)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "anchorRef", null);
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      open: false
+    });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getAnchorRef", function () {
-      return _this.anchorRef;
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
+      if (_this.elContainer && _this.elMenu) {
+        var target = {
+          x: evt.clientX,
+          y: evt.clientY
+        };
+
+        var menu = _this.elMenu.getBoundingClientRect();
+
+        var container = _this.elContainer.getBoundingClientRect();
+
+        if (!(0, _utils.isPointInRect)(target, menu) && !(0, _utils.isPointInRect)(target, container)) {
+          _this.setState({
+            open: false
+          });
+        }
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
+      return _this.setState({
+        open: !_this.state.open
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClose", function () {
+      return _this.setState({
+        open: false
+      });
     });
 
     return _this;
   }
 
   _createClass(DropdownButton, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.addEventListener('click', this.onDocClick);
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      document.removeEventListener('click', this.onDocClick);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
+      var open = this.state.open;
       return _react.default.createElement("div", {
+        className: (0, _styles.default)('dropdown'),
         ref: function ref(c) {
-          return _this2.anchorRef = c;
-        },
-        className: (0, _styles.default)('dropdown')
+          return _this2.elContainer = c;
+        }
       }, _react.default.createElement(_Button.default, {
         kind: this.props.kind,
         onClick: this.props.onClick
-      }, this.props.label), _react.default.createElement(_Menu.DropdownMenu, {
+      }, this.props.label), _react.default.createElement(_Button.default, {
         kind: this.props.kind,
+        onClick: this.onToggle
+      }, _react.default.createElement(_Icon.default, {
+        name: open ? 'keyboard_arrow_up' : 'keyboard_arrow_down'
+      })), open && _react.default.createElement("div", {
+        className: (0, _styles.default)('menu'),
+        ref: function ref(c) {
+          return _this2.elMenu = c;
+        }
+      }, _react.default.createElement(_Menu.default, {
         list: this.props.list,
-        onSelect: this.props.onSelect,
-        getAnchorRef: this.getAnchorRef
-      }));
+        onClose: this.onClose,
+        onSelect: this.props.onSelect
+      })));
     }
   }]);
 
