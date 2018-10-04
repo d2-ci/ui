@@ -92,6 +92,10 @@ function (_React$Component) {
     value: function adjustPosition() {
       var anchorEl = this.props.getAnchorRef();
 
+      if (!(anchorEl instanceof HTMLElement)) {
+        anchorEl = (0, _reactDom.findDOMNode)(anchorEl);
+      }
+
       if (anchorEl && this.elContainer) {
         this.setState({
           style: (0, _computePosition.default)(this.elContainer, anchorEl, this.props.anchorPosition, this.props.popoverPosition)

@@ -85,10 +85,9 @@ function (_Component) {
 
       if (menuItems) {
         return _react.default.createElement(_SubMenu.default, {
-          children: this.props.children,
           label: label,
           icon: icon,
-          menuItems: menuItems
+          list: menuItems
         });
       }
 
