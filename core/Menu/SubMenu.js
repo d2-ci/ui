@@ -108,36 +108,23 @@ function (_Component) {
     value: function render() {
       var _this$props = this.props,
           children = _this$props.children,
-          label = _this$props.label,
-          icon = _this$props.icon,
-          menuItems = _this$props.menuItems;
-      var arrowIconName = (0, _utils.isDocRTL)() ? 'keyboard_arrow_left' : 'keyboard_arrow_right'; // There MUST be a better way of doing this!
-
-      var menuProps = (0, _react.isValidElement)(menuItems[0]) ? {
-        children: menuItems
-      } : {
-        options: menuItems
-      };
+          icon = _this$props.icon;
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_MenuItem.default, {
         ref: this.setAnchorRef,
         onClick: this.onOpen
       }, children ? children : [icon && _react.default.createElement(_Icon.default, {
         key: "icon",
         name: icon
-      }), label], _react.default.createElement(_Icon.default, {
-        name: arrowIconName
+      }), this.props.label], _react.default.createElement(_Icon.default, {
+        name: (0, _utils.isDocRTL)() ? 'keyboard_arrow_left' : 'keyboard_arrow_right'
       })), _react.default.createElement(_PopoverMenu.default, {
-        list: menuItems,
-        onSelect: function onSelect() {
-          return null;
-        },
-        onClose: this.onClose,
-        getAnchorRef: this.getAnchorRef,
+        animation: "slide-x-y",
         open: this.state.open,
-        menuProps: menuProps,
+        list: this.props.list,
         anchorPosition: anchorPosition,
         popoverPosition: popoverPosition,
-        animation: "slide-x-y"
+        onClose: this.onClose,
+        getAnchorRef: this.getAnchorRef
       }));
     }
   }]);

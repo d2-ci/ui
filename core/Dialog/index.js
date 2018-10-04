@@ -167,11 +167,11 @@ function (_React$Component) {
   return Dialog;
 }(_react.default.Component);
 
+exports.Dialog = Dialog;
 Dialog.defaultProps = {
   size: 'medium',
   dismissible: true
 };
-var EnhancedDialog = (0, _utils.withAnimatedClose)(Dialog);
-exports.Dialog = EnhancedDialog;
-var _default = EnhancedDialog;
+exports.Dialog = Dialog = (0, _utils.withAnimatedClose)(Dialog);
+var _default = Dialog;
 exports.default = _default;

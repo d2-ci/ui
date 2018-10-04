@@ -9,18 +9,6 @@ require("core-js/modules/es7.symbol.async-iterator");
 
 require("core-js/modules/es6.symbol");
 
-require("core-js/modules/es6.object.assign");
-
-require("core-js/modules/es6.array.for-each");
-
-require("core-js/modules/es6.array.filter");
-
-require("core-js/modules/web.dom.iterable");
-
-require("core-js/modules/es6.array.iterator");
-
-require("core-js/modules/es6.object.keys");
-
 require("core-js/modules/es6.object.define-property");
 
 require("core-js/modules/es6.object.create");
@@ -43,10 +31,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -67,8 +51,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var Popover =
 /*#__PURE__*/
-function (_Component) {
-  _inherits(Popover, _Component);
+function (_React$Component) {
+  _inherits(Popover, _React$Component);
 
   function Popover() {
     var _getPrototypeOf2;
@@ -84,7 +68,7 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Popover)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      positionStyle: null
+      style: null
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "elContainer", null);
@@ -106,56 +90,50 @@ function (_Component) {
   }, {
     key: "adjustPosition",
     value: function adjustPosition() {
-      var _this$props = this.props,
-          getAnchorRef = _this$props.getAnchorRef,
-          anchorPosition = _this$props.anchorPosition,
-          popoverPosition = _this$props.popoverPosition;
-      var anchorRef = getAnchorRef(); // anchorRef can be on an element or a component instance. For components we need to call findDOMNode.
+      var anchorEl = this.props.getAnchorRef();
 
-      var triggerEl = anchorRef.nodeType ? anchorRef : (0, _reactDom.findDOMNode)(anchorRef);
+      if (!(anchorEl instanceof HTMLElement)) {
+        anchorEl = (0, _reactDom.findDOMNode)(anchorEl);
+      }
 
-      if (triggerEl && this.elContainer) {
+      if (anchorEl && this.elContainer) {
         this.setState({
-          positionStyle: _objectSpread({}, (0, _computePosition.default)(this.elContainer, triggerEl, anchorPosition, popoverPosition))
+          style: (0, _computePosition.default)(this.elContainer, anchorEl, this.props.anchorPosition, this.props.popoverPosition)
         });
       }
     }
   }, {
+    key: "className",
+    value: function className() {
+      return (0, _styles.default)('container', this.props.animation, {
+        'animate-out': this.props.isAnimatingOut
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          open = _this$props2.open,
-          children = _this$props2.children,
-          closePopover = _this$props2.closePopover,
-          animation = _this$props2.animation,
-          isAnimatingOut = _this$props2.isAnimatingOut,
-          onAnimationEnd = _this$props2.onAnimationEnd;
-      var positionStyle = this.state.positionStyle;
-
-      if (!open && !isAnimatingOut) {
+      if (!this.props.open && !this.props.isAnimatingOut) {
         return null;
       }
 
-      var animateOutProps = isAnimatingOut ? {
-        onAnimationEnd: onAnimationEnd
-      } : null;
       return (0, _reactDom.createPortal)(_react.default.createElement(_react.Fragment, null, _react.default.createElement("div", {
         className: (0, _styles.default)('overlay'),
-        onClick: closePopover
-      }), _react.default.createElement("div", _extends({
-        className: (0, _styles.default)('container', animation, {
-          'animate-out': isAnimatingOut
-        }),
+        onClick: this.props.onClose
+      }), _react.default.createElement("div", {
         ref: this.setElContainer,
-        style: positionStyle
-      }, animateOutProps), children)), document.body);
+        style: this.state.style,
+        className: this.className(),
+        onAnimationEnd: this.props.isAnimatingOut ? this.props.onAnimationEnd : undefined
+      }, this.props.children)), document.body);
     }
   }]);
 
   return Popover;
-}(_react.Component);
+}(_react.default.Component);
 
+exports.Popover = Popover;
 Popover.defaultProps = {
+  animation: 'fade-in',
   anchorPosition: {
     vertical: 'middle',
     horizontal: 'center'
@@ -163,12 +141,8 @@ Popover.defaultProps = {
   popoverPosition: {
     vertical: 'middle',
     horizontal: 'center'
-  },
-  animation: 'fade-in'
+  }
 };
-var EnhancedPopover = (0, _utils.withAnimatedClose)(Popover);
-exports.Popover = EnhancedPopover;
-
-var _default = (0, _utils.withAnimatedClose)(EnhancedPopover);
-
+exports.Popover = Popover = (0, _utils.withAnimatedClose)(Popover);
+var _default = Popover;
 exports.default = _default;

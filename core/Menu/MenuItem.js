@@ -67,7 +67,7 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (event) {
       var handler = _this.props.onClick || _this.props.onSelect;
-      handler(event, _this.props.value, _this.props);
+      handler && handler(event, _this.props.value, _this.props);
       _this.props.onClose && _this.props.onClose();
     });
 
@@ -85,10 +85,9 @@ function (_Component) {
 
       if (menuItems) {
         return _react.default.createElement(_SubMenu.default, {
-          children: this.props.children,
           label: label,
           icon: icon,
-          menuItems: menuItems
+          list: menuItems
         });
       }
 
