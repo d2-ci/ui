@@ -24,7 +24,9 @@ function t() {
   }
 
   classes.forEach(function (n) {
-    return obj[n] = true;
+    if (typeof n === 'string' || typeof n === 'number' || !!n) {
+      obj[n] = true;
+    }
   });
   return obj;
 }

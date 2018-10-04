@@ -57,8 +57,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-console.log("s('search')", (0, _styles.default)('search'));
-
 function Search(_ref) {
   var value = _ref.value,
       onChange = _ref.onChange;
