@@ -83,11 +83,11 @@ function (_Component) {
           y: evt.clientY
         };
 
-        var apps = _this.elMenu.getBoundingClientRect();
+        var menu = _this.elMenu.getBoundingClientRect();
 
         var container = _this.elContainer.getBoundingClientRect();
 
-        if (!(0, _utils.isPointInRect)(target, apps) && !(0, _utils.isPointInRect)(target, container)) {
+        if (!(0, _utils.isPointInRect)(target, menu) && !(0, _utils.isPointInRect)(target, container)) {
           _this.setState({
             open: false
           });
