@@ -5,13 +5,12 @@ require("core-js/modules/es6.object.define-property");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Switch = void 0;
+exports.Switch = Switch;
+exports.default = void 0;
 
 require("core-js/modules/es6.object.assign");
 
 var _react = _interopRequireDefault(require("react"));
-
-var _ToggleField = _interopRequireDefault(require("../ToggleField"));
 
 var _utils = require("../../../utils");
 
@@ -23,7 +22,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var Switch = function Switch(_ref) {
+function Switch(_ref) {
   var label = _ref.label,
       checked = _ref.checked,
       valid = _ref.valid,
@@ -45,37 +44,18 @@ var Switch = function Switch(_ref) {
     dense: dense,
     block: block,
     helpText: helpText
-  }), _react.default.createElement(_ToggleField.default, {
-    disabled: disabled,
-    dense: dense
-  }, _react.default.createElement("div", {
-    className: (0, _styles.default)({
-      checked: checked,
-      disabled: disabled
-    })
-  }, _react.default.createElement("div", {
-    className: (0, _styles.default)('track')
-  }), _react.default.createElement("div", {
-    className: (0, _styles.default)('thumb-underlay')
-  }, _react.default.createElement("div", {
-    className: (0, _styles.default)('thumb')
+  }), _react.default.createElement("label", {
+    onClick: onChange
   }, _react.default.createElement("input", {
-    onChange: onChange,
-    type: "checkbox",
-    id: "basic-switch",
-    className: (0, _styles.default)('native-control'),
-    "aria-checked": checked,
     checked: checked,
-    role: "switch",
-    disabled: disabled
-  })))), _react.default.createElement("span", {
-    className: (0, _styles.default)('label-text', {
-      disabled: disabled
-    })
+    disabled: disabled,
+    type: "checkbox",
+    className: (0, _styles.default)('input')
+  }), _react.default.createElement("label", {
+    className: (0, _styles.default)('label')
   }, (0, _utils.getRequiredText)(label, required))));
-};
+}
 
-exports.Switch = Switch;
 Switch.defaultProps = {
   checked: false,
   disabled: false
