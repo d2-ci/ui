@@ -34,8 +34,6 @@ function Switch(_ref) {
       block = _ref.block,
       helpText = _ref.helpText,
       required = _ref.required;
-  console.log('checked', checked);
-  console.log('onChange', onChange);
   return _react.default.createElement(_Field.default, _extends({
     className: (0, _styles.default)('container')
   }, {
