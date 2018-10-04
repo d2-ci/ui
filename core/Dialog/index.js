@@ -173,7 +173,5 @@ Dialog.defaultProps = {
 };
 var EnhancedDialog = (0, _utils.withAnimatedClose)(Dialog);
 exports.Dialog = EnhancedDialog;
-
-var _default = (0, _utils.withAnimatedClose)(EnhancedDialog);
-
+var _default = EnhancedDialog;
 exports.default = _default;
