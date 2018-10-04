@@ -68,7 +68,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Popover)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      positionStyle: null
+      style: null
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "elContainer", null);
@@ -90,13 +90,11 @@ function (_React$Component) {
   }, {
     key: "adjustPosition",
     value: function adjustPosition() {
-      var anchorRef = this.props.getAnchorRef(); // anchorRef can be on an element or a component instance. For components we need to call findDOMNode.
+      var anchorEl = this.props.getAnchorRef();
 
-      var triggerEl = anchorRef.nodeType ? anchorRef : (0, _reactDom.findDOMNode)(anchorRef);
-
-      if (triggerEl && this.elContainer) {
+      if (anchorEl && this.elContainer) {
         this.setState({
-          positionStyle: (0, _computePosition.default)(this.elContainer, triggerEl, this.props.anchorPosition, this.props.popoverPosition)
+          style: (0, _computePosition.default)(this.elContainer, anchorEl, this.props.anchorPosition, this.props.popoverPosition)
         });
       }
     }
@@ -119,7 +117,7 @@ function (_React$Component) {
         onClick: this.props.onClose
       }), _react.default.createElement("div", {
         ref: this.setElContainer,
-        style: this.state.positionStyle,
+        style: this.state.style,
         className: this.className(),
         onAnimationEnd: this.props.isAnimatingOut ? this.props.onAnimationEnd : undefined
       }, this.props.children)), document.body);
