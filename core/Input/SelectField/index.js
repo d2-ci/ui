@@ -262,13 +262,10 @@ function (_Component) {
         required: required,
         helpText: helpText
       }), inputComponent), !native && _react.default.createElement(_Menu.PopoverMenu, {
-        menuProps: {
-          options: this.getOptions(),
-          selectHandler: this.selectHandler
-        },
-        getAnchorRef: this.getInputRef,
+        list: this.getOptions(),
+        onSelect: this.selectHandler,
         open: this.state.open,
-        closePopover: this.onClose,
+        onClose: this.onClose,
         anchorPosition: {
           vertical: 'top',
           horizontal: 'center'
@@ -277,7 +274,7 @@ function (_Component) {
           vertical: 'top',
           horizontal: 'center'
         },
-        animation: "slide-down"
+        getAnchorRef: this.getInputRef
       }));
     }
   }]);

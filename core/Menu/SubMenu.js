@@ -63,22 +63,32 @@ var SubMenu =
 function (_Component) {
   _inherits(SubMenu, _Component);
 
-  function SubMenu(props) {
+  function SubMenu() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, SubMenu);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SubMenu).call(this, props));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openPopover", function () {
-      _this.setState({
-        popoverOpen: true
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SubMenu)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      open: false
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onOpen", function () {
+      return _this.setState({
+        open: true
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closePopover", function () {
-      _this.setState({
-        popoverOpen: false
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClose", function () {
+      return _this.setState({
+        open: false
       });
     });
 
@@ -90,9 +100,6 @@ function (_Component) {
       return _this.anchorRef = node;
     });
 
-    _this.state = {
-      popoverOpen: false
-    };
     return _this;
   }
 
@@ -113,16 +120,20 @@ function (_Component) {
       };
       return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_MenuItem.default, {
         ref: this.setAnchorRef,
-        onClick: this.openPopover
+        onClick: this.onOpen
       }, children ? children : [icon && _react.default.createElement(_Icon.default, {
         key: "icon",
         name: icon
       }), label], _react.default.createElement(_Icon.default, {
         name: arrowIconName
       })), _react.default.createElement(_PopoverMenu.default, {
-        closePopover: this.closePopover,
+        list: menuItems,
+        onSelect: function onSelect() {
+          return null;
+        },
+        onClose: this.onClose,
         getAnchorRef: this.getAnchorRef,
-        open: this.state.popoverOpen,
+        open: this.state.open,
         menuProps: menuProps,
         anchorPosition: anchorPosition,
         popoverPosition: popoverPosition,

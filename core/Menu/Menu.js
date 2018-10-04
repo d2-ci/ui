@@ -37,9 +37,9 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function Menu(_ref) {
-  var options = _ref.options,
-      selectHandler = _ref.selectHandler,
-      closePopover = _ref.closePopover,
+  var list = _ref.list,
+      onSelect = _ref.onSelect,
+      onClose = _ref.onClose,
       children = _ref.children;
 
   if (children) {
@@ -54,17 +54,21 @@ function Menu(_ref) {
     elevation: 4
   }, _react.default.createElement("ul", {
     className: (0, _styles.default)('container')
-  }, options.map(function (_ref2, idx) {
+  }, list.map(function (_ref2, idx) {
     var onClick = _ref2.onClick,
         rest = _objectWithoutProperties(_ref2, ["onClick"]);
 
     return _react.default.createElement(_MenuItem.default, _extends({
       key: "mi-".concat(idx),
-      onClick: onClick || selectHandler,
-      closePopover: closePopover
+      onClick: onClick || onSelect,
+      onSelect: onSelect,
+      onClose: onClose
     }, rest));
   })));
 }
 
+Menu.defaultProps = {
+  options: []
+};
 var _default = Menu;
 exports.default = _default;

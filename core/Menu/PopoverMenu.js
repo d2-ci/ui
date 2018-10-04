@@ -8,8 +8,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.PopoverMenu = PopoverMenu;
 exports.default = void 0;
 
-require("core-js/modules/es6.object.assign");
-
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -20,28 +18,34 @@ var _Popover = _interopRequireDefault(require("../Popover"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
+/** @format */
 function PopoverMenu(_ref) {
-  var anchorPosition = _ref.anchorPosition,
-      closePopover = _ref.closePopover,
-      getAnchorRef = _ref.getAnchorRef,
-      menuProps = _ref.menuProps,
-      open = _ref.open,
+  var open = _ref.open,
+      list = _ref.list,
+      animation = _ref.animation,
       popoverPosition = _ref.popoverPosition,
-      animation = _ref.animation;
+      anchorPosition = _ref.anchorPosition,
+      onSelect = _ref.onSelect,
+      onClose = _ref.onClose,
+      getAnchorRef = _ref.getAnchorRef;
   return _react.default.createElement(_Popover.default, {
-    anchorPosition: anchorPosition,
-    closePopover: closePopover,
-    getAnchorRef: getAnchorRef,
     open: open,
-    popoverPosition: popoverPosition,
-    animation: animation
-  }, _react.default.createElement(_Menu.default, _extends({
-    closePopover: closePopover
-  }, menuProps)));
+    onClose: onClose,
+    animation: animation,
+    getAnchorRef: getAnchorRef,
+    anchorPosition: anchorPosition,
+    popoverPosition: popoverPosition
+  }, _react.default.createElement(_Menu.default, {
+    list: list,
+    onSelect: onSelect,
+    onClose: onClose
+  }));
 }
 
+PopoverMenu.defaultProps = {
+  list: [],
+  animation: 'slide-down'
+};
 PopoverMenu.defaultProps = {
   open: _propTypes.default.bool.isRequired,
   anchorPosition: {

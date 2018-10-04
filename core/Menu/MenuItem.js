@@ -66,14 +66,9 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(MenuItem)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (event) {
-      var _this$props = _this.props,
-          value = _this$props.value,
-          onClick = _this$props.onClick,
-          selectHandler = _this$props.selectHandler,
-          closePopover = _this$props.closePopover;
-      var handler = onClick || selectHandler;
-      handler(event, value, _this.props);
-      closePopover && closePopover();
+      var handler = _this.props.onClick || _this.props.onSelect;
+      handler(event, _this.props.value, _this.props);
+      _this.props.onClose && _this.props.onClose();
     });
 
     return _this;
@@ -82,11 +77,11 @@ function (_Component) {
   _createClass(MenuItem, [{
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          disabled = _this$props2.disabled,
-          menuItems = _this$props2.menuItems,
-          label = _this$props2.label,
-          icon = _this$props2.icon;
+      var _this$props = this.props,
+          disabled = _this$props.disabled,
+          menuItems = _this$props.menuItems,
+          label = _this$props.label,
+          icon = _this$props.icon;
 
       if (menuItems) {
         return _react.default.createElement(_SubMenu.default, {

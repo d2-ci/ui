@@ -76,13 +76,13 @@ function (_React$Component) {
       open: false
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openMenu", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onOpen", function () {
       return _this.setState({
         open: true
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeMenu", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClose", function () {
       return _this.setState({
         open: false
       });
@@ -95,18 +95,18 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Button.Button, {
-        kind: this.props.buttonKind,
-        onClick: this.openMenu
+        kind: this.props.kind,
+        onClick: this.onOpen
       }, _react.default.createElement(_Icon.default, {
         name: "keyboard_arrow_down"
       })), _react.default.createElement(_PopoverMenu.default, {
-        menuProps: this.props.menuProps,
-        getAnchorRef: this.props.getAnchorRef,
-        open: this.state.open,
-        closePopover: this.closeMenu,
-        animation: "slide-down",
+        popoverPosition: popoverPosition,
         anchorPosition: anchorPosition,
-        popoverPosition: popoverPosition
+        open: this.state.open,
+        list: this.props.list,
+        onClose: this.onClose,
+        onSelect: this.props.onSelect,
+        getAnchorRef: this.props.getAnchorRef
       }));
     }
   }]);
