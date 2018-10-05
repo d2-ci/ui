@@ -19,13 +19,15 @@ require("core-js/modules/es6.array.filter");
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Icon = _interopRequireDefault(require("../../Icon"));
+var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _Menu = _interopRequireDefault(require("../../Menu/Menu"));
+var _Menu = _interopRequireDefault(require("../Menu/Menu"));
+
+var _helpers = require("../helpers");
+
+var _utils = require("../../utils");
 
 var _styles = _interopRequireDefault(require("./styles"));
-
-var _utils = require("../../../utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -124,12 +126,12 @@ function (_React$Component) {
       document.removeEventListener('click', this.onDocClick);
     }
   }, {
-    key: "getLabel",
-    value: function getLabel() {
+    key: "getValue",
+    value: function getValue() {
       var _this2 = this;
 
       if (!this.props.value) {
-        return this.props.label;
+        return false;
       }
 
       return this.props.list.filter(function (_ref) {
@@ -149,6 +151,7 @@ function (_React$Component) {
         width = "".concat(this.elSelect.getBoundingClientRect().width, "px");
       }
 
+      var value = this.getValue();
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this3.elContainer = c;
@@ -165,8 +168,15 @@ function (_React$Component) {
       }, this.props.icon && _react.default.createElement(_Icon.default, {
         name: this.props.icon
       })), _react.default.createElement("div", {
-        className: (0, _styles.default)('label')
-      }, this.getLabel()), _react.default.createElement(_Icon.default, {
+        className: (0, _styles.default)('value')
+      }, this.getValue()), _react.default.createElement(_helpers.Label, {
+        height: "44px",
+        hasIcon: !!this.props.icon,
+        text: this.props.label,
+        status: this.props.status,
+        border: this.props.border,
+        size: value ? 'minimized' : 'default'
+      }), _react.default.createElement(_Icon.default, {
         name: open ? 'arrow_drop_up' : 'arrow_drop_down',
         className: (0, _styles.default)('dropdown-icon')
       })), open && _react.default.createElement("div", {
@@ -189,7 +199,7 @@ function (_React$Component) {
 exports.SelectField = SelectField;
 SelectField.defaultProps = {
   disabled: false,
-  placeholder: ''
+  label: ''
 };
 var _default = SelectField;
 exports.default = _default;
