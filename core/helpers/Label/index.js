@@ -27,7 +27,7 @@ function Label(_ref) {
       hasIcon = _ref.hasIcon;
   var style = {
     height: height,
-    'line-height': height
+    lineHeight: height
   };
   return _react.default.createElement("div", {
     style: style,
