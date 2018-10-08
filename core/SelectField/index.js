@@ -174,6 +174,7 @@ function (_React$Component) {
       })), _react.default.createElement("div", {
         className: (0, _styles.default)('value')
       }, this.getLabel()), _react.default.createElement(_helpers.Label, {
+        type: "select",
         height: "44px",
         hasIcon: !!this.props.icon,
         text: this.props.label,

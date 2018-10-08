@@ -49,7 +49,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 // TODO Helper Text component
 // TODO disabled state
-// TODO Normal, Dense
+// TODO kind: Normal, Dense
 var InputField =
 /*#__PURE__*/
 function (_React$Component) {
