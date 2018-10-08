@@ -110,8 +110,8 @@ function (_React$Component) {
           return _this2.elContainer = c;
         },
         className: (0, _styles.default)('container', (_s = {
-          disabled: this.props.disabled
-        }, _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "kind-".concat(this.props.kind), true), _s)),
+          'disabled': this.props.disabled
+        }, _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, 'is-empty', !(this.props.value || this.props.placeholder || this.state.focused)), _s)),
         onClick: this.onClick
       }, _react.default.createElement("div", {
         className: (0, _styles.default)('field')
