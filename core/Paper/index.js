@@ -16,15 +16,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 /** @format */
 function Paper(_ref) {
-  var elevation = _ref.elevation,
+  var width = _ref.width,
+      height = _ref.height,
+      elevation = _ref.elevation,
       children = _ref.children;
+  var style = {
+    width: width,
+    height: height
+  };
   return _react.default.createElement("div", {
+    style: style,
     className: (0, _styles.default)('container', "elevation-".concat(elevation))
   }, children);
 }
 
 Paper.defaultProps = {
-  elevation: 1
+  elevation: 1,
+  width: 'inherit',
+  height: 'inherit'
 };
 var _default = Paper;
 exports.default = _default;

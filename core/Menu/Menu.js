@@ -37,21 +37,27 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function Menu(_ref) {
-  var list = _ref.list,
+  var width = _ref.width,
+      height = _ref.height,
+      list = _ref.list,
       onSelect = _ref.onSelect,
       onClose = _ref.onClose,
       children = _ref.children;
 
   if (children) {
     return _react.default.createElement(_Paper.default, {
-      elevation: 4
+      elevation: 4,
+      width: width,
+      height: height
     }, _react.default.createElement("ul", {
       className: (0, _styles.default)('container')
     }, children));
   }
 
   return _react.default.createElement(_Paper.default, {
-    elevation: 4
+    elevation: 4,
+    width: width,
+    height: height
   }, _react.default.createElement("ul", {
     className: (0, _styles.default)('container')
   }, list.map(function (_ref2, idx) {
@@ -68,7 +74,9 @@ function Menu(_ref) {
 }
 
 Menu.defaultProps = {
-  options: []
+  options: [],
+  width: 'inherit',
+  height: 'inherit'
 };
 var _default = Menu;
 exports.default = _default;
