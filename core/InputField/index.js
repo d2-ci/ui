@@ -47,9 +47,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// TODO Helper Text component
 // TODO disabled state
-// TODO kind: Normal, Dense
 var InputField =
 /*#__PURE__*/
 function (_React$Component) {
@@ -104,14 +102,19 @@ function (_React$Component) {
   _createClass(InputField, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this2 = this,
+          _s;
 
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elContainer = c;
         },
-        className: (0, _styles.default)('container'),
+        className: (0, _styles.default)('container', (_s = {
+          disabled: this.props.disabled
+        }, _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "kind-".concat(this.props.kind), true), _s)),
         onClick: this.onClick
+      }, _react.default.createElement("div", {
+        className: (0, _styles.default)('field')
       }, this.props.icon && _react.default.createElement("div", {
         className: (0, _styles.default)('icon')
       }, _react.default.createElement(_Icon.default, {
@@ -128,13 +131,17 @@ function (_React$Component) {
         onBlur: this.onBlur,
         placeholder: this.props.placeholder
       }), _react.default.createElement(_helpers.Label, {
-        height: "44px",
-        hasIcon: !!this.props.icon,
+        size: this.props.size,
+        kind: this.props.kind,
         text: this.props.label,
         status: this.props.status,
-        border: this.props.border,
         focused: this.state.focused,
-        size: this.props.placeholder || this.props.value || this.state.focused ? 'minimized' : 'default'
+        disabled: this.props.disabled,
+        hasIcon: !!this.props.icon,
+        state: this.props.placeholder || this.props.value || this.state.focused ? 'minimized' : 'default'
+      })), this.props.help && _react.default.createElement(_helpers.Help, {
+        text: this.props.help,
+        status: this.props.status
       }));
     }
   }]);
@@ -145,7 +152,9 @@ function (_React$Component) {
 exports.InputField = InputField;
 InputField.defaultProps = {
   disabled: false,
-  label: ''
+  label: '',
+  size: 'default',
+  kind: 'filled'
 };
 var _default = InputField;
 exports.default = _default;

@@ -62,18 +62,6 @@ Object.keys(_TextField).forEach(function (key) {
   });
 });
 
-var _SelectField = require("./SelectField");
-
-Object.keys(_SelectField).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _SelectField[key];
-    }
-  });
-});
-
 var _RadioButtonGroup = require("./RadioButtonGroup");
 
 Object.keys(_RadioButtonGroup).forEach(function (key) {

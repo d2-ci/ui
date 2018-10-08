@@ -27,25 +27,21 @@ var statusToIcon = {
 function Label(_ref) {
   var _s;
 
-  var type = _ref.type,
+  var text = _ref.text,
+      type = _ref.type,
       focused = _ref.focused,
-      text = _ref.text,
       size = _ref.size,
-      height = _ref.height,
+      kind = _ref.kind,
+      state = _ref.state,
       status = _ref.status,
-      border = _ref.border,
+      disabled = _ref.disabled,
       hasIcon = _ref.hasIcon;
-  var style = {
-    height: height,
-    lineHeight: height
-  };
   return _react.default.createElement("div", {
-    style: style,
     className: (0, _styles.default)('container', (_s = {
       'has-icon': hasIcon
-    }, _defineProperty(_s, "focused", focused), _defineProperty(_s, "size-".concat(size), true), _defineProperty(_s, "type-".concat(type), true), _defineProperty(_s, "status-".concat(status), true), _defineProperty(_s, "border-".concat(border), true), _s))
+    }, _defineProperty(_s, "focused", focused), _defineProperty(_s, "disabled", disabled), _defineProperty(_s, "state-".concat(state), true), _defineProperty(_s, "size-".concat(size), true), _defineProperty(_s, "type-".concat(type), true), _defineProperty(_s, "status-".concat(status), true), _defineProperty(_s, "kind-".concat(kind), true), _s))
   }, _react.default.createElement("div", {
-    className: (0, _styles.default)('content', _defineProperty({}, "size-".concat(size), true))
+    className: (0, _styles.default)('content', _defineProperty({}, "state-".concat(state), true))
   }, text), status !== 'default' && _react.default.createElement(_Icon.default, {
     name: statusToIcon[status],
     className: (0, _styles.default)('icon')
@@ -58,7 +54,7 @@ Label.defaultProps = {
   size: 'default',
   status: 'default',
   border: 'none',
-  height: '100%'
+  disabled: false
 };
 var _default = Label;
 exports.default = _default;

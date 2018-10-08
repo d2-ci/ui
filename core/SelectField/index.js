@@ -160,7 +160,7 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elContainer = c;
         },
-        className: (0, _styles.default)('container')
+        className: (0, _styles.default)('container', _defineProperty({}, "size-".concat(this.props.size), true))
       }, _react.default.createElement("div", {
         ref: function ref(c) {
           return _this3.elSelect = c;
@@ -175,12 +175,12 @@ function (_React$Component) {
         className: (0, _styles.default)('value')
       }, this.getLabel()), _react.default.createElement(_helpers.Label, {
         type: "select",
-        height: "44px",
-        hasIcon: !!this.props.icon,
+        size: this.props.size,
+        kind: this.props.kind,
         text: this.props.label,
         status: this.props.status,
-        border: this.props.border,
-        size: value ? 'minimized' : 'default'
+        hasIcon: !!this.props.icon,
+        state: value ? 'minimized' : 'default'
       }), _react.default.createElement(_Icon.default, {
         name: open ? 'arrow_drop_up' : 'arrow_drop_down',
         className: (0, _styles.default)('dropdown-icon')
@@ -204,7 +204,8 @@ function (_React$Component) {
 exports.SelectField = SelectField;
 SelectField.defaultProps = {
   disabled: false,
-  label: ''
+  label: '',
+  size: 'default'
 };
 var _default = SelectField;
 exports.default = _default;
