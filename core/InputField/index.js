@@ -133,6 +133,7 @@ function (_React$Component) {
         text: this.props.label,
         status: this.props.status,
         border: this.props.border,
+        focused: this.state.focused,
         size: this.props.placeholder || this.props.value || this.state.focused ? 'minimized' : 'default'
       }));
     }

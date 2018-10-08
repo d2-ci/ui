@@ -18,7 +18,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// TODO show field status icon, error, valid, warning
 var statusToIcon = {
   valid: 'check_circle',
   warning: 'warning',
@@ -29,6 +28,7 @@ function Label(_ref) {
   var _s;
 
   var type = _ref.type,
+      focused = _ref.focused,
       text = _ref.text,
       size = _ref.size,
       height = _ref.height,
@@ -43,7 +43,7 @@ function Label(_ref) {
     style: style,
     className: (0, _styles.default)('container', (_s = {
       'has-icon': hasIcon
-    }, _defineProperty(_s, "size-".concat(size), true), _defineProperty(_s, "type-".concat(type), true), _defineProperty(_s, "status-".concat(status), true), _defineProperty(_s, "border-".concat(border), true), _s))
+    }, _defineProperty(_s, "focused", focused), _defineProperty(_s, "size-".concat(size), true), _defineProperty(_s, "type-".concat(type), true), _defineProperty(_s, "status-".concat(status), true), _defineProperty(_s, "border-".concat(border), true), _s))
   }, _react.default.createElement("div", {
     className: (0, _styles.default)('content', _defineProperty({}, "size-".concat(size), true))
   }, text), status !== 'default' && _react.default.createElement(_Icon.default, {
