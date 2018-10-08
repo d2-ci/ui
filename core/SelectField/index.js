@@ -126,18 +126,19 @@ function (_React$Component) {
       document.removeEventListener('click', this.onDocClick);
     }
   }, {
-    key: "getValue",
-    value: function getValue() {
+    key: "getLabel",
+    value: function getLabel() {
       var _this2 = this;
 
       if (!this.props.value) {
         return false;
       }
 
-      return this.props.list.filter(function (_ref) {
+      var selected = this.props.list.filter(function (_ref) {
         var value = _ref.value;
         return _this2.props.value === value;
-      })[0]['label'];
+      });
+      return selected.length > 0 ? selected[0]['label'] : null;
     }
   }, {
     key: "render",
@@ -151,7 +152,7 @@ function (_React$Component) {
         width = "".concat(this.elSelect.getBoundingClientRect().width, "px");
       }
 
-      var value = this.getValue();
+      var value = this.getLabel();
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this3.elContainer = c;
@@ -169,7 +170,7 @@ function (_React$Component) {
         name: this.props.icon
       })), _react.default.createElement("div", {
         className: (0, _styles.default)('value')
-      }, this.getValue()), _react.default.createElement(_helpers.Label, {
+      }, this.getLabel()), _react.default.createElement(_helpers.Label, {
         height: "44px",
         hasIcon: !!this.props.icon,
         text: this.props.label,
