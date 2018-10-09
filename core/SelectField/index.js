@@ -17,6 +17,8 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 require("core-js/modules/es6.array.filter");
 
+require("core-js/modules/es6.function.name");
+
 var _react = _interopRequireDefault(require("react"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
@@ -51,9 +53,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// TODO Helper Text component
-// TODO disabled state
-// TODO Normal, Dense
 var SelectField =
 /*#__PURE__*/
 function (_React$Component) {
@@ -107,12 +106,12 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSelect", function (evt, value, option) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSelect", function (evt, value) {
       _this.setState({
         open: false
       });
 
-      _this.props.onChange(evt, value, option);
+      _this.props.onChange(_this.props.name, value);
     });
 
     return _this;
@@ -146,7 +145,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this3 = this,
+          _s;
 
       var open = this.state.open;
       var width = 'inherit';
@@ -155,12 +155,14 @@ function (_React$Component) {
         width = "".concat(this.elSelect.getBoundingClientRect().width, "px");
       }
 
-      var value = this.getLabel();
+      var selected = this.getLabel();
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this3.elContainer = c;
         },
-        className: (0, _styles.default)('container', _defineProperty({}, "size-".concat(this.props.size), true))
+        className: (0, _styles.default)('container', (_s = {
+          selected: !!this.props.value
+        }, _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, "size-".concat(this.props.size), true), _s))
       }, _react.default.createElement("div", {
         ref: function ref(c) {
           return _this3.elSelect = c;
@@ -173,18 +175,21 @@ function (_React$Component) {
         name: this.props.icon
       })), _react.default.createElement("div", {
         className: (0, _styles.default)('value')
-      }, this.getLabel()), _react.default.createElement(_helpers.Label, {
+      }, selected), _react.default.createElement(_helpers.Label, {
         type: "select",
         size: this.props.size,
         kind: this.props.kind,
         text: this.props.label,
         status: this.props.status,
         hasIcon: !!this.props.icon,
-        state: value ? 'minimized' : 'default'
+        state: selected ? 'minimized' : 'default'
       }), _react.default.createElement(_Icon.default, {
         name: open ? 'arrow_drop_up' : 'arrow_drop_down',
         className: (0, _styles.default)('dropdown-icon')
-      })), open && _react.default.createElement("div", {
+      })), this.props.help && _react.default.createElement(_helpers.Help, {
+        text: this.props.help,
+        status: this.props.status
+      }), open && _react.default.createElement("div", {
         className: (0, _styles.default)('menu'),
         ref: function ref(c) {
           return _this3.elMenu = c;
