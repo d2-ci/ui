@@ -11,19 +11,9 @@ require("core-js/modules/es6.symbol");
 
 require("core-js/modules/es6.promise");
 
-require("core-js/modules/es6.object.define-property");
-
-require("core-js/modules/es6.object.create");
-
 require("core-js/modules/es6.object.set-prototype-of");
 
 require("core-js/modules/es6.function.name");
-
-require("core-js/modules/es6.array.map");
-
-require("core-js/modules/es6.array.filter");
-
-require("core-js/modules/es6.date.now");
 
 require("regenerator-runtime/runtime");
 

@@ -1,14 +1,10 @@
 "use strict";
 
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.throttle = throttle;
 exports.defer = defer;
-
-require("core-js/modules/es6.date.now");
 
 /** @format */
 

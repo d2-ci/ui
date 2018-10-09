@@ -11,27 +11,15 @@ require("core-js/modules/es6.symbol");
 
 require("core-js/modules/es6.object.assign");
 
-require("core-js/modules/es6.array.for-each");
-
-require("core-js/modules/es6.array.filter");
-
 require("core-js/modules/web.dom.iterable");
 
 require("core-js/modules/es6.array.iterator");
 
 require("core-js/modules/es6.object.keys");
 
-require("core-js/modules/es6.object.define-property");
-
-require("core-js/modules/es6.object.create");
-
 require("core-js/modules/es6.object.set-prototype-of");
 
-require("core-js/modules/es6.array.map");
-
 require("core-js/modules/es6.array.find");
-
-require("core-js/modules/es6.function.bind");
 
 var _react = _interopRequireWildcard(require("react"));
 

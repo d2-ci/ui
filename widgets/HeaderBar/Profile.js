@@ -1,17 +1,11 @@
 "use strict";
 
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = Profile;
 
-require("core-js/modules/es6.array.map");
-
 require("core-js/modules/es6.regexp.split");
-
-require("core-js/modules/es6.array.index-of");
 
 require("core-js/modules/es6.function.name");
 

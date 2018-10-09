@@ -11,11 +11,7 @@ require("core-js/modules/es6.symbol");
 
 require("core-js/modules/es6.object.assign");
 
-require("core-js/modules/es6.object.create");
-
 require("core-js/modules/es6.object.set-prototype-of");
-
-require("core-js/modules/es6.object.define-property");
 
 var _react = _interopRequireDefault(require("react"));
 

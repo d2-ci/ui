@@ -1,7 +1,5 @@
 "use strict";
 
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,13 +7,9 @@ exports.default = exports.RadioButtonGroup = void 0;
 
 require("core-js/modules/es6.object.assign");
 
-require("core-js/modules/es6.array.map");
-
 require("core-js/modules/es6.function.name");
 
 require("core-js/modules/es6.regexp.to-string");
-
-require("core-js/modules/es6.date.to-string");
 
 var _react = _interopRequireDefault(require("react"));
 

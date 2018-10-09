@@ -1,7 +1,5 @@
 "use strict";
 
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,11 +7,11 @@ exports.t = t;
 
 require("core-js/modules/web.dom.iterable");
 
-require("core-js/modules/es6.array.for-each");
-
 /**
  * Provide static theme classes for components to be used in cx.bind
  * e.g. 'primary', 'primary-bg'
+ *
+ * @format
  * @returns { 'primary': true , 'primary-bg': true }
  */
 function t() {

@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.Label = Label;
 exports.default = void 0;
 
-require("core-js/modules/es6.object.define-property");
-
 var _react = _interopRequireDefault(require("react"));
 
 var _Icon = _interopRequireDefault(require("../../Icon"));

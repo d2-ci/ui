@@ -1,7 +1,5 @@
 "use strict";
 
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -10,15 +8,11 @@ exports.default = void 0;
 
 require("core-js/modules/es6.object.assign");
 
-require("core-js/modules/es6.array.index-of");
-
 require("core-js/modules/web.dom.iterable");
 
 require("core-js/modules/es6.array.iterator");
 
 require("core-js/modules/es6.object.keys");
-
-require("core-js/modules/es6.array.map");
 
 var _react = _interopRequireDefault(require("react"));
 

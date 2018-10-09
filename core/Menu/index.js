@@ -6,10 +6,6 @@ require("core-js/modules/es6.object.keys");
 
 require("core-js/modules/web.dom.iterable");
 
-require("core-js/modules/es6.array.for-each");
-
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });

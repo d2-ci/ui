@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.Help = Help;
 exports.default = void 0;
 
-require("core-js/modules/es6.object.define-property");
-
 var _react = _interopRequireDefault(require("react"));
 
 var _styles = _interopRequireDefault(require("./styles"));
