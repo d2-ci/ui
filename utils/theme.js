@@ -10,6 +10,7 @@ require("core-js/modules/web.dom.iterable");
 /**
  * Provide static theme classes for components to be used in cx.bind
  * e.g. 'primary', 'primary-bg'
+ *
  * @returns { 'primary': true , 'primary-bg': true }
  */
 function t() {
