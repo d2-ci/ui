@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.SelectField = void 0;
+exports.default = exports.InputField = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -15,19 +15,13 @@ require("core-js/modules/es6.object.create");
 
 require("core-js/modules/es6.object.set-prototype-of");
 
-require("core-js/modules/es6.array.filter");
-
 require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _Menu = _interopRequireDefault(require("../Menu/Menu"));
-
 var _helpers = require("../helpers");
-
-var _utils = require("../../utils");
 
 var _styles = _interopRequireDefault(require("./styles"));
 
@@ -53,164 +47,113 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SelectField =
+var InputField =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(SelectField, _React$Component);
+  _inherits(InputField, _React$Component);
 
-  function SelectField() {
+  function InputField() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, SelectField);
+    _classCallCheck(this, InputField);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SelectField)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputField)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      open: false
+      focused: false
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
-      if (_this.elContainer && _this.elMenu) {
-        var target = {
-          x: evt.clientX,
-          y: evt.clientY
-        };
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
+      return _this.props.onChange(_this.props.name, evt.target.value);
+    });
 
-        var menu = _this.elMenu.getBoundingClientRect();
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function () {
+      if (_this.ref) {
+        _this.ref.focus();
 
-        var container = _this.elContainer.getBoundingClientRect();
-
-        if (!(0, _utils.isPointInRect)(target, menu) && !(0, _utils.isPointInRect)(target, container)) {
-          _this.setState({
-            open: false
-          });
-        }
+        _this.setState({
+          focused: true
+        });
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function () {
       return _this.setState({
-        open: !_this.state.open
+        focused: true
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClose", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function () {
       return _this.setState({
-        open: false
+        focused: false
       });
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSelect", function (evt, value) {
-      _this.setState({
-        open: false
-      });
-
-      _this.props.onChange(_this.props.name, value);
     });
 
     return _this;
   }
 
-  _createClass(SelectField, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      document.addEventListener('click', this.onDocClick);
-    }
-  }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      document.removeEventListener('click', this.onDocClick);
-    }
-  }, {
-    key: "getLabel",
-    value: function getLabel() {
-      var _this2 = this;
-
-      if (!this.props.value) {
-        return false;
-      }
-
-      var selected = this.props.list.filter(function (_ref) {
-        var value = _ref.value;
-        return _this2.props.value === value;
-      });
-      return selected.length > 0 ? selected[0]['label'] : null;
-    }
-  }, {
+  _createClass(InputField, [{
     key: "render",
     value: function render() {
-      var _this3 = this,
+      var _this2 = this,
           _s;
 
-      var open = this.state.open;
-      var width = 'inherit';
-
-      if (open && this.elSelect) {
-        width = "".concat(this.elSelect.getBoundingClientRect().width, "px");
-      }
-
-      var selected = this.getLabel();
       return _react.default.createElement("div", {
         ref: function ref(c) {
-          return _this3.elContainer = c;
+          return _this2.elContainer = c;
         },
         className: (0, _styles.default)('container', (_s = {
-          selected: !!this.props.value
-        }, _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, "size-".concat(this.props.size), true), _s))
+          disabled: this.props.disabled
+        }, _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, 'is-empty', !(this.props.value || this.props.placeholder || this.state.focused)), _s)),
+        onClick: this.onClick
       }, _react.default.createElement("div", {
-        ref: function ref(c) {
-          return _this3.elSelect = c;
-        },
-        className: (0, _styles.default)('select'),
-        onClick: this.onToggle
+        className: (0, _styles.default)('field')
       }, this.props.icon && _react.default.createElement("div", {
         className: (0, _styles.default)('icon')
       }, _react.default.createElement(_Icon.default, {
         name: this.props.icon
-      })), _react.default.createElement("div", {
-        className: (0, _styles.default)('value')
-      }, selected), _react.default.createElement(_helpers.Label, {
-        type: "select",
+      })), _react.default.createElement("input", {
+        ref: function ref(c) {
+          return _this2.ref = c;
+        },
+        className: (0, _styles.default)('input'),
+        type: this.props.type,
+        value: this.props.value,
+        onChange: this.onChange,
+        onFocus: this.onFocus,
+        onBlur: this.onBlur,
+        placeholder: this.props.placeholder
+      }), _react.default.createElement(_helpers.Label, {
         size: this.props.size,
         kind: this.props.kind,
         text: this.props.label,
         status: this.props.status,
+        focused: this.state.focused,
+        disabled: this.props.disabled,
         hasIcon: !!this.props.icon,
-        state: selected ? 'minimized' : 'default'
-      }), _react.default.createElement(_Icon.default, {
-        name: open ? 'arrow_drop_up' : 'arrow_drop_down',
-        className: (0, _styles.default)('dropdown-icon')
+        state: this.props.placeholder || this.props.value || this.state.focused ? 'minimized' : 'default'
       })), this.props.help && _react.default.createElement(_helpers.Help, {
         text: this.props.help,
         status: this.props.status
-      }), open && _react.default.createElement("div", {
-        className: (0, _styles.default)('menu'),
-        ref: function ref(c) {
-          return _this3.elMenu = c;
-        }
-      }, _react.default.createElement(_Menu.default, {
-        width: width,
-        list: this.props.list,
-        onClose: this.onClose,
-        onSelect: this.onSelect
-      })));
+      }));
     }
   }]);
 
-  return SelectField;
+  return InputField;
 }(_react.default.Component);
 
-exports.SelectField = SelectField;
-SelectField.defaultProps = {
+exports.InputField = InputField;
+InputField.defaultProps = {
   disabled: false,
   label: '',
-  size: 'default'
+  size: 'default',
+  kind: 'filled'
 };
-var _default = SelectField;
+var _default = InputField;
 exports.default = _default;
