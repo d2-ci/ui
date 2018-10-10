@@ -14,7 +14,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Paper = _interopRequireDefault(require("../Paper"));
+var _Card = _interopRequireDefault(require("../Card"));
 
 var _MenuItem = _interopRequireDefault(require("./MenuItem"));
 
@@ -25,10 +25,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Menu(_ref) {
   var kind = _ref.kind,
       width = _ref.width,
-      height = _ref.height,
       list = _ref.list,
       onClick = _ref.onClick;
-  return _react.default.createElement(_Paper.default, {
+  return _react.default.createElement(_Card.default, {
     width: width
   }, _react.default.createElement("ul", {
     className: (0, _styles.default)('menu', kind)
@@ -56,7 +55,6 @@ function Menu(_ref) {
       type: type,
       kind: kind,
       width: width,
-      height: height,
       disabled: disabled,
       onClick: onClick
     });

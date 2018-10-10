@@ -13,7 +13,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
-var _Paper = _interopRequireDefault(require("../../core/Paper"));
+var _Card = _interopRequireDefault(require("../../core/Card"));
 
 var _styles = _interopRequireDefault(require("./styles"));
 
@@ -151,7 +151,7 @@ function Profile(_ref7) {
     name: name
   }), _react.default.createElement("div", {
     className: (0, _styles.default)('contents')
-  }, _react.default.createElement(_Paper.default, null, _react.default.createElement(Header, {
+  }, _react.default.createElement(_Card.default, null, _react.default.createElement(Header, {
     name: name,
     email: email,
     img: img,

@@ -19,7 +19,7 @@ require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Paper = _interopRequireDefault(require("../../core/Paper"));
+var _Card = _interopRequireDefault(require("../../core/Card"));
 
 var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
@@ -186,7 +186,7 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this2.elApps = c;
         }
-      }, _react.default.createElement(_Paper.default, {
+      }, _react.default.createElement(_Card.default, {
         width: "416px",
         height: "301px"
       }, _react.default.createElement(Search, {

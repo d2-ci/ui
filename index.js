@@ -46,26 +46,26 @@ Object.keys(_Logo).forEach(function (key) {
   });
 });
 
-var _index = require("./core/Menu/index");
+var _Menu = require("./core/Menu");
 
-Object.keys(_index).forEach(function (key) {
+Object.keys(_Menu).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _index[key];
+      return _Menu[key];
     }
   });
 });
 
-var _Paper = require("./core/Paper");
+var _Card = require("./core/Card");
 
-Object.keys(_Paper).forEach(function (key) {
+Object.keys(_Card).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _Paper[key];
+      return _Card[key];
     }
   });
 });
