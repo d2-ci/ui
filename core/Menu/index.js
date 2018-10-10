@@ -38,6 +38,7 @@ function Menu(_ref) {
         value = _ref2.value,
         icon = _ref2.icon,
         list = _ref2.list,
+        active = _ref2.active,
         type = _ref2.type,
         disabled = _ref2.disabled;
 
@@ -57,6 +58,7 @@ function Menu(_ref) {
       size: size,
       width: width,
       disabled: disabled,
+      active: active,
       onClick: onClick
     });
   })));

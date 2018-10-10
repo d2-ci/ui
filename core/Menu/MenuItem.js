@@ -15,8 +15,6 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function SubMenu(_ref) {
   var size = _ref.size,
       width = _ref.width,
@@ -37,13 +35,17 @@ function MenuItem(_ref2) {
       value = _ref2.value,
       icon = _ref2.icon,
       list = _ref2.list,
+      active = _ref2.active,
       disabled = _ref2.disabled,
       size = _ref2.size,
       width = _ref2.width,
       _onClick = _ref2.onClick;
   var hasMenu = list.length > 0;
   return _react.default.createElement("li", {
-    className: (0, _styles.default)('item', _defineProperty({}, disabled, disabled)),
+    className: (0, _styles.default)('item', {
+      disabled: disabled,
+      active: active
+    }),
     onClick: function onClick(evt) {
       evt.preventDefault();
       evt.stopPropagation();
@@ -69,5 +71,6 @@ function MenuItem(_ref2) {
 MenuItem.defaultProps = {
   icon: '',
   list: [],
+  active: false,
   disabled: false
 };

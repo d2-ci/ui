@@ -47,6 +47,22 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function markActive(list, value) {
+  if (!value) {
+    return list;
+  }
+
+  return list.slice(0).map(function (item) {
+    item.active = item.value && item.value === value;
+
+    if (Array.isArray(item.list)) {
+      item.list = markActive(item.list, value);
+    }
+
+    return item;
+  });
+}
+
 var SelectField =
 /*#__PURE__*/
 function (_React$Component) {
@@ -94,13 +110,7 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClose", function () {
-      return _this.setState({
-        open: false
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSelect", function (evt, value) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (value) {
       _this.setState({
         open: false
       });
@@ -150,6 +160,7 @@ function (_React$Component) {
       }
 
       var selected = this.getLabel();
+      var list = markActive(this.props.list, this.props.value);
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this3.elContainer = c;
@@ -189,9 +200,9 @@ function (_React$Component) {
           return _this3.elMenu = c;
         }
       }, _react.default.createElement(_index.default, {
+        list: list,
         width: width,
         size: this.props.size,
-        list: this.props.list,
         onClick: this.onClick
       })));
     }
