@@ -8,7 +8,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Logo = _interopRequireDefault(require("../../core/Logo"));
+var _Logo = require("../../core/Logo");
 
 var _NotificationIcon = _interopRequireDefault(require("./NotificationIcon"));
 
@@ -36,11 +36,7 @@ function HeaderBar(_ref) {
     className: (0, _styles.default)('first')
   }, _react.default.createElement("div", {
     className: (0, _styles.default)('logo')
-  }, _react.default.createElement(_Logo.default, {
-    color: type === 'blue' ? 'white' : 'blue',
-    type: "icon",
-    width: "27.5px"
-  })), _react.default.createElement("div", {
+  }, type === 'blue' ? _react.default.createElement(_Logo.LogoIconWhite, null) : _react.default.createElement(_Logo.LogoIcon, null)), _react.default.createElement("div", {
     className: (0, _styles.default)('title')
   }, title)), selection && _react.default.createElement("div", {
     className: (0, _styles.default)('current-selection')

@@ -1,47 +1,69 @@
 "use strict";
 
-require("core-js/modules/es6.array.iterator");
-
-require("core-js/modules/es6.object.keys");
-
-require("core-js/modules/web.dom.iterable");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _Menu = require("./Menu");
-
-Object.keys(_Menu).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Menu[key];
-    }
-  });
+exports.Menu = Menu;
+Object.defineProperty(exports, "MenuItem", {
+  enumerable: true,
+  get: function get() {
+    return _MenuItem.default;
+  }
 });
+exports.default = void 0;
 
-var _MenuItem = require("./MenuItem");
+var _react = _interopRequireDefault(require("react"));
 
-Object.keys(_MenuItem).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _MenuItem[key];
+var _Card = _interopRequireDefault(require("../Card"));
+
+var _MenuItem = _interopRequireDefault(require("./MenuItem"));
+
+var _styles = _interopRequireDefault(require("./styles"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Menu(_ref) {
+  var kind = _ref.kind,
+      width = _ref.width,
+      list = _ref.list,
+      onClick = _ref.onClick;
+  return _react.default.createElement(_Card.default, {
+    width: width
+  }, _react.default.createElement("ul", {
+    className: (0, _styles.default)('menu', kind)
+  }, list.map(function (_ref2, i) {
+    var label = _ref2.label,
+        value = _ref2.value,
+        icon = _ref2.icon,
+        list = _ref2.list,
+        type = _ref2.type,
+        disabled = _ref2.disabled;
+
+    if (type === 'divider') {
+      return _react.default.createElement("div", {
+        key: "mid-".concat(i),
+        className: (0, _styles.default)('divider')
+      });
     }
-  });
-});
 
-var _PopoverMenu = require("./PopoverMenu");
+    return _react.default.createElement(_MenuItem.default, {
+      key: "mi-".concat(value),
+      label: label,
+      value: value,
+      icon: icon,
+      list: list,
+      type: type,
+      kind: kind,
+      width: width,
+      disabled: disabled,
+      onClick: onClick
+    });
+  })));
+}
 
-Object.keys(_PopoverMenu).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _PopoverMenu[key];
-    }
-  });
-});
+Menu.defaultProps = {
+  width: '100%',
+  kind: 'default'
+};
+var _default = Menu;
+exports.default = _default;
