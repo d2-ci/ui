@@ -29,10 +29,9 @@ function Menu(_ref) {
       list = _ref.list,
       onClick = _ref.onClick;
   return _react.default.createElement(_Paper.default, {
-    width: width,
-    height: height
+    width: width
   }, _react.default.createElement("ul", {
-    className: (0, _styles.default)('ul', kind)
+    className: (0, _styles.default)('menu', kind)
   }, list.map(function (_ref2, i) {
     var label = _ref2.label,
         value = _ref2.value,
@@ -55,6 +54,9 @@ function Menu(_ref) {
       icon: icon,
       list: list,
       type: type,
+      kind: kind,
+      width: width,
+      height: height,
       disabled: disabled,
       onClick: onClick
     });
@@ -62,8 +64,7 @@ function Menu(_ref) {
 }
 
 Menu.defaultProps = {
-  width: 'inherit',
-  height: 'inherit',
+  width: '100%',
   kind: 'default'
 };
 var _default = Menu;
