@@ -18,6 +18,8 @@ var _Card = _interopRequireDefault(require("../Card"));
 
 var _MenuItem = _interopRequireDefault(require("./MenuItem"));
 
+var _Divider = _interopRequireDefault(require("../helpers/Divider"));
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -40,9 +42,8 @@ function Menu(_ref) {
         disabled = _ref2.disabled;
 
     if (type === 'divider') {
-      return _react.default.createElement("div", {
-        key: "mid-".concat(i),
-        className: (0, _styles.default)('divider')
+      return _react.default.createElement(_Divider.default, {
+        key: "mid-".concat(i)
       });
     }
 
