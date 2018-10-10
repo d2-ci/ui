@@ -19,7 +19,7 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _Menu = _interopRequireDefault(require("../Menu/Menu"));
+var _index = _interopRequireDefault(require("../Menu/index"));
 
 var _utils = require("../../utils");
 
@@ -140,7 +140,7 @@ function (_Component) {
         ref: function ref(c) {
           return _this2.elMenu = c;
         }
-      }, _react.default.createElement(_Menu.default, {
+      }, _react.default.createElement(_index.default, {
         list: this.props.list,
         onClose: this.onClose,
         onSelect: this.props.onSelect

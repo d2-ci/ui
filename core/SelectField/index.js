@@ -17,7 +17,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _Menu = _interopRequireDefault(require("../Menu/Menu"));
+var _index = _interopRequireDefault(require("../Menu/index"));
 
 var _helpers = require("../helpers");
 
@@ -188,11 +188,10 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elMenu = c;
         }
-      }, _react.default.createElement(_Menu.default, {
+      }, _react.default.createElement(_index.default, {
         width: width,
         list: this.props.list,
-        onClose: this.onClose,
-        onSelect: this.onSelect
+        onClick: this.onClick
       })));
     }
   }]);

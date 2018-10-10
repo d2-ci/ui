@@ -46,14 +46,14 @@ Object.keys(_Logo).forEach(function (key) {
   });
 });
 
-var _Menu = require("./core/Menu");
+var _index = require("./core/Menu/index");
 
-Object.keys(_Menu).forEach(function (key) {
+Object.keys(_index).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _Menu[key];
+      return _index[key];
     }
   });
 });
