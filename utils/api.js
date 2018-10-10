@@ -17,8 +17,6 @@ require("core-js/modules/es6.object.assign");
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-/** @format */
-
 /* global DHIS_CONFIG, manifest */
 var version = '30'; // let url = 'http://localhost:8080'
 

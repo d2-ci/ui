@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getRequiredText = getRequiredText;
 
-/** @format */
-
 /**
  * when required is True, Modifies text to include a required marker e.g. *
  *

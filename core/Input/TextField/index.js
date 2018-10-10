@@ -14,7 +14,6 @@ var _styles = _interopRequireDefault(require("../shared/LabelField/styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 function TextField(_ref) {
   var variant = _ref.variant,
       type = _ref.type,

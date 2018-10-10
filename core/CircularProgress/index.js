@@ -12,7 +12,6 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 function Circle() {
   return _react.default.createElement("svg", {
     viewBox: "22 22 44 44"

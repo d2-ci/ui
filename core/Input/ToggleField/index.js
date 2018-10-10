@@ -12,7 +12,6 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 function ToggleField(_ref) {
   var children = _ref.children,
       disabled = _ref.disabled,

@@ -16,7 +16,6 @@ var _utils = require("../../utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 function Icon(_ref) {
   var name = _ref.name,
       className = _ref.className,

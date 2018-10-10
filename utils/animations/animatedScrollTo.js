@@ -9,7 +9,6 @@ var _easing = require("./easing");
 
 var _html = require("../html");
 
-/** @format */
 var HORIZONTAL = 'horizontal';
 var VERTICAL = 'vertical';
 var END = 'end';

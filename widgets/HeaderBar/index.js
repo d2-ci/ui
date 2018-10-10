@@ -13,6 +13,5 @@ exports.default = void 0;
 
 var _HeaderBar = require("./HeaderBar.Container");
 
-/** @format */
 var _default = _HeaderBar.HeaderBarContainer;
 exports.default = _default;

@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.throttle = throttle;
 exports.defer = defer;
 
-/** @format */
-
 /**
  *
  * @param fn

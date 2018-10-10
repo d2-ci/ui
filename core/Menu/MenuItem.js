@@ -18,14 +18,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function SubMenu(_ref) {
-  var kind = _ref.kind,
+  var size = _ref.size,
       width = _ref.width,
       list = _ref.list,
       onClick = _ref.onClick;
   return _react.default.createElement("div", {
     className: (0, _styles.default)('sub-menu')
   }, _react.default.createElement(_index.default, {
-    kind: kind,
+    size: size,
     width: width,
     list: list,
     onClick: onClick
@@ -38,7 +38,7 @@ function MenuItem(_ref2) {
       icon = _ref2.icon,
       list = _ref2.list,
       disabled = _ref2.disabled,
-      kind = _ref2.kind,
+      size = _ref2.size,
       width = _ref2.width,
       _onClick = _ref2.onClick;
   var hasMenu = list.length > 0;
@@ -59,7 +59,7 @@ function MenuItem(_ref2) {
     name: "chevron_right",
     className: (0, _styles.default)('chevron')
   }), hasMenu && _react.default.createElement(SubMenu, {
-    kind: kind,
+    size: size,
     width: width,
     list: list,
     onClick: _onClick

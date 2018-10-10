@@ -190,6 +190,7 @@ function (_React$Component) {
         }
       }, _react.default.createElement(_index.default, {
         width: width,
+        size: this.props.size,
         list: this.props.list,
         onClick: this.onClick
       })));

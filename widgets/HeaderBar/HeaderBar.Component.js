@@ -20,7 +20,6 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 function HeaderBar(_ref) {
   var type = _ref.type,
       baseURL = _ref.baseURL,

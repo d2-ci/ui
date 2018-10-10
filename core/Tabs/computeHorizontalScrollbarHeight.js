@@ -9,7 +9,6 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 var horizontalScrollbarHeight;
 /**
  * Computes the height of browser-rendered horizontal scrollbars using a self-created test element.

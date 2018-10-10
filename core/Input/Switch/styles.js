@@ -13,7 +13,6 @@ require("./styles.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 var _default = (0, _css.default)(_styles.default);
 
 exports.default = _default;

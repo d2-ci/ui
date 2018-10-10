@@ -12,7 +12,6 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 function LinearProgress(_ref) {
   var amount = _ref.amount,
       padded = _ref.padded;

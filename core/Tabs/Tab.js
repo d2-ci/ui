@@ -14,7 +14,6 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 function Tab(_ref) {
   var icon = _ref.icon,
       label = _ref.label,

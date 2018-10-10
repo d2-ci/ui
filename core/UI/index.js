@@ -18,7 +18,6 @@ require("./theme/index.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 // import as part of the UI component to make sure that the font is
 // loaded for selective imports which might not import the root index
 function UI(_ref) {

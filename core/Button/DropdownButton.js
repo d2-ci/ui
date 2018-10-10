@@ -17,9 +17,7 @@ var _Button = _interopRequireDefault(require("./Button"));
 
 var _styles = _interopRequireDefault(require("./styles"));
 
-var _Icon = _interopRequireDefault(require("../Icon"));
-
-var _index = _interopRequireDefault(require("../Menu/index"));
+var _Menu = _interopRequireDefault(require("../Menu"));
 
 var _utils = require("../../utils");
 
@@ -47,9 +45,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/**
- * list of menu items opens up on clicking KeyDown icon on the right side
- */
 var DropdownButton =
 /*#__PURE__*/
 function (_Component) {
@@ -97,12 +92,6 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClose", function () {
-      return _this.setState({
-        open: false
-      });
-    });
-
     return _this;
   }
 
@@ -122,6 +111,12 @@ function (_Component) {
       var _this2 = this;
 
       var open = this.state.open;
+      var width = this.props.width;
+
+      if (!width) {
+        width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
+      }
+
       return _react.default.createElement("div", {
         className: (0, _styles.default)('dropdown'),
         ref: function ref(c) {
@@ -129,21 +124,22 @@ function (_Component) {
         }
       }, _react.default.createElement(_Button.default, {
         kind: this.props.kind,
+        label: this.props.label,
         onClick: this.props.onClick
-      }, this.props.label), _react.default.createElement(_Button.default, {
+      }), _react.default.createElement(_Button.default, {
         kind: this.props.kind,
-        onClick: this.onToggle
-      }, _react.default.createElement(_Icon.default, {
-        name: open ? 'arrow_drop_up' : 'arrow_drop_down'
-      })), open && _react.default.createElement("div", {
+        onClick: this.onToggle,
+        icon: open ? 'arrow_drop_up' : 'arrow_drop_down'
+      }), open && _react.default.createElement("div", {
         className: (0, _styles.default)('menu'),
         ref: function ref(c) {
           return _this2.elMenu = c;
         }
-      }, _react.default.createElement(_index.default, {
+      }, _react.default.createElement(_Menu.default, {
+        width: width,
+        size: this.props.size,
         list: this.props.list,
-        onClose: this.onClose,
-        onSelect: this.props.onSelect
+        onClick: this.props.onClick
       })));
     }
   }]);
@@ -153,6 +149,7 @@ function (_Component) {
 
 exports.DropdownButton = DropdownButton;
 DropdownButton.defaultProps = {
+  size: 'default',
   kind: 'primary'
 };
 var _default = DropdownButton;

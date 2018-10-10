@@ -17,7 +17,6 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 var computeTrailingIcon = function computeTrailingIcon(trailingIcon, error, warning, valid) {
   switch (true) {
     case Boolean(trailingIcon):

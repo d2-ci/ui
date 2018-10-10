@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.easeInOutQuad = easeInOutQuad;
 
-/** @format */
-
 /**
  * ease-in-out animation adapted from
  * @link https://github.com/danro/jquery-easing/blob/master/jquery.easing.js

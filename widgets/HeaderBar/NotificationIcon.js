@@ -15,7 +15,6 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
 function NotificationIcon(_ref) {
   var icon = _ref.icon,
       count = _ref.count;

@@ -23,14 +23,14 @@ var _styles = _interopRequireDefault(require("./styles"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Menu(_ref) {
-  var kind = _ref.kind,
+  var size = _ref.size,
       width = _ref.width,
       list = _ref.list,
       onClick = _ref.onClick;
   return _react.default.createElement(_Card.default, {
     width: width
   }, _react.default.createElement("ul", {
-    className: (0, _styles.default)('menu', kind)
+    className: (0, _styles.default)('menu', size)
   }, list.map(function (_ref2, i) {
     var label = _ref2.label,
         value = _ref2.value,
@@ -53,7 +53,7 @@ function Menu(_ref) {
       icon: icon,
       list: list,
       type: type,
-      kind: kind,
+      size: size,
       width: width,
       disabled: disabled,
       onClick: onClick
@@ -63,7 +63,7 @@ function Menu(_ref) {
 
 Menu.defaultProps = {
   width: '100%',
-  kind: 'default'
+  size: 'default'
 };
 var _default = Menu;
 exports.default = _default;

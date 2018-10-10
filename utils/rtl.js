@@ -15,8 +15,6 @@ require("core-js/modules/es6.string.includes");
 
 var _html = require("./html");
 
-/** @format */
-
 /**
  * prefixes for Right to Left (RTL) languages
  *
