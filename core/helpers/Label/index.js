@@ -36,8 +36,9 @@ function Label(_ref) {
       hasIcon = _ref.hasIcon;
   return _react.default.createElement("div", {
     className: (0, _styles.default)('container', (_s = {
+      disabled: disabled,
       'has-icon': hasIcon
-    }, _defineProperty(_s, "focused", focused), _defineProperty(_s, "disabled", disabled), _defineProperty(_s, "state-".concat(state), true), _defineProperty(_s, "size-".concat(size), true), _defineProperty(_s, "type-".concat(type), true), _defineProperty(_s, "status-".concat(status), true), _defineProperty(_s, "kind-".concat(kind), true), _s))
+    }, _defineProperty(_s, "focused", focused), _defineProperty(_s, "state-".concat(state), true), _defineProperty(_s, "size-".concat(size), true), _defineProperty(_s, "type-".concat(type), true), _defineProperty(_s, "status-".concat(status), true), _defineProperty(_s, "kind-".concat(kind), true), _s))
   }, _react.default.createElement("div", {
     className: (0, _styles.default)('content', _defineProperty({}, "state-".concat(state), true))
   }, text), status !== 'default' && _react.default.createElement(_Icon.default, {
