@@ -125,9 +125,13 @@ function (_Component) {
       }, _react.default.createElement(_Button.default, {
         kind: this.props.kind,
         label: this.props.label,
+        active: this.props.active,
+        disabled: this.props.disabled,
         onClick: this.props.onClick
       }), _react.default.createElement(_Button.default, {
         kind: this.props.kind,
+        active: this.props.active,
+        disabled: this.props.disabled,
         onClick: this.onToggle,
         icon: open ? 'arrow_drop_up' : 'arrow_drop_down'
       }), open && _react.default.createElement("div", {
@@ -150,7 +154,9 @@ function (_Component) {
 exports.DropdownButton = DropdownButton;
 DropdownButton.defaultProps = {
   size: 'default',
-  kind: 'primary'
+  kind: 'primary',
+  active: false,
+  disabled: false
 };
 var _default = DropdownButton;
 exports.default = _default;
