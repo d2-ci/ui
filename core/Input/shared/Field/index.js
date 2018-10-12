@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -36,5 +38,18 @@ function Field(_ref) {
   }, helpText));
 }
 
+Field.propTypes = {
+  // Because the Field is the root component for a number of inputs
+  // it is convenient to be able to add a custom className
+  className: _propTypes.default.string,
+  children: _propTypes.default.node.isRequired,
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  error: _propTypes.default.bool,
+  dense: _propTypes.default.bool,
+  block: _propTypes.default.bool,
+  helpText: _propTypes.default.string
+};
 var _default = Field;
 exports.default = _default;

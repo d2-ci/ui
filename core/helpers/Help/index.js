@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -24,6 +26,10 @@ function Help(_ref) {
 
 Help.defaultProps = {
   status: 'default'
+};
+Help.propTypes = {
+  text: _propTypes.default.string.isRequired,
+  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
 };
 var _default = Help;
 exports.default = _default;

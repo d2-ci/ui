@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Icon = _interopRequireDefault(require("../../Icon"));
 
 var _styles = _interopRequireDefault(require("./styles"));
@@ -54,6 +56,17 @@ Label.defaultProps = {
   status: 'default',
   border: 'none',
   disabled: false
+};
+Label.propTypes = {
+  text: _propTypes.default.string,
+  focused: _propTypes.default.bool,
+  hasIcon: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['default', 'dense']),
+  kind: _propTypes.default.oneOf(['filled', 'outlined']),
+  state: _propTypes.default.oneOf(['default', 'minimized']),
+  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
+  type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url', 'select'])
 };
 var _default = Label;
 exports.default = _default;

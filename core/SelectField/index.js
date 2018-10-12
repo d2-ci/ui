@@ -15,6 +15,8 @@ require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _index = _interopRequireDefault(require("../Menu/index"));
@@ -216,6 +218,23 @@ SelectField.defaultProps = {
   disabled: false,
   label: '',
   size: 'default'
+};
+SelectField.propTypes = {
+  name: _propTypes.default.string.isRequired,
+  label: _propTypes.default.string.isRequired,
+  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  list: _propTypes.default.arrayOf(_propTypes.default.shape({
+    label: _propTypes.default.string.isRequired,
+    value: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]).isRequired
+  })),
+  icon: _propTypes.default.string,
+  help: _propTypes.default.string,
+  disabled: _propTypes.default.bool,
+  required: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['default', 'dense']),
+  kind: _propTypes.default.oneOf(['filled', 'outlined']),
+  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
+  onChange: _propTypes.default.func.isRequired
 };
 var _default = SelectField;
 exports.default = _default;

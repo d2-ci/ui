@@ -7,6 +7,8 @@ exports.default = MenuItem;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _index = _interopRequireDefault(require("./index"));
@@ -73,4 +75,15 @@ MenuItem.defaultProps = {
   list: [],
   active: false,
   disabled: false
+};
+MenuItem.propTypes = {
+  label: _propTypes.default.string.isRequired,
+  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
+  icon: _propTypes.default.string,
+  list: _propTypes.default.array,
+  active: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  size: _propTypes.default.string.isRequired,
+  width: _propTypes.default.string.isRequired,
+  onClick: _propTypes.default.func.isRequired
 };

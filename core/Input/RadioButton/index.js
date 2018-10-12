@@ -11,6 +11,8 @@ require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _utils = require("../../../utils");
 
 var _ToggleField = _interopRequireDefault(require("../ToggleField"));
@@ -76,6 +78,21 @@ var RadioButton = function RadioButton(_ref) {
 };
 
 exports.RadioButton = RadioButton;
+RadioButton.propTypes = {
+  label: _propTypes.default.string,
+  name: _propTypes.default.string,
+  value: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
+  checked: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  error: _propTypes.default.bool,
+  dense: _propTypes.default.bool,
+  helpText: _propTypes.default.string,
+  block: _propTypes.default.bool,
+  required: _propTypes.default.bool,
+  onChange: _propTypes.default.func.isRequired
+};
 RadioButton.defaultProps = {
   disabled: false
 };

@@ -21,6 +21,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _utils = require("../../utils");
 
 var _styles = _interopRequireDefault(require("./styles"));
@@ -167,6 +169,20 @@ exports.Dialog = Dialog;
 Dialog.defaultProps = {
   size: 'medium',
   dismissible: true
+};
+Dialog.propTypes = {
+  open: _propTypes.default.bool,
+  title: _propTypes.default.node,
+  actions: _propTypes.default.array,
+  dismissible: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['small', 'medium', 'large', 'fullscreen']),
+  onClose: function onClose(props, propName, componentName) {
+    if (props.dismissible && typeof props[propName] !== 'function') {
+      return new Error("Invalid combination of props: A dismissible ".concat(componentName, " component needs property ").concat(propName, " in order for it to close itself."));
+    }
+  },
+  isAnimatingOut: _propTypes.default.bool.isRequired,
+  onAnimationEnd: _propTypes.default.func.isRequired
 };
 exports.Dialog = Dialog = (0, _utils.withAnimatedClose)(Dialog);
 var _default = Dialog;

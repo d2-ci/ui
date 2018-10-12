@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -43,6 +45,10 @@ function CircularProgress(_ref) {
   return loader;
 }
 
+CircularProgress.propTypes = {
+  center: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['large', 'medium', 'small'])
+};
 CircularProgress.defaultProps = {
   size: 'medium'
 };

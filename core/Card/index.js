@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29,6 +31,11 @@ function Card(_ref) {
 Card.defaultProps = {
   width: 'inherit',
   height: 'inherit'
+};
+Card.propTypes = {
+  width: _propTypes.default.string,
+  height: _propTypes.default.string,
+  children: _propTypes.default.node
 };
 var _default = Card;
 exports.default = _default;

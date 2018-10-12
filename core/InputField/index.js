@@ -15,6 +15,8 @@ require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _helpers = require("../helpers");
@@ -150,6 +152,21 @@ InputField.defaultProps = {
   label: '',
   size: 'default',
   kind: 'filled'
+};
+InputField.propTypes = {
+  label: _propTypes.default.string.isRequired,
+  placeholder: _propTypes.default.string,
+  name: _propTypes.default.string.isRequired,
+  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  onChange: _propTypes.default.func.isRequired,
+  icon: _propTypes.default.string,
+  help: _propTypes.default.string,
+  disabled: _propTypes.default.bool,
+  required: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['default', 'dense']),
+  kind: _propTypes.default.oneOf(['filled', 'outlined']),
+  type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url']),
+  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
 };
 var _default = InputField;
 exports.default = _default;

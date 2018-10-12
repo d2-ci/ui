@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _styles = _interopRequireDefault(require("./styles"));
@@ -47,6 +49,17 @@ Button.defaultProps = {
   active: false,
   disabled: false,
   onClick: undefined
+};
+Button.propTypes = {
+  role: _propTypes.default.string,
+  label: _propTypes.default.string,
+  icon: _propTypes.default.string,
+  active: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
+  type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
+  kind: _propTypes.default.oneOf(['flat', 'raised', 'primary', 'outlined', 'circle']),
+  onClick: _propTypes.default.func
 };
 var _default = Button;
 exports.default = _default;

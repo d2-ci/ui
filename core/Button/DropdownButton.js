@@ -13,6 +13,8 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Button = _interopRequireDefault(require("./Button"));
 
 var _styles = _interopRequireDefault(require("./styles"));
@@ -157,6 +159,17 @@ DropdownButton.defaultProps = {
   kind: 'primary',
   active: false,
   disabled: false
+};
+DropdownButton.propTypes = {
+  width: _propTypes.default.string,
+  kind: _propTypes.default.string,
+  icon: _propTypes.default.string,
+  active: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['default', 'dense']),
+  label: _propTypes.default.string.isRequired,
+  list: _propTypes.default.array.isRequired,
+  onClick: _propTypes.default.func.isRequired
 };
 var _default = DropdownButton;
 exports.default = _default;

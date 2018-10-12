@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _styles = _interopRequireDefault(require("./styles"));
@@ -36,6 +38,16 @@ function Tab(_ref) {
   }), label && _react.default.createElement("span", null, label)));
 }
 
+Tab.propTypes = {
+  label: _propTypes.default.string,
+  icon: _propTypes.default.string,
+  onClick: _propTypes.default.func.isRequired,
+  addTabRef: _propTypes.default.func,
+  active: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  stacked: _propTypes.default.bool,
+  children: _propTypes.default.node
+};
 Tab.defaultProps = {
   active: false,
   disabled: false,

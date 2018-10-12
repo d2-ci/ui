@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Logo = require("../../core/Logo");
 
 var _NotificationIcon = _interopRequireDefault(require("./NotificationIcon"));
@@ -55,6 +57,28 @@ function HeaderBar(_ref) {
   })));
 }
 
+HeaderBar.propTypes = {
+  baseURL: _propTypes.default.string,
+  type: _propTypes.default.oneOf(['blue', 'white', 'transparent']),
+  title: _propTypes.default.string,
+  selection: _propTypes.default.string,
+  messages: _propTypes.default.shape({
+    count: _propTypes.default.number
+  }),
+  interpretations: _propTypes.default.shape({
+    count: _propTypes.default.number
+  }),
+  apps: _propTypes.default.arrayOf(_propTypes.default.shape({
+    name: _propTypes.default.string,
+    path: _propTypes.default.string,
+    img: _propTypes.default.string
+  })),
+  profile: _propTypes.default.shape({
+    name: _propTypes.default.string,
+    email: _propTypes.default.string,
+    src: _propTypes.default.string
+  })
+};
 HeaderBar.defaultProps = {
   type: 'blue'
 };

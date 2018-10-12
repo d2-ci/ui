@@ -11,6 +11,8 @@ require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
 var _Card = _interopRequireDefault(require("../../core/Card"));
@@ -34,6 +36,10 @@ function TextIcon(_ref) {
   }, title));
 }
 
+TextIcon.propTypes = {
+  name: _propTypes.default.string
+};
+
 function ImageIcon(_ref2) {
   var src = _ref2.src;
   return _react.default.createElement("div", {
@@ -42,6 +48,10 @@ function ImageIcon(_ref2) {
     src: src
   }));
 }
+
+ImageIcon.propTypes = {
+  src: _propTypes.default.string
+};
 
 function Header(_ref3) {
   var name = _ref3.name,
@@ -65,6 +75,13 @@ function Header(_ref3) {
     href: "".concat(baseURL, "/dhis-web-user-profile/#/profile")
   }, "Edit profile")));
 }
+
+Header.propTypes = {
+  name: _propTypes.default.string,
+  email: _propTypes.default.string,
+  img: _propTypes.default.string,
+  baseURL: _propTypes.default.string
+};
 
 function Menu(_ref4) {
   var baseURL = _ref4.baseURL;
@@ -106,6 +123,10 @@ function Menu(_ref4) {
   }));
 }
 
+Menu.propTypes = {
+  baseURL: _propTypes.default.string
+};
+
 function Item(_ref6) {
   var name = _ref6.name,
       label = _ref6.label,
@@ -119,6 +140,12 @@ function Item(_ref6) {
     className: (0, _styles.default)('label')
   }, label));
 }
+
+Item.propTypes = {
+  name: _propTypes.default.string,
+  label: _propTypes.default.string,
+  onClick: _propTypes.default.func.isRequired
+};
 
 function _onClick(baseURL, actionType) {
   var paths = {
@@ -164,3 +191,8 @@ function Profile(_ref7) {
     baseURL: baseURL
   }))));
 }
+
+Profile.propTypes = {
+  baseURL: _propTypes.default.string,
+  profile: _propTypes.default.object
+};

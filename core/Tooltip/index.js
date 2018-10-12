@@ -10,6 +10,8 @@ require("core-js/modules/es6.object.assign");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -39,6 +41,12 @@ function Tooltip(_ref) {
   }, tooltipProps), children);
 }
 
+Tooltip.propTypes = {
+  text: _propTypes.default.string.isRequired,
+  children: _propTypes.default.element.isRequired,
+  position: _propTypes.default.oneOf(['top', 'right', 'bottom', 'left']),
+  multiline: _propTypes.default.bool
+};
 Tooltip.defaultProps = {
   position: 'bottom',
   multiline: false

@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 require("typeface-roboto");
 
 require("material-design-icons/iconfont/material-icons.css");
@@ -28,6 +30,10 @@ function UI(_ref) {
   }, children);
 }
 
+UI.propTypes = {
+  theme: _propTypes.default.string,
+  children: _propTypes.default.node
+};
 UI.defaultProps = {
   theme: 'blue'
 };

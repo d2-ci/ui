@@ -13,6 +13,8 @@ require("core-js/modules/es6.regexp.to-string");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _utils = require("../../../utils");
 
 var _RadioButton = _interopRequireDefault(require("../RadioButton"));
@@ -88,5 +90,23 @@ var RadioButtonGroup = function RadioButtonGroup(_ref) {
 };
 
 exports.RadioButtonGroup = RadioButtonGroup;
+RadioButtonGroup.propTypes = {
+  options: _propTypes.default.arrayOf(_propTypes.default.shape({
+    label: _propTypes.default.string.isRequired,
+    value: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]).isRequired
+  })).isRequired,
+  onChange: _propTypes.default.func.isRequired,
+  value: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
+  label: _propTypes.default.string,
+  name: _propTypes.default.string,
+  inline: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  dense: _propTypes.default.bool,
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  error: _propTypes.default.bool,
+  required: _propTypes.default.bool,
+  helpText: _propTypes.default.string
+};
 var _default = RadioButtonGroup;
 exports.default = _default;

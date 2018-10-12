@@ -10,6 +10,8 @@ require("core-js/modules/es6.object.assign");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _utils = require("../../../utils");
 
 var _Field = _interopRequireDefault(require("../shared/Field"));
@@ -57,6 +59,19 @@ function Switch(_ref) {
 Switch.defaultProps = {
   checked: false,
   disabled: false
+};
+Switch.propTypes = {
+  label: _propTypes.default.string,
+  checked: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  error: _propTypes.default.bool,
+  dense: _propTypes.default.bool,
+  helpText: _propTypes.default.string,
+  block: _propTypes.default.bool,
+  required: _propTypes.default.bool,
+  onChange: _propTypes.default.func.isRequired
 };
 var _default = Switch;
 exports.default = _default;
