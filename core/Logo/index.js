@@ -94,5 +94,5 @@ var LogoWhite = function LogoWhite() {
 };
 
 exports.LogoWhite = LogoWhite;
-var _default = LogoIcon;
+var _default = Logo;
 exports.default = _default;
