@@ -24,7 +24,7 @@ var endpoint;
 var isProd = process.env.NODE_ENV === 'production';
 
 if (isProd) {
-  if (manifest) {
+  if (typeof manifest !== 'undefined') {
     url = manifest.activities.dhis.href;
     version = manifest.dhis2.apiVersion;
     endpoint = "".concat(serverURL, "/api/").concat(version);
