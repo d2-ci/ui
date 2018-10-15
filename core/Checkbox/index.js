@@ -45,6 +45,25 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var icons = {
+  indeterminate: _react.default.createElement(_Icon.default, {
+    name: "indeterminate_check_box",
+    className: "grey"
+  }),
+  unchecked: _react.default.createElement(_Icon.default, {
+    name: "check_box_outline_blank",
+    className: "grey"
+  }),
+  checked: _react.default.createElement(_Icon.default, {
+    name: "check_box",
+    className: "secondary-light"
+  }),
+  disabled: _react.default.createElement(_Icon.default, {
+    name: "check_box_outline_blank",
+    className: "grey-light"
+  })
+};
+
 var Checkbox =
 /*#__PURE__*/
 function (_React$Component) {
@@ -79,25 +98,6 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "icons", {
-      indeterminate: _react.default.createElement(_Icon.default, {
-        name: "indeterminate_check_box",
-        className: "grey"
-      }),
-      unchecked: _react.default.createElement(_Icon.default, {
-        name: "check_box_outline_blank",
-        className: "grey"
-      }),
-      checked: _react.default.createElement(_Icon.default, {
-        name: "check_box",
-        className: "secondary-light"
-      }),
-      disabled: _react.default.createElement(_Icon.default, {
-        name: "check_box_outline_blank",
-        className: "grey-light"
-      })
-    });
-
     return _this;
   }
 
@@ -107,13 +107,13 @@ function (_React$Component) {
       var icon;
 
       if (this.state.indeterminate) {
-        icon = this.icons.indeterminate;
+        icon = icons.indeterminate;
       } else if (this.props.disabled) {
-        icon = this.icons.disabled;
+        icon = icons.disabled;
       } else if (this.state.checked) {
-        icon = this.icons.checked;
+        icon = icons.checked;
       } else {
-        icon = this.icons.unchecked;
+        icon = icons.unchecked;
       }
 
       return _react.default.createElement("label", {
@@ -141,6 +141,7 @@ Checkbox.defaultProps = {
   disabled: false,
   indeterminate: false,
   checked: false,
+  required: false,
   label: ''
 };
 Checkbox.propTypes = {
