@@ -146,7 +146,6 @@ Checkbox.defaultProps = {
 Checkbox.propTypes = {
   label: _propTypes.default.string,
   name: _propTypes.default.string.isRequired,
-  value: _propTypes.default.bool,
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   indeterminate: _propTypes.default.bool,
