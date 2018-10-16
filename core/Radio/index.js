@@ -111,12 +111,13 @@ Radio.defaultProps = {
   label: ''
 };
 Radio.propTypes = {
-  label: _propTypes.default.string,
-  name: _propTypes.default.string.isRequired,
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
+  label: _propTypes.default.string,
+  name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
+  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
+  value: _propTypes.default.string.isRequired
 };
 var _default = Radio;
 exports.default = _default;
