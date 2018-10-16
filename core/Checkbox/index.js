@@ -45,25 +45,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var icons = {
-  indeterminate: _react.default.createElement(_Icon.default, {
-    name: "indeterminate_check_box",
-    className: "grey"
-  }),
-  unchecked: _react.default.createElement(_Icon.default, {
-    name: "check_box_outline_blank",
-    className: "grey"
-  }),
-  checked: _react.default.createElement(_Icon.default, {
-    name: "check_box",
-    className: "secondary-light"
-  }),
-  disabled: _react.default.createElement(_Icon.default, {
-    name: "check_box_outline_blank",
-    className: "grey-light"
-  })
-};
-
 var Checkbox =
 /*#__PURE__*/
 function (_React$Component) {
@@ -107,13 +88,25 @@ function (_React$Component) {
       var icon;
 
       if (this.state.indeterminate) {
-        icon = icons.indeterminate;
+        icon = _react.default.createElement(_Icon.default, {
+          name: "indeterminate_check_box",
+          className: "grey ".concat(this.props.status)
+        });
       } else if (this.props.disabled) {
-        icon = icons.disabled;
+        icon = _react.default.createElement(_Icon.default, {
+          name: "check_box_outline_blank",
+          className: "grey-light ".concat(this.props.status)
+        });
       } else if (this.state.checked) {
-        icon = icons.checked;
+        icon = _react.default.createElement(_Icon.default, {
+          name: "check_box",
+          className: "secondary-light ".concat(this.props.status)
+        });
       } else {
-        icon = icons.unchecked;
+        icon = _react.default.createElement(_Icon.default, {
+          name: "check_box_outline_blank",
+          className: "grey ".concat(this.props.status)
+        });
       }
 
       return _react.default.createElement("label", {
@@ -126,9 +119,9 @@ function (_React$Component) {
         checked: this.state.checked,
         disabled: this.props.disabled
       }), icon, _react.default.createElement("span", {
-        className: (0, _styles.default)('label', {
+        className: (0, _styles.default)('label', _defineProperty({
           required: this.props.required
-        })
+        }, this.props.status, true))
       }, this.props.label));
     }
   }]);
