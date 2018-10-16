@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Checkbox = void 0;
+exports.default = exports.Radio = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -43,56 +43,41 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var Checkbox =
+var Radio =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Checkbox, _React$Component);
+  _inherits(Radio, _React$Component);
 
-  function Checkbox() {
+  function Radio() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Checkbox);
+    _classCallCheck(this, Radio);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Checkbox)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Radio)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      checked: !!_this.props.checked,
-      indeterminate: !!_this.props.indeterminate
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function () {
-      var checked = !_this.state.checked;
-
-      _this.props.onChange(_this.props.name, checked);
-
-      _this.setState({
-        checked: checked,
-        indeterminate: false
-      });
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
+      return _this.props.onChange(_this.props.name, _this.props.value);
     });
 
     return _this;
   }
 
-  _createClass(Checkbox, [{
+  _createClass(Radio, [{
     key: "render",
     value: function render() {
       var icoColor = this.props.disabled ? 'grey-light' : 'grey';
       var icoName;
 
-      if (this.state.indeterminate) {
-        icoName = 'indeterminate_check_box';
-      } else if (this.state.checked) {
-        icoName = 'check_box';
-        icoColor = this.props.disabled ? icoColor : 'secondary-light';
+      if (this.props.checked) {
+        icoName = 'radio_button_checked';
       } else {
-        icoName = 'check_box_outline_blank';
+        icoName = 'radio_button_unchecked';
       }
 
       var icon = _react.default.createElement(_Icon.default, {
@@ -103,39 +88,36 @@ function (_React$Component) {
       return _react.default.createElement("label", {
         className: (0, _styles.default)('container')
       }, _react.default.createElement("input", {
-        type: "checkbox",
+        type: "radio",
+        name: this.props.name,
         onChange: this.onChange,
-        checked: this.state.checked,
+        checked: this.props.checked,
+        value: this.props.value,
         disabled: this.props.disabled
       }), icon, _react.default.createElement("span", {
-        className: (0, _styles.default)('label', _defineProperty({
-          required: this.props.required
-        }, this.props.status, true))
+        className: (0, _styles.default)('label', _defineProperty({}, this.props.status, true))
       }, this.props.label));
     }
   }]);
 
-  return Checkbox;
+  return Radio;
 }(_react.default.Component);
 
-exports.Checkbox = Checkbox;
-Checkbox.defaultProps = {
+exports.Radio = Radio;
+Radio.defaultProps = {
   disabled: false,
-  indeterminate: false,
   checked: false,
-  required: false,
   status: 'default',
   label: ''
 };
-Checkbox.propTypes = {
-  label: _propTypes.default.string,
-  name: _propTypes.default.string.isRequired,
+Radio.propTypes = {
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  indeterminate: _propTypes.default.bool,
-  required: _propTypes.default.bool,
+  label: _propTypes.default.string,
+  name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
+  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
+  value: _propTypes.default.string.isRequired
 };
-var _default = Checkbox;
+var _default = Radio;
 exports.default = _default;
