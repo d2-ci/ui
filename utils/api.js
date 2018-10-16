@@ -27,7 +27,7 @@ if (isProd) {
   if (typeof manifest !== 'undefined') {
     url = manifest.activities.dhis.href;
     version = manifest.dhis2.apiVersion;
-    endpoint = "".concat(serverURL, "/api/").concat(version);
+    endpoint = "".concat(url, "/api/").concat(version);
   } else if ((typeof DHIS_CONFIG === "undefined" ? "undefined" : _typeof(DHIS_CONFIG)) === 'object') {
     url = DHIS_CONFIG.baseUrl;
   } else {

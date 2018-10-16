@@ -19,8 +19,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _helpers = require("../helpers");
-
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
