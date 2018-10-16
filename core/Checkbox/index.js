@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.Popover = void 0;
+exports.default = exports.Checkbox = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -11,19 +11,17 @@ require("core-js/modules/es6.symbol");
 
 require("core-js/modules/es6.object.set-prototype-of");
 
-var _react = _interopRequireWildcard(require("react"));
+require("core-js/modules/es6.function.name");
 
-var _reactDom = require("react-dom");
+var _react = _interopRequireDefault(require("react"));
 
-var _utils = require("../../utils");
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _computePosition = _interopRequireDefault(require("./computePosition"));
+var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -45,100 +43,107 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var Popover =
+var Checkbox =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Popover, _React$Component);
+  _inherits(Checkbox, _React$Component);
 
-  function Popover() {
+  function Checkbox() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, Popover);
+    _classCallCheck(this, Checkbox);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Popover)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Checkbox)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      style: null
+      checked: !!_this.props.checked,
+      indeterminate: !!_this.props.indeterminate
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "elContainer", null);
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function () {
+      var checked = !_this.state.checked;
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setElContainer", function (ref) {
-      return _this.elContainer = ref;
+      _this.props.onChange(_this.props.name, checked);
+
+      _this.setState({
+        checked: checked,
+        indeterminate: false
+      });
     });
 
     return _this;
   }
 
-  _createClass(Popover, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      if (!prevProps.open && this.props.open) {
-        this.adjustPosition();
-      }
-    }
-  }, {
-    key: "adjustPosition",
-    value: function adjustPosition() {
-      var anchorEl = this.props.getAnchorRef();
-
-      if (!(anchorEl instanceof HTMLElement)) {
-        anchorEl = (0, _reactDom.findDOMNode)(anchorEl);
-      }
-
-      if (anchorEl && this.elContainer) {
-        this.setState({
-          style: (0, _computePosition.default)(this.elContainer, anchorEl, this.props.anchorPosition, this.props.popoverPosition)
-        });
-      }
-    }
-  }, {
-    key: "className",
-    value: function className() {
-      return (0, _styles.default)('container', this.props.animation, {
-        'animate-out': this.props.isAnimatingOut
-      });
-    }
-  }, {
+  _createClass(Checkbox, [{
     key: "render",
     value: function render() {
-      if (!this.props.open && !this.props.isAnimatingOut) {
-        return null;
+      var icon;
+
+      if (this.state.indeterminate) {
+        icon = _react.default.createElement(_Icon.default, {
+          name: "indeterminate_check_box",
+          className: "grey ".concat(this.props.status)
+        });
+      } else if (this.props.disabled) {
+        icon = _react.default.createElement(_Icon.default, {
+          name: "check_box_outline_blank",
+          className: "grey-light ".concat(this.props.status)
+        });
+      } else if (this.state.checked) {
+        icon = _react.default.createElement(_Icon.default, {
+          name: "check_box",
+          className: "secondary-light ".concat(this.props.status)
+        });
+      } else {
+        icon = _react.default.createElement(_Icon.default, {
+          name: "check_box_outline_blank",
+          className: "grey ".concat(this.props.status)
+        });
       }
 
-      return (0, _reactDom.createPortal)(_react.default.createElement(_react.Fragment, null, _react.default.createElement("div", {
-        className: (0, _styles.default)('overlay'),
-        onClick: this.props.onClose
-      }), _react.default.createElement("div", {
-        ref: this.setElContainer,
-        style: this.state.style,
-        className: this.className(),
-        onAnimationEnd: this.props.isAnimatingOut ? this.props.onAnimationEnd : undefined
-      }, this.props.children)), document.body);
+      return _react.default.createElement("label", {
+        htmlFor: this.props.name,
+        className: (0, _styles.default)('container')
+      }, _react.default.createElement("input", {
+        type: "checkbox",
+        id: this.props.name,
+        onClick: this.onClick,
+        checked: this.state.checked,
+        disabled: this.props.disabled
+      }), icon, _react.default.createElement("span", {
+        className: (0, _styles.default)('label', _defineProperty({
+          required: this.props.required
+        }, this.props.status, true))
+      }, this.props.label));
     }
   }]);
 
-  return Popover;
+  return Checkbox;
 }(_react.default.Component);
 
-exports.Popover = Popover;
-Popover.defaultProps = {
-  animation: 'fade-in',
-  anchorPosition: {
-    vertical: 'middle',
-    horizontal: 'center'
-  },
-  popoverPosition: {
-    vertical: 'middle',
-    horizontal: 'center'
-  }
+exports.Checkbox = Checkbox;
+Checkbox.defaultProps = {
+  disabled: false,
+  indeterminate: false,
+  checked: false,
+  required: false,
+  label: ''
 };
-exports.Popover = Popover = (0, _utils.withAnimatedClose)(Popover);
-var _default = Popover;
+Checkbox.propTypes = {
+  label: _propTypes.default.string,
+  name: _propTypes.default.string.isRequired,
+  checked: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  indeterminate: _propTypes.default.bool,
+  required: _propTypes.default.bool,
+  onChange: _propTypes.default.func.isRequired,
+  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
+};
+var _default = Checkbox;
 exports.default = _default;

@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _LabelField = _interopRequireDefault(require("../shared/LabelField"));
 
 var _styles = _interopRequireDefault(require("../shared/LabelField/styles"));
@@ -56,6 +58,24 @@ function TextField(_ref) {
   }));
 }
 
+TextField.propTypes = {
+  label: _propTypes.default.string.isRequired,
+  onChange: _propTypes.default.func.isRequired,
+  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  dense: _propTypes.default.bool,
+  variant: _propTypes.default.oneOf(['filled', 'outlined', 'minimal']),
+  leadingIcon: _propTypes.default.string,
+  trailingIcon: _propTypes.default.string,
+  type: _propTypes.default.oneOf(['text', 'password', 'color', 'date', 'datetime-local', 'email', 'month', 'number', 'range', 'search', 'tel', 'time', 'url', 'week']),
+  error: _propTypes.default.bool,
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  block: _propTypes.default.bool,
+  multiline: _propTypes.default.bool,
+  required: _propTypes.default.bool,
+  helpText: _propTypes.default.string
+};
 TextField.defaultProps = {
   value: '',
   dense: false,

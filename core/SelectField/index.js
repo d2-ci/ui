@@ -15,6 +15,8 @@ require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _index = _interopRequireDefault(require("../Menu/index"));
@@ -46,6 +48,22 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function markActive(list, value) {
+  if (!value) {
+    return list;
+  }
+
+  return list.slice(0).map(function (item) {
+    item.active = item.value && item.value === value;
+
+    if (Array.isArray(item.list)) {
+      item.list = markActive(item.list, value);
+    }
+
+    return item;
+  });
+}
 
 var SelectField =
 /*#__PURE__*/
@@ -94,13 +112,7 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClose", function () {
-      return _this.setState({
-        open: false
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSelect", function (evt, value) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (value) {
       _this.setState({
         open: false
       });
@@ -150,6 +162,7 @@ function (_React$Component) {
       }
 
       var selected = this.getLabel();
+      var list = markActive(this.props.list, this.props.value);
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this3.elContainer = c;
@@ -189,9 +202,9 @@ function (_React$Component) {
           return _this3.elMenu = c;
         }
       }, _react.default.createElement(_index.default, {
+        list: list,
         width: width,
         size: this.props.size,
-        list: this.props.list,
         onClick: this.onClick
       })));
     }
@@ -205,6 +218,23 @@ SelectField.defaultProps = {
   disabled: false,
   label: '',
   size: 'default'
+};
+SelectField.propTypes = {
+  name: _propTypes.default.string.isRequired,
+  label: _propTypes.default.string.isRequired,
+  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  list: _propTypes.default.arrayOf(_propTypes.default.shape({
+    label: _propTypes.default.string.isRequired,
+    value: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]).isRequired
+  })),
+  icon: _propTypes.default.string,
+  help: _propTypes.default.string,
+  disabled: _propTypes.default.bool,
+  required: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['default', 'dense']),
+  kind: _propTypes.default.oneOf(['filled', 'outlined']),
+  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
+  onChange: _propTypes.default.func.isRequired
 };
 var _default = SelectField;
 exports.default = _default;

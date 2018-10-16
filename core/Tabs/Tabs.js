@@ -23,6 +23,8 @@ require("core-js/modules/es6.array.find");
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Tab = _interopRequireDefault(require("./Tab"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
@@ -341,6 +343,15 @@ function (_Component) {
 }(_react.Component);
 
 exports.Tabs = Tabs;
+Tabs.propTypes = {
+  selected: _propTypes.default.number.isRequired,
+  items: _propTypes.default.array,
+  position: _propTypes.default.oneOf(['relative', 'absolute', 'sticky']),
+  contained: _propTypes.default.bool,
+  cluster: _propTypes.default.oneOf([null, 'left', 'center', 'right']),
+  stacked: _propTypes.default.bool,
+  children: _propTypes.default.oneOfType([_propTypes.default.objectOf(_Tab.default), _propTypes.default.arrayOf(_Tab.default)])
+};
 Tabs.defaultProps = {
   items: [],
   contained: false,

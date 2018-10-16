@@ -13,6 +13,8 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -97,5 +99,9 @@ function (_Component) {
 }(_react.Component);
 
 exports.TabIndicator = TabIndicator;
+TabIndicator.propTypes = {
+  getActiveTabRef: _propTypes.default.func.isRequired,
+  visible: _propTypes.default.bool.isRequired
+};
 var _default = TabIndicator;
 exports.default = _default;

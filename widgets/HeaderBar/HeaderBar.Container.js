@@ -88,7 +88,6 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       type: 'blue',
       title: '',
-      selection: '',
       messages: {
         count: 0
       },
@@ -237,7 +236,6 @@ function (_React$Component) {
       var _this$state = this.state,
           type = _this$state.type,
           title = _this$state.title,
-          selection = _this$state.selection,
           messages = _this$state.messages,
           interpretations = _this$state.interpretations,
           apps = _this$state.apps,
@@ -246,7 +244,7 @@ function (_React$Component) {
         baseURL: _utils.serverURL,
         type: type,
         title: title,
-        selection: selection,
+        status: this.props.status,
         messages: messages,
         interpretations: interpretations,
         apps: apps,

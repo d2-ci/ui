@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -24,6 +26,11 @@ function ToggleField(_ref) {
   }, children);
 }
 
+ToggleField.propTypes = {
+  children: _propTypes.default.node,
+  disabled: _propTypes.default.bool,
+  dense: _propTypes.default.bool
+};
 ToggleField.defaultProps = {
   disabled: false
 };

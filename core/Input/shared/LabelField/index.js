@@ -7,6 +7,8 @@ exports.default = exports.LabelField = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _utils = require("../../../../utils");
 
 var _Icon = _interopRequireDefault(require("../../../Icon"));
@@ -90,6 +92,23 @@ var LabelField = function LabelField(_ref) {
 };
 
 exports.LabelField = LabelField;
+LabelField.propTypes = {
+  label: _propTypes.default.string.isRequired,
+  children: _propTypes.default.element.isRequired,
+  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  dense: _propTypes.default.bool,
+  variant: _propTypes.default.oneOf(['filled', 'outlined', 'minimal']),
+  leadingIcon: _propTypes.default.string,
+  trailingIcon: _propTypes.default.string,
+  error: _propTypes.default.bool,
+  valid: _propTypes.default.bool,
+  warning: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  block: _propTypes.default.bool,
+  multiline: _propTypes.default.bool,
+  required: _propTypes.default.bool,
+  helpText: _propTypes.default.string
+};
 LabelField.defaultProps = {
   value: '',
   dense: false,

@@ -13,6 +13,8 @@ require("core-js/modules/es6.object.set-prototype-of");
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Button = _interopRequireDefault(require("./Button"));
 
 var _styles = _interopRequireDefault(require("./styles"));
@@ -126,9 +128,13 @@ function (_Component) {
         icon: this.props.icon,
         kind: this.props.kind,
         label: this.props.label,
+        active: this.props.active,
+        disabled: this.props.disabled,
         onClick: this.props.onClick
       }), _react.default.createElement(_Button.default, {
         kind: this.props.kind,
+        active: this.props.active,
+        disabled: this.props.disabled,
         onClick: this.onToggle,
         icon: open ? 'arrow_drop_up' : 'arrow_drop_down'
       }), open && _react.default.createElement("div", {
@@ -151,7 +157,20 @@ function (_Component) {
 exports.DropdownButton = DropdownButton;
 DropdownButton.defaultProps = {
   size: 'default',
-  kind: 'primary'
+  kind: 'primary',
+  active: false,
+  disabled: false
+};
+DropdownButton.propTypes = {
+  width: _propTypes.default.string,
+  kind: _propTypes.default.string,
+  icon: _propTypes.default.string,
+  active: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['default', 'dense']),
+  label: _propTypes.default.string.isRequired,
+  list: _propTypes.default.array.isRequired,
+  onClick: _propTypes.default.func.isRequired
 };
 var _default = DropdownButton;
 exports.default = _default;

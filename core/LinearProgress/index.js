@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -30,5 +32,9 @@ function LinearProgress(_ref) {
   }));
 }
 
+LinearProgress.propTypes = {
+  amount: _propTypes.default.number,
+  padded: _propTypes.default.bool
+};
 var _default = LinearProgress;
 exports.default = _default;

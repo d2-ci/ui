@@ -19,6 +19,8 @@ require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Card = _interopRequireDefault(require("../../core/Card"));
 
 var _Icon = _interopRequireDefault(require("../../core/Icon"));
@@ -66,6 +68,11 @@ function Search(_ref) {
   }));
 }
 
+Search.propTypes = {
+  value: _propTypes.default.string,
+  onChange: _propTypes.default.func
+};
+
 function Item(_ref2) {
   var name = _ref2.name,
       path = _ref2.path,
@@ -79,6 +86,12 @@ function Item(_ref2) {
     className: (0, _styles.default)('name')
   }, name));
 }
+
+Item.propTypes = {
+  name: _propTypes.default.string,
+  path: _propTypes.default.string,
+  img: _propTypes.default.string
+};
 
 function List(_ref3) {
   var apps = _ref3.apps,

@@ -11,6 +11,8 @@ require("core-js/modules/es6.array.fill");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function LogoIcon(_ref) {
@@ -32,6 +34,9 @@ function LogoIcon(_ref) {
 
 LogoIcon.defaultProps = {
   fill: '#0080d4'
+};
+LogoIcon.propTypes = {
+  fill: _propTypes.default.string
 };
 
 var LogoIconWhite = function LogoIconWhite() {
@@ -85,6 +90,10 @@ Logo.defaultProps = {
   fill1: '#0080d4',
   fill2: '#212225'
 };
+Logo.propTypes = {
+  fill1: _propTypes.default.string,
+  fill2: _propTypes.default.string
+};
 
 var LogoWhite = function LogoWhite() {
   return _react.default.createElement(Logo, {
@@ -94,5 +103,5 @@ var LogoWhite = function LogoWhite() {
 };
 
 exports.LogoWhite = LogoWhite;
-var _default = LogoIcon;
+var _default = Logo;
 exports.default = _default;

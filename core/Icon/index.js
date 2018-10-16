@@ -10,6 +10,8 @@ require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 var _utils = require("../../utils");
@@ -30,6 +32,11 @@ Icon.defaultProps = {
   name: '',
   className: '',
   onClick: undefined
+};
+Icon.propTypes = {
+  name: _propTypes.default.string.isRequired,
+  className: _propTypes.default.string,
+  onClick: _propTypes.default.func
 };
 var _default = Icon;
 exports.default = _default;

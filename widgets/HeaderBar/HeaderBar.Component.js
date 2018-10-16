@@ -8,6 +8,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Logo = require("../../core/Logo");
 
 var _NotificationIcon = _interopRequireDefault(require("./NotificationIcon"));
@@ -24,7 +26,7 @@ function HeaderBar(_ref) {
   var type = _ref.type,
       baseURL = _ref.baseURL,
       title = _ref.title,
-      selection = _ref.selection,
+      status = _ref.status,
       apps = _ref.apps,
       profile = _ref.profile,
       messages = _ref.messages,
@@ -37,9 +39,9 @@ function HeaderBar(_ref) {
     className: (0, _styles.default)('logo')
   }, type === 'blue' ? _react.default.createElement(_Logo.LogoIconWhite, null) : _react.default.createElement(_Logo.LogoIcon, null)), _react.default.createElement("div", {
     className: (0, _styles.default)('title')
-  }, title)), selection && _react.default.createElement("div", {
-    className: (0, _styles.default)('current-selection')
-  }, selection), _react.default.createElement("div", {
+  }, title)), status && _react.default.createElement("div", {
+    className: (0, _styles.default)('status')
+  }, status), _react.default.createElement("div", {
     className: (0, _styles.default)('last')
   }, _react.default.createElement(_NotificationIcon.default, {
     icon: "message",
@@ -56,7 +58,30 @@ function HeaderBar(_ref) {
 }
 
 HeaderBar.defaultProps = {
-  type: 'blue'
+  type: 'blue',
+  status: ''
+};
+HeaderBar.propTypes = {
+  baseURL: _propTypes.default.string,
+  type: _propTypes.default.oneOf(['blue', 'white', 'transparent']),
+  title: _propTypes.default.string,
+  status: _propTypes.default.string,
+  messages: _propTypes.default.shape({
+    count: _propTypes.default.number
+  }),
+  interpretations: _propTypes.default.shape({
+    count: _propTypes.default.number
+  }),
+  apps: _propTypes.default.arrayOf(_propTypes.default.shape({
+    name: _propTypes.default.string,
+    path: _propTypes.default.string,
+    img: _propTypes.default.string
+  })),
+  profile: _propTypes.default.shape({
+    name: _propTypes.default.string,
+    email: _propTypes.default.string,
+    src: _propTypes.default.string
+  })
 };
 var _default = HeaderBar;
 exports.default = _default;

@@ -14,6 +14,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Card = _interopRequireDefault(require("../Card"));
 
 var _MenuItem = _interopRequireDefault(require("./MenuItem"));
@@ -38,6 +40,7 @@ function Menu(_ref) {
         value = _ref2.value,
         icon = _ref2.icon,
         list = _ref2.list,
+        active = _ref2.active,
         type = _ref2.type,
         disabled = _ref2.disabled;
 
@@ -57,6 +60,7 @@ function Menu(_ref) {
       size: size,
       width: width,
       disabled: disabled,
+      active: active,
       onClick: onClick
     });
   })));
@@ -65,6 +69,20 @@ function Menu(_ref) {
 Menu.defaultProps = {
   width: '100%',
   size: 'default'
+};
+Menu.propTypes = {
+  width: _propTypes.default.string,
+  list: _propTypes.default.arrayOf(_propTypes.default.shape({
+    type: _propTypes.default.oneOf(['divider']),
+    label: _propTypes.default.string,
+    value: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
+    list: _propTypes.default.array,
+    icon: _propTypes.default.string,
+    active: _propTypes.default.bool,
+    disabled: _propTypes.default.bool
+  })),
+  onClick: _propTypes.default.func.isRequired,
+  size: _propTypes.default.oneOf(['default', 'dense'])
 };
 var _default = Menu;
 exports.default = _default;
