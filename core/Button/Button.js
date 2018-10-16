@@ -17,22 +17,17 @@ var _styles = _interopRequireDefault(require("./styles"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Button(_ref) {
-  var role = _ref.role,
-      type = _ref.type,
-      size = _ref.size,
+  var type = _ref.type,
       kind = _ref.kind,
       icon = _ref.icon,
       label = _ref.label,
-      active = _ref.active,
       disabled = _ref.disabled,
       onClick = _ref.onClick;
   return _react.default.createElement("button", {
-    type: type,
-    role: role,
     disabled: disabled,
     onClick: onClick,
-    className: (0, _styles.default)('button', kind, size, {
-      active: active
+    className: (0, _styles.default)('button', kind, {
+      'icon-only': icon && !label
     })
   }, icon && _react.default.createElement(_Icon.default, {
     name: icon
@@ -42,21 +37,14 @@ function Button(_ref) {
 Button.defaultProps = {
   icon: '',
   label: '',
-  role: 'button',
-  type: 'button',
-  size: 'medium',
   kind: 'raised',
-  active: false,
   disabled: false,
   onClick: undefined
 };
 Button.propTypes = {
-  role: _propTypes.default.string,
   label: _propTypes.default.string,
   icon: _propTypes.default.string,
-  active: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
   type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
   kind: _propTypes.default.oneOf(['flat', 'raised', 'primary', 'outlined', 'circle']),
   onClick: _propTypes.default.func

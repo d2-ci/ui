@@ -125,6 +125,7 @@ function (_Component) {
           return _this2.elContainer = c;
         }
       }, _react.default.createElement(_Button.default, {
+        icon: this.props.icon,
         kind: this.props.kind,
         label: this.props.label,
         active: this.props.active,
