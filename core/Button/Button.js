@@ -20,29 +20,23 @@ function Button(_ref) {
       kind = _ref.kind,
       icon = _ref.icon,
       label = _ref.label,
-      active = _ref.active,
       disabled = _ref.disabled,
       onClick = _ref.onClick;
   return _react.default.createElement("button", {
-    type: type,
-    role: role,
     disabled: disabled,
     onClick: onClick,
     className: (0, _styles.default)('button', kind, {
-      active: active
+      'icon-only': icon && !label
     })
   }, icon && _react.default.createElement(_Icon.default, {
     name: icon
-  }), label && _react.default.createElement("span", null, label));
+  }), label);
 }
 
 Button.defaultProps = {
   icon: '',
   label: '',
-  role: 'button',
-  type: 'button',
   kind: 'raised',
-  active: false,
   disabled: false,
   onClick: undefined
 };
