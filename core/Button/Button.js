@@ -43,7 +43,6 @@ Button.defaultProps = {
   onClick: undefined
 };
 Button.propTypes = {
-  role: _propTypes.default.string,
   label: _propTypes.default.string,
   icon: _propTypes.default.string,
   disabled: _propTypes.default.bool,
