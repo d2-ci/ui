@@ -17,8 +17,7 @@ var _styles = _interopRequireDefault(require("./styles"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Button(_ref) {
-  var role = _ref.role,
-      type = _ref.type,
+  var type = _ref.type,
       kind = _ref.kind,
       icon = _ref.icon,
       label = _ref.label,
