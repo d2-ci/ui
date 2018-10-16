@@ -3,7 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Profile;
+exports.default = void 0;
+
+require("core-js/modules/es7.symbol.async-iterator");
+
+require("core-js/modules/es6.symbol");
+
+require("core-js/modules/es6.object.set-prototype-of");
 
 require("core-js/modules/es6.regexp.split");
 
@@ -13,13 +19,31 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Icon = _interopRequireDefault(require("../../core/Icon"));
-
-var _Card = _interopRequireDefault(require("../../core/Card"));
+var _core = require("../../core");
 
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function TextIcon(_ref) {
   var name = _ref.name;
@@ -82,116 +106,114 @@ Header.propTypes = {
   img: _propTypes.default.string,
   baseURL: _propTypes.default.string
 };
+var list = [{
+  icon: 'settings',
+  label: 'Settings',
+  value: 'settings'
+}, {
+  icon: 'account_box',
+  label: 'Account',
+  value: 'account'
+}, {
+  icon: 'help',
+  label: 'Help',
+  value: 'help'
+}, {
+  icon: 'exit_to_app',
+  label: 'Logout',
+  value: 'logout'
+}];
 
-function Menu(_ref4) {
-  var baseURL = _ref4.baseURL;
-  var list = [{
-    name: 'settings',
-    label: 'Settings',
-    onClick: function onClick() {
-      return _onClick(baseURL, 'settings');
+var Profile =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Profile, _React$Component);
+
+  function Profile() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Profile);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
-  }, {
-    name: 'account_box',
-    label: 'Account',
-    onClick: function onClick() {
-      return _onClick(baseURL, 'account');
-    }
-  }, {
-    name: 'help',
-    label: 'Help',
-    onClick: function onClick() {
-      return _onClick(baseURL, 'help');
-    }
-  }, {
-    name: 'exit_to_app',
-    label: 'Logout',
-    onClick: function onClick() {
-      return _onClick(baseURL, 'logout');
-    }
-  }];
-  return _react.default.createElement("nav", null, list.map(function (_ref5) {
-    var name = _ref5.name,
-        label = _ref5.label,
-        onClick = _ref5.onClick;
-    return _react.default.createElement(Item, {
-      key: "profile-mi-".concat(name),
-      name: name,
-      label: label,
-      onClick: onClick
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Profile)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (value) {
+      var baseURL = _this.props.baseURL;
+      var paths = {
+        edit_profile: "".concat(baseURL, "/dhis-web-user-profile/#/profile"),
+        settings: "".concat(baseURL, "/dhis-web-user-profile/#/settings"),
+        account: "".concat(baseURL, "/dhis-web-user-profile/#/account"),
+        help: 'https://docs.dhis2.org/master/en/user/html/dhis2_user_manual_en.html',
+        logout: "".concat(baseURL, "/dhis-web-commons-security/logout.action")
+      };
+
+      if (typeof paths[value] !== 'undefined') {
+        window.location = paths[value];
+      } else {
+        console.warn('onClick: not implemented', value);
+      }
     });
-  }));
-}
 
-Menu.propTypes = {
-  baseURL: _propTypes.default.string
-};
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onHeaderClick", function () {
+      return _this.onClick('edit_profile');
+    });
 
-function Item(_ref6) {
-  var name = _ref6.name,
-      label = _ref6.label,
-      onClick = _ref6.onClick;
-  return _react.default.createElement("div", {
-    className: (0, _styles.default)('item'),
-    onClick: onClick
-  }, _react.default.createElement(_Icon.default, {
-    name: name
-  }), _react.default.createElement("div", {
-    className: (0, _styles.default)('label')
-  }, label));
-}
-
-Item.propTypes = {
-  name: _propTypes.default.string,
-  label: _propTypes.default.string,
-  onClick: _propTypes.default.func.isRequired
-};
-
-function _onClick(baseURL, actionType) {
-  var paths = {
-    edit_profile: "".concat(baseURL, "/dhis-web-user-profile/#/profile"),
-    settings: "".concat(baseURL, "/dhis-web-user-profile/#/settings"),
-    account: "".concat(baseURL, "/dhis-web-user-profile/#/account"),
-    help: 'https://docs.dhis2.org/master/en/user/html/dhis2_user_manual_en.html',
-    logout: "".concat(baseURL, "/dhis-web-commons-security/logout.action")
-  };
-
-  if (typeof paths[actionType] !== 'undefined') {
-    window.location = paths[actionType];
-  } else {
-    console.warn('onClick: not implemented', actionType);
+    return _this;
   }
-}
 
-function Profile(_ref7) {
-  var baseURL = _ref7.baseURL,
-      _ref7$profile = _ref7.profile,
-      name = _ref7$profile.name,
-      email = _ref7$profile.email,
-      img = _ref7$profile.img;
-  return _react.default.createElement("div", {
-    className: (0, _styles.default)('profile')
-  }, img ? _react.default.createElement(ImageIcon, {
-    src: img
-  }) : _react.default.createElement(TextIcon, {
-    name: name
-  }), _react.default.createElement("div", {
-    className: (0, _styles.default)('contents')
-  }, _react.default.createElement(_Card.default, null, _react.default.createElement(Header, {
-    name: name,
-    email: email,
-    img: img,
-    baseURL: baseURL,
-    onClick: function onClick() {
-      return _onClick(baseURL);
+  _createClass(Profile, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          baseURL = _this$props.baseURL,
+          _this$props$profile = _this$props.profile,
+          name = _this$props$profile.name,
+          email = _this$props$profile.email,
+          img = _this$props$profile.img;
+      return _react.default.createElement("div", {
+        className: (0, _styles.default)('profile')
+      }, img ? _react.default.createElement(ImageIcon, {
+        src: img
+      }) : _react.default.createElement(TextIcon, {
+        name: name
+      }), _react.default.createElement("div", {
+        className: (0, _styles.default)('contents')
+      }, _react.default.createElement(_core.Card, {
+        height: "298px"
+      }, _react.default.createElement(Header, {
+        name: name,
+        email: email,
+        img: img,
+        baseURL: baseURL,
+        onClick: this.onHeaderClick
+      }), _react.default.createElement(_core.Divider, {
+        margin: "13px 0 7px 0"
+      }), list.map(function (_ref4) {
+        var label = _ref4.label,
+            value = _ref4.value,
+            icon = _ref4.icon;
+        return _react.default.createElement(_core.MenuItem, {
+          key: "h-mi-".concat(value),
+          label: label,
+          value: value,
+          icon: icon,
+          onClick: _this2.onClick
+        });
+      }))));
     }
-  }), _react.default.createElement("div", {
-    className: (0, _styles.default)('divider')
-  }), _react.default.createElement(Menu, {
-    baseURL: baseURL
-  }))));
-}
+  }]);
 
+  return Profile;
+}(_react.default.Component);
+
+exports.default = Profile;
 Profile.propTypes = {
   baseURL: _propTypes.default.string,
   profile: _propTypes.default.object

@@ -73,6 +73,8 @@ function MenuItem(_ref2) {
 MenuItem.defaultProps = {
   icon: '',
   list: [],
+  width: '100%',
+  size: 'default',
   active: false,
   disabled: false
 };
@@ -83,7 +85,7 @@ MenuItem.propTypes = {
   list: _propTypes.default.array,
   active: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  size: _propTypes.default.string.isRequired,
-  width: _propTypes.default.string.isRequired,
+  size: _propTypes.default.string,
+  width: _propTypes.default.string,
   onClick: _propTypes.default.func.isRequired
 };
