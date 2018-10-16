@@ -62,7 +62,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Radio)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
-      return _this.props.onChange(_this.props.name, evt.target.checked);
+      return _this.props.onChange(_this.props.name, _this.props.value);
     });
 
     return _this;
@@ -86,15 +86,13 @@ function (_React$Component) {
       });
 
       return _react.default.createElement("label", {
-        htmlFor: this.props.name,
         className: (0, _styles.default)('container')
       }, _react.default.createElement("input", {
         type: "radio",
-        name: this.props.group,
-        id: this.props.name,
+        name: this.props.name,
         onChange: this.onChange,
         checked: this.props.checked,
-        value: this.props.checked,
+        value: this.props.value,
         disabled: this.props.disabled
       }), icon, _react.default.createElement("span", {
         className: (0, _styles.default)('label', _defineProperty({}, this.props.status, true))
@@ -115,7 +113,6 @@ Radio.defaultProps = {
 Radio.propTypes = {
   label: _propTypes.default.string,
   name: _propTypes.default.string.isRequired,
-  group: _propTypes.default.string.isRequired,
   checked: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   onChange: _propTypes.default.func.isRequired,

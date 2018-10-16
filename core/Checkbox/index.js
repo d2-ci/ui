@@ -101,11 +101,9 @@ function (_React$Component) {
       });
 
       return _react.default.createElement("label", {
-        htmlFor: this.props.name,
         className: (0, _styles.default)('container')
       }, _react.default.createElement("input", {
         type: "checkbox",
-        id: this.props.name,
         onChange: this.onChange,
         checked: this.state.checked,
         disabled: this.props.disabled
