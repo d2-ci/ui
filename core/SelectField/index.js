@@ -129,8 +129,8 @@ function (_React$Component) {
       document.addEventListener('click', this.onDocClick);
     }
   }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
       document.removeEventListener('click', this.onDocClick);
     }
   }, {

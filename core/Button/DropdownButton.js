@@ -103,8 +103,8 @@ function (_Component) {
       document.addEventListener('click', this.onDocClick);
     }
   }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
       document.removeEventListener('click', this.onDocClick);
     }
   }, {
@@ -143,7 +143,7 @@ function (_Component) {
           return _this2.elMenu = c;
         }
       }, _react.default.createElement(_Menu.default, {
-        width: width,
+        width: "".concat(width, "px"),
         size: this.props.size,
         list: this.props.list,
         onClick: this.props.onClick
