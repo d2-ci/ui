@@ -73,9 +73,13 @@ function (_React$Component) {
   _createClass(Radio, [{
     key: "render",
     value: function render() {
+      var _this$props = this.props,
+          required = _this$props.required,
+          status = _this$props.status;
+
       var icon = _react.default.createElement(_Icon.default, {
         name: this.props.checked ? 'radio_button_checked' : 'radio_button_unchecked',
-        className: "".concat((0, _utils.inputColorClass)(this.props.checked, this.props.disabled), " ").concat(this.props.status)
+        className: "".concat((0, _utils.inputColorClass)(this.props.checked, this.props.disabled), " ").concat(status)
       });
 
       return _react.default.createElement("label", {
@@ -83,12 +87,14 @@ function (_React$Component) {
       }, _react.default.createElement("input", {
         type: "radio",
         name: this.props.name,
-        onChange: this.onChange,
-        checked: this.props.checked,
         value: this.props.value,
-        disabled: this.props.disabled
+        checked: this.props.checked,
+        disabled: this.props.disabled,
+        onChange: this.onChange
       }), icon, _react.default.createElement("span", {
-        className: (0, _styles.default)('label', _defineProperty({}, this.props.status, true))
+        className: (0, _styles.default)('label', status, {
+          required: required
+        })
       }, this.props.label));
     }
   }]);
