@@ -19,6 +19,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
+var _utils = require("../../utils");
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -61,7 +63,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Radio)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function () {
       return _this.props.onChange(_this.props.name, _this.props.value);
     });
 
@@ -71,11 +73,9 @@ function (_React$Component) {
   _createClass(Radio, [{
     key: "render",
     value: function render() {
-      var color = this.props.disabled ? 'grey-light' : 'grey';
-
       var icon = _react.default.createElement(_Icon.default, {
         name: this.props.checked ? 'radio_button_checked' : 'radio_button_unchecked',
-        className: "".concat(color, " ").concat(this.props.status)
+        className: "".concat((0, _utils.inputColorClass)(this.props.checked, this.props.disabled), " ").concat(this.props.status)
       });
 
       return _react.default.createElement("label", {

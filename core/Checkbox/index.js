@@ -19,6 +19,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
+var _utils = require("../../utils");
+
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -62,17 +64,13 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Checkbox)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      checked: _this.props.checked,
       indeterminate: _this.props.indeterminate
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function () {
-      var checked = !_this.state.checked;
-
-      _this.props.onChange(_this.props.name, checked);
+      _this.props.onChange(_this.props.name, !_this.props.checked);
 
       _this.setState({
-        checked: checked,
         indeterminate: false
       });
     });
@@ -83,21 +81,17 @@ function (_React$Component) {
   _createClass(Checkbox, [{
     key: "render",
     value: function render() {
-      var icoColor = this.props.disabled ? 'grey-light' : 'grey';
-      var icoName;
+      var name = 'check_box_outline_blank';
 
       if (this.state.indeterminate) {
-        icoName = 'indeterminate_check_box';
-      } else if (this.state.checked) {
-        icoName = 'check_box';
-        icoColor = this.props.disabled ? icoColor : 'secondary-light';
-      } else {
-        icoName = 'check_box_outline_blank';
+        name = 'indeterminate_check_box';
+      } else if (this.props.checked) {
+        name = 'check_box';
       }
 
       var icon = _react.default.createElement(_Icon.default, {
-        name: icoName,
-        className: "".concat(icoColor, " ").concat(this.props.status)
+        name: name,
+        className: "".concat((0, _utils.inputColorClass)(this.props.checked, this.props.disabled), " ").concat(this.props.status)
       });
 
       return _react.default.createElement("label", {
@@ -105,7 +99,7 @@ function (_React$Component) {
       }, _react.default.createElement("input", {
         type: "checkbox",
         onChange: this.onChange,
-        checked: this.state.checked,
+        checked: this.props.checked,
         disabled: this.props.disabled
       }), icon, _react.default.createElement("span", {
         className: (0, _styles.default)('label', _defineProperty({
