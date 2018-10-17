@@ -10,26 +10,38 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _core = require("./core");
+var _Help = require("./Help");
 
-Object.keys(_core).forEach(function (key) {
+Object.keys(_Help).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _core[key];
+      return _Help[key];
     }
   });
 });
 
-var _widgets = require("./widgets");
+var _Label = require("./Label");
 
-Object.keys(_widgets).forEach(function (key) {
+Object.keys(_Label).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _widgets[key];
+      return _Label[key];
+    }
+  });
+});
+
+var _Divider = require("./Divider");
+
+Object.keys(_Divider).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Divider[key];
     }
   });
 });

@@ -10,26 +10,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _core = require("./core");
+var _Tabs = require("./Tabs");
 
-Object.keys(_core).forEach(function (key) {
+Object.keys(_Tabs).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _core[key];
+      return _Tabs[key];
     }
   });
 });
 
-var _widgets = require("./widgets");
+var _Tab = require("./Tab");
 
-Object.keys(_widgets).forEach(function (key) {
+Object.keys(_Tab).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _widgets[key];
+      return _Tab[key];
     }
   });
 });
