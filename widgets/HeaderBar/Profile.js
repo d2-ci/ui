@@ -23,6 +23,8 @@ var _core = require("../../core");
 
 var _styles = _interopRequireDefault(require("./styles"));
 
+var _utils = require("../../utils");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -46,7 +48,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function TextIcon(_ref) {
-  var name = _ref.name;
+  var name = _ref.name,
+      onClick = _ref.onClick;
   var title = name[0];
 
   if (name.indexOf(' ') > 0) {
@@ -54,27 +57,38 @@ function TextIcon(_ref) {
   }
 
   return _react.default.createElement("div", {
-    className: (0, _styles.default)('icon')
+    className: (0, _styles.default)('icon'),
+    onClick: onClick
   }, _react.default.createElement("div", {
     className: (0, _styles.default)('initials')
   }, title));
 }
 
+TextIcon.defaultProps = {
+  onClick: undefined
+};
 TextIcon.propTypes = {
-  name: _propTypes.default.string
+  name: _propTypes.default.string.isRequired,
+  onClick: _propTypes.default.func
 };
 
 function ImageIcon(_ref2) {
-  var src = _ref2.src;
+  var src = _ref2.src,
+      onClick = _ref2.onClick;
   return _react.default.createElement("div", {
-    className: (0, _styles.default)('icon')
+    className: (0, _styles.default)('icon'),
+    onClick: onClick
   }, _react.default.createElement("img", {
     src: src
   }));
 }
 
+ImageIcon.defaultProps = {
+  onClick: undefined
+};
 ImageIcon.propTypes = {
-  src: _propTypes.default.string
+  src: _propTypes.default.string.isRequired,
+  onClick: _propTypes.default.func
 };
 
 function Header(_ref3) {
@@ -142,6 +156,35 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Profile)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      show: false
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
+      if (_this.elContainer && _this.elContents) {
+        var target = {
+          x: evt.clientX,
+          y: evt.clientY
+        };
+
+        var contents = _this.elContents.getBoundingClientRect();
+
+        var container = _this.elContainer.getBoundingClientRect();
+
+        if (!(0, _utils.isPointInRect)(target, contents) && !(0, _utils.isPointInRect)(target, container)) {
+          _this.setState({
+            show: false
+          });
+        }
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
+      return _this.setState({
+        show: !_this.state.show
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (value) {
       var baseURL = _this.props.baseURL;
       var paths = {
@@ -167,31 +210,51 @@ function (_React$Component) {
   }
 
   _createClass(Profile, [{
-    key: "render",
-    value: function render() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.addEventListener('click', this.onDocClick);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      document.removeEventListener('click', this.onDocClick);
+    }
+  }, {
+    key: "viewIcon",
+    value: function viewIcon() {
+      if (this.props.profile.img) {
+        return _react.default.createElement(ImageIcon, {
+          src: this.props.profile.img,
+          onClick: this.onToggle
+        });
+      }
+
+      return _react.default.createElement(TextIcon, {
+        name: this.props.profile.name,
+        onClick: this.onToggle
+      });
+    }
+  }, {
+    key: "viewContents",
+    value: function viewContents() {
       var _this2 = this;
 
-      var _this$props = this.props,
-          baseURL = _this$props.baseURL,
-          _this$props$profile = _this$props.profile,
-          name = _this$props$profile.name,
-          email = _this$props$profile.email,
-          img = _this$props$profile.img;
+      if (!this.state.show) {
+        return null;
+      }
+
       return _react.default.createElement("div", {
-        className: (0, _styles.default)('profile')
-      }, img ? _react.default.createElement(ImageIcon, {
-        src: img
-      }) : _react.default.createElement(TextIcon, {
-        name: name
-      }), _react.default.createElement("div", {
-        className: (0, _styles.default)('contents')
+        className: (0, _styles.default)('contents'),
+        ref: function ref(c) {
+          return _this2.elContents = c;
+        }
       }, _react.default.createElement(_core.Card, {
         height: "298px"
       }, _react.default.createElement(Header, {
-        name: name,
-        email: email,
-        img: img,
-        baseURL: baseURL,
+        baseURL: this.props.baseURL,
+        img: this.props.profile.img,
+        name: this.props.profile.name,
+        email: this.props.profile.email,
         onClick: this.onHeaderClick
       }), _react.default.createElement(_core.Divider, {
         margin: "13px 0 7px 0"
@@ -206,7 +269,19 @@ function (_React$Component) {
           icon: icon,
           onClick: _this2.onClick
         });
-      }))));
+      })));
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return _react.default.createElement("div", {
+        className: (0, _styles.default)('profile'),
+        ref: function ref(c) {
+          return _this3.elContainer = c;
+        }
+      }, this.viewIcon(), this.viewContents());
     }
   }]);
 

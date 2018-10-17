@@ -22,26 +22,34 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function getTitle(instanceName) {
+  var appName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+  if (!appName) {
+    return instanceName;
+  }
+
+  return "".concat(instanceName, " - ").concat(appName);
+}
+
 function HeaderBar(_ref) {
-  var type = _ref.type,
-      baseURL = _ref.baseURL,
-      title = _ref.title,
+  var baseURL = _ref.baseURL,
+      instanceName = _ref.instanceName,
+      appName = _ref.appName,
       status = _ref.status,
       apps = _ref.apps,
       profile = _ref.profile,
       messages = _ref.messages,
       interpretations = _ref.interpretations;
   return _react.default.createElement("header", {
-    className: (0, _styles.default)('container', type)
+    className: (0, _styles.default)('container', 'blue')
   }, _react.default.createElement("div", {
     className: (0, _styles.default)('first')
   }, _react.default.createElement("div", {
     className: (0, _styles.default)('logo')
-  }, type === 'blue' ? _react.default.createElement(_Logo.LogoIconWhite, null) : _react.default.createElement(_Logo.LogoIcon, null)), _react.default.createElement("div", {
+  }, _react.default.createElement(_Logo.LogoIconWhite, null)), _react.default.createElement("div", {
     className: (0, _styles.default)('title')
-  }, title)), status && _react.default.createElement("div", {
-    className: (0, _styles.default)('status')
-  }, status), _react.default.createElement("div", {
+  }, getTitle(instanceName, appName))), _react.default.createElement("div", {
     className: (0, _styles.default)('last')
   }, _react.default.createElement(_NotificationIcon.default, {
     icon: "message",
@@ -57,15 +65,10 @@ function HeaderBar(_ref) {
   })));
 }
 
-HeaderBar.defaultProps = {
-  type: 'blue',
-  status: ''
-};
 HeaderBar.propTypes = {
   baseURL: _propTypes.default.string,
-  type: _propTypes.default.oneOf(['blue', 'white', 'transparent']),
-  title: _propTypes.default.string,
-  status: _propTypes.default.string,
+  instanceName: _propTypes.default.string.isRequired,
+  appName: _propTypes.default.string,
   messages: _propTypes.default.shape({
     count: _propTypes.default.number
   }),
