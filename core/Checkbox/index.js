@@ -62,8 +62,8 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Checkbox)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      checked: !!_this.props.checked,
-      indeterminate: !!_this.props.indeterminate
+      checked: _this.props.checked,
+      indeterminate: _this.props.indeterminate
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function () {
@@ -120,22 +120,22 @@ function (_React$Component) {
 
 exports.Checkbox = Checkbox;
 Checkbox.defaultProps = {
-  disabled: false,
-  indeterminate: false,
+  label: '',
   checked: false,
   required: false,
-  status: 'default',
-  label: ''
+  disabled: false,
+  indeterminate: false,
+  status: 'default'
 };
 Checkbox.propTypes = {
-  label: _propTypes.default.string,
   name: _propTypes.default.string.isRequired,
+  label: _propTypes.default.string,
   checked: _propTypes.default.bool,
+  required: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   indeterminate: _propTypes.default.bool,
-  required: _propTypes.default.bool,
-  onChange: _propTypes.default.func.isRequired,
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
+  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
+  onChange: _propTypes.default.func.isRequired
 };
 var _default = Checkbox;
 exports.default = _default;
