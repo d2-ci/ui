@@ -41,9 +41,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// Only allow lower case letters, optionally seperated by underscore
-var mdIconNamePattern = /^[a-z]+_*[a-z]+$/;
-
 var Chip =
 /*#__PURE__*/
 function (_React$PureComponent) {
@@ -73,8 +70,11 @@ function (_React$PureComponent) {
 
   _createClass(Chip, [{
     key: "renderIcon",
-    value: function renderIcon(icon) {
-      return mdIconNamePattern.test(icon) ? _react.default.createElement(_Icon.default, {
+    value: function renderIcon() {
+      var _this$props = this.props,
+          icon = _this$props.icon,
+          type = _this$props.type;
+      return type === 'icon' ? _react.default.createElement(_Icon.default, {
         name: icon,
         className: (0, _styles.default)('icon')
       }) : _react.default.createElement("img", {
@@ -86,14 +86,13 @@ function (_React$PureComponent) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          label = _this$props.label,
-          onClick = _this$props.onClick,
-          selected = _this$props.selected,
-          disabled = _this$props.disabled,
-          dragging = _this$props.dragging,
-          icon = _this$props.icon,
-          onRemove = _this$props.onRemove;
+      var _this$props2 = this.props,
+          label = _this$props2.label,
+          onClick = _this$props2.onClick,
+          selected = _this$props2.selected,
+          disabled = _this$props2.disabled,
+          dragging = _this$props2.dragging,
+          icon = _this$props2.icon;
       return _react.default.createElement("div", {
         className: (0, _styles.default)('container', {
           static: !onClick,
@@ -104,7 +103,7 @@ function (_React$PureComponent) {
         onClick: !disabled && onClick || undefined
       }, icon && this.renderIcon(icon), label && _react.default.createElement("span", {
         className: (0, _styles.default)('label')
-      }, label), onRemove && _react.default.createElement(_Icon.default, {
+      }, label), this.props.onRemove && _react.default.createElement(_Icon.default, {
         name: "cancel",
         className: (0, _styles.default)('remove-icon'),
         onClick: this.onRemove
@@ -119,11 +118,16 @@ exports.Chip = Chip;
 Chip.propTypes = {
   label: _propTypes.default.string.isRequired,
   onClick: _propTypes.default.func,
+  icon: _propTypes.default.string,
+  type: _propTypes.default.oneOf(['image', 'icon']),
+  onRemove: _propTypes.default.func,
   selected: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  dragging: _propTypes.default.bool,
-  icon: _propTypes.default.string,
-  onRemove: _propTypes.default.func
+  dragging: _propTypes.default.bool
+};
+Chip.defaultProps = {
+  onClick: undefined,
+  type: 'icon'
 };
 var _default = Chip;
 exports.default = _default;
