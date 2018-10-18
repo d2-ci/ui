@@ -59,8 +59,15 @@ function (_React$PureComponent) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Chip)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onRemove", function (event) {
-      event.stopPropagation();
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (evt) {
+      if (!_this.props.disabled && _this.props.onClick) {
+        return _this.props.onClick();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onRemove", function (evt) {
+      // stop onRemove from triggering onClick on container
+      evt.stopPropagation();
 
       _this.props.onRemove();
     });
@@ -69,45 +76,62 @@ function (_React$PureComponent) {
   }
 
   _createClass(Chip, [{
-    key: "renderIcon",
-    value: function renderIcon() {
+    key: "showIcon",
+    value: function showIcon() {
       var _this$props = this.props,
           icon = _this$props.icon,
           type = _this$props.type;
-      return type === 'icon' ? _react.default.createElement(_Icon.default, {
-        name: icon,
-        className: (0, _styles.default)('icon')
-      }) : _react.default.createElement("img", {
-        src: icon,
-        alt: "chip-icon",
-        className: (0, _styles.default)('image-icon')
-      });
+
+      if (!icon) {
+        return;
+      }
+
+      if (type === 'image') {
+        return _react.default.createElement("img", {
+          src: icon,
+          alt: "chip-icon",
+          className: (0, _styles.default)('image-icon')
+        });
+      } else {
+        return _react.default.createElement(_Icon.default, {
+          name: icon,
+          className: (0, _styles.default)('icon')
+        });
+      }
+    }
+  }, {
+    key: "showRemove",
+    value: function showRemove() {
+      if (this.props.onRemove) {
+        return _react.default.createElement(_Icon.default, {
+          name: "cancel",
+          className: (0, _styles.default)('remove-icon'),
+          onClick: this.onRemove
+        });
+      }
     }
   }, {
     key: "render",
     value: function render() {
       var _this$props2 = this.props,
           label = _this$props2.label,
-          onClick = _this$props2.onClick,
           selected = _this$props2.selected,
           disabled = _this$props2.disabled,
           dragging = _this$props2.dragging,
-          icon = _this$props2.icon;
+          overflow = _this$props2.overflow;
       return _react.default.createElement("div", {
         className: (0, _styles.default)('container', {
-          static: !onClick,
+          static: !this.props.onClick,
           selected: selected,
           disabled: disabled,
           dragging: dragging
         }),
-        onClick: !disabled && onClick || undefined
-      }, icon && this.renderIcon(icon), label && _react.default.createElement("span", {
-        className: (0, _styles.default)('label')
-      }, label), this.props.onRemove && _react.default.createElement(_Icon.default, {
-        name: "cancel",
-        className: (0, _styles.default)('remove-icon'),
-        onClick: this.onRemove
-      }));
+        onClick: this.onClick
+      }, this.showIcon(), _react.default.createElement("span", {
+        className: (0, _styles.default)('label', {
+          overflow: overflow
+        })
+      }, label), this.showRemove());
     }
   }]);
 
@@ -115,19 +139,25 @@ function (_React$PureComponent) {
 }(_react.default.PureComponent);
 
 exports.Chip = Chip;
+Chip.defaultProps = {
+  type: 'icon',
+  selected: false,
+  disabled: false,
+  dragging: false,
+  overflow: true,
+  onClick: undefined,
+  onRemove: undefined
+};
 Chip.propTypes = {
   label: _propTypes.default.string.isRequired,
-  onClick: _propTypes.default.func,
   icon: _propTypes.default.string,
-  type: _propTypes.default.oneOf(['image', 'icon']),
-  onRemove: _propTypes.default.func,
+  type: _propTypes.default.oneOf(['icon', 'image']),
   selected: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
-  dragging: _propTypes.default.bool
-};
-Chip.defaultProps = {
-  onClick: undefined,
-  type: 'icon'
+  dragging: _propTypes.default.bool,
+  overflow: _propTypes.default.bool,
+  onClick: _propTypes.default.func,
+  onRemove: _propTypes.default.func
 };
 var _default = Chip;
 exports.default = _default;
