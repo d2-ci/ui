@@ -59,15 +59,14 @@ function (_React$PureComponent) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Chip)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (evt) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function () {
       if (!_this.props.disabled && _this.props.onClick) {
         return _this.props.onClick();
       }
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onRemove", function (evt) {
-      // stop onRemove from triggering onClick on container
-      evt.stopPropagation();
+      evt.stopPropagation(); // stop onRemove from triggering onClick on container
 
       _this.props.onRemove();
     });
@@ -78,26 +77,24 @@ function (_React$PureComponent) {
   _createClass(Chip, [{
     key: "showIcon",
     value: function showIcon() {
-      var _this$props = this.props,
-          icon = _this$props.icon,
-          type = _this$props.type;
+      var icon = this.props.icon;
 
       if (!icon) {
         return;
       }
 
-      if (type === 'image') {
+      if (this.props.type === 'image') {
         return _react.default.createElement("img", {
           src: icon,
-          alt: "chip-icon",
+          alt: "chip icon",
           className: (0, _styles.default)('image-icon')
         });
-      } else {
-        return _react.default.createElement(_Icon.default, {
-          name: icon,
-          className: (0, _styles.default)('icon')
-        });
       }
+
+      return _react.default.createElement(_Icon.default, {
+        name: icon,
+        className: (0, _styles.default)('icon')
+      });
     }
   }, {
     key: "showRemove",
@@ -113,18 +110,18 @@ function (_React$PureComponent) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          label = _this$props2.label,
-          selected = _this$props2.selected,
-          disabled = _this$props2.disabled,
-          dragging = _this$props2.dragging,
-          overflow = _this$props2.overflow;
+      var _this$props = this.props,
+          label = _this$props.label,
+          selected = _this$props.selected,
+          disabled = _this$props.disabled,
+          dragging = _this$props.dragging,
+          overflow = _this$props.overflow;
       return _react.default.createElement("div", {
         className: (0, _styles.default)('container', {
-          static: !this.props.onClick,
           selected: selected,
           disabled: disabled,
-          dragging: dragging
+          dragging: dragging,
+          static: !this.props.onClick
         }),
         onClick: this.onClick
       }, this.showIcon(), _react.default.createElement("span", {
