@@ -104,13 +104,11 @@ function (_React$PureComponent) {
         onClick: !disabled && onClick || undefined
       }, icon && this.renderIcon(icon), label && _react.default.createElement("span", {
         className: (0, _styles.default)('label')
-      }, label), onRemove && _react.default.createElement("button", {
-        className: (0, _styles.default)('remove-button'),
-        onClick: this.onRemove
-      }, _react.default.createElement(_Icon.default, {
+      }, label), onRemove && _react.default.createElement(_Icon.default, {
         name: "cancel",
-        className: (0, _styles.default)('remove-icon')
-      })));
+        className: (0, _styles.default)('remove-icon'),
+        onClick: this.onRemove
+      }));
     }
   }]);
 
