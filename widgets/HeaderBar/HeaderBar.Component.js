@@ -47,7 +47,9 @@ function HeaderBar(_ref) {
     className: (0, _styles.default)('first')
   }, _react.default.createElement("div", {
     className: (0, _styles.default)('logo')
-  }, _react.default.createElement(_Logo.LogoIconWhite, null)), _react.default.createElement("div", {
+  }, _react.default.createElement("a", {
+    href: "".concat(baseURL)
+  }, _react.default.createElement(_Logo.LogoIconWhite, null))), _react.default.createElement("div", {
     className: (0, _styles.default)('title')
   }, getTitle(instanceName, appName))), _react.default.createElement("div", {
     className: (0, _styles.default)('last')

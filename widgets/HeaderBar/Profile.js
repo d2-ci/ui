@@ -79,7 +79,8 @@ function ImageIcon(_ref2) {
     className: (0, _styles.default)('icon'),
     onClick: onClick
   }, _react.default.createElement("img", {
-    src: src
+    src: src,
+    alt: "user avatar"
   }));
 }
 

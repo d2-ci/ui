@@ -81,7 +81,8 @@ function Item(_ref2) {
     href: path,
     className: (0, _styles.default)('app')
   }, _react.default.createElement("img", {
-    src: img
+    src: img,
+    alt: "app logo"
   }), _react.default.createElement("div", {
     className: (0, _styles.default)('name')
   }, name));
