@@ -36,7 +36,6 @@ function HeaderBar(_ref) {
   var baseURL = _ref.baseURL,
       instanceName = _ref.instanceName,
       appName = _ref.appName,
-      status = _ref.status,
       apps = _ref.apps,
       profile = _ref.profile,
       messages = _ref.messages,

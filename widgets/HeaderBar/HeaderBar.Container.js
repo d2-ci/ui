@@ -21,6 +21,8 @@ require("core-js/modules/es6.string.starts-with");
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _HeaderBar = _interopRequireDefault(require("./HeaderBar.Component"));
 
 var _utils = require("../../utils");
@@ -87,7 +89,7 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       type: 'blue',
-      title: '',
+      instanceName: '',
       messages: {
         count: 0
       },
@@ -191,7 +193,7 @@ function (_React$Component) {
               case 20:
                 me = _context2.sent;
                 this.setState({
-                  title: systemName,
+                  instanceName: systemName,
                   messages: {
                     count: unreadMessageConversations
                   },
@@ -235,7 +237,6 @@ function (_React$Component) {
     value: function render() {
       var _this$state = this.state,
           type = _this$state.type,
-          title = _this$state.title,
           messages = _this$state.messages,
           interpretations = _this$state.interpretations,
           apps = _this$state.apps,
@@ -243,12 +244,12 @@ function (_React$Component) {
       return _react.default.createElement(_HeaderBar.default, {
         baseURL: _utils.serverURL,
         type: type,
-        title: title,
-        status: this.props.status,
-        messages: messages,
-        interpretations: interpretations,
+        instanceName: this.state.instanceName,
+        appName: this.props.appName,
         apps: apps,
-        profile: profile
+        profile: profile,
+        messages: messages,
+        interpretations: interpretations
       });
     }
   }]);
@@ -257,5 +258,8 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.HeaderBarContainer = HeaderBarContainer;
+HeaderBarContainer.propTypes = {
+  appName: _propTypes.default.string.isRequired
+};
 var _default = HeaderBarContainer;
 exports.default = _default;
