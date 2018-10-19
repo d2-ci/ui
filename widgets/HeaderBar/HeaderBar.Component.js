@@ -60,7 +60,8 @@ function HeaderBar(_ref) {
     icon: "email",
     count: messages.count
   }), _react.default.createElement(_Apps.default, {
-    apps: apps
+    apps: apps,
+    baseURL: baseURL
   }), _react.default.createElement(_Profile.default, {
     profile: profile,
     baseURL: baseURL

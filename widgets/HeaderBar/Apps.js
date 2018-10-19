@@ -25,7 +25,7 @@ var _Card = _interopRequireDefault(require("../../core/Card"));
 
 var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
-var _TextField = _interopRequireDefault(require("../../core/Input/TextField"));
+var _InputField = _interopRequireDefault(require("../../core/InputField"));
 
 var _utils = require("../../utils");
 
@@ -55,22 +55,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function Search(_ref) {
   var value = _ref.value,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      onSettingsClick = _ref.onSettingsClick;
   return _react.default.createElement("div", {
     className: (0, _styles.default)('search')
-  }, _react.default.createElement(_TextField.default, {
-    label: "Search apps",
+  }, _react.default.createElement(_InputField.default, {
+    name: "filter",
     value: value,
+    kind: "filled",
+    size: "dense",
+    label: "Search apps",
     onChange: onChange
   }), _react.default.createElement(_Icon.default, {
     name: "settings",
-    className: (0, _styles.default)('settings')
+    className: (0, _styles.default)('settings'),
+    onClick: onSettingsClick
   }));
 }
 
 Search.propTypes = {
-  value: _propTypes.default.string,
-  onChange: _propTypes.default.func
+  value: _propTypes.default.string.isRequired,
+  onChange: _propTypes.default.func.isRequired,
+  onSettingsClick: _propTypes.default.func.isRequired
 };
 
 function Item(_ref2) {
@@ -163,10 +169,14 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (_, filter) {
       return _this.setState({
-        filter: evt.target.value
+        filter: filter
       });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSettingsClick", function () {
+      return (0, _utils.gotoURL)("".concat(_this.props.baseURL, "/dhis-web-user-profile/#/account"));
     });
 
     return _this;
@@ -205,7 +215,8 @@ function (_React$Component) {
         height: "301px"
       }, _react.default.createElement(Search, {
         value: this.state.filter,
-        onChange: this.onChange
+        onChange: this.onChange,
+        onSettingsClick: this.onSettingsClick
       }), _react.default.createElement(List, {
         apps: this.props.apps,
         filter: this.state.filter
@@ -217,3 +228,6 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = Apps;
+Apps.propTypes = {
+  baseURL: _propTypes.default.string.isRequired
+};

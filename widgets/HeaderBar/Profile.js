@@ -21,9 +21,9 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _core = require("../../core");
 
-var _styles = _interopRequireDefault(require("./styles"));
-
 var _utils = require("../../utils");
+
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -197,7 +197,7 @@ function (_React$Component) {
       };
 
       if (typeof paths[value] !== 'undefined') {
-        window.location = paths[value];
+        (0, _utils.gotoURL)(paths[value]);
       } else {
         console.warn('onClick: not implemented', value);
       }
