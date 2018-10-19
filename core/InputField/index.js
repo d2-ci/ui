@@ -68,7 +68,9 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
-      return _this.props.onChange(_this.props.name, evt.target.value);
+      if (!_this.props.disabled) {
+        _this.props.onChange(_this.props.name, evt.target.value);
+      }
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function () {
@@ -81,8 +83,13 @@ function (_React$Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function () {
-      return _this.setState({
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (evt) {
+      if (_this.props.disabled) {
+        evt.target.blur();
+        return;
+      }
+
+      _this.setState({
         focused: true
       });
     });
@@ -99,13 +106,10 @@ function (_React$Component) {
   _createClass(InputField, [{
     key: "render",
     value: function render() {
-      var _this2 = this,
-          _s;
+      var _s,
+          _this2 = this;
 
       return _react.default.createElement("div", {
-        ref: function ref(c) {
-          return _this2.elContainer = c;
-        },
         className: (0, _styles.default)('container', (_s = {
           disabled: this.props.disabled
         }, _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, 'is-empty', !(this.props.value || this.props.placeholder || this.state.focused)), _s)),
