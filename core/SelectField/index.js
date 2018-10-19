@@ -107,12 +107,20 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
-      return _this.setState({
+      if (_this.props.disabled) {
+        return false;
+      }
+
+      _this.setState({
         open: !_this.state.open
       });
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (value) {
+      if (_this.props.disabled) {
+        return false;
+      }
+
       _this.setState({
         open: false
       });
@@ -168,7 +176,8 @@ function (_React$Component) {
           return _this3.elContainer = c;
         },
         className: (0, _styles.default)('container', (_s = {
-          selected: !!this.props.value
+          selected: !!this.props.value,
+          disabled: this.props.disabled
         }, _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, "size-".concat(this.props.size), true), _s))
       }, _react.default.createElement("div", {
         ref: function ref(c) {
@@ -189,6 +198,7 @@ function (_React$Component) {
         text: this.props.label,
         status: this.props.status,
         hasIcon: !!this.props.icon,
+        disabled: this.props.disabled,
         state: selected ? 'minimized' : 'default'
       }), _react.default.createElement(_Icon.default, {
         name: open ? 'arrow_drop_up' : 'arrow_drop_down',
