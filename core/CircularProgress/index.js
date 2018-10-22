@@ -29,14 +29,14 @@ function Circle() {
 
 function CircularProgress(_ref) {
   var size = _ref.size,
-      center = _ref.center;
+      overlay = _ref.overlay;
 
   var loader = _react.default.createElement("div", {
     role: "progressbar",
     className: (0, _styles.default)('container', size)
   }, _react.default.createElement(Circle, null));
 
-  if (center) {
+  if (overlay) {
     return _react.default.createElement("div", {
       className: (0, _styles.default)('overlay')
     }, loader);
@@ -45,12 +45,12 @@ function CircularProgress(_ref) {
   return loader;
 }
 
-CircularProgress.propTypes = {
-  center: _propTypes.default.bool,
-  size: _propTypes.default.oneOf(['large', 'medium', 'small'])
-};
 CircularProgress.defaultProps = {
   size: 'medium'
+};
+CircularProgress.propTypes = {
+  overlay: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['small', 'medium', 'large'])
 };
 var _default = CircularProgress;
 exports.default = _default;
