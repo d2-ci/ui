@@ -16,16 +16,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function LinearProgress(_ref) {
   var amount = _ref.amount,
-      padded = _ref.padded;
+      margin = _ref.margin;
   var type = typeof amount === 'undefined' ? (0, _styles.default)('indeterminate') : (0, _styles.default)('determinate');
   var style = amount ? {
     width: "".concat(amount, "%")
   } : null;
   return _react.default.createElement("div", {
     role: "progressbar",
-    className: (0, _styles.default)('container', {
-      padded: padded
-    })
+    className: (0, _styles.default)('container'),
+    style: {
+      margin: margin
+    }
   }, _react.default.createElement("div", {
     style: style,
     className: (0, _styles.default)('progress', type)
@@ -34,7 +35,7 @@ function LinearProgress(_ref) {
 
 LinearProgress.propTypes = {
   amount: _propTypes.default.number,
-  padded: _propTypes.default.bool
+  margin: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number])
 };
 var _default = LinearProgress;
 exports.default = _default;
