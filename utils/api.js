@@ -37,6 +37,10 @@ if (isProd) {
   if (!endpoint) {
     endpoint = "".concat(url, "/api");
   }
+} else {
+  // for dev. environments
+  url = DHIS_CONFIG.baseUrl;
+  endpoint = "".concat(url, "/api");
 }
 
 var serverURL = url;
