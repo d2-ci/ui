@@ -10,7 +10,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-require("typeface-roboto");
+require("typeface-roboto/index.css");
 
 require("material-design-icons/iconfont/material-icons.css");
 
@@ -22,6 +22,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // import as part of the UI component to make sure that the font is
 // loaded for selective imports which might not import the root index
+// ---
+// note: import css-files with file exts for regexps in e.g. jest/webpack
 function UI(_ref) {
   var theme = _ref.theme,
       children = _ref.children;
