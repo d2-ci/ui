@@ -54,10 +54,12 @@ function HeaderBar(_ref) {
     className: (0, _styles.default)('last')
   }, _react.default.createElement(_NotificationIcon.default, {
     icon: "message",
-    count: interpretations.count
+    count: interpretations.count,
+    href: "".concat(baseURL, "/dhis-web-interpretation")
   }), _react.default.createElement(_NotificationIcon.default, {
     icon: "email",
-    count: messages.count
+    count: messages.count,
+    href: "".concat(baseURL, "/dhis-web-messaging")
   }), _react.default.createElement(_Apps.default, {
     apps: apps,
     baseURL: baseURL

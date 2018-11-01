@@ -19,24 +19,27 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function NotificationIcon(_ref) {
   var icon = _ref.icon,
-      count = _ref.count;
-  return _react.default.createElement("div", {
+      count = _ref.count,
+      href = _ref.href;
+  return _react.default.createElement("a", {
     className: (0, _styles.default)('notification', {
       icon: icon
-    })
-  }, count > 0 && _react.default.createElement("div", {
+    }),
+    href: href
+  }, count > 0 && _react.default.createElement("span", {
     className: (0, _styles.default)('count', (0, _utils.t)('secondary-light-bg'))
   }, count), _react.default.createElement(_Icon.default, {
     name: icon
   }));
 }
 
-NotificationIcon.propTypes = {
-  count: _propTypes.default.number,
-  icon: _propTypes.default.string.isRequired
-};
 NotificationIcon.defaultProps = {
   count: 0
+};
+NotificationIcon.propTypes = {
+  icon: _propTypes.default.string.isRequired,
+  href: _propTypes.default.string.isRequired,
+  count: _propTypes.default.number
 };
 var _default = NotificationIcon;
 exports.default = _default;
