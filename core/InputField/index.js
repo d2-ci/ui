@@ -74,7 +74,7 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function () {
-      if (_this.ref) {
+      if (_this.ref && !_this.props.disabled) {
         _this.ref.focus();
 
         _this.setState({
