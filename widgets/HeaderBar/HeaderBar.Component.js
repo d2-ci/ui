@@ -1,7 +1,5 @@
 "use strict";
 
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -10,7 +8,9 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Logo = _interopRequireDefault(require("../../core/Logo"));
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Logo = require("../../core/Logo");
 
 var _NotificationIcon = _interopRequireDefault(require("./NotificationIcon"));
 
@@ -22,48 +22,73 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/** @format */
+function getTitle(instanceName) {
+  var appName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+  if (!appName) {
+    return instanceName;
+  }
+
+  return "".concat(instanceName, " - ").concat(appName);
+}
+
 function HeaderBar(_ref) {
-  var type = _ref.type,
-      baseURL = _ref.baseURL,
-      title = _ref.title,
-      selection = _ref.selection,
+  var baseURL = _ref.baseURL,
+      instanceName = _ref.instanceName,
+      appName = _ref.appName,
       apps = _ref.apps,
       profile = _ref.profile,
       messages = _ref.messages,
       interpretations = _ref.interpretations;
   return _react.default.createElement("header", {
-    className: (0, _styles.default)('container', type)
+    className: (0, _styles.default)('container', 'blue')
   }, _react.default.createElement("div", {
     className: (0, _styles.default)('first')
   }, _react.default.createElement("div", {
     className: (0, _styles.default)('logo')
-  }, _react.default.createElement(_Logo.default, {
-    color: type === 'blue' ? 'white' : 'blue',
-    type: "icon",
-    width: "27.5px"
-  })), _react.default.createElement("div", {
+  }, _react.default.createElement("a", {
+    href: "".concat(baseURL)
+  }, _react.default.createElement(_Logo.LogoIconWhite, null))), _react.default.createElement("div", {
     className: (0, _styles.default)('title')
-  }, title)), selection && _react.default.createElement("div", {
-    className: (0, _styles.default)('current-selection')
-  }, selection), _react.default.createElement("div", {
+  }, getTitle(instanceName, appName))), _react.default.createElement("div", {
     className: (0, _styles.default)('last')
   }, _react.default.createElement(_NotificationIcon.default, {
     icon: "message",
-    count: interpretations.count
+    count: interpretations.count,
+    href: "".concat(baseURL, "/dhis-web-interpretation")
   }), _react.default.createElement(_NotificationIcon.default, {
     icon: "email",
-    count: messages.count
+    count: messages.count,
+    href: "".concat(baseURL, "/dhis-web-messaging")
   }), _react.default.createElement(_Apps.default, {
-    apps: apps
+    apps: apps,
+    baseURL: baseURL
   }), _react.default.createElement(_Profile.default, {
     profile: profile,
     baseURL: baseURL
   })));
 }
 
-HeaderBar.defaultProps = {
-  type: 'blue'
+HeaderBar.propTypes = {
+  baseURL: _propTypes.default.string,
+  instanceName: _propTypes.default.string.isRequired,
+  appName: _propTypes.default.string,
+  messages: _propTypes.default.shape({
+    count: _propTypes.default.number
+  }),
+  interpretations: _propTypes.default.shape({
+    count: _propTypes.default.number
+  }),
+  apps: _propTypes.default.arrayOf(_propTypes.default.shape({
+    name: _propTypes.default.string,
+    path: _propTypes.default.string,
+    img: _propTypes.default.string
+  })),
+  profile: _propTypes.default.shape({
+    name: _propTypes.default.string,
+    email: _propTypes.default.string,
+    src: _propTypes.default.string
+  })
 };
 var _default = HeaderBar;
 exports.default = _default;

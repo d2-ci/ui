@@ -1,7 +1,5 @@
 "use strict";
 
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -11,38 +9,31 @@ exports.get = get;
 exports.post = post;
 exports.apiEndpoint = exports.serverURL = void 0;
 
-require("core-js/modules/es7.symbol.async-iterator");
-
-require("core-js/modules/es6.symbol");
-
 require("core-js/modules/es6.object.assign");
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-/** @format */
-
 /* global DHIS_CONFIG, manifest */
-var version = '30'; // let url = 'http://localhost:8080'
+var IS_PROD = process.env.NODE_ENV === 'production';
+var url;
+var endpoint;
 
-var url = 'https://play.dhis2.org/2.30';
-
-if (typeof manifest !== 'undefined') {
-  version = manifest.dhis2.apiVersion;
-}
-
-var isProd = process.env.NODE_ENV === 'production';
-
-if (isProd) {
-  url = manifest.activities.dhis.href;
-} else if (!isProd && (typeof DHIS_CONFIG === "undefined" ? "undefined" : _typeof(DHIS_CONFIG)) === 'object') {
-  url = DHIS_CONFIG.baseUrl;
-} else if (isProd) {
+if (IS_PROD) {
   url = '..';
+  endpoint = "".concat(url, "/api");
+
+  if (typeof manifest !== 'undefined') {
+    var version = manifest.dhis2.apiVersion;
+    url = manifest.activities.dhis.href;
+    endpoint = "".concat(url, "/api/").concat(version);
+  }
+} else {
+  // for dev. environments
+  url = DHIS_CONFIG.baseUrl;
+  endpoint = "".concat(url, "/api");
 }
 
 var serverURL = url;
 exports.serverURL = serverURL;
-var apiEndpoint = "".concat(serverURL, "/api/").concat(version);
+var apiEndpoint = endpoint;
 exports.apiEndpoint = apiEndpoint;
 
 function getPath() {

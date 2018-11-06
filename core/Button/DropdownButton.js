@@ -9,35 +9,25 @@ require("core-js/modules/es7.symbol.async-iterator");
 
 require("core-js/modules/es6.symbol");
 
-require("core-js/modules/es6.array.for-each");
-
-require("core-js/modules/es6.array.filter");
-
-require("core-js/modules/web.dom.iterable");
-
-require("core-js/modules/es6.array.iterator");
-
-require("core-js/modules/es6.object.keys");
-
-require("core-js/modules/es6.object.define-property");
-
-require("core-js/modules/es6.object.create");
-
 require("core-js/modules/es6.object.set-prototype-of");
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _Button = _interopRequireDefault(require("./Button"));
 
-var _Menu = require("../Menu");
+var _styles = _interopRequireDefault(require("./styles"));
+
+var _Menu = _interopRequireDefault(require("../Menu"));
+
+var _utils = require("../../utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -75,40 +65,89 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropdownButton)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "anchorRef", null);
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      open: false
+    });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getAnchorRef", function () {
-      return _this.anchorRef;
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
+      if (_this.elContainer && _this.elMenu) {
+        var target = {
+          x: evt.clientX,
+          y: evt.clientY
+        };
+
+        var menu = _this.elMenu.getBoundingClientRect();
+
+        var container = _this.elContainer.getBoundingClientRect();
+
+        if (!(0, _utils.isPointInRect)(target, menu) && !(0, _utils.isPointInRect)(target, container)) {
+          _this.setState({
+            open: false
+          });
+        }
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
+      return _this.setState({
+        open: !_this.state.open
+      });
     });
 
     return _this;
   }
 
   _createClass(DropdownButton, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.addEventListener('click', this.onDocClick);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      document.removeEventListener('click', this.onDocClick);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var _this$props = this.props,
-          options = _this$props.options,
-          buttonProps = _this$props.buttonProps,
-          menuProps = _this$props.menuProps,
-          children = _this$props.children;
+      var open = this.state.open;
+      var width = this.props.width;
 
-      var mergedMenuProps = _objectSpread({}, menuProps, {
-        options: options
-      });
+      if (!width) {
+        width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
+      }
 
       return _react.default.createElement("div", {
+        className: (0, _styles.default)('dropdown'),
         ref: function ref(c) {
-          return _this2.anchorRef = c;
-        },
-        className: "d2ui-dropdown-button"
-      }, _react.default.createElement(_Button.default, buttonProps, children), _react.default.createElement(_Menu.DropdownMenu, {
-        buttonKind: buttonProps.kind,
-        getAnchorRef: this.getAnchorRef,
-        menuProps: mergedMenuProps
-      }));
+          return _this2.elContainer = c;
+        }
+      }, _react.default.createElement(_Button.default, {
+        icon: this.props.icon,
+        kind: this.props.kind,
+        label: this.props.label,
+        active: this.props.active,
+        disabled: this.props.disabled,
+        onClick: this.props.onClick
+      }), _react.default.createElement(_Button.default, {
+        kind: this.props.kind,
+        active: this.props.active,
+        disabled: this.props.disabled,
+        onClick: this.onToggle,
+        icon: open ? 'arrow_drop_up' : 'arrow_drop_down'
+      }), open && _react.default.createElement("div", {
+        className: (0, _styles.default)('menu'),
+        ref: function ref(c) {
+          return _this2.elMenu = c;
+        }
+      }, _react.default.createElement(_Menu.default, {
+        width: "".concat(width, "px"),
+        size: this.props.size,
+        list: this.props.list,
+        onClick: this.props.onClick
+      })));
     }
   }]);
 
@@ -116,5 +155,22 @@ function (_Component) {
 }(_react.Component);
 
 exports.DropdownButton = DropdownButton;
+DropdownButton.defaultProps = {
+  size: 'default',
+  kind: 'primary',
+  active: false,
+  disabled: false
+};
+DropdownButton.propTypes = {
+  width: _propTypes.default.string,
+  kind: _propTypes.default.string,
+  icon: _propTypes.default.string,
+  active: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  size: _propTypes.default.oneOf(['default', 'dense']),
+  label: _propTypes.default.string.isRequired,
+  list: _propTypes.default.array.isRequired,
+  onClick: _propTypes.default.func.isRequired
+};
 var _default = DropdownButton;
 exports.default = _default;

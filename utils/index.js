@@ -6,10 +6,6 @@ require("core-js/modules/es6.object.keys");
 
 require("core-js/modules/web.dom.iterable");
 
-require("core-js/modules/es6.array.for-each");
-
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -22,6 +18,18 @@ Object.keys(_html).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _html[key];
+    }
+  });
+});
+
+var _url = require("./url");
+
+Object.keys(_url).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _url[key];
     }
   });
 });
@@ -50,14 +58,14 @@ Object.keys(_rtl).forEach(function (key) {
   });
 });
 
-var _text = require("./text");
+var _math = require("./math");
 
-Object.keys(_text).forEach(function (key) {
+Object.keys(_math).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _text[key];
+      return _math[key];
     }
   });
 });
@@ -82,6 +90,30 @@ Object.keys(_api).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _api[key];
+    }
+  });
+});
+
+var _theme = require("./theme");
+
+Object.keys(_theme).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _theme[key];
+    }
+  });
+});
+
+var _input = require("./input");
+
+Object.keys(_input).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _input[key];
     }
   });
 });

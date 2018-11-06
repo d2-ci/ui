@@ -1,7 +1,5 @@
 "use strict";
 
-require("core-js/modules/es6.object.define-property");
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -16,8 +14,6 @@ require("core-js/modules/es7.array.includes");
 require("core-js/modules/es6.string.includes");
 
 var _html = require("./html");
-
-/** @format */
 
 /**
  * prefixes for Right to Left (RTL) languages

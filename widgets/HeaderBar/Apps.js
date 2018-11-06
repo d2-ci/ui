@@ -9,29 +9,25 @@ require("core-js/modules/es7.symbol.async-iterator");
 
 require("core-js/modules/es6.symbol");
 
-require("core-js/modules/es6.object.define-property");
-
-require("core-js/modules/es6.object.create");
-
 require("core-js/modules/es6.object.set-prototype-of");
 
 require("core-js/modules/es7.array.includes");
 
 require("core-js/modules/es6.string.includes");
 
-require("core-js/modules/es6.array.map");
-
-require("core-js/modules/es6.array.filter");
-
 require("core-js/modules/es6.function.name");
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Paper = _interopRequireDefault(require("../../core/Paper"));
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Card = _interopRequireDefault(require("../../core/Card"));
 
 var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
-var _TextField = _interopRequireDefault(require("../../core/Input/TextField"));
+var _InputField = _interopRequireDefault(require("../../core/InputField"));
+
+var _utils = require("../../utils");
 
 var _styles = _interopRequireDefault(require("./styles"));
 
@@ -57,22 +53,31 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-console.log("s('search')", (0, _styles.default)('search'));
-
 function Search(_ref) {
   var value = _ref.value,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      onSettingsClick = _ref.onSettingsClick;
   return _react.default.createElement("div", {
     className: (0, _styles.default)('search')
-  }, _react.default.createElement(_TextField.default, {
-    label: "Search apps",
+  }, _react.default.createElement(_InputField.default, {
+    name: "filter",
     value: value,
+    kind: "filled",
+    size: "dense",
+    label: "Search apps",
     onChange: onChange
   }), _react.default.createElement(_Icon.default, {
     name: "settings",
-    className: (0, _styles.default)('settings')
+    className: (0, _styles.default)('settings'),
+    onClick: onSettingsClick
   }));
 }
+
+Search.propTypes = {
+  value: _propTypes.default.string.isRequired,
+  onChange: _propTypes.default.func.isRequired,
+  onSettingsClick: _propTypes.default.func.isRequired
+};
 
 function Item(_ref2) {
   var name = _ref2.name,
@@ -82,11 +87,18 @@ function Item(_ref2) {
     href: path,
     className: (0, _styles.default)('app')
   }, _react.default.createElement("img", {
-    src: img
+    src: img,
+    alt: "app logo"
   }), _react.default.createElement("div", {
     className: (0, _styles.default)('name')
   }, name));
 }
+
+Item.propTypes = {
+  name: _propTypes.default.string,
+  path: _propTypes.default.string,
+  img: _propTypes.default.string
+};
 
 function List(_ref3) {
   var apps = _ref3.apps,
@@ -107,16 +119,6 @@ function List(_ref3) {
       img: img
     });
   }));
-}
-
-function isPointInRect(_ref6, _ref7) {
-  var x = _ref6.x,
-      y = _ref6.y;
-  var left = _ref7.left,
-      right = _ref7.right,
-      top = _ref7.top,
-      bottom = _ref7.bottom;
-  return x >= left && x <= right && y >= top && y <= bottom;
 }
 
 var Apps =
@@ -153,7 +155,7 @@ function (_React$Component) {
 
         var container = _this.elContainer.getBoundingClientRect();
 
-        if (!isPointInRect(target, apps) && !isPointInRect(target, container)) {
+        if (!(0, _utils.isPointInRect)(target, apps) && !(0, _utils.isPointInRect)(target, container)) {
           _this.setState({
             show: false
           });
@@ -167,10 +169,14 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (_, filter) {
       return _this.setState({
-        filter: evt.target.value
+        filter: filter
       });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSettingsClick", function () {
+      return (0, _utils.gotoURL)("".concat(_this.props.baseURL, "/dhis-web-user-profile/#/account"));
     });
 
     return _this;
@@ -182,8 +188,8 @@ function (_React$Component) {
       document.addEventListener('click', this.onDocClick);
     }
   }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
       document.removeEventListener('click', this.onDocClick);
     }
   }, {
@@ -204,12 +210,13 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this2.elApps = c;
         }
-      }, _react.default.createElement(_Paper.default, {
+      }, _react.default.createElement(_Card.default, {
         width: "416px",
         height: "301px"
       }, _react.default.createElement(Search, {
         value: this.state.filter,
-        onChange: this.onChange
+        onChange: this.onChange,
+        onSettingsClick: this.onSettingsClick
       }), _react.default.createElement(List, {
         apps: this.props.apps,
         filter: this.state.filter
@@ -221,3 +228,6 @@ function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = Apps;
+Apps.propTypes = {
+  baseURL: _propTypes.default.string.isRequired
+};
