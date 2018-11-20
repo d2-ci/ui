@@ -19,14 +19,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function SubMenu(_ref) {
   var size = _ref.size,
-      width = _ref.width,
       list = _ref.list,
       onClick = _ref.onClick;
   return _react.default.createElement("div", {
     className: (0, _styles.default)('sub-menu')
   }, _react.default.createElement(_index.default, {
     size: size,
-    width: width,
     list: list,
     onClick: onClick
   }));
@@ -40,7 +38,6 @@ function MenuItem(_ref2) {
       active = _ref2.active,
       disabled = _ref2.disabled,
       size = _ref2.size,
-      width = _ref2.width,
       _onClick = _ref2.onClick;
   var hasMenu = list.length > 0;
   return _react.default.createElement("li", {
@@ -64,7 +61,6 @@ function MenuItem(_ref2) {
     className: (0, _styles.default)('chevron')
   }), hasMenu && _react.default.createElement(SubMenu, {
     size: size,
-    width: width,
     list: list,
     onClick: _onClick
   }));
@@ -73,7 +69,6 @@ function MenuItem(_ref2) {
 MenuItem.defaultProps = {
   icon: '',
   list: [],
-  width: '100%',
   size: 'default',
   active: false,
   disabled: false
@@ -86,6 +81,5 @@ MenuItem.propTypes = {
   active: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   size: _propTypes.default.string,
-  width: _propTypes.default.string,
   onClick: _propTypes.default.func.isRequired
 };

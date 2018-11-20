@@ -14,8 +14,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _styles = _interopRequireDefault(require("./styles"));
 
-var _utils = require("../../utils");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Icon(_ref) {
@@ -24,7 +22,7 @@ function Icon(_ref) {
       onClick = _ref.onClick;
   return _react.default.createElement("i", {
     onClick: onClick,
-    className: (0, _styles.default)('container', (0, _utils.t)(className))
+    className: (0, _styles.default)('container', className)
   }, name);
 }
 

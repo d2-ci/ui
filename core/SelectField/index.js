@@ -19,7 +19,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _index = _interopRequireDefault(require("../Menu/index"));
+var _Menu = _interopRequireDefault(require("../Menu"));
 
 var _helpers = require("../helpers");
 
@@ -211,9 +211,8 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elMenu = c;
         }
-      }, _react.default.createElement(_index.default, {
+      }, _react.default.createElement(_Menu.default, {
         list: list,
-        width: width,
         size: this.props.size,
         onClick: this.onClick
       })));

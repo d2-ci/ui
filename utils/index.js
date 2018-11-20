@@ -106,18 +106,6 @@ Object.keys(_theme).forEach(function (key) {
   });
 });
 
-var _input = require("./input");
-
-Object.keys(_input).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _input[key];
-    }
-  });
-});
-
 var _index = require("./animations/index");
 
 Object.keys(_index).forEach(function (key) {

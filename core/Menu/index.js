@@ -31,9 +31,7 @@ function Menu(_ref) {
       width = _ref.width,
       list = _ref.list,
       onClick = _ref.onClick;
-  return _react.default.createElement(_Card.default, {
-    width: width
-  }, _react.default.createElement("ul", {
+  return _react.default.createElement(_Card.default, null, _react.default.createElement("ul", {
     className: (0, _styles.default)('menu', size)
   }, list.map(function (_ref2, i) {
     var label = _ref2.label,

@@ -19,8 +19,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _utils = require("../../utils");
-
 var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -79,11 +77,16 @@ function (_React$Component) {
 
       var icon = _react.default.createElement(_Icon.default, {
         name: this.props.checked ? 'radio_button_checked' : 'radio_button_unchecked',
-        className: "".concat((0, _utils.inputColorClass)(this.props.checked, this.props.disabled), " ").concat(status)
+        className: (0, _styles.default)("".concat(status, "-icon"), {
+          disabled: this.props.disabled,
+          checked: this.props.checked
+        })
       });
 
       return _react.default.createElement("label", {
-        className: (0, _styles.default)('container')
+        className: (0, _styles.default)('container', {
+          disabled: this.props.disabled
+        })
       }, _react.default.createElement("input", {
         type: "radio",
         name: this.props.name,

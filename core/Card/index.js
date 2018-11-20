@@ -15,26 +15,18 @@ var _styles = _interopRequireDefault(require("./styles"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Card(_ref) {
-  var width = _ref.width,
-      height = _ref.height,
+  var className = _ref.className,
       children = _ref.children;
-  var style = {
-    width: width,
-    height: height
-  };
   return _react.default.createElement("div", {
-    style: style,
-    className: (0, _styles.default)('container')
+    className: (0, _styles.default)('container', className)
   }, children);
 }
 
 Card.defaultProps = {
-  width: 'inherit',
-  height: 'inherit'
+  className: ''
 };
 Card.propTypes = {
-  width: _propTypes.default.string,
-  height: _propTypes.default.string,
+  className: _propTypes.default.string,
   children: _propTypes.default.node
 };
 var _default = Card;

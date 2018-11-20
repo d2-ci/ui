@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.DropdownButton = void 0;
+exports.default = exports.SplitButton = void 0;
 
 require("core-js/modules/es7.symbol.async-iterator");
 
@@ -49,23 +49,23 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var DropdownButton =
+var SplitButton =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(DropdownButton, _Component);
+  _inherits(SplitButton, _Component);
 
-  function DropdownButton() {
+  function SplitButton() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, DropdownButton);
+    _classCallCheck(this, SplitButton);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropdownButton)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SplitButton)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       open: false
@@ -99,7 +99,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(DropdownButton, [{
+  _createClass(SplitButton, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       document.addEventListener('click', this.onDocClick);
@@ -121,29 +121,33 @@ function (_Component) {
         width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
       }
 
-      var icon = open ? 'arrow_drop_up' : 'arrow_drop_down';
       return _react.default.createElement("div", {
-        className: (0, _styles.default)('dropdown', "".concat(this.props.size)),
+        className: (0, _styles.default)('split'),
         ref: function ref(c) {
           return _this2.elContainer = c;
         }
       }, _react.default.createElement(_Button.default, {
         icon: this.props.icon,
         kind: this.props.kind,
+        label: this.props.label,
+        active: this.props.active,
+        disabled: this.props.disabled,
+        onClick: this.props.onClick
+      }), _react.default.createElement(_Button.default, {
+        kind: this.props.kind,
         active: this.props.active,
         disabled: this.props.disabled,
         onClick: this.onToggle
-      }, _react.default.createElement("span", {
-        className: (0, _styles.default)('menu-label')
-      }, this.props.label), _react.default.createElement(_Icon.default, {
+      }, _react.default.createElement(_Icon.default, {
         className: "menu-icon",
-        name: icon
+        name: open ? 'arrow_drop_up' : 'arrow_drop_down'
       })), open && _react.default.createElement("div", {
-        className: (0, _styles.default)('menu'),
+        className: (0, _styles.default)('menu', "".concat(this.props.size)),
         ref: function ref(c) {
           return _this2.elMenu = c;
         }
       }, _react.default.createElement(_Menu.default, {
+        width: "".concat(width, "px"),
         size: this.props.size,
         list: this.props.list,
         onClick: this.props.onClick
@@ -151,17 +155,17 @@ function (_Component) {
     }
   }]);
 
-  return DropdownButton;
+  return SplitButton;
 }(_react.Component);
 
-exports.DropdownButton = DropdownButton;
-DropdownButton.defaultProps = {
+exports.SplitButton = SplitButton;
+SplitButton.defaultProps = {
   size: 'default',
   kind: 'basic',
   active: false,
   disabled: false
 };
-DropdownButton.propTypes = {
+SplitButton.propTypes = {
   width: _propTypes.default.string,
   kind: _propTypes.default.oneOf(['basic', 'primary']),
   icon: _propTypes.default.string,
@@ -172,5 +176,5 @@ DropdownButton.propTypes = {
   list: _propTypes.default.array.isRequired,
   onClick: _propTypes.default.func.isRequired
 };
-var _default = DropdownButton;
+var _default = SplitButton;
 exports.default = _default;

@@ -27,7 +27,7 @@ function NotificationIcon(_ref) {
     }),
     href: href
   }, count > 0 && _react.default.createElement("span", {
-    className: (0, _styles.default)('count', (0, _utils.t)('secondary-light-bg'))
+    className: (0, _styles.default)('count')
   }, count), _react.default.createElement(_Icon.default, {
     name: icon
   }));
