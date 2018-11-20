@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './styles';
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
 function Icon(_ref) {
   var name = _ref.name,
