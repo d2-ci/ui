@@ -1,51 +1,15 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-require("core-js/modules/es7.symbol.async-iterator");
-
-require("core-js/modules/es6.symbol");
-
-require("core-js/modules/es6.object.set-prototype-of");
-
-require("core-js/modules/es6.regexp.split");
-
-require("core-js/modules/es6.function.name");
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _core = require("../../core");
-
-var _utils = require("../../utils");
-
-var _styles = _interopRequireDefault(require("./styles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+import _classCallCheck from "@babel/runtime-corejs2/helpers/esm/classCallCheck";
+import _createClass from "@babel/runtime-corejs2/helpers/esm/createClass";
+import _possibleConstructorReturn from "@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn";
+import _getPrototypeOf from "@babel/runtime-corejs2/helpers/esm/getPrototypeOf";
+import _inherits from "@babel/runtime-corejs2/helpers/esm/inherits";
+import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThisInitialized";
+import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Card, MenuItem, Divider } from '../../core';
+import { gotoURL, isPointInRect } from '../../utils';
+import s from './styles';
 
 function TextIcon(_ref) {
   var name = _ref.name,
@@ -56,11 +20,11 @@ function TextIcon(_ref) {
     title += name.split(' ')[1][0];
   }
 
-  return _react.default.createElement("div", {
-    className: (0, _styles.default)('icon'),
+  return React.createElement("div", {
+    className: s('icon'),
     onClick: onClick
-  }, _react.default.createElement("div", {
-    className: (0, _styles.default)('initials')
+  }, React.createElement("div", {
+    className: s('initials')
   }, title));
 }
 
@@ -68,17 +32,17 @@ TextIcon.defaultProps = {
   onClick: undefined
 };
 TextIcon.propTypes = {
-  name: _propTypes.default.string.isRequired,
-  onClick: _propTypes.default.func
+  name: PropTypes.string.isRequired,
+  onClick: PropTypes.func
 };
 
 function ImageIcon(_ref2) {
   var src = _ref2.src,
       onClick = _ref2.onClick;
-  return _react.default.createElement("div", {
-    className: (0, _styles.default)('icon'),
+  return React.createElement("div", {
+    className: s('icon'),
     onClick: onClick
-  }, _react.default.createElement("img", {
+  }, React.createElement("img", {
     src: src,
     alt: "user avatar"
   }));
@@ -88,8 +52,8 @@ ImageIcon.defaultProps = {
   onClick: undefined
 };
 ImageIcon.propTypes = {
-  src: _propTypes.default.string.isRequired,
-  onClick: _propTypes.default.func
+  src: PropTypes.string.isRequired,
+  onClick: PropTypes.func
 };
 
 function Header(_ref3) {
@@ -97,29 +61,29 @@ function Header(_ref3) {
       email = _ref3.email,
       img = _ref3.img,
       baseURL = _ref3.baseURL;
-  return _react.default.createElement("div", {
-    className: (0, _styles.default)('header')
-  }, img ? _react.default.createElement(ImageIcon, {
+  return React.createElement("div", {
+    className: s('header')
+  }, img ? React.createElement(ImageIcon, {
     src: img
-  }) : _react.default.createElement(TextIcon, {
+  }) : React.createElement(TextIcon, {
     name: name
-  }), _react.default.createElement("div", {
-    className: (0, _styles.default)('details')
-  }, _react.default.createElement("div", {
-    className: (0, _styles.default)('name')
-  }, name), _react.default.createElement("div", {
-    className: (0, _styles.default)('email')
-  }, email), _react.default.createElement("a", {
-    className: (0, _styles.default)('edit_profile'),
+  }), React.createElement("div", {
+    className: s('details')
+  }, React.createElement("div", {
+    className: s('name')
+  }, name), React.createElement("div", {
+    className: s('email')
+  }, email), React.createElement("a", {
+    className: s('edit_profile'),
     href: "".concat(baseURL, "/dhis-web-user-profile/#/profile")
   }, "Edit profile")));
 }
 
 Header.propTypes = {
-  name: _propTypes.default.string,
-  email: _propTypes.default.string,
-  img: _propTypes.default.string,
-  baseURL: _propTypes.default.string
+  name: PropTypes.string,
+  email: PropTypes.string,
+  img: PropTypes.string,
+  baseURL: PropTypes.string
 };
 var list = [{
   icon: 'settings',
@@ -172,7 +136,7 @@ function (_React$Component) {
 
         var container = _this.elContainer.getBoundingClientRect();
 
-        if (!(0, _utils.isPointInRect)(target, contents) && !(0, _utils.isPointInRect)(target, container)) {
+        if (!isPointInRect(target, contents) && !isPointInRect(target, container)) {
           _this.setState({
             show: false
           });
@@ -197,7 +161,7 @@ function (_React$Component) {
       };
 
       if (typeof paths[value] !== 'undefined') {
-        (0, _utils.gotoURL)(paths[value]);
+        gotoURL(paths[value]);
       } else {
         console.warn('onClick: not implemented', value);
       }
@@ -224,13 +188,13 @@ function (_React$Component) {
     key: "viewIcon",
     value: function viewIcon() {
       if (this.props.profile.img) {
-        return _react.default.createElement(ImageIcon, {
+        return React.createElement(ImageIcon, {
           src: this.props.profile.img,
           onClick: this.onToggle
         });
       }
 
-      return _react.default.createElement(TextIcon, {
+      return React.createElement(TextIcon, {
         name: this.props.profile.name,
         onClick: this.onToggle
       });
@@ -244,26 +208,26 @@ function (_React$Component) {
         return null;
       }
 
-      return _react.default.createElement("div", {
-        className: (0, _styles.default)('contents'),
+      return React.createElement("div", {
+        className: s('contents'),
         ref: function ref(c) {
           return _this2.elContents = c;
         }
-      }, _react.default.createElement(_core.Card, {
+      }, React.createElement(Card, {
         height: "298px"
-      }, _react.default.createElement(Header, {
+      }, React.createElement(Header, {
         baseURL: this.props.baseURL,
         img: this.props.profile.img,
         name: this.props.profile.name,
         email: this.props.profile.email,
         onClick: this.onHeaderClick
-      }), _react.default.createElement(_core.Divider, {
+      }), React.createElement(Divider, {
         margin: "13px 0 7px 0"
       }), list.map(function (_ref4) {
         var label = _ref4.label,
             value = _ref4.value,
             icon = _ref4.icon;
-        return _react.default.createElement(_core.MenuItem, {
+        return React.createElement(MenuItem, {
           key: "h-mi-".concat(value),
           label: label,
           value: value,
@@ -277,8 +241,8 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      return _react.default.createElement("div", {
-        className: (0, _styles.default)('profile'),
+      return React.createElement("div", {
+        className: s('profile'),
         ref: function ref(c) {
           return _this3.elContainer = c;
         }
@@ -287,10 +251,10 @@ function (_React$Component) {
   }]);
 
   return Profile;
-}(_react.default.Component);
+}(React.Component);
 
-exports.default = Profile;
+export { Profile as default };
 Profile.propTypes = {
-  baseURL: _propTypes.default.string,
-  profile: _propTypes.default.object
+  baseURL: PropTypes.string,
+  profile: PropTypes.object
 };

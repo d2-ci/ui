@@ -1,18 +1,8 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getPath = getPath;
-exports.getAction = getAction;
-exports.get = get;
-exports.post = post;
-exports.apiEndpoint = exports.serverURL = void 0;
-
-require("core-js/modules/es6.object.assign");
+import _Object$assign from "@babel/runtime-corejs2/core-js/object/assign";
 
 /* global DHIS_CONFIG, manifest */
 var IS_PROD = process.env.NODE_ENV === 'production';
+import 'whatwg-fetch';
 var url;
 var endpoint;
 
@@ -31,12 +21,9 @@ if (IS_PROD) {
   endpoint = "".concat(url, "/api");
 }
 
-var serverURL = url;
-exports.serverURL = serverURL;
-var apiEndpoint = endpoint;
-exports.apiEndpoint = apiEndpoint;
-
-function getPath() {
+export var serverURL = url;
+export var apiEndpoint = endpoint;
+export function getPath() {
   var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   return !path ? apiEndpoint : "".concat(apiEndpoint, "/").concat(path);
 }
@@ -48,19 +35,17 @@ function _config() {
   };
 }
 
-function getAction(path) {
+export function getAction(path) {
   var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _config();
   return fetch("".concat(serverURL, "/").concat(path), config);
 }
-
-function get(path) {
+export function get(path) {
   var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _config();
   return fetch(getPath(path), config);
 }
-
-function post(path, body) {
+export function post(path, body) {
   var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _config();
-  return fetch(getPath(path), Object.assign({}, config, {
+  return fetch(getPath(path), _Object$assign({}, config, {
     body: body,
     method: 'POST'
   }));

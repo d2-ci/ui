@@ -1,36 +1,23 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = MenuItem;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _Icon = _interopRequireDefault(require("../Icon"));
-
-var _index = _interopRequireDefault(require("./index"));
-
-var _styles = _interopRequireDefault(require("./styles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import PropTypes from 'prop-types';
+import Icon from '../Icon';
+import Menu from './index';
+import s from './styles';
 
 function SubMenu(_ref) {
   var size = _ref.size,
       list = _ref.list,
       onClick = _ref.onClick;
-  return _react.default.createElement("div", {
-    className: (0, _styles.default)('sub-menu')
-  }, _react.default.createElement(_index.default, {
+  return React.createElement("div", {
+    className: s('sub-menu')
+  }, React.createElement(Menu, {
     size: size,
     list: list,
     onClick: onClick
   }));
 }
 
-function MenuItem(_ref2) {
+export default function MenuItem(_ref2) {
   var label = _ref2.label,
       value = _ref2.value,
       icon = _ref2.icon,
@@ -40,8 +27,8 @@ function MenuItem(_ref2) {
       size = _ref2.size,
       _onClick = _ref2.onClick;
   var hasMenu = list.length > 0;
-  return _react.default.createElement("li", {
-    className: (0, _styles.default)('item', {
+  return React.createElement("li", {
+    className: s('item', {
       disabled: disabled,
       active: active
     }),
@@ -51,21 +38,20 @@ function MenuItem(_ref2) {
 
       _onClick(value);
     }
-  }, icon && _react.default.createElement(_Icon.default, {
+  }, icon && React.createElement(Icon, {
     name: icon,
-    className: (0, _styles.default)('icon')
-  }), _react.default.createElement("div", {
-    className: (0, _styles.default)('label')
-  }, label), hasMenu && _react.default.createElement(_Icon.default, {
+    className: s('icon')
+  }), React.createElement("div", {
+    className: s('label')
+  }, label), hasMenu && React.createElement(Icon, {
     name: "chevron_right",
-    className: (0, _styles.default)('chevron')
-  }), hasMenu && _react.default.createElement(SubMenu, {
+    className: s('chevron')
+  }), hasMenu && React.createElement(SubMenu, {
     size: size,
     list: list,
     onClick: _onClick
   }));
 }
-
 MenuItem.defaultProps = {
   icon: '',
   list: [],
@@ -74,12 +60,12 @@ MenuItem.defaultProps = {
   disabled: false
 };
 MenuItem.propTypes = {
-  label: _propTypes.default.string.isRequired,
-  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
-  icon: _propTypes.default.string,
-  list: _propTypes.default.array,
-  active: _propTypes.default.bool,
-  disabled: _propTypes.default.bool,
-  size: _propTypes.default.string,
-  onClick: _propTypes.default.func.isRequired
+  label: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  icon: PropTypes.string,
+  list: PropTypes.array,
+  active: PropTypes.bool,
+  disabled: PropTypes.bool,
+  size: PropTypes.string,
+  onClick: PropTypes.func.isRequired
 };

@@ -1,49 +1,15 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.InputField = void 0;
-
-require("core-js/modules/es7.symbol.async-iterator");
-
-require("core-js/modules/es6.symbol");
-
-require("core-js/modules/es6.object.set-prototype-of");
-
-require("core-js/modules/es6.function.name");
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _Icon = _interopRequireDefault(require("../Icon"));
-
-var _helpers = require("../helpers");
-
-var _styles = _interopRequireDefault(require("./styles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+import _classCallCheck from "@babel/runtime-corejs2/helpers/esm/classCallCheck";
+import _createClass from "@babel/runtime-corejs2/helpers/esm/createClass";
+import _possibleConstructorReturn from "@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn";
+import _getPrototypeOf from "@babel/runtime-corejs2/helpers/esm/getPrototypeOf";
+import _inherits from "@babel/runtime-corejs2/helpers/esm/inherits";
+import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThisInitialized";
+import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Icon from '../Icon';
+import { Label, Help } from '../helpers';
+import s from './styles';
 
 var InputField =
 /*#__PURE__*/
@@ -109,29 +75,29 @@ function (_React$Component) {
       var _s,
           _this2 = this;
 
-      return _react.default.createElement("div", {
-        className: (0, _styles.default)('container', (_s = {
+      return React.createElement("div", {
+        className: s('container', (_s = {
           disabled: this.props.disabled
         }, _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, 'is-empty', !(this.props.value || this.props.placeholder || this.state.focused)), _s)),
         onClick: this.onClick
-      }, _react.default.createElement("div", {
-        className: (0, _styles.default)('field')
-      }, this.props.icon && _react.default.createElement("div", {
-        className: (0, _styles.default)('icon')
-      }, _react.default.createElement(_Icon.default, {
+      }, React.createElement("div", {
+        className: s('field')
+      }, this.props.icon && React.createElement("div", {
+        className: s('icon')
+      }, React.createElement(Icon, {
         name: this.props.icon
-      })), _react.default.createElement("input", {
+      })), React.createElement("input", {
         ref: function ref(c) {
           return _this2.ref = c;
         },
-        className: (0, _styles.default)('input'),
+        className: s('input'),
         type: this.props.type,
         value: this.props.value,
         onChange: this.onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
         placeholder: this.props.placeholder
-      }), _react.default.createElement(_helpers.Label, {
+      }), React.createElement(Label, {
         size: this.props.size,
         kind: this.props.kind,
         text: this.props.label,
@@ -140,7 +106,7 @@ function (_React$Component) {
         disabled: this.props.disabled,
         hasIcon: !!this.props.icon,
         state: this.props.placeholder || this.props.value || this.state.focused ? 'minimized' : 'default'
-      })), this.props.help && _react.default.createElement(_helpers.Help, {
+      })), this.props.help && React.createElement(Help, {
         text: this.props.help,
         status: this.props.status
       }));
@@ -148,9 +114,8 @@ function (_React$Component) {
   }]);
 
   return InputField;
-}(_react.default.Component);
+}(React.Component);
 
-exports.InputField = InputField;
 InputField.defaultProps = {
   disabled: false,
   label: '',
@@ -158,19 +123,19 @@ InputField.defaultProps = {
   kind: 'filled'
 };
 InputField.propTypes = {
-  label: _propTypes.default.string.isRequired,
-  placeholder: _propTypes.default.string,
-  name: _propTypes.default.string.isRequired,
-  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
-  onChange: _propTypes.default.func.isRequired,
-  icon: _propTypes.default.string,
-  help: _propTypes.default.string,
-  disabled: _propTypes.default.bool,
-  required: _propTypes.default.bool,
-  size: _propTypes.default.oneOf(['default', 'dense']),
-  kind: _propTypes.default.oneOf(['filled', 'outlined']),
-  type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url']),
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
+  label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onChange: PropTypes.func.isRequired,
+  icon: PropTypes.string,
+  help: PropTypes.string,
+  disabled: PropTypes.bool,
+  required: PropTypes.bool,
+  size: PropTypes.oneOf(['default', 'dense']),
+  kind: PropTypes.oneOf(['filled', 'outlined']),
+  type: PropTypes.oneOf(['text', 'email', 'number', 'password', 'url']),
+  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
-var _default = InputField;
-exports.default = _default;
+export { InputField };
+export default InputField;

@@ -1,28 +1,15 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Icon = Icon;
-exports.default = void 0;
-
-require("core-js/modules/es6.function.name");
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _styles = _interopRequireDefault(require("./styles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import PropTypes from 'prop-types';
+import s from './styles';
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
 function Icon(_ref) {
   var name = _ref.name,
       className = _ref.className,
       onClick = _ref.onClick;
-  return _react.default.createElement("i", {
+  return React.createElement("i", {
     onClick: onClick,
-    className: (0, _styles.default)('container', className)
+    className: s('container', className)
   }, name);
 }
 
@@ -32,9 +19,9 @@ Icon.defaultProps = {
   onClick: undefined
 };
 Icon.propTypes = {
-  name: _propTypes.default.string.isRequired,
-  className: _propTypes.default.string,
-  onClick: _propTypes.default.func
+  name: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  onClick: PropTypes.func
 };
-var _default = Icon;
-exports.default = _default;
+export { Icon };
+export default Icon;

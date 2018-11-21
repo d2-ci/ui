@@ -1,14 +1,5 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.animatedScrollTo = animatedScrollTo;
-
-var _easing = require("./easing");
-
-var _html = require("../html");
-
+import { easeInOutQuad } from './easing';
+import { getDoc } from '../html';
 var HORIZONTAL = 'horizontal';
 var VERTICAL = 'vertical';
 var END = 'end';
@@ -22,7 +13,7 @@ var START = 'start';
  * callback: is an optional function to execute when the scroll animation is done
  */
 
-function animatedScrollTo(_ref) {
+export function animatedScrollTo(_ref) {
   var to = _ref.to,
       _ref$scrollBox = _ref.scrollBox,
       scrollBox = _ref$scrollBox === void 0 ? window : _ref$scrollBox,
@@ -51,7 +42,7 @@ function animatedScrollTo(_ref) {
     }
 
     elapsedTime = timestamp - startTimestamp;
-    scrollValue = (0, _easing.easeInOutQuad)(elapsedTime, startValue, change, duration);
+    scrollValue = easeInOutQuad(elapsedTime, startValue, change, duration);
 
     if (elapsedTime >= duration) {
       if (scrollValue !== endValue) {
@@ -98,7 +89,7 @@ function getScrollHandler(scrollBox, direction, isWindowScroll) {
 }
 
 function getStartValue(scrollBox, direction, isWindowScroll) {
-  var doc = (0, _html.getDoc)();
+  var doc = getDoc();
 
   switch (true) {
     case !isWindowScroll && direction === HORIZONTAL:
@@ -117,7 +108,7 @@ function getStartValue(scrollBox, direction, isWindowScroll) {
 }
 
 function getEndValue(to, direction, scrollBox, offset, isWindowScroll, startValue) {
-  var doc = (0, _html.getDoc)();
+  var doc = getDoc();
   var scrollingToElement = Boolean(to.nodeType);
 
   switch (true) {
@@ -143,7 +134,7 @@ function getElemEndValue(el, direction, scrollBox, offset, isWindowScroll, start
       width = _el$getBoundingClient.width,
       height = _el$getBoundingClient.height;
 
-  var doc = (0, _html.getDoc)();
+  var doc = getDoc();
   var typeSelector = isWindowScroll ? 'window' : 'element';
   var movementSelector = direction === HORIZONTAL && el.offsetLeft > startValue || direction === VERTICAL && el.offsetTop > startValue ? 'forward' : 'back';
   var lookup = {

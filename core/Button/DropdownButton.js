@@ -1,53 +1,17 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.DropdownButton = void 0;
-
-require("core-js/modules/es7.symbol.async-iterator");
-
-require("core-js/modules/es6.symbol");
-
-require("core-js/modules/es6.object.set-prototype-of");
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _Button = _interopRequireDefault(require("./Button"));
-
-var _styles = _interopRequireDefault(require("./styles"));
-
-var _Menu = _interopRequireDefault(require("../Menu"));
-
-var _Icon = _interopRequireDefault(require("../Icon"));
-
-var _utils = require("../../utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+import _classCallCheck from "@babel/runtime-corejs2/helpers/esm/classCallCheck";
+import _createClass from "@babel/runtime-corejs2/helpers/esm/createClass";
+import _possibleConstructorReturn from "@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn";
+import _getPrototypeOf from "@babel/runtime-corejs2/helpers/esm/getPrototypeOf";
+import _inherits from "@babel/runtime-corejs2/helpers/esm/inherits";
+import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThisInitialized";
+import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Button from './Button';
+import s from './styles';
+import Menu from '../Menu';
+import Icon from '../Icon';
+import { isPointInRect } from '../../utils';
 
 var DropdownButton =
 /*#__PURE__*/
@@ -82,7 +46,7 @@ function (_Component) {
 
         var container = _this.elContainer.getBoundingClientRect();
 
-        if (!(0, _utils.isPointInRect)(target, menu) && !(0, _utils.isPointInRect)(target, container)) {
+        if (!isPointInRect(target, menu) && !isPointInRect(target, container)) {
           _this.setState({
             open: false
           });
@@ -122,28 +86,28 @@ function (_Component) {
       }
 
       var icon = open ? 'arrow_drop_up' : 'arrow_drop_down';
-      return _react.default.createElement("div", {
-        className: (0, _styles.default)('dropdown', "".concat(this.props.size)),
+      return React.createElement("div", {
+        className: s('dropdown', "".concat(this.props.size)),
         ref: function ref(c) {
           return _this2.elContainer = c;
         }
-      }, _react.default.createElement(_Button.default, {
+      }, React.createElement(Button, {
         icon: this.props.icon,
         kind: this.props.kind,
         active: this.props.active,
         disabled: this.props.disabled,
         onClick: this.onToggle
-      }, _react.default.createElement("span", {
-        className: (0, _styles.default)('menu-label')
-      }, this.props.label), _react.default.createElement(_Icon.default, {
+      }, React.createElement("span", {
+        className: s('menu-label')
+      }, this.props.label), React.createElement(Icon, {
         className: "menu-icon",
         name: icon
-      })), open && _react.default.createElement("div", {
-        className: (0, _styles.default)('menu'),
+      })), open && React.createElement("div", {
+        className: s('menu'),
         ref: function ref(c) {
           return _this2.elMenu = c;
         }
-      }, _react.default.createElement(_Menu.default, {
+      }, React.createElement(Menu, {
         size: this.props.size,
         list: this.props.list,
         onClick: this.props.onClick
@@ -152,9 +116,8 @@ function (_Component) {
   }]);
 
   return DropdownButton;
-}(_react.Component);
+}(Component);
 
-exports.DropdownButton = DropdownButton;
 DropdownButton.defaultProps = {
   size: 'default',
   kind: 'basic',
@@ -162,15 +125,15 @@ DropdownButton.defaultProps = {
   disabled: false
 };
 DropdownButton.propTypes = {
-  width: _propTypes.default.string,
-  kind: _propTypes.default.oneOf(['basic', 'primary']),
-  icon: _propTypes.default.string,
-  active: _propTypes.default.bool,
-  disabled: _propTypes.default.bool,
-  size: _propTypes.default.oneOf(['default', 'dense']),
-  label: _propTypes.default.string.isRequired,
-  list: _propTypes.default.array.isRequired,
-  onClick: _propTypes.default.func.isRequired
+  width: PropTypes.string,
+  kind: PropTypes.oneOf(['basic', 'primary']),
+  icon: PropTypes.string,
+  active: PropTypes.bool,
+  disabled: PropTypes.bool,
+  size: PropTypes.oneOf(['default', 'dense']),
+  label: PropTypes.string.isRequired,
+  list: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired
 };
-var _default = DropdownButton;
-exports.default = _default;
+export { DropdownButton };
+export default DropdownButton;

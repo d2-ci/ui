@@ -1,26 +1,10 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.HeaderBar = HeaderBar;
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _Logo = require("../../core/Logo");
-
-var _NotificationIcon = _interopRequireDefault(require("./NotificationIcon"));
-
-var _Apps = _interopRequireDefault(require("./Apps"));
-
-var _Profile = _interopRequireDefault(require("./Profile"));
-
-var _styles = _interopRequireDefault(require("./styles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import PropTypes from 'prop-types';
+import { LogoIconWhite } from '../../core/Logo';
+import NotificationIcon from './NotificationIcon';
+import Apps from './Apps';
+import Profile from './Profile';
+import s from './styles';
 
 function getTitle(instanceName) {
   var appName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -40,55 +24,55 @@ function HeaderBar(_ref) {
       profile = _ref.profile,
       messages = _ref.messages,
       interpretations = _ref.interpretations;
-  return _react.default.createElement("header", {
-    className: (0, _styles.default)('container', 'blue')
-  }, _react.default.createElement("div", {
-    className: (0, _styles.default)('first')
-  }, _react.default.createElement("div", {
-    className: (0, _styles.default)('logo')
-  }, _react.default.createElement("a", {
+  return React.createElement("header", {
+    className: s('container', 'blue')
+  }, React.createElement("div", {
+    className: s('first')
+  }, React.createElement("div", {
+    className: s('logo')
+  }, React.createElement("a", {
     href: "".concat(baseURL)
-  }, _react.default.createElement(_Logo.LogoIconWhite, null))), _react.default.createElement("div", {
-    className: (0, _styles.default)('title')
-  }, getTitle(instanceName, appName))), _react.default.createElement("div", {
-    className: (0, _styles.default)('last')
-  }, _react.default.createElement(_NotificationIcon.default, {
+  }, React.createElement(LogoIconWhite, null))), React.createElement("div", {
+    className: s('title')
+  }, getTitle(instanceName, appName))), React.createElement("div", {
+    className: s('last')
+  }, React.createElement(NotificationIcon, {
     icon: "message",
     count: interpretations.count,
     href: "".concat(baseURL, "/dhis-web-interpretation")
-  }), _react.default.createElement(_NotificationIcon.default, {
+  }), React.createElement(NotificationIcon, {
     icon: "email",
     count: messages.count,
     href: "".concat(baseURL, "/dhis-web-messaging")
-  }), _react.default.createElement(_Apps.default, {
+  }), React.createElement(Apps, {
     apps: apps,
     baseURL: baseURL
-  }), _react.default.createElement(_Profile.default, {
+  }), React.createElement(Profile, {
     profile: profile,
     baseURL: baseURL
   })));
 }
 
 HeaderBar.propTypes = {
-  baseURL: _propTypes.default.string,
-  instanceName: _propTypes.default.string.isRequired,
-  appName: _propTypes.default.string,
-  messages: _propTypes.default.shape({
-    count: _propTypes.default.number
+  baseURL: PropTypes.string,
+  instanceName: PropTypes.string.isRequired,
+  appName: PropTypes.string,
+  messages: PropTypes.shape({
+    count: PropTypes.number
   }),
-  interpretations: _propTypes.default.shape({
-    count: _propTypes.default.number
+  interpretations: PropTypes.shape({
+    count: PropTypes.number
   }),
-  apps: _propTypes.default.arrayOf(_propTypes.default.shape({
-    name: _propTypes.default.string,
-    path: _propTypes.default.string,
-    img: _propTypes.default.string
+  apps: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    path: PropTypes.string,
+    img: PropTypes.string
   })),
-  profile: _propTypes.default.shape({
-    name: _propTypes.default.string,
-    email: _propTypes.default.string,
-    src: _propTypes.default.string
+  profile: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    src: PropTypes.string
   })
 };
-var _default = HeaderBar;
-exports.default = _default;
+export { HeaderBar };
+export default HeaderBar;

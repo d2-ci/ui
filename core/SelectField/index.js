@@ -1,53 +1,18 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.SelectField = void 0;
-
-require("core-js/modules/es7.symbol.async-iterator");
-
-require("core-js/modules/es6.symbol");
-
-require("core-js/modules/es6.object.set-prototype-of");
-
-require("core-js/modules/es6.function.name");
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _Icon = _interopRequireDefault(require("../Icon"));
-
-var _Menu = _interopRequireDefault(require("../Menu"));
-
-var _helpers = require("../helpers");
-
-var _utils = require("../../utils");
-
-var _styles = _interopRequireDefault(require("./styles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+import _classCallCheck from "@babel/runtime-corejs2/helpers/esm/classCallCheck";
+import _createClass from "@babel/runtime-corejs2/helpers/esm/createClass";
+import _possibleConstructorReturn from "@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn";
+import _getPrototypeOf from "@babel/runtime-corejs2/helpers/esm/getPrototypeOf";
+import _inherits from "@babel/runtime-corejs2/helpers/esm/inherits";
+import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThisInitialized";
+import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
+import _Array$isArray from "@babel/runtime-corejs2/core-js/array/is-array";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Icon from '../Icon';
+import Menu from '../Menu';
+import { Label, Help } from '../helpers';
+import { isPointInRect } from '../../utils';
+import s from './styles';
 
 function markActive(list, value) {
   if (!value) {
@@ -57,7 +22,7 @@ function markActive(list, value) {
   return list.slice(0).map(function (item) {
     item.active = item.value && item.value === value;
 
-    if (Array.isArray(item.list)) {
+    if (_Array$isArray(item.list)) {
       item.list = markActive(item.list, value);
     }
 
@@ -98,7 +63,7 @@ function (_React$Component) {
 
         var container = _this.elContainer.getBoundingClientRect();
 
-        if (!(0, _utils.isPointInRect)(target, menu) && !(0, _utils.isPointInRect)(target, container)) {
+        if (!isPointInRect(target, menu) && !isPointInRect(target, container)) {
           _this.setState({
             open: false
           });
@@ -171,27 +136,27 @@ function (_React$Component) {
 
       var selected = this.getLabel();
       var list = markActive(this.props.list, this.props.value);
-      return _react.default.createElement("div", {
+      return React.createElement("div", {
         ref: function ref(c) {
           return _this3.elContainer = c;
         },
-        className: (0, _styles.default)('container', (_s = {
+        className: s('container', (_s = {
           selected: !!this.props.value,
           disabled: this.props.disabled
         }, _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, "size-".concat(this.props.size), true), _s))
-      }, _react.default.createElement("div", {
+      }, React.createElement("div", {
         ref: function ref(c) {
           return _this3.elSelect = c;
         },
-        className: (0, _styles.default)('select'),
+        className: s('select'),
         onClick: this.onToggle
-      }, this.props.icon && _react.default.createElement("div", {
-        className: (0, _styles.default)('icon')
-      }, _react.default.createElement(_Icon.default, {
+      }, this.props.icon && React.createElement("div", {
+        className: s('icon')
+      }, React.createElement(Icon, {
         name: this.props.icon
-      })), _react.default.createElement("div", {
-        className: (0, _styles.default)('value')
-      }, selected), _react.default.createElement(_helpers.Label, {
+      })), React.createElement("div", {
+        className: s('value')
+      }, selected), React.createElement(Label, {
         type: "select",
         size: this.props.size,
         kind: this.props.kind,
@@ -200,18 +165,18 @@ function (_React$Component) {
         hasIcon: !!this.props.icon,
         disabled: this.props.disabled,
         state: selected ? 'minimized' : 'default'
-      }), _react.default.createElement(_Icon.default, {
+      }), React.createElement(Icon, {
         name: open ? 'arrow_drop_up' : 'arrow_drop_down',
-        className: (0, _styles.default)('dropdown-icon')
-      })), this.props.help && _react.default.createElement(_helpers.Help, {
+        className: s('dropdown-icon')
+      })), this.props.help && React.createElement(Help, {
         text: this.props.help,
         status: this.props.status
-      }), open && _react.default.createElement("div", {
-        className: (0, _styles.default)('menu'),
+      }), open && React.createElement("div", {
+        className: s('menu'),
         ref: function ref(c) {
           return _this3.elMenu = c;
         }
-      }, _react.default.createElement(_Menu.default, {
+      }, React.createElement(Menu, {
         list: list,
         size: this.props.size,
         onClick: this.onClick
@@ -220,30 +185,29 @@ function (_React$Component) {
   }]);
 
   return SelectField;
-}(_react.default.Component);
+}(React.Component);
 
-exports.SelectField = SelectField;
 SelectField.defaultProps = {
   disabled: false,
   label: '',
   size: 'default'
 };
 SelectField.propTypes = {
-  name: _propTypes.default.string.isRequired,
-  label: _propTypes.default.string.isRequired,
-  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
-  list: _propTypes.default.arrayOf(_propTypes.default.shape({
-    label: _propTypes.default.string.isRequired,
-    value: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]).isRequired
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  list: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
   })),
-  icon: _propTypes.default.string,
-  help: _propTypes.default.string,
-  disabled: _propTypes.default.bool,
-  required: _propTypes.default.bool,
-  size: _propTypes.default.oneOf(['default', 'dense']),
-  kind: _propTypes.default.oneOf(['filled', 'outlined']),
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
-  onChange: _propTypes.default.func.isRequired
+  icon: PropTypes.string,
+  help: PropTypes.string,
+  disabled: PropTypes.bool,
+  required: PropTypes.bool,
+  size: PropTypes.oneOf(['default', 'dense']),
+  kind: PropTypes.oneOf(['filled', 'outlined']),
+  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error']),
+  onChange: PropTypes.func.isRequired
 };
-var _default = SelectField;
-exports.default = _default;
+export { SelectField };
+export default SelectField;

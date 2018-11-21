@@ -1,17 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "HeaderBarContainer", {
-  enumerable: true,
-  get: function get() {
-    return _HeaderBar.HeaderBarContainer;
-  }
-});
-exports.default = void 0;
-
-var _HeaderBar = require("./HeaderBar.Container");
-
-var _default = _HeaderBar.HeaderBarContainer;
-exports.default = _default;
+import { HeaderBarContainer } from './HeaderBar.Container';
+export { HeaderBarContainer };
+export default HeaderBarContainer;

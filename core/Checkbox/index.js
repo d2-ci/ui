@@ -1,47 +1,14 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.Checkbox = void 0;
-
-require("core-js/modules/es7.symbol.async-iterator");
-
-require("core-js/modules/es6.symbol");
-
-require("core-js/modules/es6.object.set-prototype-of");
-
-require("core-js/modules/es6.function.name");
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _Icon = _interopRequireDefault(require("../Icon"));
-
-var _styles = _interopRequireDefault(require("./styles"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+import _classCallCheck from "@babel/runtime-corejs2/helpers/esm/classCallCheck";
+import _createClass from "@babel/runtime-corejs2/helpers/esm/createClass";
+import _possibleConstructorReturn from "@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn";
+import _getPrototypeOf from "@babel/runtime-corejs2/helpers/esm/getPrototypeOf";
+import _inherits from "@babel/runtime-corejs2/helpers/esm/inherits";
+import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThisInitialized";
+import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Icon from '../Icon';
+import s from './styles';
 
 var Checkbox =
 /*#__PURE__*/
@@ -92,25 +59,24 @@ function (_React$Component) {
         name = 'check_box';
       }
 
-      var icon = _react.default.createElement(_Icon.default, {
+      var icon = React.createElement(Icon, {
         name: name,
-        className: (0, _styles.default)("".concat(status, "-icon"), {
+        className: s("".concat(status, "-icon"), {
           disabled: this.props.disabled,
           checked: this.props.checked
         })
       });
-
-      return _react.default.createElement("label", {
-        className: (0, _styles.default)('container', {
+      return React.createElement("label", {
+        className: s('container', {
           disabled: this.props.disabled
         })
-      }, _react.default.createElement("input", {
+      }, React.createElement("input", {
         type: "checkbox",
         onChange: this.onChange,
         checked: this.props.checked,
         disabled: this.props.disabled
-      }), icon, _react.default.createElement("span", {
-        className: (0, _styles.default)('label', status, {
+      }), icon, React.createElement("span", {
+        className: s('label', status, {
           required: required
         })
       }, this.props.label));
@@ -118,9 +84,8 @@ function (_React$Component) {
   }]);
 
   return Checkbox;
-}(_react.default.Component);
+}(React.Component);
 
-exports.Checkbox = Checkbox;
 Checkbox.defaultProps = {
   label: '',
   checked: false,
@@ -130,14 +95,14 @@ Checkbox.defaultProps = {
   status: 'default'
 };
 Checkbox.propTypes = {
-  name: _propTypes.default.string.isRequired,
-  label: _propTypes.default.string,
-  checked: _propTypes.default.bool,
-  required: _propTypes.default.bool,
-  disabled: _propTypes.default.bool,
-  indeterminate: _propTypes.default.bool,
-  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
-  onChange: _propTypes.default.func.isRequired
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  checked: PropTypes.bool,
+  required: PropTypes.bool,
+  disabled: PropTypes.bool,
+  indeterminate: PropTypes.bool,
+  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error']),
+  onChange: PropTypes.func.isRequired
 };
-var _default = Checkbox;
-exports.default = _default;
+export { Checkbox };
+export default Checkbox;
