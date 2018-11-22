@@ -25,7 +25,7 @@ function HeaderBar(_ref) {
       messages = _ref.messages,
       interpretations = _ref.interpretations;
   return React.createElement("header", {
-    className: s('container', 'blue')
+    className: s('base', 'blue')
   }, React.createElement("div", {
     className: s('first')
   }, React.createElement("div", {

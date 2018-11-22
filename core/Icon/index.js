@@ -9,7 +9,7 @@ function Icon(_ref) {
       onClick = _ref.onClick;
   return React.createElement("i", {
     onClick: onClick,
-    className: s('container', className)
+    className: s('base', className)
   }, name);
 }
 

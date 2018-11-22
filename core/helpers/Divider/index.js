@@ -8,7 +8,7 @@ export function Divider(_ref) {
   };
   return React.createElement("div", {
     style: style,
-    className: s('divider')
+    className: s('base')
   });
 }
 Divider.defaultProps = {

@@ -15,7 +15,7 @@ function Button(_ref) {
   return React.createElement("button", {
     disabled: disabled,
     onClick: onClick,
-    className: s('button', "kind-".concat(kind), "size-".concat(size), {
+    className: s('base', "kind-".concat(kind), "size-".concat(size), {
       'icon-only': icon && !label && !children,
       icon: icon
     })

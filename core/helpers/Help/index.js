@@ -7,7 +7,7 @@ function Help(_ref) {
   var text = _ref.text,
       status = _ref.status;
   return React.createElement("div", {
-    className: s('container', _defineProperty({}, "status-".concat(status), true))
+    className: s('base', _defineProperty({}, "status-".concat(status), true))
   }, text);
 }
 

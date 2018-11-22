@@ -10,7 +10,7 @@ export function Menu(_ref) {
       list = _ref.list,
       onClick = _ref.onClick;
   return React.createElement(Card, null, React.createElement("ul", {
-    className: s('menu', size)
+    className: s('base', size)
   }, list.map(function (_ref2, i) {
     var label = _ref2.label,
         value = _ref2.value,

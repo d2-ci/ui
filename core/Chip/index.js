@@ -86,7 +86,7 @@ function (_React$PureComponent) {
           dragging = _this$props.dragging,
           overflow = _this$props.overflow;
       return React.createElement("div", {
-        className: s('container', {
+        className: s('base', {
           selected: selected,
           disabled: disabled,
           dragging: dragging,

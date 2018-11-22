@@ -140,7 +140,7 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elContainer = c;
         },
-        className: s('container', (_s = {
+        className: s('base', (_s = {
           selected: !!this.props.value,
           disabled: this.props.disabled
         }, _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, "size-".concat(this.props.size), true), _s))

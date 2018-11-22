@@ -45,7 +45,7 @@ function (_React$Component) {
           status = _this$props.status,
           disabled = _this$props.disabled;
       return React.createElement("label", {
-        className: s('container', status, {
+        className: s('base', status, {
           disabled: disabled
         }),
         onChange: this.onChange

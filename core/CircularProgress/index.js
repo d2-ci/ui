@@ -20,7 +20,7 @@ function CircularProgress(_ref) {
       overlay = _ref.overlay;
   var loader = React.createElement("div", {
     role: "progressbar",
-    className: s('container', size)
+    className: s('base', size)
   }, React.createElement(Circle, null));
 
   if (overlay) {

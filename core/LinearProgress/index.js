@@ -11,7 +11,7 @@ function LinearProgress(_ref) {
   } : null;
   return React.createElement("div", {
     role: "progressbar",
-    className: s('container'),
+    className: s('base'),
     style: {
       margin: margin
     }

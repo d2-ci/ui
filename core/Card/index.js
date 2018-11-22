@@ -6,7 +6,7 @@ function Card(_ref) {
   var className = _ref.className,
       children = _ref.children;
   return React.createElement("div", {
-    className: s('container', className)
+    className: s('base', className)
   }, children);
 }
 

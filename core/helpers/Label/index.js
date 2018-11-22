@@ -22,7 +22,7 @@ function Label(_ref) {
       disabled = _ref.disabled,
       hasIcon = _ref.hasIcon;
   return React.createElement("div", {
-    className: s('container', (_s = {
+    className: s('base', (_s = {
       disabled: disabled,
       'has-icon': hasIcon
     }, _defineProperty(_s, "focused", focused), _defineProperty(_s, "state-".concat(state), true), _defineProperty(_s, "size-".concat(size), true), _defineProperty(_s, "type-".concat(type), true), _defineProperty(_s, "status-".concat(status), true), _defineProperty(_s, "kind-".concat(kind), true), _s))

@@ -76,7 +76,7 @@ function (_React$Component) {
           _this2 = this;
 
       return React.createElement("div", {
-        className: s('container', (_s = {
+        className: s('base', (_s = {
           disabled: this.props.disabled
         }, _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, 'is-empty', !(this.props.value || this.props.placeholder || this.state.focused)), _s)),
         onClick: this.onClick

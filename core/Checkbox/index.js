@@ -67,7 +67,7 @@ function (_React$Component) {
         })
       });
       return React.createElement("label", {
-        className: s('container', {
+        className: s('base', {
           disabled: this.props.disabled
         })
       }, React.createElement("input", {
