@@ -76,27 +76,32 @@ function (_React$Component) {
           _this2 = this;
 
       return React.createElement("div", {
-        className: s('base', (_s = {
-          disabled: this.props.disabled
-        }, _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, 'is-empty', !(this.props.value || this.props.placeholder || this.state.focused)), _s)),
+        className: s('reset', 'base', {
+          disabled: this.props.disabled,
+          'is-empty': !(this.props.value || this.props.placeholder || this.state.focused)
+        }),
         onClick: this.onClick
       }, React.createElement("div", {
-        className: s('field')
-      }, this.props.icon && React.createElement("div", {
+        className: s('reset', 'field', (_s = {
+          focused: this.state.focused
+        }, _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "status-".concat(this.props.status), true), _s))
+      }, this.props.icon && React.createElement(Icon, {
+        name: this.props.icon,
         className: s('icon')
-      }, React.createElement(Icon, {
-        name: this.props.icon
-      })), React.createElement("input", {
+      }), React.createElement("input", {
         ref: function ref(c) {
           return _this2.ref = c;
         },
-        className: s('input'),
+        className: s('reset', 'input', {
+          disabled: this.props.disabled
+        }),
         type: this.props.type,
         value: this.props.value,
         onChange: this.onChange,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
-        placeholder: this.props.placeholder
+        placeholder: this.props.placeholder,
+        disabled: this.props.disabled
       }), React.createElement(Label, {
         size: this.props.size,
         kind: this.props.kind,
@@ -105,7 +110,7 @@ function (_React$Component) {
         focused: this.state.focused,
         disabled: this.props.disabled,
         hasIcon: !!this.props.icon,
-        state: this.props.placeholder || this.props.value || this.state.focused ? 'minimized' : 'default'
+        state: this.props.placeholder || this.props.value || this.props.icon || this.state.focused ? 'minimized' : 'default'
       })), this.props.help && React.createElement(Help, {
         text: this.props.help,
         status: this.props.status
@@ -119,6 +124,7 @@ function (_React$Component) {
 InputField.defaultProps = {
   disabled: false,
   label: '',
+  status: 'default',
   size: 'default',
   kind: 'filled'
 };

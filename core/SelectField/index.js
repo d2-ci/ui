@@ -124,8 +124,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this,
-          _s;
+      var _this3 = this;
 
       var open = this.state.open;
       var width = 'inherit';
@@ -140,22 +139,21 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elContainer = c;
         },
-        className: s('base', (_s = {
+        className: s('reset', 'base', _defineProperty({
           selected: !!this.props.value,
           disabled: this.props.disabled
-        }, _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, "size-".concat(this.props.size), true), _s))
+        }, "size-".concat(this.props.size), true))
       }, React.createElement("div", {
         ref: function ref(c) {
           return _this3.elSelect = c;
         },
-        className: s('select'),
+        className: s('reset', 'select', _defineProperty({}, "kind-".concat(this.props.kind), true)),
         onClick: this.onToggle
-      }, this.props.icon && React.createElement("div", {
+      }, this.props.icon && React.createElement(Icon, {
+        name: this.props.icon,
         className: s('icon')
-      }, React.createElement(Icon, {
-        name: this.props.icon
-      })), React.createElement("div", {
-        className: s('value')
+      }), React.createElement("div", {
+        className: s('reset', 'value')
       }, selected), React.createElement(Label, {
         type: "select",
         size: this.props.size,
@@ -172,7 +170,7 @@ function (_React$Component) {
         text: this.props.help,
         status: this.props.status
       }), open && React.createElement("div", {
-        className: s('menu'),
+        className: s('reset', 'menu'),
         ref: function ref(c) {
           return _this3.elMenu = c;
         }

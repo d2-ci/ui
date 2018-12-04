@@ -67,7 +67,7 @@ function (_React$Component) {
         })
       });
       return React.createElement("label", {
-        className: s('base', {
+        className: s('reset', 'base', {
           disabled: this.props.disabled
         })
       }, React.createElement("input", {
@@ -76,7 +76,7 @@ function (_React$Component) {
         checked: this.props.checked,
         disabled: this.props.disabled
       }), icon, React.createElement("span", {
-        className: s('label', status, {
+        className: s('reset', 'label', status, {
           required: required
         })
       }, this.props.label));

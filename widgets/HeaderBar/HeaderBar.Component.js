@@ -25,17 +25,18 @@ function HeaderBar(_ref) {
       messages = _ref.messages,
       interpretations = _ref.interpretations;
   return React.createElement("header", {
-    className: s('base', 'blue')
+    className: s('reset', 'base', 'blue')
   }, React.createElement("div", {
-    className: s('first')
+    className: s('reset', 'first')
   }, React.createElement("div", {
-    className: s('logo')
+    className: s('reset', 'logo')
   }, React.createElement("a", {
-    href: "".concat(baseURL)
+    href: "".concat(baseURL),
+    className: s('reset')
   }, React.createElement(LogoIconWhite, null))), React.createElement("div", {
-    className: s('title')
+    className: s('reset', 'title')
   }, getTitle(instanceName, appName))), React.createElement("div", {
-    className: s('last')
+    className: s('reset', 'last')
   }, React.createElement(NotificationIcon, {
     icon: "message",
     count: interpretations.count,

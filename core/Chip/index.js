@@ -56,7 +56,7 @@ function (_React$PureComponent) {
         return React.createElement("img", {
           src: icon,
           alt: "chip icon",
-          className: s('image-icon')
+          className: s('reset', 'image-icon')
         });
       }
 
@@ -86,7 +86,7 @@ function (_React$PureComponent) {
           dragging = _this$props.dragging,
           overflow = _this$props.overflow;
       return React.createElement("div", {
-        className: s('base', {
+        className: s('reset', 'base', {
           selected: selected,
           disabled: disabled,
           dragging: dragging,
@@ -94,7 +94,7 @@ function (_React$PureComponent) {
         }),
         onClick: this.onClick
       }, this.showIcon(), React.createElement("span", {
-        className: s('label', {
+        className: s('reset', 'label', {
           overflow: overflow
         })
       }, label), this.showRemove());

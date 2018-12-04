@@ -9,12 +9,12 @@ function NotificationIcon(_ref) {
       count = _ref.count,
       href = _ref.href;
   return React.createElement("a", {
-    className: s('notification', {
+    className: s('reset', 'notification', {
       icon: icon
     }),
     href: href
   }, count > 0 && React.createElement("span", {
-    className: s('count')
+    className: s('reset', 'count')
   }, count), React.createElement(Icon, {
     name: icon
   }));

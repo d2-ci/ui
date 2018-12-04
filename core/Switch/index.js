@@ -45,7 +45,7 @@ function (_React$Component) {
           status = _this$props.status,
           disabled = _this$props.disabled;
       return React.createElement("label", {
-        className: s('base', status, {
+        className: s('reset', 'base', status, {
           disabled: disabled
         }),
         onChange: this.onChange
@@ -55,9 +55,9 @@ function (_React$Component) {
         checked: this.props.checked,
         disabled: disabled
       }), React.createElement("span", {
-        className: s('label', _defineProperty({}, "status-".concat(status), true))
+        className: s('reset', 'label', _defineProperty({}, "status-".concat(status), true))
       }, this.props.label), this.props.required && React.createElement("span", {
-        className: s('required')
+        className: s('reset', 'required')
       }));
     }
   }]);
