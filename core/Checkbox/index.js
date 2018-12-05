@@ -76,7 +76,7 @@ function (_React$Component) {
         checked: this.props.checked,
         disabled: this.props.disabled
       }), icon, React.createElement("span", {
-        className: s('reset', 'label', status, {
+        className: s('reset', 'label', {
           required: required
         })
       }, this.props.label));

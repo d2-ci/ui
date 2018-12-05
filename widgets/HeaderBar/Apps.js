@@ -137,7 +137,7 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSettingsClick", function () {
-      return gotoURL("".concat(_this.props.baseURL, "/dhis-web-user-profile/#/account"));
+      return gotoURL("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
     });
 
     return _this;
