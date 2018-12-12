@@ -24,7 +24,7 @@ function Label(_ref) {
   return React.createElement("div", {
     className: s('reset', 'base', (_s = {
       disabled: disabled
-    }, _defineProperty(_s, "focused", focused), _defineProperty(_s, "state-".concat(state), true), _defineProperty(_s, "size-".concat(size), true), _defineProperty(_s, "type-".concat(type), true), _defineProperty(_s, "kind-".concat(kind), true), _s))
+    }, _defineProperty(_s, "focused", focused), _defineProperty(_s, "state-".concat(state), true), _defineProperty(_s, "size-".concat(size), true), _defineProperty(_s, "type-".concat(type), true), _defineProperty(_s, "kind-".concat(kind), true), _defineProperty(_s, 'has-icon', hasIcon), _s))
   }, React.createElement("div", {
     className: s('reset', 'content', _defineProperty({}, "state-".concat(state), true))
   }, text), status !== 'default' && React.createElement(Icon, {

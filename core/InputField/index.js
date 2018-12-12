@@ -85,10 +85,14 @@ function (_React$Component) {
         className: s('reset', 'field', (_s = {
           focused: this.state.focused
         }, _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "status-".concat(this.props.status), true), _s))
-      }, this.props.icon && React.createElement(Icon, {
+      }, this.props.icon && React.createElement("div", {
+        className: s('reset', 'icon-field')
+      }, React.createElement(Icon, {
         name: this.props.icon,
         className: s('icon')
-      }), React.createElement("input", {
+      })), React.createElement("div", {
+        className: s('reset', 'input-field')
+      }, React.createElement("input", {
         ref: function ref(c) {
           return _this2.ref = c;
         },
@@ -110,8 +114,8 @@ function (_React$Component) {
         focused: this.state.focused,
         disabled: this.props.disabled,
         hasIcon: !!this.props.icon,
-        state: this.props.placeholder || this.props.value || this.props.icon || this.state.focused ? 'minimized' : 'default'
-      })), this.props.help && React.createElement(Help, {
+        state: this.props.placeholder || this.props.value || this.state.focused ? 'minimized' : 'default'
+      }))), this.props.help && React.createElement(Help, {
         text: this.props.help,
         status: this.props.status
       }));

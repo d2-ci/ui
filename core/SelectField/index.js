@@ -124,7 +124,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this3 = this,
+          _s2;
 
       var open = this.state.open;
       var width = 'inherit';
@@ -147,12 +148,16 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elSelect = c;
         },
-        className: s('reset', 'select', _defineProperty({}, "kind-".concat(this.props.kind), true)),
+        className: s('reset', 'select', (_s2 = {}, _defineProperty(_s2, "kind-".concat(this.props.kind), true), _defineProperty(_s2, "status-".concat(this.props.status), true), _s2)),
         onClick: this.onToggle
-      }, this.props.icon && React.createElement(Icon, {
+      }, this.props.icon && React.createElement("div", {
+        className: s('reset', 'lead-icon-field')
+      }, React.createElement(Icon, {
         name: this.props.icon,
         className: s('icon')
-      }), React.createElement("div", {
+      })), React.createElement("div", {
+        className: s('reset', 'input-field')
+      }, React.createElement("div", {
         className: s('reset', 'value')
       }, selected), React.createElement(Label, {
         type: "select",
@@ -163,10 +168,12 @@ function (_React$Component) {
         hasIcon: !!this.props.icon,
         disabled: this.props.disabled,
         state: selected ? 'minimized' : 'default'
-      }), React.createElement(Icon, {
+      })), React.createElement("div", {
+        className: s('reset', 'trail-icon-field')
+      }, React.createElement(Icon, {
         name: open ? 'arrow_drop_up' : 'arrow_drop_down',
-        className: s('dropdown-icon')
-      })), this.props.help && React.createElement(Help, {
+        className: s('icon')
+      }))), this.props.help && React.createElement(Help, {
         text: this.props.help,
         status: this.props.status
       }), open && React.createElement("div", {
@@ -188,7 +195,8 @@ function (_React$Component) {
 SelectField.defaultProps = {
   disabled: false,
   label: '',
-  size: 'default'
+  size: 'default',
+  status: 'default'
 };
 SelectField.propTypes = {
   name: PropTypes.string.isRequired,
