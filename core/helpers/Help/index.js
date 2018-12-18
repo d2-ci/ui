@@ -6,7 +6,7 @@ import s from './styles';
 function Help(_ref) {
   var text = _ref.text,
       status = _ref.status;
-  return React.createElement("div", {
+  return React.createElement("p", {
     className: s('reset', 'base', _defineProperty({}, "status-".concat(status), true))
   }, text);
 }
