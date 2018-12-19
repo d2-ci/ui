@@ -11,14 +11,14 @@ import Card from '../../core/Card';
 import Icon from '../../core/Icon';
 import InputField from '../../core/InputField';
 import { gotoURL, isPointInRect } from '../../utils';
-import s from './styles';
+import cx, { rx } from './styles';
 
 function Search(_ref) {
   var value = _ref.value,
       onChange = _ref.onChange,
       onSettingsClick = _ref.onSettingsClick;
   return React.createElement("div", {
-    className: s('search')
+    className: rx('search')
   }, React.createElement(InputField, {
     name: "filter",
     value: value,
@@ -28,7 +28,7 @@ function Search(_ref) {
     onChange: onChange
   }), React.createElement(Icon, {
     name: "settings",
-    className: s('settings'),
+    className: cx('settings'),
     onClick: onSettingsClick
   }));
 }
@@ -45,12 +45,13 @@ function Item(_ref2) {
       img = _ref2.img;
   return React.createElement("a", {
     href: path,
-    className: s('app')
+    className: rx('app')
   }, React.createElement("img", {
     src: img,
-    alt: "app logo"
+    alt: "app logo",
+    className: rx()
   }), React.createElement("div", {
-    className: s('name')
+    className: rx('name')
   }, name));
 }
 
@@ -64,7 +65,7 @@ function List(_ref3) {
   var apps = _ref3.apps,
       filter = _ref3.filter;
   return React.createElement("div", {
-    className: s('modules')
+    className: rx('modules')
   }, apps.filter(function (_ref4) {
     var name = _ref4.name;
     return filter.length > 0 ? name.toLowerCase().includes(filter.toLowerCase()) : true;
@@ -136,7 +137,7 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSettingsClick", function () {
-      return gotoURL("".concat(_this.props.baseURL, "/dhis-web-user-profile/#/account"));
+      return gotoURL("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
     });
 
     return _this;
@@ -158,7 +159,7 @@ function (_React$Component) {
       var _this2 = this;
 
       return React.createElement("div", {
-        className: s('apps'),
+        className: rx('apps'),
         ref: function ref(c) {
           return _this2.elContainer = c;
         }
@@ -166,13 +167,15 @@ function (_React$Component) {
         name: "apps",
         onClick: this.onToggle
       }), this.state.show && React.createElement("div", {
-        className: s('contents'),
+        className: rx('contents'),
         ref: function ref(c) {
           return _this2.elApps = c;
         }
       }, React.createElement(Card, {
         width: "416px",
         height: "301px"
+      }, React.createElement("div", {
+        className: rx()
       }, React.createElement(Search, {
         value: this.state.filter,
         onChange: this.onChange,
@@ -180,7 +183,7 @@ function (_React$Component) {
       }), React.createElement(List, {
         apps: this.props.apps,
         filter: this.state.filter
-      }))));
+      })))));
     }
   }]);
 

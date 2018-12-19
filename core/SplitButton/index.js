@@ -7,8 +7,8 @@ import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThi
 import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
-import s from './styles';
+import Button from '../Button';
+import cx, { rx } from './styles';
 import Menu from '../Menu';
 import Icon from '../Icon';
 import { isPointInRect } from '../../utils';
@@ -86,7 +86,7 @@ function (_Component) {
       }
 
       return React.createElement("div", {
-        className: s('split'),
+        className: rx('base'),
         ref: function ref(c) {
           return _this2.elContainer = c;
         }
@@ -103,10 +103,10 @@ function (_Component) {
         disabled: this.props.disabled,
         onClick: this.onToggle
       }, React.createElement(Icon, {
-        className: "menu-icon",
+        className: cx('menu-icon'),
         name: open ? 'arrow_drop_up' : 'arrow_drop_down'
       })), open && React.createElement("div", {
-        className: s('menu', "".concat(this.props.size)),
+        className: rx('menu', "".concat(this.props.size)),
         ref: function ref(c) {
           return _this2.elMenu = c;
         }

@@ -5,108 +5,140 @@ import _getPrototypeOf from "@babel/runtime-corejs2/helpers/esm/getPrototypeOf";
 import _inherits from "@babel/runtime-corejs2/helpers/esm/inherits";
 import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThisInitialized";
 import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
-import { Label, Help } from '../helpers';
-import s from './styles';
+import cx, { rx } from './styles';
+import { Help } from '../helpers';
+var statusToIcon = {
+  valid: 'check_circle',
+  warning: 'warning',
+  error: 'error'
+};
+
+function icon(i) {
+  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+  if (i) {
+    return React.createElement("div", null, React.createElement(Icon, {
+      name: i,
+      onClick: action,
+      className: cx('icon', extra)
+    }));
+  }
+
+  return null;
+}
+
+function trailIcon(status, trail) {
+  if (status !== 'default') {
+    return icon(statusToIcon[status], null, "icon-".concat(status));
+  } else {
+    return icon(trail);
+  }
+}
 
 var InputField =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(InputField, _React$Component);
 
-  function InputField() {
-    var _getPrototypeOf2;
-
+  function InputField(props) {
     var _this;
 
     _classCallCheck(this, InputField);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputField)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(InputField).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      focused: false
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
-      if (!_this.props.disabled) {
-        _this.props.onChange(_this.props.name, evt.target.value);
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function () {
-      if (_this.ref && !_this.props.disabled) {
-        _this.ref.focus();
-
-        _this.setState({
-          focused: true
-        });
-      }
+      focused: false,
+      text: _this.props.value,
+      labelWidth: 0
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (evt) {
-      if (_this.props.disabled) {
-        evt.target.blur();
-        return;
-      }
-
       _this.setState({
         focused: true
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function () {
-      return _this.setState({
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (evt) {
+      _this.setState({
         focused: false
       });
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (evt) {
+      if (_this.props.disabled) {
+        return;
+      }
+
+      _this.props.onChange(_this.props.name, evt.target.value);
+
+      _this.setState({
+        text: evt.target.value
+      });
+    });
+
+    _this.labelRef = React.createRef();
     return _this;
   }
 
   _createClass(InputField, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        labelWidth: this.labelRef.current.offsetWidth
+      });
+    }
+  }, {
+    key: "isFocused",
+    value: function isFocused() {
+      return this.state.focused;
+    }
+  }, {
+    key: "shrink",
+    value: function shrink() {
+      return !!(this.isFocused() || this.state.text || this.props.placeholder);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _s,
-          _this2 = this;
+      var _rx, _rx2, _rx3;
 
+      var legendWidth = this.shrink() ? {
+        width: "".concat(this.state.labelWidth, "px")
+      } : {
+        width: 0
+      };
       return React.createElement("div", {
-        className: s('base', (_s = {
+        className: rx('base', {
+          focused: this.isFocused(),
           disabled: this.props.disabled
-        }, _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, 'is-empty', !(this.props.value || this.props.placeholder || this.state.focused)), _s)),
-        onClick: this.onClick
+        })
       }, React.createElement("div", {
-        className: s('field')
-      }, this.props.icon && React.createElement("div", {
-        className: s('icon')
-      }, React.createElement(Icon, {
-        name: this.props.icon
-      })), React.createElement("input", {
-        ref: function ref(c) {
-          return _this2.ref = c;
-        },
-        className: s('input'),
+        className: rx('field', (_rx = {}, _defineProperty(_rx, "size-".concat(this.props.size), true), _defineProperty(_rx, "status-".concat(this.props.status), true), _defineProperty(_rx, "kind-".concat(this.props.kind), true), _defineProperty(_rx, "focused", this.isFocused()), _defineProperty(_rx, "filled", this.state.text), _defineProperty(_rx, "disabled", this.props.disabled), _rx))
+      }, React.createElement("label", {
+        ref: this.labelRef,
+        className: rx('label', (_rx2 = {}, _defineProperty(_rx2, "".concat(this.props.status), true), _defineProperty(_rx2, "".concat(this.props.size), true), _defineProperty(_rx2, "".concat(this.props.kind), true), _defineProperty(_rx2, 'has-icon', !!this.props.icon), _defineProperty(_rx2, "required", this.props.required), _defineProperty(_rx2, "disabled", this.props.disabled), _defineProperty(_rx2, "focused", this.isFocused()), _defineProperty(_rx2, "shrink", this.shrink()), _rx2))
+      }, this.props.label), this.props.kind === 'outlined' && React.createElement("fieldset", {
+        className: rx('flatline', (_rx3 = {}, _defineProperty(_rx3, "".concat(this.props.status), true), _defineProperty(_rx3, "focused", this.isFocused()), _defineProperty(_rx3, "idle", !this.isFocused()), _defineProperty(_rx3, "filled", this.state.text), _rx3))
+      }, React.createElement("legend", {
+        className: rx(),
+        style: legendWidth
+      }, "\xA0")), icon(this.props.icon), React.createElement("input", {
+        className: rx('input', {
+          disabled: this.props.disabled
+        }),
         type: this.props.type,
-        value: this.props.value,
-        onChange: this.onChange,
+        placeholder: this.props.placeholder,
+        disabled: this.props.disabled,
+        value: this.state.text,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
-        placeholder: this.props.placeholder
-      }), React.createElement(Label, {
-        size: this.props.size,
-        kind: this.props.kind,
-        text: this.props.label,
-        status: this.props.status,
-        focused: this.state.focused,
-        disabled: this.props.disabled,
-        hasIcon: !!this.props.icon,
-        state: this.props.placeholder || this.props.value || this.state.focused ? 'minimized' : 'default'
-      })), this.props.help && React.createElement(Help, {
+        onChange: this.onChange
+      }), trailIcon(this.props.status, this.props.trailIcon)), this.props.help && React.createElement(Help, {
         text: this.props.help,
         status: this.props.status
       }));
@@ -119,6 +151,7 @@ function (_React$Component) {
 InputField.defaultProps = {
   disabled: false,
   label: '',
+  status: 'default',
   size: 'default',
   kind: 'filled'
 };
@@ -129,6 +162,7 @@ InputField.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func.isRequired,
   icon: PropTypes.string,
+  trailIcon: PropTypes.string,
   help: PropTypes.string,
   disabled: PropTypes.bool,
   required: PropTypes.bool,

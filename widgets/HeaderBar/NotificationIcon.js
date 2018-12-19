@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../core/Icon';
 import { t } from '../../utils';
-import s from './styles';
+import { rx } from './styles';
 
 function NotificationIcon(_ref) {
   var icon = _ref.icon,
       count = _ref.count,
       href = _ref.href;
   return React.createElement("a", {
-    className: s('notification', {
+    className: rx('notification', {
       icon: icon
     }),
     href: href
   }, count > 0 && React.createElement("span", {
-    className: s('count')
+    className: rx('count')
   }, count), React.createElement(Icon, {
     name: icon
   }));

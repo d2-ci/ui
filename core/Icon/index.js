@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './styles';
+import { rx } from './styles';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
 function Icon(_ref) {
@@ -9,7 +9,7 @@ function Icon(_ref) {
       onClick = _ref.onClick;
   return React.createElement("i", {
     onClick: onClick,
-    className: s('base', className)
+    className: rx('base', className)
   }, name);
 }
 

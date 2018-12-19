@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './styles';
+import cx, { rx } from './styles';
 
 function Circle() {
   return React.createElement("svg", {
     viewBox: "22 22 44 44"
   }, React.createElement("circle", {
-    className: s('circle'),
+    className: cx('circle'),
     cx: "44",
     cy: "44",
     r: "20.2",
@@ -20,12 +20,12 @@ function CircularProgress(_ref) {
       overlay = _ref.overlay;
   var loader = React.createElement("div", {
     role: "progressbar",
-    className: s('base', size)
+    className: rx('base', size)
   }, React.createElement(Circle, null));
 
   if (overlay) {
     return React.createElement("div", {
-      className: s('overlay')
+      className: rx('overlay')
     }, loader);
   }
 

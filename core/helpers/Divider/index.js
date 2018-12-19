@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './styles';
+import { rx } from './styles';
 export function Divider(_ref) {
   var margin = _ref.margin;
   var style = {
@@ -8,7 +8,7 @@ export function Divider(_ref) {
   };
   return React.createElement("div", {
     style: style,
-    className: s('base')
+    className: rx('base')
   });
 }
 Divider.defaultProps = {

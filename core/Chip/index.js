@@ -8,7 +8,7 @@ import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
-import s from './styles';
+import cx, { rx } from './styles';
 
 var Chip =
 /*#__PURE__*/
@@ -56,13 +56,13 @@ function (_React$PureComponent) {
         return React.createElement("img", {
           src: icon,
           alt: "chip icon",
-          className: s('image-icon')
+          className: rx('image-icon')
         });
       }
 
       return React.createElement(Icon, {
         name: icon,
-        className: s('icon')
+        className: cx('icon')
       });
     }
   }, {
@@ -71,7 +71,7 @@ function (_React$PureComponent) {
       if (this.props.onRemove) {
         return React.createElement(Icon, {
           name: "cancel",
-          className: s('remove-icon'),
+          className: cx('remove-icon'),
           onClick: this.onRemove
         });
       }
@@ -86,7 +86,7 @@ function (_React$PureComponent) {
           dragging = _this$props.dragging,
           overflow = _this$props.overflow;
       return React.createElement("div", {
-        className: s('base', {
+        className: rx('base', {
           selected: selected,
           disabled: disabled,
           dragging: dragging,
@@ -94,7 +94,7 @@ function (_React$PureComponent) {
         }),
         onClick: this.onClick
       }, this.showIcon(), React.createElement("span", {
-        className: s('label', {
+        className: rx('label', {
           overflow: overflow
         })
       }, label), this.showRemove());

@@ -7,9 +7,9 @@ import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThi
 import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, MenuItem, Divider } from '../../core';
+import { Card, MenuItem, Divider, Menu } from '../../core';
 import { gotoURL, isPointInRect } from '../../utils';
-import s from './styles';
+import { rx } from './styles';
 
 function TextIcon(_ref) {
   var name = _ref.name,
@@ -21,10 +21,10 @@ function TextIcon(_ref) {
   }
 
   return React.createElement("div", {
-    className: s('icon'),
+    className: rx('icon'),
     onClick: onClick
   }, React.createElement("div", {
-    className: s('initials')
+    className: rx('initials')
   }, title));
 }
 
@@ -40,7 +40,7 @@ function ImageIcon(_ref2) {
   var src = _ref2.src,
       onClick = _ref2.onClick;
   return React.createElement("div", {
-    className: s('icon'),
+    className: rx('icon'),
     onClick: onClick
   }, React.createElement("img", {
     src: src,
@@ -62,19 +62,19 @@ function Header(_ref3) {
       img = _ref3.img,
       baseURL = _ref3.baseURL;
   return React.createElement("div", {
-    className: s('header')
+    className: rx('header')
   }, img ? React.createElement(ImageIcon, {
     src: img
   }) : React.createElement(TextIcon, {
     name: name
   }), React.createElement("div", {
-    className: s('details')
+    className: rx('details')
   }, React.createElement("div", {
-    className: s('name')
+    className: rx('name')
   }, name), React.createElement("div", {
-    className: s('email')
+    className: rx('email')
   }, email), React.createElement("a", {
-    className: s('edit_profile'),
+    className: rx('edit_profile'),
     href: "".concat(baseURL, "/dhis-web-user-profile/#/profile")
   }, "Edit profile")));
 }
@@ -209,12 +209,14 @@ function (_React$Component) {
       }
 
       return React.createElement("div", {
-        className: s('contents'),
+        className: rx('contents'),
         ref: function ref(c) {
           return _this2.elContents = c;
         }
       }, React.createElement(Card, {
         height: "298px"
+      }, React.createElement("div", {
+        className: rx('profile-alignment')
       }, React.createElement(Header, {
         baseURL: this.props.baseURL,
         img: this.props.profile.img,
@@ -223,7 +225,9 @@ function (_React$Component) {
         onClick: this.onHeaderClick
       }), React.createElement(Divider, {
         margin: "13px 0 7px 0"
-      }), list.map(function (_ref4) {
+      }), React.createElement("ul", {
+        className: rx()
+      }, list.map(function (_ref4) {
         var label = _ref4.label,
             value = _ref4.value,
             icon = _ref4.icon;
@@ -234,7 +238,7 @@ function (_React$Component) {
           icon: icon,
           onClick: _this2.onClick
         });
-      })));
+      })))));
     }
   }, {
     key: "render",
@@ -242,7 +246,7 @@ function (_React$Component) {
       var _this3 = this;
 
       return React.createElement("div", {
-        className: s('profile'),
+        className: rx('profile'),
         ref: function ref(c) {
           return _this3.elContainer = c;
         }

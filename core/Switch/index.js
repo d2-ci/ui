@@ -7,7 +7,7 @@ import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThi
 import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './styles';
+import cx, { rx } from './styles';
 
 var Switch =
 /*#__PURE__*/
@@ -45,19 +45,19 @@ function (_React$Component) {
           status = _this$props.status,
           disabled = _this$props.disabled;
       return React.createElement("label", {
-        className: s('base', status, {
+        className: rx(status, {
           disabled: disabled
         }),
         onChange: this.onChange
       }, React.createElement("input", {
         type: "checkbox",
-        className: s('input'),
+        className: cx('input'),
         checked: this.props.checked,
         disabled: disabled
       }), React.createElement("span", {
-        className: s('label', _defineProperty({}, "status-".concat(status), true))
+        className: rx('label', _defineProperty({}, "status-".concat(status), true))
       }, this.props.label), this.props.required && React.createElement("span", {
-        className: s('required')
+        className: rx('required')
       }));
     }
   }]);

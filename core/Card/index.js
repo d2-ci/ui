@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './styles';
+import { rx } from './styles';
 
 function Card(_ref) {
   var className = _ref.className,
       children = _ref.children;
   return React.createElement("div", {
-    className: s('base', className)
+    className: rx('base', className)
   }, children);
 }
 
