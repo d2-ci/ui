@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
 import Menu from './index';
-import s from './styles';
+import cx, { rx } from './styles';
 
 function SubMenu(_ref) {
   var size = _ref.size,
       list = _ref.list,
       onClick = _ref.onClick;
   return React.createElement("div", {
-    className: s('sub-menu')
+    className: rx('sub-menu')
   }, React.createElement(Menu, {
     size: size,
     list: list,
@@ -28,7 +28,7 @@ export default function MenuItem(_ref2) {
       _onClick = _ref2.onClick;
   var hasMenu = list.length > 0;
   return React.createElement("li", {
-    className: s('item', {
+    className: rx('item', {
       disabled: disabled,
       active: active
     }),
@@ -40,12 +40,12 @@ export default function MenuItem(_ref2) {
     }
   }, icon && React.createElement(Icon, {
     name: icon,
-    className: s('icon')
+    className: cx('icon')
   }), React.createElement("div", {
-    className: s('label')
+    className: rx('label')
   }, label), hasMenu && React.createElement(Icon, {
     name: "chevron_right",
-    className: s('sub-chevron')
+    className: cx('sub-chevron')
   }), hasMenu && React.createElement(SubMenu, {
     size: size,
     list: list,

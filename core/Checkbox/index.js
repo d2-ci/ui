@@ -8,7 +8,7 @@ import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
-import s from './styles';
+import cx, { rx } from './styles';
 
 var Checkbox =
 /*#__PURE__*/
@@ -61,13 +61,13 @@ function (_React$Component) {
 
       var icon = React.createElement(Icon, {
         name: name,
-        className: s("".concat(status, "-icon"), {
+        className: cx("".concat(status, "-icon"), {
           disabled: this.props.disabled,
           checked: this.props.checked
         })
       });
       return React.createElement("label", {
-        className: s('reset', 'base', {
+        className: rx('base', {
           disabled: this.props.disabled
         })
       }, React.createElement("input", {
@@ -76,7 +76,7 @@ function (_React$Component) {
         checked: this.props.checked,
         disabled: this.props.disabled
       }), icon, React.createElement("span", {
-        className: s('reset', 'label', {
+        className: rx('label', {
           required: required
         })
       }, this.props.label));

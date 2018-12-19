@@ -11,14 +11,14 @@ import Card from '../../core/Card';
 import Icon from '../../core/Icon';
 import InputField from '../../core/InputField';
 import { gotoURL, isPointInRect } from '../../utils';
-import s from './styles';
+import cx, { rx } from './styles';
 
 function Search(_ref) {
   var value = _ref.value,
       onChange = _ref.onChange,
       onSettingsClick = _ref.onSettingsClick;
   return React.createElement("div", {
-    className: s('reset', 'search')
+    className: rx('search')
   }, React.createElement(InputField, {
     name: "filter",
     value: value,
@@ -28,7 +28,7 @@ function Search(_ref) {
     onChange: onChange
   }), React.createElement(Icon, {
     name: "settings",
-    className: s('settings'),
+    className: cx('settings'),
     onClick: onSettingsClick
   }));
 }
@@ -45,13 +45,13 @@ function Item(_ref2) {
       img = _ref2.img;
   return React.createElement("a", {
     href: path,
-    className: s('reset', 'app')
+    className: rx('app')
   }, React.createElement("img", {
     src: img,
     alt: "app logo",
-    className: s('reset')
+    className: rx()
   }), React.createElement("div", {
-    className: s('reset', 'name')
+    className: rx('name')
   }, name));
 }
 
@@ -65,7 +65,7 @@ function List(_ref3) {
   var apps = _ref3.apps,
       filter = _ref3.filter;
   return React.createElement("div", {
-    className: s('reset', 'modules')
+    className: rx('modules')
   }, apps.filter(function (_ref4) {
     var name = _ref4.name;
     return filter.length > 0 ? name.toLowerCase().includes(filter.toLowerCase()) : true;
@@ -159,7 +159,7 @@ function (_React$Component) {
       var _this2 = this;
 
       return React.createElement("div", {
-        className: s('reset', 'apps'),
+        className: rx('apps'),
         ref: function ref(c) {
           return _this2.elContainer = c;
         }
@@ -167,7 +167,7 @@ function (_React$Component) {
         name: "apps",
         onClick: this.onToggle
       }), this.state.show && React.createElement("div", {
-        className: s('reset', 'contents'),
+        className: rx('contents'),
         ref: function ref(c) {
           return _this2.elApps = c;
         }
@@ -175,7 +175,7 @@ function (_React$Component) {
         width: "416px",
         height: "301px"
       }, React.createElement("div", {
-        className: s('reset')
+        className: rx()
       }, React.createElement(Search, {
         value: this.state.filter,
         onChange: this.onChange,

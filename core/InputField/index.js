@@ -8,7 +8,7 @@ import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
-import s from './styles';
+import cx, { rx } from './styles';
 import { Help } from '../helpers';
 var statusToIcon = {
   valid: 'check_circle',
@@ -24,7 +24,7 @@ function icon(i) {
     return React.createElement("div", null, React.createElement(Icon, {
       name: i,
       onClick: action,
-      className: s('icon', extra)
+      className: cx('icon', extra)
     }));
   }
 
@@ -105,7 +105,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _s, _s2, _s3;
+      var _rx, _rx2, _rx3;
 
       var legendWidth = this.shrink() ? {
         width: "".concat(this.state.labelWidth, "px")
@@ -113,22 +113,22 @@ function (_React$Component) {
         width: 0
       };
       return React.createElement("div", {
-        className: s('reset', 'base', {
+        className: rx('base', {
           focused: this.isFocused(),
           disabled: this.props.disabled
         })
       }, React.createElement("div", {
-        className: s('reset', 'field', (_s = {}, _defineProperty(_s, "size-".concat(this.props.size), true), _defineProperty(_s, "status-".concat(this.props.status), true), _defineProperty(_s, "kind-".concat(this.props.kind), true), _defineProperty(_s, "focused", this.isFocused()), _defineProperty(_s, "filled", this.state.text), _defineProperty(_s, "disabled", this.props.disabled), _s))
+        className: rx('field', (_rx = {}, _defineProperty(_rx, "size-".concat(this.props.size), true), _defineProperty(_rx, "status-".concat(this.props.status), true), _defineProperty(_rx, "kind-".concat(this.props.kind), true), _defineProperty(_rx, "focused", this.isFocused()), _defineProperty(_rx, "filled", this.state.text), _defineProperty(_rx, "disabled", this.props.disabled), _rx))
       }, React.createElement("label", {
         ref: this.labelRef,
-        className: s('reset', 'label', (_s2 = {}, _defineProperty(_s2, "".concat(this.props.status), true), _defineProperty(_s2, "".concat(this.props.size), true), _defineProperty(_s2, "".concat(this.props.kind), true), _defineProperty(_s2, 'has-icon', !!this.props.icon), _defineProperty(_s2, "required", this.props.required), _defineProperty(_s2, "disabled", this.props.disabled), _defineProperty(_s2, "focused", this.isFocused()), _defineProperty(_s2, "shrink", this.shrink()), _s2))
+        className: rx('label', (_rx2 = {}, _defineProperty(_rx2, "".concat(this.props.status), true), _defineProperty(_rx2, "".concat(this.props.size), true), _defineProperty(_rx2, "".concat(this.props.kind), true), _defineProperty(_rx2, 'has-icon', !!this.props.icon), _defineProperty(_rx2, "required", this.props.required), _defineProperty(_rx2, "disabled", this.props.disabled), _defineProperty(_rx2, "focused", this.isFocused()), _defineProperty(_rx2, "shrink", this.shrink()), _rx2))
       }, this.props.label), this.props.kind === 'outlined' && React.createElement("fieldset", {
-        className: s('reset', 'outline', (_s3 = {}, _defineProperty(_s3, "".concat(this.props.status), true), _defineProperty(_s3, "focused", this.isFocused()), _defineProperty(_s3, "idle", !this.isFocused()), _defineProperty(_s3, "filled", this.state.text), _s3))
+        className: rx('flatline', (_rx3 = {}, _defineProperty(_rx3, "".concat(this.props.status), true), _defineProperty(_rx3, "focused", this.isFocused()), _defineProperty(_rx3, "idle", !this.isFocused()), _defineProperty(_rx3, "filled", this.state.text), _rx3))
       }, React.createElement("legend", {
-        className: s('reset'),
+        className: rx(),
         style: legendWidth
       }, "\xA0")), icon(this.props.icon), React.createElement("input", {
-        className: s('reset', 'input', {
+        className: rx('input', {
           disabled: this.props.disabled
         }),
         type: this.props.type,

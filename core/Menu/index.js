@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import Card from '../Card';
 import MenuItem from './MenuItem';
 import Divider from '../helpers/Divider';
-import s from './styles';
+import { rx } from './styles';
 export function Menu(_ref) {
   var size = _ref.size,
       width = _ref.width,
       list = _ref.list,
       onClick = _ref.onClick;
   return React.createElement(Card, null, React.createElement("ul", {
-    className: s('reset', 'base', size)
+    className: rx('base', size)
   }, list.map(function (_ref2, i) {
     var label = _ref2.label,
         value = _ref2.value,

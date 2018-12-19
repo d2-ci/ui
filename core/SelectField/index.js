@@ -12,7 +12,7 @@ import Icon from '../Icon';
 import Menu from '../Menu';
 import { Help } from '../helpers';
 import { isPointInRect } from '../../utils';
-import s from './styles';
+import cx, { rx } from './styles';
 var statusToIcon = {
   valid: 'check_circle',
   warning: 'warning',
@@ -139,9 +139,9 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var _this3 = this,
-          _s2,
-          _s3,
-          _s4;
+          _rx2,
+          _rx3,
+          _rx4;
 
       var legendWidth = this.shrink() ? {
         width: "".concat(this.state.labelWidth, "px")
@@ -161,7 +161,7 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elContainer = c;
         },
-        className: s('reset', 'base', _defineProperty({
+        className: rx('base', _defineProperty({
           selected: !!this.props.value,
           disabled: this.props.disabled
         }, "size-".concat(this.props.size), true))
@@ -169,46 +169,46 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elSelect = c;
         },
-        className: s('reset', 'select', (_s2 = {}, _defineProperty(_s2, "kind-".concat(this.props.kind), true), _defineProperty(_s2, "status-".concat(this.props.status), true), _defineProperty(_s2, "disabled", this.props.disabled), _s2)),
+        className: rx('select', (_rx2 = {}, _defineProperty(_rx2, "kind-".concat(this.props.kind), true), _defineProperty(_rx2, "status-".concat(this.props.status), true), _defineProperty(_rx2, "disabled", this.props.disabled), _rx2)),
         onClick: this.onToggle
       }, React.createElement("label", {
         ref: this.labelRef,
-        className: s('reset', 'label', (_s3 = {}, _defineProperty(_s3, "".concat(this.props.status), true), _defineProperty(_s3, "".concat(this.props.size), true), _defineProperty(_s3, "".concat(this.props.kind), true), _defineProperty(_s3, 'has-icon', !!this.props.icon), _defineProperty(_s3, "required", this.props.required), _defineProperty(_s3, "disabled", this.props.disabled), _defineProperty(_s3, "focused", this.isFocused()), _defineProperty(_s3, "shrink", !!selected), _s3))
+        className: rx('label', (_rx3 = {}, _defineProperty(_rx3, "".concat(this.props.status), true), _defineProperty(_rx3, "".concat(this.props.size), true), _defineProperty(_rx3, "".concat(this.props.kind), true), _defineProperty(_rx3, 'has-icon', !!this.props.icon), _defineProperty(_rx3, "required", this.props.required), _defineProperty(_rx3, "disabled", this.props.disabled), _defineProperty(_rx3, "focused", this.isFocused()), _defineProperty(_rx3, "shrink", !!selected), _rx3))
       }, this.props.label), this.props.kind === 'outlined' && React.createElement("fieldset", {
-        className: s('reset', 'outline', (_s4 = {}, _defineProperty(_s4, "".concat(this.props.status), true), _defineProperty(_s4, "focused", this.isFocused()), _defineProperty(_s4, "idle", !this.isFocused()), _defineProperty(_s4, "filled", this.state.text), _s4))
+        className: rx('flatline', (_rx4 = {}, _defineProperty(_rx4, "".concat(this.props.status), true), _defineProperty(_rx4, "focused", this.isFocused()), _defineProperty(_rx4, "idle", !this.isFocused()), _defineProperty(_rx4, "filled", this.state.text), _rx4))
       }, React.createElement("legend", {
-        className: s('reset'),
+        className: cx('legend'),
         style: legendWidth
       }, "\xA0")), this.props.icon && React.createElement("div", {
-        className: s('reset', 'lead-icon-field')
+        className: cx('lead-icon-field')
       }, React.createElement(Icon, {
         name: this.props.icon,
-        className: s('icon')
+        className: cx('icon')
       })), React.createElement("div", {
-        className: s('reset', 'input-field', {
+        className: rx('input-field', {
           disabled: this.props.disabled
         })
       }, React.createElement("div", {
-        className: s('reset', 'value')
+        className: rx('value')
       }, selected)), React.createElement("div", {
-        className: s('reset', 'trail-icon-field')
+        className: rx('trail-icon-field')
       }, this.props.status !== 'default' && React.createElement(Icon, {
         name: statusToIcon[this.props.status],
-        className: s('icon', _defineProperty({}, "icon-".concat(this.props.status), true))
+        className: cx('icon', _defineProperty({}, "icon-".concat(this.props.status), true))
       })), React.createElement("div", {
-        className: s('reset', 'trail-icon-field', {
+        className: rx('trail-icon-field', {
           disabled: this.props.disabled
         })
       }, React.createElement(Icon, {
         name: open ? 'arrow_drop_up' : 'arrow_drop_down',
-        className: s('icon', {
+        className: cx('icon', {
           disabled: this.props.disabled
         })
       }))), this.props.help && React.createElement(Help, {
         text: this.props.help,
         status: this.props.status
       }), open && React.createElement("div", {
-        className: s('reset', 'menu'),
+        className: rx('menu'),
         ref: function ref(c) {
           return _this3.elMenu = c;
         }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon';
-import s from './styles';
+import cx, { rx } from './styles';
 
 function Button(_ref) {
   var type = _ref.type,
@@ -15,12 +15,12 @@ function Button(_ref) {
   return React.createElement("button", {
     disabled: disabled,
     onClick: onClick,
-    className: s('reset', 'base', "kind-".concat(kind), "size-".concat(size), {
+    className: rx('base', "kind-".concat(kind), "size-".concat(size), {
       'icon-only': icon && !label && !children,
       icon: icon
     })
   }, icon && React.createElement(Icon, {
-    className: s('button-icon'),
+    className: cx('button-icon'),
     name: icon
   }), label || children);
 }

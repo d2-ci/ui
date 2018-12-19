@@ -4,7 +4,7 @@ import { LogoIconWhite } from '../../core/Logo';
 import NotificationIcon from './NotificationIcon';
 import Apps from './Apps';
 import Profile from './Profile';
-import s from './styles';
+import { rx } from './styles';
 
 function getTitle(instanceName) {
   var appName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -25,18 +25,18 @@ function HeaderBar(_ref) {
       messages = _ref.messages,
       interpretations = _ref.interpretations;
   return React.createElement("header", {
-    className: s('reset', 'base', 'blue')
+    className: rx('base', 'blue')
   }, React.createElement("div", {
-    className: s('reset', 'first')
+    className: rx('first')
   }, React.createElement("div", {
-    className: s('reset', 'logo')
+    className: rx('logo')
   }, React.createElement("a", {
     href: "".concat(baseURL),
-    className: s('reset')
+    className: rx()
   }, React.createElement(LogoIconWhite, null))), React.createElement("div", {
-    className: s('reset', 'title')
+    className: rx('title')
   }, getTitle(instanceName, appName))), React.createElement("div", {
-    className: s('reset', 'last')
+    className: rx('last')
   }, React.createElement(NotificationIcon, {
     icon: "message",
     count: interpretations.count,
