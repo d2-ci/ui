@@ -1,5 +1,6 @@
 import _objectSpread from "@babel/runtime-corejs2/helpers/esm/objectSpread";
 import classNames from '../../utils/css';
+import '../../defaults/colors.css';
 import '../../defaults/common.css';
 import common from '../../defaults/common.json';
 import styles from './styles.json';
