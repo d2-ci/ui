@@ -201,7 +201,7 @@ function (_React$Component) {
         })
       }, React.createElement(Icon, {
         name: open ? 'arrow_drop_up' : 'arrow_drop_down',
-        className: cx('icon', {
+        className: cx('arrow-icon', {
           disabled: this.props.disabled
         })
       }))), this.props.help && React.createElement(Help, {

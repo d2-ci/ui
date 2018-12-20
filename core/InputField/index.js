@@ -31,11 +31,11 @@ function icon(i) {
   return null;
 }
 
-function trailIcon(status, trail) {
+function trailIcon(status, trail, fn) {
   if (status !== 'default') {
-    return icon(statusToIcon[status], null, "icon-".concat(status));
+    return icon(statusToIcon[status], fn, "icon-".concat(status));
   } else {
-    return icon(trail);
+    return icon(trail, fn);
   }
 }
 
@@ -53,7 +53,6 @@ function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       focused: false,
-      text: _this.props.value,
       labelWidth: 0
     });
 
@@ -75,13 +74,10 @@ function (_React$Component) {
       }
 
       _this.props.onChange(_this.props.name, evt.target.value);
-
-      _this.setState({
-        text: evt.target.value
-      });
     });
 
     _this.labelRef = React.createRef();
+    _this.inputRef = React.createRef();
     return _this;
   }
 
@@ -89,8 +85,13 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.setState({
-        labelWidth: this.labelRef.current.offsetWidth
+        labelWidth: this.labelRef.current.offsetWidth,
+        focused: this.props.focus
       });
+
+      if (this.props.focus) {
+        this.inputRef.current.focus();
+      }
     }
   }, {
     key: "isFocused",
@@ -100,7 +101,7 @@ function (_React$Component) {
   }, {
     key: "shrink",
     value: function shrink() {
-      return !!(this.isFocused() || this.state.text || this.props.placeholder);
+      return !!(this.isFocused() || this.props.value || this.props.placeholder);
     }
   }, {
     key: "render",
@@ -118,12 +119,12 @@ function (_React$Component) {
           disabled: this.props.disabled
         })
       }, React.createElement("div", {
-        className: rx('field', (_rx = {}, _defineProperty(_rx, "size-".concat(this.props.size), true), _defineProperty(_rx, "status-".concat(this.props.status), true), _defineProperty(_rx, "kind-".concat(this.props.kind), true), _defineProperty(_rx, "focused", this.isFocused()), _defineProperty(_rx, "filled", this.state.text), _defineProperty(_rx, "disabled", this.props.disabled), _rx))
+        className: rx('field', (_rx = {}, _defineProperty(_rx, "size-".concat(this.props.size), true), _defineProperty(_rx, "status-".concat(this.props.status), true), _defineProperty(_rx, "kind-".concat(this.props.kind), true), _defineProperty(_rx, "focused", this.isFocused()), _defineProperty(_rx, "filled", this.props.value), _defineProperty(_rx, "disabled", this.props.disabled), _rx))
       }, React.createElement("label", {
         ref: this.labelRef,
         className: rx('label', (_rx2 = {}, _defineProperty(_rx2, "".concat(this.props.status), true), _defineProperty(_rx2, "".concat(this.props.size), true), _defineProperty(_rx2, "".concat(this.props.kind), true), _defineProperty(_rx2, 'has-icon', !!this.props.icon), _defineProperty(_rx2, "required", this.props.required), _defineProperty(_rx2, "disabled", this.props.disabled), _defineProperty(_rx2, "focused", this.isFocused()), _defineProperty(_rx2, "shrink", this.shrink()), _rx2))
       }, this.props.label), this.props.kind === 'outlined' && React.createElement("fieldset", {
-        className: rx('flatline', (_rx3 = {}, _defineProperty(_rx3, "".concat(this.props.status), true), _defineProperty(_rx3, "focused", this.isFocused()), _defineProperty(_rx3, "idle", !this.isFocused()), _defineProperty(_rx3, "filled", this.state.text), _rx3))
+        className: rx('flatline', (_rx3 = {}, _defineProperty(_rx3, "".concat(this.props.status), true), _defineProperty(_rx3, "focused", this.isFocused()), _defineProperty(_rx3, "idle", !this.isFocused()), _defineProperty(_rx3, "filled", this.props.value), _rx3))
       }, React.createElement("legend", {
         className: rx(),
         style: legendWidth
@@ -131,14 +132,15 @@ function (_React$Component) {
         className: rx('input', {
           disabled: this.props.disabled
         }),
+        ref: this.inputRef,
         type: this.props.type,
         placeholder: this.props.placeholder,
         disabled: this.props.disabled,
-        value: this.state.text,
+        value: this.props.value,
         onFocus: this.onFocus,
         onBlur: this.onBlur,
         onChange: this.onChange
-      }), trailIcon(this.props.status, this.props.trailIcon)), this.props.help && React.createElement(Help, {
+      }), trailIcon(this.props.status, this.props.trailIcon, this.props.onTrailIconClick)), this.props.help && React.createElement(Help, {
         text: this.props.help,
         status: this.props.status
       }));
@@ -153,9 +155,13 @@ InputField.defaultProps = {
   label: '',
   status: 'default',
   size: 'default',
-  kind: 'filled'
+  kind: 'filled',
+  focus: false,
+  type: 'text',
+  onTrailIconClick: null
 };
 InputField.propTypes = {
+  focus: PropTypes.string.bool,
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -163,6 +169,7 @@ InputField.propTypes = {
   onChange: PropTypes.func.isRequired,
   icon: PropTypes.string,
   trailIcon: PropTypes.string,
+  onTrailIconClick: PropTypes.func,
   help: PropTypes.string,
   disabled: PropTypes.bool,
   required: PropTypes.bool,

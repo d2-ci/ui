@@ -213,9 +213,7 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this2.elContents = c;
         }
-      }, React.createElement(Card, {
-        height: "298px"
-      }, React.createElement("div", {
+      }, React.createElement(Card, null, React.createElement("div", {
         className: rx('profile-alignment')
       }, React.createElement(Header, {
         baseURL: this.props.baseURL,
