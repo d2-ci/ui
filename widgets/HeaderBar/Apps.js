@@ -14,17 +14,22 @@ import { gotoURL, isPointInRect } from '../../utils';
 import cx, { rx } from './styles';
 
 function Search(_ref) {
-  var onChange = _ref.onChange,
-      onSettingsClick = _ref.onSettingsClick;
+  var value = _ref.value,
+      onChange = _ref.onChange,
+      onSettingsClick = _ref.onSettingsClick,
+      onIconClick = _ref.onIconClick;
   return React.createElement("div", {
     className: rx('search')
   }, React.createElement(InputField, {
+    value: value,
     name: "filter",
     kind: "filled",
     size: "dense",
     focus: true,
     label: "Search apps",
-    onChange: onChange
+    onChange: onChange,
+    trailIcon: "cancel",
+    onTrailIconClick: onIconClick
   }), React.createElement(Icon, {
     name: "settings",
     className: cx('settings'),
@@ -32,10 +37,14 @@ function Search(_ref) {
   }));
 }
 
+Search.defaultProps = {
+  onIconClick: null
+};
 Search.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  onSettingsClick: PropTypes.func.isRequired
+  onSettingsClick: PropTypes.func.isRequired,
+  onIconClick: PropTypes.func
 };
 
 function Item(_ref2) {
@@ -139,6 +148,12 @@ function (_React$Component) {
       return gotoURL("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onIconClick", function () {
+      return _this.setState({
+        filter: ''
+      });
+    });
+
     return _this;
   }
 
@@ -171,8 +186,10 @@ function (_React$Component) {
           return _this2.elApps = c;
         }
       }, React.createElement(Card, null, React.createElement(Search, {
+        value: this.state.filter,
         onChange: this.onChange,
-        onSettingsClick: this.onSettingsClick
+        onSettingsClick: this.onSettingsClick,
+        onIconClick: this.onIconClick
       }), React.createElement(List, {
         apps: this.props.apps,
         filter: this.state.filter
