@@ -43,7 +43,7 @@ function (_React$Component) {
           status = _this$props.status;
       var icon = React.createElement(Icon, {
         name: this.props.checked ? 'radio_button_checked' : 'radio_button_unchecked',
-        className: cx("".concat(status, "-icon"), {
+        className: cx('icon', "".concat(status, "-icon"), {
           disabled: this.props.disabled,
           checked: this.props.checked
         })

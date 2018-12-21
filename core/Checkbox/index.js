@@ -61,7 +61,7 @@ function (_React$Component) {
 
       var icon = React.createElement(Icon, {
         name: name,
-        className: cx("".concat(status, "-icon"), {
+        className: cx('icon', "".concat(status, "-icon"), {
           disabled: this.props.disabled,
           checked: this.props.checked
         })
