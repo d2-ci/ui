@@ -77,13 +77,13 @@ Radio.defaultProps = {
   disabled: false
 };
 Radio.propTypes = {
+  onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   label: PropTypes.string,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
-  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error']),
-  onChange: PropTypes.func.isRequired
+  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
 export { Radio };
 export default Radio;

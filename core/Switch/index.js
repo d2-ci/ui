@@ -47,13 +47,13 @@ function (_React$Component) {
       return React.createElement("label", {
         className: rx(status, {
           disabled: disabled
-        }),
-        onChange: this.onChange
+        })
       }, React.createElement("input", {
         type: "checkbox",
         className: cx('input'),
+        disabled: disabled,
         checked: this.props.checked,
-        disabled: disabled
+        onChange: this.onChange
       }), React.createElement("span", {
         className: rx('label', _defineProperty({}, "status-".concat(status), true))
       }, this.props.label), this.props.required && React.createElement("span", {
@@ -72,12 +72,12 @@ Switch.defaultProps = {
   status: 'default'
 };
 Switch.propTypes = {
+  onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   checked: PropTypes.bool,
   label: PropTypes.string,
   disabled: PropTypes.bool,
-  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error']),
-  onChange: PropTypes.func.isRequired
+  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error'])
 };
 export { Switch };
 export default Switch;

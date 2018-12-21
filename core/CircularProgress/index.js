@@ -33,6 +33,7 @@ function CircularProgress(_ref) {
 }
 
 CircularProgress.defaultProps = {
+  overlay: false,
   size: 'medium'
 };
 CircularProgress.propTypes = {

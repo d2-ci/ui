@@ -52,7 +52,7 @@ Menu.propTypes = {
     icon: PropTypes.string,
     active: PropTypes.bool,
     disabled: PropTypes.bool
-  })),
+  })).isRequired,
   onClick: PropTypes.func.isRequired,
   size: PropTypes.oneOf(['default', 'dense'])
 };
