@@ -21,7 +21,9 @@ function icon(i) {
   var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
   if (i) {
-    return React.createElement("div", null, React.createElement(Icon, {
+    return React.createElement("div", {
+      className: rx()
+    }, React.createElement(Icon, {
       name: i,
       onClick: action,
       className: cx('icon', extra)
