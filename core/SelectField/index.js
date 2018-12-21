@@ -146,7 +146,7 @@ function (_React$Component) {
       var legendWidth = this.shrink() ? {
         width: "".concat(this.state.labelWidth, "px")
       } : {
-        width: 0
+        width: '0.01px'
       };
       var open = this.state.open;
       var width = 'inherit';
@@ -179,7 +179,7 @@ function (_React$Component) {
       }, React.createElement("legend", {
         className: cx('legend'),
         style: legendWidth
-      }, "\xA0")), this.props.icon && React.createElement("div", {
+      }, React.createElement("span", null, "\u200B"))), this.props.icon && React.createElement("div", {
         className: cx('lead-icon-field')
       }, React.createElement(Icon, {
         name: this.props.icon,

@@ -111,7 +111,7 @@ function (_React$Component) {
       var legendWidth = this.shrink() ? {
         width: "".concat(this.state.labelWidth, "px")
       } : {
-        width: 0
+        width: '0.01px'
       };
       return React.createElement("div", {
         className: rx('base', {
@@ -126,9 +126,9 @@ function (_React$Component) {
       }, this.props.label), this.props.kind === 'outlined' && React.createElement("fieldset", {
         className: rx('flatline', (_rx3 = {}, _defineProperty(_rx3, "".concat(this.props.status), true), _defineProperty(_rx3, "focused", this.isFocused()), _defineProperty(_rx3, "idle", !this.isFocused()), _defineProperty(_rx3, "filled", this.props.value), _rx3))
       }, React.createElement("legend", {
-        className: rx(),
+        className: rx('legend'),
         style: legendWidth
-      }, "\xA0")), icon(this.props.icon), React.createElement("input", {
+      }, React.createElement("span", null, "\u200B"))), icon(this.props.icon), React.createElement("input", {
         className: rx('input', {
           disabled: this.props.disabled
         }),

@@ -76,7 +76,7 @@ function List(_ref3) {
     className: rx('modules')
   }, apps.filter(function (_ref4) {
     var name = _ref4.name;
-    return filter.length > 0 ? name.toLowerCase().includes(filter.toLowerCase()) : true;
+    return filter.length > 0 ? name.toLowerCase().match(filter.toLowerCase()) : true;
   }).map(function (_ref5, idx) {
     var name = _ref5.name,
         path = _ref5.path,
