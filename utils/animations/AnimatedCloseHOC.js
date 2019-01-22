@@ -46,64 +46,65 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  *    callback from the HOC
  */
 function withAnimatedClose(WrappedComponent) {
-  return (
-    /*#__PURE__*/
-    function (_React$Component) {
-      _inherits(AnimatedClose, _React$Component);
+  var _temp;
 
-      function AnimatedClose() {
-        var _getPrototypeOf2;
+  return _temp =
+  /*#__PURE__*/
+  function (_React$Component) {
+    _inherits(AnimatedClose, _React$Component);
 
-        var _this;
+    function AnimatedClose() {
+      var _getPrototypeOf2;
 
-        _classCallCheck(this, AnimatedClose);
+      var _this;
 
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
-        }
+      _classCallCheck(this, AnimatedClose);
 
-        _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AnimatedClose)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-        _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-          isAnimatingOut: false
-        });
-
-        _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAnimationStart", function () {
-          return _this.setState({
-            isAnimatingOut: true
-          });
-        });
-
-        _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAnimationEnd", function () {
-          return _this.setState({
-            isAnimatingOut: false
-          });
-        });
-
-        return _this;
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
       }
 
-      _createClass(AnimatedClose, [{
-        key: "shouldComponentUpdate",
-        value: function shouldComponentUpdate(nextProps) {
-          if (!nextProps.open && this.props.open && !this.state.isAnimatingOut) {
-            this.onAnimationStart();
-            return false;
-          }
+      _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(AnimatedClose)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-          return true;
-        }
-      }, {
-        key: "render",
-        value: function render() {
-          return _react.default.createElement(WrappedComponent, _extends({}, this.props, {
-            isAnimatingOut: this.state.isAnimatingOut,
-            onAnimationEnd: this.onAnimationEnd
-          }));
-        }
-      }]);
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+        isAnimatingOut: false
+      });
 
-      return AnimatedClose;
-    }(_react.default.Component)
-  );
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAnimationStart", function () {
+        return _this.setState({
+          isAnimatingOut: true
+        });
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onAnimationEnd", function () {
+        return _this.setState({
+          isAnimatingOut: false
+        });
+      });
+
+      return _this;
+    }
+
+    _createClass(AnimatedClose, [{
+      key: "shouldComponentUpdate",
+      value: function shouldComponentUpdate(nextProps) {
+        if (!nextProps.open && this.props.open && !this.state.isAnimatingOut) {
+          this.onAnimationStart();
+          return false;
+        }
+
+        return true;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        return _react.default.createElement(WrappedComponent, _extends({}, this.props, {
+          isAnimatingOut: this.state.isAnimatingOut,
+          onAnimationEnd: this.onAnimationEnd
+        }));
+      }
+    }]);
+
+    return AnimatedClose;
+  }(_react.default.Component), _temp;
 }

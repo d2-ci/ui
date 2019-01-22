@@ -9,8 +9,6 @@ exports.get = get;
 exports.post = post;
 exports.apiEndpoint = exports.serverURL = void 0;
 
-require("isomorphic-fetch");
-
 /* global DHIS_CONFIG, manifest */
 var IS_PROD = process.env.NODE_ENV === 'production';
 var url;
