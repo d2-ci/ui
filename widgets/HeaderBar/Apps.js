@@ -1,26 +1,56 @@
-import _classCallCheck from "@babel/runtime-corejs2/helpers/esm/classCallCheck";
-import _createClass from "@babel/runtime-corejs2/helpers/esm/createClass";
-import _possibleConstructorReturn from "@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn";
-import _getPrototypeOf from "@babel/runtime-corejs2/helpers/esm/getPrototypeOf";
-import _inherits from "@babel/runtime-corejs2/helpers/esm/inherits";
-import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThisInitialized";
-import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
-import React from 'react';
-import PropTypes from 'prop-types';
-import Card from '../../core/Card';
-import Icon from '../../core/Icon';
-import InputField from '../../core/InputField';
-import { gotoURL, isPointInRect } from '../../utils';
-import cx, { rx } from './styles';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Card = _interopRequireDefault(require("../../core/Card"));
+
+var _Icon = _interopRequireDefault(require("../../core/Icon"));
+
+var _InputField = _interopRequireDefault(require("../../core/InputField"));
+
+var _utils = require("../../utils");
+
+var _styles = _interopRequireWildcard(require("./styles"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function Search(_ref) {
   var value = _ref.value,
       onChange = _ref.onChange,
       onSettingsClick = _ref.onSettingsClick,
       onIconClick = _ref.onIconClick;
-  return React.createElement("div", {
-    className: rx('search')
-  }, React.createElement(InputField, {
+  return _react.default.createElement("div", {
+    className: (0, _styles.rx)('search')
+  }, _react.default.createElement(_InputField.default, {
     value: value,
     name: "filter",
     kind: "filled",
@@ -30,9 +60,9 @@ function Search(_ref) {
     onChange: onChange,
     trailIcon: "cancel",
     onTrailIconClick: onIconClick
-  }), React.createElement(Icon, {
+  }), _react.default.createElement(_Icon.default, {
     name: "settings",
-    className: cx('settings'),
+    className: (0, _styles.default)('settings'),
     onClick: onSettingsClick
   }));
 }
@@ -41,39 +71,39 @@ Search.defaultProps = {
   onIconClick: null
 };
 Search.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onSettingsClick: PropTypes.func.isRequired,
-  onIconClick: PropTypes.func
+  value: _propTypes.default.string.isRequired,
+  onChange: _propTypes.default.func.isRequired,
+  onSettingsClick: _propTypes.default.func.isRequired,
+  onIconClick: _propTypes.default.func
 };
 
 function Item(_ref2) {
   var name = _ref2.name,
       path = _ref2.path,
       img = _ref2.img;
-  return React.createElement("a", {
+  return _react.default.createElement("a", {
     href: path,
-    className: rx('app')
-  }, React.createElement("img", {
+    className: (0, _styles.rx)('app')
+  }, _react.default.createElement("img", {
     src: img,
     alt: "app logo",
-    className: rx()
-  }), React.createElement("div", {
-    className: rx('name')
+    className: (0, _styles.rx)()
+  }), _react.default.createElement("div", {
+    className: (0, _styles.rx)('name')
   }, name));
 }
 
 Item.propTypes = {
-  name: PropTypes.string,
-  path: PropTypes.string,
-  img: PropTypes.string
+  name: _propTypes.default.string,
+  path: _propTypes.default.string,
+  img: _propTypes.default.string
 };
 
 function List(_ref3) {
   var apps = _ref3.apps,
       filter = _ref3.filter;
-  return React.createElement("div", {
-    className: rx('modules')
+  return _react.default.createElement("div", {
+    className: (0, _styles.rx)('modules')
   }, apps.filter(function (_ref4) {
     var name = _ref4.name;
     return filter.length > 0 ? name.toLowerCase().match(filter.toLowerCase()) : true;
@@ -81,7 +111,7 @@ function List(_ref3) {
     var name = _ref5.name,
         path = _ref5.path,
         img = _ref5.img;
-    return React.createElement(Item, {
+    return _react.default.createElement(Item, {
       key: "app-".concat(name, "-").concat(idx),
       name: name,
       path: path,
@@ -124,7 +154,7 @@ function (_React$Component) {
 
         var container = _this.elContainer.getBoundingClientRect();
 
-        if (!isPointInRect(target, apps) && !isPointInRect(target, container)) {
+        if (!(0, _utils.isPointInRect)(target, apps) && !(0, _utils.isPointInRect)(target, container)) {
           _this.setState({
             show: false
           });
@@ -145,7 +175,7 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSettingsClick", function () {
-      return gotoURL("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
+      return (0, _utils.gotoURL)("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onIconClick", function () {
@@ -172,25 +202,25 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      return React.createElement("div", {
-        className: rx('apps'),
+      return _react.default.createElement("div", {
+        className: (0, _styles.rx)('apps'),
         ref: function ref(c) {
           return _this2.elContainer = c;
         }
-      }, React.createElement(Icon, {
+      }, _react.default.createElement(_Icon.default, {
         name: "apps",
         onClick: this.onToggle
-      }), this.state.show && React.createElement("div", {
-        className: rx('contents'),
+      }), this.state.show && _react.default.createElement("div", {
+        className: (0, _styles.rx)('contents'),
         ref: function ref(c) {
           return _this2.elApps = c;
         }
-      }, React.createElement(Card, null, React.createElement(Search, {
+      }, _react.default.createElement(_Card.default, null, _react.default.createElement(Search, {
         value: this.state.filter,
         onChange: this.onChange,
         onSettingsClick: this.onSettingsClick,
         onIconClick: this.onIconClick
-      }), React.createElement(List, {
+      }), _react.default.createElement(List, {
         apps: this.props.apps,
         filter: this.state.filter
       }))));
@@ -198,9 +228,9 @@ function (_React$Component) {
   }]);
 
   return Apps;
-}(React.Component);
+}(_react.default.Component);
 
-export { Apps as default };
+exports.default = Apps;
 Apps.propTypes = {
-  baseURL: PropTypes.string.isRequired
+  baseURL: _propTypes.default.string.isRequired
 };

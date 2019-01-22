@@ -1,8 +1,16 @@
-import _Object$assign from "@babel/runtime-corejs2/core-js/object/assign";
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getPath = getPath;
+exports.getAction = getAction;
+exports.get = get;
+exports.post = post;
+exports.apiEndpoint = exports.serverURL = void 0;
 
 /* global DHIS_CONFIG, manifest */
 var IS_PROD = process.env.NODE_ENV === 'production';
-import 'whatwg-fetch';
 var url;
 var endpoint;
 
@@ -21,9 +29,12 @@ if (IS_PROD) {
   endpoint = "".concat(url, "/api");
 }
 
-export var serverURL = url;
-export var apiEndpoint = endpoint;
-export function getPath() {
+var serverURL = url;
+exports.serverURL = serverURL;
+var apiEndpoint = endpoint;
+exports.apiEndpoint = apiEndpoint;
+
+function getPath() {
   var path = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   return !path ? apiEndpoint : "".concat(apiEndpoint, "/").concat(path);
 }
@@ -35,17 +46,19 @@ function _config() {
   };
 }
 
-export function getAction(path) {
+function getAction(path) {
   var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _config();
   return fetch("".concat(serverURL, "/").concat(path), config);
 }
-export function get(path) {
+
+function get(path) {
   var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _config();
   return fetch(getPath(path), config);
 }
-export function post(path, body) {
+
+function post(path, body) {
   var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _config();
-  return fetch(getPath(path), _Object$assign({}, config, {
+  return fetch(getPath(path), Object.assign({}, config, {
     body: body,
     method: 'POST'
   }));

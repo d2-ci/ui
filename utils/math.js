@@ -1,10 +1,17 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isPointInRect = isPointInRect;
+
 /**
  * Check if object { x, y } passed in first param exists within
  * second param { left, right, top, bottom }
  *
  * @returns {boolean}
  */
-export function isPointInRect(_ref, _ref2) {
+function isPointInRect(_ref, _ref2) {
   var x = _ref.x,
       y = _ref.y;
   var left = _ref2.left,

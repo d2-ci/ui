@@ -1,15 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { rx } from './styles';
-import 'material-design-icons-iconfont/dist/material-design-icons.css';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Icon = Icon;
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _styles = require("./styles");
+
+require("material-design-icons-iconfont/dist/material-design-icons.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Icon(_ref) {
   var name = _ref.name,
       className = _ref.className,
       onClick = _ref.onClick;
-  return React.createElement("i", {
+  return _react.default.createElement("i", {
     onClick: onClick,
-    className: rx('base', className)
+    className: (0, _styles.rx)('base', className)
   }, name);
 }
 
@@ -19,9 +32,9 @@ Icon.defaultProps = {
   onClick: undefined
 };
 Icon.propTypes = {
-  name: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  onClick: PropTypes.func
+  name: _propTypes.default.string.isRequired,
+  className: _propTypes.default.string,
+  onClick: _propTypes.default.func
 };
-export { Icon };
-export default Icon;
+var _default = Icon;
+exports.default = _default;

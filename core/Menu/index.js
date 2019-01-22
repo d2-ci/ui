@@ -1,16 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Card from '../Card';
-import MenuItem from './MenuItem';
-import Divider from '../helpers/Divider';
-import { rx } from './styles';
-export function Menu(_ref) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Menu = Menu;
+Object.defineProperty(exports, "MenuItem", {
+  enumerable: true,
+  get: function get() {
+    return _MenuItem.default;
+  }
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Card = _interopRequireDefault(require("../Card"));
+
+var _MenuItem = _interopRequireDefault(require("./MenuItem"));
+
+var _Divider = _interopRequireDefault(require("../helpers/Divider"));
+
+var _styles = require("./styles");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Menu(_ref) {
   var size = _ref.size,
       width = _ref.width,
       list = _ref.list,
       onClick = _ref.onClick;
-  return React.createElement(Card, null, React.createElement("ul", {
-    className: rx('base', size)
+  return _react.default.createElement(_Card.default, null, _react.default.createElement("ul", {
+    className: (0, _styles.rx)('base', size)
   }, list.map(function (_ref2, i) {
     var label = _ref2.label,
         value = _ref2.value,
@@ -21,12 +43,12 @@ export function Menu(_ref) {
         disabled = _ref2.disabled;
 
     if (type === 'divider') {
-      return React.createElement(Divider, {
+      return _react.default.createElement(_Divider.default, {
         key: "mid-".concat(i)
       });
     }
 
-    return React.createElement(MenuItem, {
+    return _react.default.createElement(_MenuItem.default, {
       key: "mi-".concat(value),
       label: label,
       value: value,
@@ -40,21 +62,22 @@ export function Menu(_ref) {
     });
   })));
 }
+
 Menu.defaultProps = {
   size: 'default'
 };
 Menu.propTypes = {
-  list: PropTypes.arrayOf(PropTypes.shape({
-    type: PropTypes.oneOf(['divider']),
-    label: PropTypes.string,
-    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    list: PropTypes.array,
-    icon: PropTypes.string,
-    active: PropTypes.bool,
-    disabled: PropTypes.bool
+  list: _propTypes.default.arrayOf(_propTypes.default.shape({
+    type: _propTypes.default.oneOf(['divider']),
+    label: _propTypes.default.string,
+    value: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
+    list: _propTypes.default.array,
+    icon: _propTypes.default.string,
+    active: _propTypes.default.bool,
+    disabled: _propTypes.default.bool
   })).isRequired,
-  onClick: PropTypes.func.isRequired,
-  size: PropTypes.oneOf(['default', 'dense'])
+  onClick: _propTypes.default.func.isRequired,
+  size: _propTypes.default.oneOf(['default', 'dense'])
 };
-export { MenuItem };
-export default Menu;
+var _default = Menu;
+exports.default = _default;

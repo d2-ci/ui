@@ -1,25 +1,54 @@
-import _JSON$stringify from "@babel/runtime-corejs2/core-js/json/stringify";
-import _slicedToArray from "@babel/runtime-corejs2/helpers/esm/slicedToArray";
-import _Date$now from "@babel/runtime-corejs2/core-js/date/now";
-import _Promise from "@babel/runtime-corejs2/core-js/promise";
-import _classCallCheck from "@babel/runtime-corejs2/helpers/esm/classCallCheck";
-import _createClass from "@babel/runtime-corejs2/helpers/esm/createClass";
-import _possibleConstructorReturn from "@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn";
-import _getPrototypeOf from "@babel/runtime-corejs2/helpers/esm/getPrototypeOf";
-import _inherits from "@babel/runtime-corejs2/helpers/esm/inherits";
-import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThisInitialized";
-import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
-import React from 'react';
-import PropTypes from 'prop-types';
-import HeaderBar from './HeaderBar.Component';
-import { get, post, getAction, serverURL } from '../../utils';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.HeaderBarContainer = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _HeaderBar = _interopRequireDefault(require("./HeaderBar.Component"));
+
+var _utils = require("../../utils");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function appIconPath(path) {
   if (path.startsWith('http:') || path.startsWith('https:')) {
     return path;
   }
 
-  return "".concat(serverURL, "/api/").concat(path);
+  return "".concat(_utils.serverURL, "/api/").concat(path);
 }
 
 function appPath(path) {
@@ -27,7 +56,7 @@ function appPath(path) {
     return path;
   }
 
-  return "".concat(serverURL, "/api/").concat(path);
+  return "".concat(_utils.serverURL, "/api/").concat(path);
 }
 
 var HeaderBarContainer =
@@ -73,9 +102,9 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _Promise.all([get('system/info').then(function (r) {
+      Promise.all([(0, _utils.get)('system/info').then(function (r) {
         return r.json();
-      }), getAction("dhis-web-commons/menu/getModules.action?_=".concat(_Date$now())).then(function (r) {
+      }), (0, _utils.getAction)("dhis-web-commons/menu/getModules.action?_=".concat(Date.now())).then(function (r) {
         return r.text();
       }).then(function (r) {
         return JSON.parse(r);
@@ -83,9 +112,9 @@ function (_React$Component) {
         return r.modules.filter(function (m) {
           return typeof m.displayName !== 'undefined';
         });
-      }), get('me/dashboard').then(function (r) {
+      }), (0, _utils.get)('me/dashboard').then(function (r) {
         return r.json();
-      }), get('me.json').then(function (r) {
+      }), (0, _utils.get)('me.json').then(function (r) {
         return r.json();
       })]).then(function (_ref) {
         var _ref2 = _slicedToArray(_ref, 4),
@@ -94,7 +123,7 @@ function (_React$Component) {
             unread = _ref2[2],
             me = _ref2[3];
 
-        return post('i18n', _JSON$stringify(apps.map(function (a) {
+        return (0, _utils.post)('i18n', JSON.stringify(apps.map(function (a) {
           return a.name;
         }))).then(function (r) {
           return r.json();
@@ -135,8 +164,8 @@ function (_React$Component) {
           interpretations = _this$state.interpretations,
           apps = _this$state.apps,
           profile = _this$state.profile;
-      return React.createElement(HeaderBar, {
-        baseURL: serverURL,
+      return _react.default.createElement(_HeaderBar.default, {
+        baseURL: _utils.serverURL,
         type: type,
         instanceName: this.state.instanceName,
         appName: this.props.appName,
@@ -149,10 +178,11 @@ function (_React$Component) {
   }]);
 
   return HeaderBarContainer;
-}(React.Component);
+}(_react.default.Component);
 
+exports.HeaderBarContainer = HeaderBarContainer;
 HeaderBarContainer.propTypes = {
-  appName: PropTypes.string.isRequired
+  appName: _propTypes.default.string.isRequired
 };
-export { HeaderBarContainer };
-export default HeaderBarContainer;
+var _default = HeaderBarContainer;
+exports.default = _default;

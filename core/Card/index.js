@@ -1,12 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { rx } from './styles';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Card = Card;
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _styles = require("./styles");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Card(_ref) {
   var className = _ref.className,
       children = _ref.children;
-  return React.createElement("div", {
-    className: rx('base', className)
+  return _react.default.createElement("div", {
+    className: (0, _styles.rx)('base', className)
   }, children);
 }
 
@@ -14,8 +26,8 @@ Card.defaultProps = {
   className: ''
 };
 Card.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node
+  className: _propTypes.default.string,
+  children: _propTypes.default.node
 };
-export { Card };
-export default Card;
+var _default = Card;
+exports.default = _default;

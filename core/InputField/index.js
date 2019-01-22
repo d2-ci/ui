@@ -1,15 +1,44 @@
-import _classCallCheck from "@babel/runtime-corejs2/helpers/esm/classCallCheck";
-import _createClass from "@babel/runtime-corejs2/helpers/esm/createClass";
-import _possibleConstructorReturn from "@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn";
-import _getPrototypeOf from "@babel/runtime-corejs2/helpers/esm/getPrototypeOf";
-import _inherits from "@babel/runtime-corejs2/helpers/esm/inherits";
-import _assertThisInitialized from "@babel/runtime-corejs2/helpers/esm/assertThisInitialized";
-import _defineProperty from "@babel/runtime-corejs2/helpers/esm/defineProperty";
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import Icon from '../Icon';
-import cx, { rx } from './styles';
-import { Help } from '../helpers';
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.InputField = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _Icon = _interopRequireDefault(require("../Icon"));
+
+var _styles = _interopRequireWildcard(require("./styles"));
+
+var _helpers = require("../helpers");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var statusToIcon = {
   valid: 'check_circle',
   warning: 'warning',
@@ -21,12 +50,12 @@ function icon(i) {
   var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
   if (i) {
-    return React.createElement("div", {
-      className: rx()
-    }, React.createElement(Icon, {
+    return _react.default.createElement("div", {
+      className: (0, _styles.rx)()
+    }, _react.default.createElement(_Icon.default, {
       name: i,
       onClick: action,
-      className: cx('icon', extra)
+      className: (0, _styles.default)('icon', extra)
     }));
   }
 
@@ -40,6 +69,10 @@ function trailIcon(status, trail, fn) {
     return icon(trail, fn);
   }
 }
+
+var _ref =
+/*#__PURE__*/
+_react.default.createElement("span", null, "\u200B");
 
 var InputField =
 /*#__PURE__*/
@@ -78,8 +111,8 @@ function (_React$Component) {
       _this.props.onChange(_this.props.name, evt.target.value);
     });
 
-    _this.labelRef = React.createRef();
-    _this.inputRef = React.createRef();
+    _this.labelRef = _react.default.createRef();
+    _this.inputRef = _react.default.createRef();
     return _this;
   }
 
@@ -115,23 +148,23 @@ function (_React$Component) {
       } : {
         width: '0.01px'
       };
-      return React.createElement("div", {
-        className: rx('base', {
+      return _react.default.createElement("div", {
+        className: (0, _styles.rx)('base', {
           focused: this.isFocused(),
           disabled: this.props.disabled
         })
-      }, React.createElement("div", {
-        className: rx('field', (_rx = {}, _defineProperty(_rx, "size-".concat(this.props.size), true), _defineProperty(_rx, "status-".concat(this.props.status), true), _defineProperty(_rx, "kind-".concat(this.props.kind), true), _defineProperty(_rx, "focused", this.isFocused()), _defineProperty(_rx, "filled", this.props.value), _defineProperty(_rx, "disabled", this.props.disabled), _rx))
-      }, React.createElement("label", {
+      }, _react.default.createElement("div", {
+        className: (0, _styles.rx)('field', (_rx = {}, _defineProperty(_rx, "size-".concat(this.props.size), true), _defineProperty(_rx, "status-".concat(this.props.status), true), _defineProperty(_rx, "kind-".concat(this.props.kind), true), _defineProperty(_rx, "focused", this.isFocused()), _defineProperty(_rx, "filled", this.props.value), _defineProperty(_rx, "disabled", this.props.disabled), _rx))
+      }, _react.default.createElement("label", {
         ref: this.labelRef,
-        className: rx('label', (_rx2 = {}, _defineProperty(_rx2, "".concat(this.props.status), true), _defineProperty(_rx2, "".concat(this.props.size), true), _defineProperty(_rx2, "".concat(this.props.kind), true), _defineProperty(_rx2, 'has-icon', !!this.props.icon), _defineProperty(_rx2, "required", this.props.required), _defineProperty(_rx2, "disabled", this.props.disabled), _defineProperty(_rx2, "focused", this.isFocused()), _defineProperty(_rx2, "shrink", this.shrink()), _rx2))
-      }, this.props.label), this.props.kind === 'outlined' && React.createElement("fieldset", {
-        className: rx('flatline', (_rx3 = {}, _defineProperty(_rx3, "".concat(this.props.status), true), _defineProperty(_rx3, "focused", this.isFocused()), _defineProperty(_rx3, "idle", !this.isFocused()), _defineProperty(_rx3, "filled", this.props.value), _rx3))
-      }, React.createElement("legend", {
-        className: rx('legend'),
+        className: (0, _styles.rx)('label', (_rx2 = {}, _defineProperty(_rx2, "".concat(this.props.status), true), _defineProperty(_rx2, "".concat(this.props.size), true), _defineProperty(_rx2, "".concat(this.props.kind), true), _defineProperty(_rx2, 'has-icon', !!this.props.icon), _defineProperty(_rx2, "required", this.props.required), _defineProperty(_rx2, "disabled", this.props.disabled), _defineProperty(_rx2, "focused", this.isFocused()), _defineProperty(_rx2, "shrink", this.shrink()), _rx2))
+      }, this.props.label), this.props.kind === 'outlined' && _react.default.createElement("fieldset", {
+        className: (0, _styles.rx)('flatline', (_rx3 = {}, _defineProperty(_rx3, "".concat(this.props.status), true), _defineProperty(_rx3, "focused", this.isFocused()), _defineProperty(_rx3, "idle", !this.isFocused()), _defineProperty(_rx3, "filled", this.props.value), _rx3))
+      }, _react.default.createElement("legend", {
+        className: (0, _styles.rx)('legend'),
         style: legendWidth
-      }, React.createElement("span", null, "\u200B"))), icon(this.props.icon), React.createElement("input", {
-        className: rx('input', {
+      }, _ref)), icon(this.props.icon), _react.default.createElement("input", {
+        className: (0, _styles.rx)('input', {
           disabled: this.props.disabled
         }),
         ref: this.inputRef,
@@ -142,7 +175,7 @@ function (_React$Component) {
         onFocus: this.onFocus,
         onBlur: this.onBlur,
         onChange: this.onChange
-      }), trailIcon(this.props.status, this.props.trailIcon, this.props.onTrailIconClick)), this.props.help && React.createElement(Help, {
+      }), trailIcon(this.props.status, this.props.trailIcon, this.props.onTrailIconClick)), this.props.help && _react.default.createElement(_helpers.Help, {
         text: this.props.help,
         status: this.props.status
       }));
@@ -150,8 +183,9 @@ function (_React$Component) {
   }]);
 
   return InputField;
-}(React.Component);
+}(_react.default.Component);
 
+exports.InputField = InputField;
 InputField.defaultProps = {
   value: '',
   label: '',
@@ -169,22 +203,22 @@ InputField.defaultProps = {
   onTrailIconClick: null
 };
 InputField.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  help: PropTypes.string,
-  icon: PropTypes.string,
-  trailIcon: PropTypes.string,
-  onTrailIconClick: PropTypes.func,
-  status: PropTypes.oneOf(['default', 'valid', 'warning', 'error']),
-  size: PropTypes.oneOf(['default', 'dense']),
-  kind: PropTypes.oneOf(['filled', 'outlined']),
-  type: PropTypes.oneOf(['text', 'email', 'number', 'password', 'url']),
-  focus: PropTypes.bool,
-  disabled: PropTypes.bool,
-  required: PropTypes.bool
+  name: _propTypes.default.string.isRequired,
+  onChange: _propTypes.default.func.isRequired,
+  value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  label: _propTypes.default.string,
+  placeholder: _propTypes.default.string,
+  help: _propTypes.default.string,
+  icon: _propTypes.default.string,
+  trailIcon: _propTypes.default.string,
+  onTrailIconClick: _propTypes.default.func,
+  status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
+  size: _propTypes.default.oneOf(['default', 'dense']),
+  kind: _propTypes.default.oneOf(['filled', 'outlined']),
+  type: _propTypes.default.oneOf(['text', 'email', 'number', 'password', 'url']),
+  focus: _propTypes.default.bool,
+  disabled: _propTypes.default.bool,
+  required: _propTypes.default.bool
 };
-export { InputField };
-export default InputField;
+var _default = InputField;
+exports.default = _default;
