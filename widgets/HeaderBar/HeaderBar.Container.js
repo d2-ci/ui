@@ -59,6 +59,14 @@ function appPath(path) {
   return "".concat(_utils.serverURL, "/api/").concat(path);
 }
 
+function avatarPath(avatar) {
+  if (!avatar) {
+    return null;
+  }
+
+  return "".concat(_utils.serverURL, "/api/fileResources/").concat(avatar.id, "/data");
+}
+
 var HeaderBarContainer =
 /*#__PURE__*/
 function (_React$Component) {
@@ -145,7 +153,8 @@ function (_React$Component) {
             }),
             profile: {
               name: me.name,
-              email: me.email
+              email: me.email,
+              img: avatarPath(me.avatar)
             }
           };
         });
