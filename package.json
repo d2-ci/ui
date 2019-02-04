@@ -10,7 +10,7 @@
   "repository": "git@github.com:dhis2/ui.git",
   "author": "Viktor Varland <viktor@dhis2.org>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "scripts": {
     "clean": "rm -rf ./build/*",
     "format": "code-style",
