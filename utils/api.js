@@ -11,7 +11,7 @@ exports.apiEndpoint = exports.serverURL = void 0;
 
 require("core-js/modules/es6.object.assign");
 
-/* global manifest */
+/* global DHIS_CONFIG, manifest */
 var IS_PROD = process.env.NODE_ENV === 'production';
 var url;
 var endpoint;
