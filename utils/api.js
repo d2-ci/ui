@@ -27,7 +27,7 @@ if (IS_PROD) {
   }
 } else {
   // for dev. environments
-  url = DHIS_CONFIG ? DHIS_CONFIG.baseUrl : process.env.REACT_APP_DHIS2_BASE_URL;
+  url = typeof DHIS_CONFIG !== 'undefined' ? DHIS_CONFIG.baseUrl : process.env.REACT_APP_DHIS2_BASE_URL;
 
   if (!url) {
     throw new Error("The environment variable REACT_APP_DHIS2_BASE_URL must be set when the application is built in development mode.");
