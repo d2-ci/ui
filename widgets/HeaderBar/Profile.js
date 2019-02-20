@@ -9,11 +9,19 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _core = require("../../core");
+var _Card = _interopRequireDefault(require("../../core/Card"));
 
-var _utils = require("../../utils");
+var _MenuItem = _interopRequireDefault(require("../../core/Menu/MenuItem.js"));
 
-var _styles = require("./styles");
+var _Divider = _interopRequireDefault(require("../../core/helpers/Divider"));
+
+var _Menu = _interopRequireDefault(require("../../core/Menu"));
+
+var _url = require("../../utils/url.js");
+
+var _math = require("../../utils/math.js");
+
+var _styles = require("./styles.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -131,7 +139,7 @@ var list = [{
 
 var _ref4 =
 /*#__PURE__*/
-_react.default.createElement(_core.Divider, {
+_react.default.createElement(_Divider.default, {
   margin: "13px 0 7px 0"
 });
 
@@ -168,7 +176,7 @@ function (_React$Component) {
 
         var container = _this.elContainer.getBoundingClientRect();
 
-        if (!(0, _utils.isPointInRect)(target, contents) && !(0, _utils.isPointInRect)(target, container)) {
+        if (!(0, _math.isPointInRect)(target, contents) && !(0, _math.isPointInRect)(target, container)) {
           _this.setState({
             show: false
           });
@@ -193,7 +201,7 @@ function (_React$Component) {
       };
 
       if (typeof paths[value] !== 'undefined') {
-        (0, _utils.gotoURL)(paths[value]);
+        (0, _url.gotoURL)(paths[value]);
       } else {
         console.warn('onClick: not implemented', value);
       }
@@ -245,7 +253,7 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this2.elContents = c;
         }
-      }, _react.default.createElement(_core.Card, null, _react.default.createElement("div", {
+      }, _react.default.createElement(_Card.default, null, _react.default.createElement("div", {
         className: (0, _styles.rx)('profile-alignment')
       }, _react.default.createElement(Header, {
         baseURL: this.props.baseURL,
@@ -259,7 +267,7 @@ function (_React$Component) {
         var label = _ref5.label,
             value = _ref5.value,
             icon = _ref5.icon;
-        return _react.default.createElement(_core.MenuItem, {
+        return _react.default.createElement(_MenuItem.default, {
           key: "h-mi-".concat(value),
           label: label,
           value: value,

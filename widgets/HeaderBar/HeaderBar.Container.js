@@ -11,7 +11,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _HeaderBar = _interopRequireDefault(require("./HeaderBar.Component"));
 
-var _utils = require("../../utils");
+var _api = require("../../utils/api.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48,7 +48,7 @@ function appIconPath(path) {
     return path;
   }
 
-  return "".concat(_utils.serverURL, "/api/").concat(path);
+  return "".concat(_api.serverURL, "/api/").concat(path);
 }
 
 function appPath(path) {
@@ -56,7 +56,7 @@ function appPath(path) {
     return path;
   }
 
-  return "".concat(_utils.serverURL, "/api/").concat(path);
+  return "".concat(_api.serverURL, "/api/").concat(path);
 }
 
 function avatarPath(avatar) {
@@ -64,7 +64,7 @@ function avatarPath(avatar) {
     return null;
   }
 
-  return "".concat(_utils.serverURL, "/api/fileResources/").concat(avatar.id, "/data");
+  return "".concat(_api.serverURL, "/api/fileResources/").concat(avatar.id, "/data");
 }
 
 var HeaderBarContainer =
@@ -110,9 +110,9 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      Promise.all([(0, _utils.get)('system/info').then(function (r) {
+      Promise.all([(0, _api.get)('system/info').then(function (r) {
         return r.json();
-      }), (0, _utils.getAction)("dhis-web-commons/menu/getModules.action?_=".concat(Date.now())).then(function (r) {
+      }), (0, _api.getAction)("dhis-web-commons/menu/getModules.action?_=".concat(Date.now())).then(function (r) {
         return r.text();
       }).then(function (r) {
         return JSON.parse(r);
@@ -120,9 +120,9 @@ function (_React$Component) {
         return r.modules.filter(function (m) {
           return typeof m.displayName !== 'undefined';
         });
-      }), (0, _utils.get)('me/dashboard').then(function (r) {
+      }), (0, _api.get)('me/dashboard').then(function (r) {
         return r.json();
-      }), (0, _utils.get)('me.json').then(function (r) {
+      }), (0, _api.get)('me.json').then(function (r) {
         return r.json();
       })]).then(function (_ref) {
         var _ref2 = _slicedToArray(_ref, 4),
@@ -131,7 +131,7 @@ function (_React$Component) {
             unread = _ref2[2],
             me = _ref2[3];
 
-        return (0, _utils.post)('i18n', JSON.stringify(apps.map(function (a) {
+        return (0, _api.post)('i18n', JSON.stringify(apps.map(function (a) {
           return a.name;
         }))).then(function (r) {
           return r.json();
@@ -174,7 +174,7 @@ function (_React$Component) {
           apps = _this$state.apps,
           profile = _this$state.profile;
       return _react.default.createElement(_HeaderBar.default, {
-        baseURL: _utils.serverURL,
+        baseURL: _api.serverURL,
         type: type,
         instanceName: this.state.instanceName,
         appName: this.props.appName,

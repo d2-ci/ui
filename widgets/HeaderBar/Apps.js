@@ -15,9 +15,11 @@ var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
 var _InputField = _interopRequireDefault(require("../../core/InputField"));
 
-var _utils = require("../../utils");
+var _url = require("../../utils/url.js");
 
-var _styles = _interopRequireWildcard(require("./styles"));
+var _math = require("../../utils/math.js");
+
+var _styles = _interopRequireWildcard(require("./styles.js"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -154,7 +156,7 @@ function (_React$Component) {
 
         var container = _this.elContainer.getBoundingClientRect();
 
-        if (!(0, _utils.isPointInRect)(target, apps) && !(0, _utils.isPointInRect)(target, container)) {
+        if (!(0, _math.isPointInRect)(target, apps) && !(0, _math.isPointInRect)(target, container)) {
           _this.setState({
             show: false
           });
@@ -175,7 +177,7 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSettingsClick", function () {
-      return (0, _utils.gotoURL)("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
+      return (0, _url.gotoURL)("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onIconClick", function () {

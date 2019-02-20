@@ -18,7 +18,7 @@ var _Apps = _interopRequireDefault(require("./Apps"));
 
 var _Profile = _interopRequireDefault(require("./Profile"));
 
-var _styles = require("./styles");
+var _styles = require("./styles.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

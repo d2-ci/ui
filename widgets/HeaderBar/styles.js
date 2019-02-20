@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.rx = exports.default = void 0;
 
-var _css = _interopRequireDefault(require("../../utils/css"));
+var _css = _interopRequireDefault(require("../../utils/css.js"));
 
 require("../../defaults/colors.css");
 
