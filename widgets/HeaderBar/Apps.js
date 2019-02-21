@@ -90,10 +90,10 @@ function Item(_ref3) {
   var name = _ref3.name,
       path = _ref3.path,
       img = _ref3.img,
-      focused = _ref3.focused;
+      forceFocused = _ref3.forceFocused;
   return _react.default.createElement("a", {
     href: path,
-    className: (0, _styles.rx)('app', focused ? 'selected' : null)
+    className: (0, _styles.rx)('app', forceFocused ? 'selected' : null)
   }, _react.default.createElement("img", {
     src: img,
     alt: "app logo",
@@ -113,22 +113,20 @@ function List(_ref4) {
   var apps = _ref4.apps,
       filter = _ref4.filter,
       firstFocused = _ref4.firstFocused;
+  var byNameFilter = createAppNameFilter(filter);
   return _react.default.createElement("div", {
     className: (0, _styles.rx)('modules'),
     tabIndex: "-1"
-  }, apps.filter(function (_ref5) {
-    var name = _ref5.name;
-    return filter.length > 0 ? name.toLowerCase().match(filter.toLowerCase()) : true;
-  }).map(function (_ref6, idx) {
-    var name = _ref6.name,
-        path = _ref6.path,
-        img = _ref6.img;
+  }, apps.filter(byNameFilter).map(function (_ref5, idx) {
+    var name = _ref5.name,
+        path = _ref5.path,
+        img = _ref5.img;
     return _react.default.createElement(Item, {
       key: "app-".concat(name, "-").concat(idx),
       name: name,
       path: path,
       img: img,
-      focused: firstFocused && idx === 0
+      forceFocused: firstFocused && idx === 0
     });
   }));
 }
