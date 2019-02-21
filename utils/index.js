@@ -99,3 +99,15 @@ Object.keys(_index).forEach(function (key) {
     }
   });
 });
+
+var _regex = require("./regex");
+
+Object.keys(_regex).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _regex[key];
+    }
+  });
+});
