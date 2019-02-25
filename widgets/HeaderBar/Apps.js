@@ -21,6 +21,8 @@ var _math = require("../../utils/math.js");
 
 var _regex = require("../../utils/regex.js");
 
+var _memoize = _interopRequireDefault(require("../../utils/memoize.js"));
+
 var _styles = _interopRequireWildcard(require("./styles.js"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -92,10 +94,12 @@ function Item(_ref3) {
   var name = _ref3.name,
       path = _ref3.path,
       img = _ref3.img,
-      forceFocused = _ref3.forceFocused;
+      focused = _ref3.focused,
+      idx = _ref3.idx;
   return _react.default.createElement("a", {
     href: path,
-    className: (0, _styles.rx)('app', forceFocused ? 'selected' : null)
+    className: (0, _styles.rx)('app', focused ? 'selected' : null),
+    tabIndex: idx === 0 ? '-1' : null
   }, _react.default.createElement("img", {
     src: img,
     alt: "app logo",
@@ -114,12 +118,10 @@ Item.propTypes = {
 function List(_ref4) {
   var apps = _ref4.apps,
       filter = _ref4.filter,
-      firstFocused = _ref4.firstFocused;
-  var byNameFilter = createAppNameFilter(filter);
+      selectedIndex = _ref4.selectedIndex;
   return _react.default.createElement("div", {
-    className: (0, _styles.rx)('modules'),
-    tabIndex: "-1"
-  }, apps.filter(byNameFilter).map(function (_ref5, idx) {
+    className: (0, _styles.rx)('modules')
+  }, apps.map(function (_ref5, idx) {
     var name = _ref5.name,
         path = _ref5.path,
         img = _ref5.img;
@@ -128,7 +130,8 @@ function List(_ref4) {
       name: name,
       path: path,
       img: img,
-      forceFocused: firstFocused && idx === 0
+      focused: idx === selectedIndex,
+      idx: idx
     });
   }));
 }
@@ -154,7 +157,17 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       show: false,
       filter: '',
-      hasTabbed: false
+      hasTabbed: false,
+      selectedIndex: 0
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onKeyDown", function (evt) {
+      // This prevents tabbing though the app while the search is open
+      var isTabKey = evt.keyCode === 9 | evt.key === 'Tab';
+
+      if (_this.state.show && isTabKey) {
+        evt.preventDefault();
+      }
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
@@ -180,14 +193,16 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
       return _this.setState({
         show: !_this.state.show,
-        hasTabbed: false
+        hasTabbed: false,
+        selectedIndex: 0
       });
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (_, filter) {
       return _this.setState({
         filter: filter,
-        hasTabbed: false
+        hasTabbed: false,
+        selectedIndex: 0
       });
     });
 
@@ -198,22 +213,50 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onIconClick", function () {
       return _this.setState({
         filter: '',
-        hasTabbed: false
+        hasTabbed: false,
+        selectedIndex: 0
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onKeyPress", function (evt) {
-      var isEnterPress = evt.keyCode === 13 || evt.key === 'Enter';
-      var isTabKey = evt.keyCode === 9 | evt.key === 'Tab';
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onKeyUp", function (evt) {
+      if (!_this.state.show) {
+        return;
+      }
 
-      if (isEnterPress) {
+      var isEnterKey = evt.keyCode === 13 || evt.key === 'Enter';
+      var isTabKey = evt.keyCode === 9 || evt.key === 'Tab';
+
+      if (isEnterKey) {
         return _this.handleEnterClick(evt);
       } else if (isTabKey) {
-        _this.setState({
-          hasTabbed: true
-        });
+        evt.preventDefault();
+
+        var apps = _this.filterApps(_this.props.apps, _this.state.filter);
+
+        if (evt.shiftKey) {
+          if (_this.state.selectedIndex > 0) {
+            _this.setState(function (state) {
+              return {
+                selectedIndex: state.selectedIndex - 1
+              };
+            });
+          }
+        } else {
+          if (_this.state.selectedIndex < apps.length - 1) {
+            _this.setState(function (state) {
+              return {
+                selectedIndex: state.selectedIndex + 1
+              };
+            });
+          }
+        }
       }
     });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "filterApps", (0, _memoize.default)(function (list, filter) {
+      var byNameFilter = createAppNameFilter(filter);
+      return list.filter(byNameFilter);
+    }));
 
     return _this;
   }
@@ -222,28 +265,23 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       document.addEventListener('click', this.onDocClick);
-      document.addEventListener('keyup', this.onKeyPress);
+      document.addEventListener('keyup', this.onKeyUp);
+      document.addEventListener('keydown', this.onKeyDown);
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       document.removeEventListener('click', this.onDocClick);
-      document.addEventListener('keyup', this.onKeyPress);
+      document.removeEventListener('keyup', this.onKeyUp);
+      document.removeEventListener('keydown', this.onKeyDown);
     }
   }, {
     key: "handleEnterClick",
     value: function handleEnterClick(evt) {
-      // We don't know what app is in focus if the user has tabbed since last search change, so we ignore it
-      if (!this.state.show || this.state.hasTabbed) {
-        return;
-      } // Else we want to follow the link of the first app, as a shortcut
+      var selectedApp = this.filterApps(this.props.apps, this.state.filter)[this.state.selectedIndex];
 
-
-      var byNameFilter = createAppNameFilter(this.state.filter);
-      var firstApp = this.props.apps.filter(byNameFilter)[0];
-
-      if (firstApp) {
-        window.location = firstApp.path;
+      if (selectedApp) {
+        window.location = selectedApp.path;
       }
     }
   }, {
@@ -251,6 +289,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      var filteredApps = this.filterApps(this.props.apps, this.state.filter);
       return _react.default.createElement("div", {
         className: (0, _styles.rx)('apps'),
         ref: function ref(c) {
@@ -270,9 +309,8 @@ function (_React$Component) {
         onSettingsClick: this.onSettingsClick,
         onIconClick: this.onIconClick
       }), _react.default.createElement(List, {
-        apps: this.props.apps,
-        filter: this.state.filter,
-        firstFocused: !this.state.hasTabbed
+        apps: filteredApps,
+        selectedIndex: this.state.selectedIndex
       }))));
     }
   }]);
