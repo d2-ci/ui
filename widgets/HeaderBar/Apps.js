@@ -56,11 +56,32 @@ var createAppNameFilter = function createAppNameFilter(filter) {
   };
 };
 
+var isEnterKey = function isEnterKey(evt) {
+  return evt.keyCode === 13 || evt.key === 'Enter';
+};
+
+var isTabKey = function isTabKey(evt) {
+  return evt.keyCode === 9 || evt.key === 'Tab';
+};
+
+var isEsc = function isEsc(evt) {
+  return evt.keyCode === 27 || evt.key === 'Escape';
+};
+
+var isUpArrow = function isUpArrow(evt) {
+  return evt.keyCode === 38 || evt.key === 'ArrowUp';
+};
+
+var isDownArrow = function isDownArrow(evt) {
+  return evt.keyCode === 40 || evt.key === 'ArrowDown';
+};
+
 function Search(_ref2) {
   var value = _ref2.value,
       onChange = _ref2.onChange,
       onSettingsClick = _ref2.onSettingsClick,
-      onIconClick = _ref2.onIconClick;
+      onIconClick = _ref2.onIconClick,
+      inputRef = _ref2.inputRef;
   return _react.default.createElement("div", {
     className: (0, _styles.rx)('search')
   }, _react.default.createElement(_InputField.default, {
@@ -72,7 +93,8 @@ function Search(_ref2) {
     label: "Search apps",
     onChange: onChange,
     trailIcon: "cancel",
-    onTrailIconClick: onIconClick
+    onTrailIconClick: onIconClick,
+    ref: inputRef
   }), _react.default.createElement(_Icon.default, {
     name: "settings",
     className: (0, _styles.default)('settings'),
@@ -98,8 +120,7 @@ function Item(_ref3) {
       idx = _ref3.idx;
   return _react.default.createElement("a", {
     href: path,
-    className: (0, _styles.rx)('app', focused ? 'selected' : null),
-    tabIndex: idx === 0 ? '-1' : null
+    className: (0, _styles.rx)('app', focused ? 'selected' : null)
   }, _react.default.createElement("img", {
     src: img,
     alt: "app logo",
@@ -141,36 +162,34 @@ var Apps =
 function (_React$Component) {
   _inherits(Apps, _React$Component);
 
-  function Apps() {
-    var _getPrototypeOf2;
-
+  function Apps(props) {
     var _this;
 
     _classCallCheck(this, Apps);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Apps)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Apps).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       show: false,
       filter: '',
-      hasTabbed: false,
       selectedIndex: 0
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onKeyDown", function (evt) {
-      // This prevents tabbing though the app while the search is open
-      var isTabKey = evt.keyCode === 9 | evt.key === 'Tab';
+      // When tabbing we remove the "simulated" focus, and let native-tabbing take control
+      if (isTabKey(evt) && _this.state.selectedIndex !== -1) {
+        _this.setState({
+          selectedIndex: -1
+        });
+      }
 
-      if (_this.state.show && isTabKey) {
+      if (isUpArrow(evt) || isDownArrow(evt)) {
+        // prevent moving arrow in searchbox
         evt.preventDefault();
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onDocClick", function (evt) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleDocClick", function (evt) {
       if (_this.elContainer && _this.elApps) {
         var target = {
           x: evt.clientX,
@@ -182,74 +201,80 @@ function (_React$Component) {
         var container = _this.elContainer.getBoundingClientRect();
 
         if (!(0, _math.isPointInRect)(target, apps) && !(0, _math.isPointInRect)(target, container)) {
-          _this.setState({
-            show: false,
-            hasTabbed: false
+          _this.handleClose();
+        }
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleToggle", function () {
+      return _this.setState({
+        show: !_this.state.show,
+        selectedIndex: 0
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSearchChange", function (_, filter) {
+      return _this.setState({
+        filter: filter,
+        selectedIndex: 0
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSettingsClick", function () {
+      return (0, _url.gotoURL)("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleIconClick", function () {
+      return _this.setState({
+        filter: '',
+        selectedIndex: 0
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleKeyUp", function (evt) {
+      if (isEsc(evt)) {
+        _this.handleClose(evt);
+      } else if (_this.searchRef.current.isFocused()) {
+        // we enable these escape-hatches only when focused
+        if (isEnterKey(evt)) {
+          _this.handleEnterClick(evt);
+        } else if (isUpArrow(evt) || isDownArrow(evt)) {
+          evt.preventDefault();
+
+          _this.handleAppNavigation(evt, isUpArrow(evt));
+        }
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleAppNavigation", function (evt) {
+      var backwards = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+      var apps = _this.filterApps(_this.props.apps, _this.state.filter);
+
+      if (backwards) {
+        if (_this.state.selectedIndex > 0) {
+          _this.setState(function (state) {
+            return {
+              selectedIndex: state.selectedIndex - 1
+            };
+          });
+        }
+      } else {
+        if (_this.state.selectedIndex < apps.length - 1) {
+          _this.setState(function (state) {
+            return {
+              selectedIndex: state.selectedIndex + 1
+            };
           });
         }
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onToggle", function () {
-      return _this.setState({
-        show: !_this.state.show,
-        hasTabbed: false,
-        selectedIndex: 0
-      });
-    });
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEnterClick", function (evt) {
+      var selectedApp = _this.filterApps(_this.props.apps, _this.state.filter)[_this.state.selectedIndex];
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (_, filter) {
-      return _this.setState({
-        filter: filter,
-        hasTabbed: false,
-        selectedIndex: 0
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSettingsClick", function () {
-      return (0, _url.gotoURL)("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onIconClick", function () {
-      return _this.setState({
-        filter: '',
-        hasTabbed: false,
-        selectedIndex: 0
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onKeyUp", function (evt) {
-      if (!_this.state.show) {
-        return;
-      }
-
-      var isEnterKey = evt.keyCode === 13 || evt.key === 'Enter';
-      var isTabKey = evt.keyCode === 9 || evt.key === 'Tab';
-
-      if (isEnterKey) {
-        return _this.handleEnterClick(evt);
-      } else if (isTabKey) {
-        evt.preventDefault();
-
-        var apps = _this.filterApps(_this.props.apps, _this.state.filter);
-
-        if (evt.shiftKey) {
-          if (_this.state.selectedIndex > 0) {
-            _this.setState(function (state) {
-              return {
-                selectedIndex: state.selectedIndex - 1
-              };
-            });
-          }
-        } else {
-          if (_this.state.selectedIndex < apps.length - 1) {
-            _this.setState(function (state) {
-              return {
-                selectedIndex: state.selectedIndex + 1
-              };
-            });
-          }
-        }
+      if (selectedApp) {
+        window.location = selectedApp.path;
       }
     });
 
@@ -258,31 +283,46 @@ function (_React$Component) {
       return list.filter(byNameFilter);
     }));
 
+    _this.searchRef = _react.default.createRef();
     return _this;
   }
 
   _createClass(Apps, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      document.addEventListener('click', this.onDocClick);
-      document.addEventListener('keyup', this.onKeyUp);
-      document.addEventListener('keydown', this.onKeyDown);
-    }
-  }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      document.removeEventListener('click', this.onDocClick);
-      document.removeEventListener('keyup', this.onKeyUp);
+      // We remove listeners here as well as when closing the overlay,
+      // just in case the component is nmounted without didUpdate catching it
+      this.removeEventListeners();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      var isShown = this.state.show;
+      var didChange = prevState.show !== isShown; // Component is long lived, so we add listeners only when apps menu is opened
+
+      if (didChange) {
+        if (isShown) {
+          document.addEventListener('click', this.handleDocClick);
+          document.addEventListener('keyup', this.handleKeyUp);
+          document.addEventListener('keydown', this.onKeyDown);
+        } else {
+          this.removeEventListeners();
+        }
+      }
+    }
+  }, {
+    key: "removeEventListeners",
+    value: function removeEventListeners() {
+      document.removeEventListener('click', this.handleDocClick);
+      document.removeEventListener('keyup', this.handleKeyUp);
       document.removeEventListener('keydown', this.onKeyDown);
     }
   }, {
-    key: "handleEnterClick",
-    value: function handleEnterClick(evt) {
-      var selectedApp = this.filterApps(this.props.apps, this.state.filter)[this.state.selectedIndex];
-
-      if (selectedApp) {
-        window.location = selectedApp.path;
-      }
+    key: "handleClose",
+    value: function handleClose(evt) {
+      this.setState({
+        show: false
+      });
     }
   }, {
     key: "render",
@@ -297,7 +337,7 @@ function (_React$Component) {
         }
       }, _react.default.createElement(_Icon.default, {
         name: "apps",
-        onClick: this.onToggle
+        onClick: this.handleToggle
       }), this.state.show && _react.default.createElement("div", {
         className: (0, _styles.rx)('contents'),
         ref: function ref(c) {
@@ -305,9 +345,10 @@ function (_React$Component) {
         }
       }, _react.default.createElement(_Card.default, null, _react.default.createElement(Search, {
         value: this.state.filter,
-        onChange: this.onChange,
-        onSettingsClick: this.onSettingsClick,
-        onIconClick: this.onIconClick
+        onChange: this.handleSearchChange,
+        onSettingsClick: this.handleSettingsClick,
+        onIconClick: this.handleIconClick,
+        inputRef: this.searchRef
       }), _react.default.createElement(List, {
         apps: filteredApps,
         selectedIndex: this.state.selectedIndex
