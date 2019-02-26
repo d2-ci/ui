@@ -14,22 +14,21 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
+var _colors = require("../colors.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var _ref2 =
-/*#__PURE__*/
-_react.default.createElement(_style.default, {
-  id: "4102157999"
-}, ".base.jsx-4102157999{height:12px;padding-left:14px;font-size:12px;line-height:12px;cursor:help;}.status-default.jsx-4102157999{color:var(--grey700);}.status-valid.jsx-4102157999{color:var(--blue600);}.status-error.jsx-4102157999{color:var(--red500);}.status-warning.jsx-4102157999{color:var(--yellow500);}");
 
 function Help(_ref) {
   var text = _ref.text,
       status = _ref.status;
   return _react.default.createElement("p", {
-    className: "jsx-4102157999" + " " + ((0, _classnames.default)('base', _defineProperty({}, "status-".concat(status), true)) || "")
-  }, text, _ref2);
+    className: _style.default.dynamic([["3335312656", [_colors.colors.grey700, _colors.colors.blue600, _colors.colors.red500, _colors.colors.yellow500]]]) + " " + ((0, _classnames.default)('base', _defineProperty({}, "status-".concat(status), true)) || "")
+  }, text, _react.default.createElement(_style.default, {
+    id: "3335312656",
+    dynamic: [_colors.colors.grey700, _colors.colors.blue600, _colors.colors.red500, _colors.colors.yellow500]
+  }, ".base.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:14px;font-size:12px;line-height:12px;cursor:help;}.status-default.__jsx-style-dynamic-selector{color:".concat(_colors.colors.grey700, ";}.status-valid.__jsx-style-dynamic-selector{color:").concat(_colors.colors.blue600, ";}.status-error.__jsx-style-dynamic-selector{color:").concat(_colors.colors.red500, ";}.status-warning.__jsx-style-dynamic-selector{color:").concat(_colors.colors.yellow500, ";}")));
 }
 
 Help.defaultProps = {

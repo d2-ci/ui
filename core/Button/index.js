@@ -36,16 +36,15 @@ function Button(_ref) {
       'icon-only': icon && !label && !children,
       icon: icon
     }) || "")
-  }, icon && _react.default.createElement(_Icon.default, {
-    className: (0, _classnames.default)('button-icon'),
-    name: icon
-  }), label || children, _react.default.createElement(_style.default, {
+  }, icon && _react.default.createElement("span", {
+    className: "jsx-".concat(_styles.default.__hash) + " " + "button-icon"
+  }, icon), label || children, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
 }
 
 Button.defaultProps = {
-  icon: '',
+  icon: null,
   label: '',
   kind: 'basic',
   type: 'button',
@@ -54,7 +53,7 @@ Button.defaultProps = {
   onClick: undefined
 };
 Button.propTypes = {
-  icon: _propTypes.default.string,
+  icon: _propTypes.default.element,
   label: _propTypes.default.string,
   kind: _propTypes.default.oneOf(['basic', 'primary', 'secondary', 'destructive']),
   type: _propTypes.default.oneOf(['submit', 'reset', 'button']),

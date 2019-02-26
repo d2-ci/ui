@@ -39,6 +39,12 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var _ref =
+/*#__PURE__*/
+_react.default.createElement(_style.default, {
+  id: "957288101"
+}, ".image-icon.jsx-957288101{width:24px;height:24px;margin-left:4px;border-radius:50%;}");
+
 var Chip =
 /*#__PURE__*/
 function (_React$PureComponent) {
@@ -82,11 +88,11 @@ function (_React$PureComponent) {
       }
 
       if (this.props.type === 'image') {
-        return _react.default.createElement("img", {
+        return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("img", {
           src: icon,
           alt: "chip icon",
-          className: (0, _classnames.default)('image-icon')
-        });
+          className: "jsx-957288101" + " " + "image-icon"
+        }), _ref);
       }
 
       return _react.default.createElement(_Icon.default, {

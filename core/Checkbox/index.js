@@ -1,5 +1,7 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -15,11 +17,11 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _Icon = _interopRequireDefault(require("../Icon"));
 
+var _colors = require("../colors.js");
+
 var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -38,6 +40,39 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var icons = {
+  default: {
+    styles: _react.default.createElement(_style.default, {
+      id: "1855531399"
+    }, "i.jsx-1855531399{color:".concat(_colors.colors.grey700, ";}")),
+    className: "jsx-1855531399"
+  },
+  checked: {
+    styles: _react.default.createElement(_style.default, {
+      id: "1828969326"
+    }, "i.jsx-1828969326{color:".concat(_colors.colors.teal400, ";}")),
+    className: "jsx-1828969326"
+  },
+  valid: {
+    styles: _react.default.createElement(_style.default, {
+      id: "317361377"
+    }, "i.jsx-317361377{color:".concat(_colors.colors.blue600, ";}")),
+    className: "jsx-317361377"
+  },
+  warning: {
+    styles: _react.default.createElement(_style.default, {
+      id: "1097909025"
+    }, "i.jsx-1097909025{color:".concat(_colors.colors.yellow500, ";}")),
+    className: "jsx-1097909025"
+  },
+  error: {
+    styles: _react.default.createElement(_style.default, {
+      id: "1838749421"
+    }, "i.jsx-1838749421{color:".concat(_colors.colors.red500, ";}")),
+    className: "jsx-1838749421"
+  }
+};
 
 var Checkbox =
 /*#__PURE__*/
@@ -79,7 +114,9 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           required = _this$props.required,
-          status = _this$props.status;
+          status = _this$props.status,
+          checked = _this$props.checked;
+      var state = status === 'default' && checked ? 'checked' : status;
       var name = 'check_box_outline_blank';
 
       if (this.state.indeterminate) {
@@ -90,10 +127,7 @@ function (_React$Component) {
 
       var icon = _react.default.createElement(_Icon.default, {
         name: name,
-        className: (0, _classnames.default)('icon', "".concat(status, "-icon"), {
-          disabled: this.props.disabled,
-          checked: this.props.checked
-        })
+        className: icons[state].className
       });
 
       return _react.default.createElement("label", {
@@ -110,7 +144,7 @@ function (_React$Component) {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
           required: required
         }) || "")
-      }, this.props.label), _react.default.createElement(_style.default, {
+      }, this.props.label), icons[state].styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }

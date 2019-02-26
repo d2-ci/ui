@@ -21,7 +21,9 @@ var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _utils = require("../../utils");
 
-var _styles = _interopRequireDefault(require("./styles.js"));
+var _styles = _interopRequireDefault(require("../Button/styles.js"));
+
+var _styles2 = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -124,30 +126,34 @@ function (_Component) {
         ref: function ref(c) {
           return _this2.elContainer = c;
         },
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "".concat(this.props.size)) || "")
-      }, _react.default.createElement(_Button.default, {
-        icon: this.props.icon,
-        kind: this.props.kind,
-        active: this.props.active,
+        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash)
+      }, _react.default.createElement("button", {
         disabled: this.props.disabled,
-        onClick: this.onToggle
-      }, _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('menu-label') || "")
+        onClick: this.onToggle,
+        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), {
+          'icon-only': this.props.icon && !this.props.label && !this.props.children,
+          icon: this.props.icon
+        }) || "")
+      }, this.props.icon && _react.default.createElement("span", {
+        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "button-icon"
+      }, this.props.icon), _react.default.createElement("span", {
+        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu-label"
       }, this.props.label), _react.default.createElement(_Icon.default, {
-        className: (0, _classnames.default)('menu-icon'),
+        className: "menu-icon",
         name: icon
       })), open && _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elMenu = c;
         },
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('menu') || "")
+        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu"
       }, _react.default.createElement(_Menu.default, {
-        size: this.props.size,
         list: this.props.list,
         onClick: this.props.onClick
       })), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
-      }, _styles.default));
+      }, _styles.default), _react.default.createElement(_style.default, {
+        id: _styles2.default.__hash
+      }, _styles2.default));
     }
   }]);
 
@@ -156,23 +162,22 @@ function (_Component) {
 
 exports.DropdownButton = DropdownButton;
 DropdownButton.defaultProps = {
-  size: 'default',
+  size: 'medium',
   kind: 'basic',
-  active: false,
   disabled: false,
   width: '',
-  icon: ''
+  icon: null
 };
 DropdownButton.propTypes = {
-  label: _propTypes.default.string.isRequired,
   list: _propTypes.default.array.isRequired,
-  onClick: _propTypes.default.func.isRequired,
-  kind: _propTypes.default.oneOf(['basic', 'primary']),
-  size: _propTypes.default.oneOf(['default', 'dense']),
   width: _propTypes.default.string,
-  icon: _propTypes.default.string,
-  active: _propTypes.default.bool,
-  disabled: _propTypes.default.bool
+  icon: _propTypes.default.element,
+  label: _propTypes.default.string,
+  kind: _propTypes.default.oneOf(['basic', 'primary', 'secondary', 'destructive']),
+  type: _propTypes.default.oneOf(['submit', 'reset', 'button']),
+  size: _propTypes.default.oneOf(['small', 'medium', 'large']),
+  disabled: _propTypes.default.bool,
+  onClick: _propTypes.default.func
 };
 var _default = DropdownButton;
 exports.default = _default;

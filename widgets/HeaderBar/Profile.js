@@ -1,23 +1,33 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
+var _style = _interopRequireDefault(require("styled-jsx/style"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _core = require("../../core");
+var _Card = _interopRequireDefault(require("../../core/Card"));
+
+var _Icon = _interopRequireDefault(require("../../core/Icon"));
+
+var _Divider = _interopRequireDefault(require("../../core/Divider"));
+
+var _Menu = _interopRequireDefault(require("../../core/Menu"));
+
+var _MenuItem = _interopRequireDefault(require("../../core/Menu/MenuItem"));
 
 var _utils = require("../../utils");
 
-var _styles = require("./styles");
+var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -47,11 +57,13 @@ function TextIcon(_ref) {
   }
 
   return _react.default.createElement("div", {
-    className: (0, _styles.rx)('icon'),
-    onClick: onClick
+    onClick: onClick,
+    className: "jsx-".concat(_styles.default.__hash) + " " + "icon"
   }, _react.default.createElement("div", {
-    className: (0, _styles.rx)('initials')
-  }, title));
+    className: "jsx-".concat(_styles.default.__hash) + " " + "initials"
+  }, title), _react.default.createElement(_style.default, {
+    id: _styles.default.__hash
+  }, _styles.default));
 }
 
 TextIcon.defaultProps = {
@@ -66,12 +78,15 @@ function ImageIcon(_ref2) {
   var src = _ref2.src,
       onClick = _ref2.onClick;
   return _react.default.createElement("div", {
-    className: (0, _styles.rx)('icon'),
-    onClick: onClick
+    onClick: onClick,
+    className: "jsx-".concat(_styles.default.__hash) + " " + "icon"
   }, _react.default.createElement("img", {
     src: src,
-    alt: "user avatar"
-  }));
+    alt: "user avatar",
+    className: "jsx-".concat(_styles.default.__hash)
+  }), _react.default.createElement(_style.default, {
+    id: _styles.default.__hash
+  }, _styles.default));
 }
 
 ImageIcon.defaultProps = {
@@ -88,21 +103,23 @@ function Header(_ref3) {
       img = _ref3.img,
       baseURL = _ref3.baseURL;
   return _react.default.createElement("div", {
-    className: (0, _styles.rx)('header')
+    className: "jsx-".concat(_styles.default.__hash) + " " + "header"
   }, img ? _react.default.createElement(ImageIcon, {
     src: img
   }) : _react.default.createElement(TextIcon, {
     name: name
   }), _react.default.createElement("div", {
-    className: (0, _styles.rx)('details')
+    className: "jsx-".concat(_styles.default.__hash) + " " + "details"
   }, _react.default.createElement("div", {
-    className: (0, _styles.rx)('name')
+    className: "jsx-".concat(_styles.default.__hash) + " " + "name"
   }, name), _react.default.createElement("div", {
-    className: (0, _styles.rx)('email')
+    className: "jsx-".concat(_styles.default.__hash) + " " + "email"
   }, email), _react.default.createElement("a", {
-    className: (0, _styles.rx)('edit_profile'),
-    href: "".concat(baseURL, "/dhis-web-user-profile/#/profile")
-  }, "Edit profile")));
+    href: "".concat(baseURL, "/dhis-web-user-profile/#/profile"),
+    className: "jsx-".concat(_styles.default.__hash) + " " + "edit_profile"
+  }, "Edit profile")), _react.default.createElement(_style.default, {
+    id: _styles.default.__hash
+  }, _styles.default));
 }
 
 Header.propTypes = {
@@ -110,6 +127,12 @@ Header.propTypes = {
   email: _propTypes.default.string,
   img: _propTypes.default.string,
   baseURL: _propTypes.default.string
+};
+var iconStyle = {
+  styles: _react.default.createElement(_style.default, {
+    id: "1357904100"
+  }, "i.jsx-1357904100{color:rgba(0,0,0,0.7);}"),
+  className: "jsx-1357904100"
 };
 var list = [{
   icon: 'settings',
@@ -124,6 +147,10 @@ var list = [{
   label: 'Help',
   value: 'help'
 }, {
+  icon: 'info',
+  label: 'About DHIS2',
+  value: 'about'
+}, {
   icon: 'exit_to_app',
   label: 'Logout',
   value: 'logout'
@@ -131,7 +158,7 @@ var list = [{
 
 var _ref4 =
 /*#__PURE__*/
-_react.default.createElement(_core.Divider, {
+_react.default.createElement(_Divider.default, {
   margin: "13px 0 7px 0"
 });
 
@@ -188,6 +215,7 @@ function (_React$Component) {
         edit_profile: "".concat(baseURL, "/dhis-web-user-profile/#/profile"),
         settings: "".concat(baseURL, "/dhis-web-user-profile/#/settings"),
         account: "".concat(baseURL, "/dhis-web-user-profile/#/account"),
+        about: "".concat(baseURL, "/dhis-web-user-profile/#/aboutPage"),
         help: 'https://docs.dhis2.org/master/en/user/html/dhis2_user_manual_en.html',
         logout: "".concat(baseURL, "/dhis-web-commons-security/logout.action")
       };
@@ -223,13 +251,17 @@ function (_React$Component) {
         return _react.default.createElement(ImageIcon, {
           src: this.props.profile.img,
           onClick: this.onToggle
-        });
+        }, _react.default.createElement(_style.default, {
+          id: _styles.default.__hash
+        }, _styles.default));
       }
 
       return _react.default.createElement(TextIcon, {
         name: this.props.profile.name,
         onClick: this.onToggle
-      });
+      }, _react.default.createElement(_style.default, {
+        id: _styles.default.__hash
+      }, _styles.default));
     }
   }, {
     key: "viewContents",
@@ -241,12 +273,12 @@ function (_React$Component) {
       }
 
       return _react.default.createElement("div", {
-        className: (0, _styles.rx)('contents'),
         ref: function ref(c) {
           return _this2.elContents = c;
-        }
-      }, _react.default.createElement(_core.Card, null, _react.default.createElement("div", {
-        className: (0, _styles.rx)('profile-alignment')
+        },
+        className: "jsx-".concat(_styles.default.__hash) + " " + "contents"
+      }, _react.default.createElement(_Card.default, null, _react.default.createElement("div", {
+        className: "jsx-".concat(_styles.default.__hash) + " " + "profile-alignment"
       }, _react.default.createElement(Header, {
         baseURL: this.props.baseURL,
         img: this.props.profile.img,
@@ -254,19 +286,24 @@ function (_React$Component) {
         email: this.props.profile.email,
         onClick: this.onHeaderClick
       }), _ref4, _react.default.createElement("ul", {
-        className: (0, _styles.rx)()
+        className: "jsx-".concat(_styles.default.__hash)
       }, list.map(function (_ref5) {
         var label = _ref5.label,
             value = _ref5.value,
             icon = _ref5.icon;
-        return _react.default.createElement(_core.MenuItem, {
+        return _react.default.createElement(_MenuItem.default, {
           key: "h-mi-".concat(value),
           label: label,
           value: value,
-          icon: icon,
+          icon: _react.default.createElement(_Icon.default, {
+            name: icon,
+            className: iconStyle.className
+          }),
           onClick: _this2.onClick
         });
-      })))));
+      })))), iconStyle.styles, _react.default.createElement(_style.default, {
+        id: _styles.default.__hash
+      }, _styles.default));
     }
   }, {
     key: "render",
@@ -274,11 +311,13 @@ function (_React$Component) {
       var _this3 = this;
 
       return _react.default.createElement("div", {
-        className: (0, _styles.rx)('profile'),
         ref: function ref(c) {
           return _this3.elContainer = c;
-        }
-      }, this.viewIcon(), this.viewContents());
+        },
+        className: "jsx-".concat(_styles.default.__hash) + " " + "profile"
+      }, this.viewIcon(), this.viewContents(), _react.default.createElement(_style.default, {
+        id: _styles.default.__hash
+      }, _styles.default));
     }
   }]);
 

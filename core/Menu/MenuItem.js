@@ -21,6 +21,13 @@ var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var subChevron = {
+  styles: _react.default.createElement(_style.default, {
+    id: "3358657644"
+  }, "i.jsx-3358657644{margin:0 -14px 0 auto;font-size:18px;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"),
+  className: "jsx-3358657644"
+};
+
 function SubMenu(_ref) {
   var size = _ref.size,
       list = _ref.list,
@@ -57,25 +64,21 @@ function MenuItem(_ref2) {
       disabled: disabled,
       active: active
     }) || "")
-  }, icon && _react.default.createElement(_Icon.default, {
-    name: icon,
-    className: (0, _classnames.default)('icon')
-  }), _react.default.createElement("div", {
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label') || "")
+  }, icon, _react.default.createElement("div", {
+    className: "jsx-".concat(_styles.default.__hash) + " " + "label"
   }, label), hasMenu && _react.default.createElement(_Icon.default, {
     name: "chevron_right",
-    className: (0, _classnames.default)('sub-chevron')
+    className: subChevron.className
   }), hasMenu && _react.default.createElement(SubMenu, {
     size: size,
     list: list,
     onClick: _onClick
-  }), _react.default.createElement(_style.default, {
+  }), subChevron.styles, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
 }
 
 MenuItem.defaultProps = {
-  icon: '',
   list: [],
   size: 'default',
   active: false,
@@ -84,7 +87,7 @@ MenuItem.defaultProps = {
 MenuItem.propTypes = {
   label: _propTypes.default.string.isRequired,
   value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
-  icon: _propTypes.default.string,
+  icon: _propTypes.default.element,
   list: _propTypes.default.array,
   active: _propTypes.default.bool,
   disabled: _propTypes.default.bool,

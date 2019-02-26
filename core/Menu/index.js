@@ -22,7 +22,7 @@ var _Card = _interopRequireDefault(require("../Card"));
 
 var _MenuItem = _interopRequireDefault(require("./MenuItem"));
 
-var _Divider = _interopRequireDefault(require("../helpers/Divider"));
+var _Divider = _interopRequireDefault(require("../Divider"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
@@ -78,7 +78,7 @@ Menu.propTypes = {
     label: _propTypes.default.string,
     value: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
     list: _propTypes.default.array,
-    icon: _propTypes.default.string,
+    icon: _propTypes.default.element,
     active: _propTypes.default.bool,
     disabled: _propTypes.default.bool
   })).isRequired,

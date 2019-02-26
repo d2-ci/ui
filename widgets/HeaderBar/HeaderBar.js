@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.HeaderBar = HeaderBar;
 exports.default = void 0;
 
+var _style = _interopRequireDefault(require("styled-jsx/style"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -18,9 +20,18 @@ var _Apps = _interopRequireDefault(require("./Apps"));
 
 var _Profile = _interopRequireDefault(require("./Profile"));
 
-var _styles = require("./styles");
+var _classnames = _interopRequireDefault(require("classnames"));
+
+var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var logotype = {
+  styles: _react.default.createElement(_style.default, {
+    id: "506544450"
+  }, "svg.jsx-506544450{width:27px;height:25px;cursor:pointer;}"),
+  className: "jsx-506544450"
+};
 
 function getTitle(instanceName) {
   var appName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -32,10 +43,6 @@ function getTitle(instanceName) {
   return "".concat(instanceName, " - ").concat(appName);
 }
 
-var _ref2 =
-/*#__PURE__*/
-_react.default.createElement(_Logo.LogoIconWhite, null);
-
 function HeaderBar(_ref) {
   var baseURL = _ref.baseURL,
       instanceName = _ref.instanceName,
@@ -45,18 +52,20 @@ function HeaderBar(_ref) {
       messages = _ref.messages,
       interpretations = _ref.interpretations;
   return _react.default.createElement("header", {
-    className: (0, _styles.rx)('base', 'blue')
+    className: "jsx-".concat(_styles.default.__hash) + " " + "blue"
   }, _react.default.createElement("div", {
-    className: (0, _styles.rx)('first')
+    className: "jsx-".concat(_styles.default.__hash)
   }, _react.default.createElement("div", {
-    className: (0, _styles.rx)('logo')
+    className: "jsx-".concat(_styles.default.__hash) + " " + "headerbar-logo"
   }, _react.default.createElement("a", {
     href: "".concat(baseURL),
-    className: (0, _styles.rx)()
-  }, _ref2)), _react.default.createElement("div", {
-    className: (0, _styles.rx)('title')
+    className: "jsx-".concat(_styles.default.__hash)
+  }, _react.default.createElement(_Logo.LogoIconWhite, {
+    className: logotype.className
+  }))), _react.default.createElement("div", {
+    className: "jsx-".concat(_styles.default.__hash) + " " + "headerbar-title"
   }, getTitle(instanceName, appName))), _react.default.createElement("div", {
-    className: (0, _styles.rx)('last')
+    className: "jsx-".concat(_styles.default.__hash)
   }, _react.default.createElement(_NotificationIcon.default, {
     icon: "message",
     count: interpretations.count,
@@ -71,7 +80,9 @@ function HeaderBar(_ref) {
   }), _react.default.createElement(_Profile.default, {
     profile: profile,
     baseURL: baseURL
-  })));
+  })), logotype.styles, _react.default.createElement(_style.default, {
+    id: _styles.default.__hash
+  }, _styles.default));
 }
 
 HeaderBar.propTypes = {

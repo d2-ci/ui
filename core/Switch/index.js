@@ -81,11 +81,11 @@ function (_React$Component) {
         disabled: disabled,
         checked: this.props.checked,
         onChange: this.onChange,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('input') || "")
+        className: "jsx-".concat(_styles.default.__hash)
       }), _react.default.createElement("span", {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', _defineProperty({}, "status-".concat(status), true)) || "")
       }, this.props.label), this.props.required && _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('required') || "")
+        className: "jsx-".concat(_styles.default.__hash) + " " + "required"
       }), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));

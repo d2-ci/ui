@@ -26,7 +26,7 @@ function Icon(_ref) {
       onClick = _ref.onClick;
   return _react.default.createElement("i", {
     onClick: onClick,
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className) || "")
+    className: "jsx-".concat(_styles.default.__hash) + " " + (className || "")
   }, name, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
