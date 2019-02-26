@@ -175,7 +175,7 @@ function (_React$Component) {
       selectedIndex: 0
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onKeyDown", function (evt) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleKeyDown", function (evt) {
       // When tabbing we remove the "simulated" focus, and let native-tabbing take control
       if (isTabKey(evt) && _this.state.selectedIndex !== -1) {
         _this.setState({
@@ -304,7 +304,7 @@ function (_React$Component) {
         if (isShown) {
           document.addEventListener('click', this.handleDocClick);
           document.addEventListener('keyup', this.handleKeyUp);
-          document.addEventListener('keydown', this.onKeyDown);
+          document.addEventListener('keydown', this.handleKeyDown);
         } else {
           this.removeEventListeners();
         }
@@ -315,7 +315,7 @@ function (_React$Component) {
     value: function removeEventListeners() {
       document.removeEventListener('click', this.handleDocClick);
       document.removeEventListener('keyup', this.handleKeyUp);
-      document.removeEventListener('keydown', this.onKeyDown);
+      document.removeEventListener('keydown', this.handleKeyDown);
     }
   }, {
     key: "handleClose",
