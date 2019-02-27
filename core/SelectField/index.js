@@ -1,9 +1,13 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = exports.SelectField = void 0;
+
+var _style = _interopRequireDefault(require("styled-jsx/style"));
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -13,17 +17,17 @@ var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _Menu = _interopRequireDefault(require("../Menu"));
 
-var _helpers = require("../helpers");
+var _Help = _interopRequireDefault(require("../Help"));
 
 var _utils = require("../../utils");
 
-var _styles = _interopRequireWildcard(require("./styles"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _styles = _interopRequireDefault(require("./styles.js"));
+
+var _colors = require("../colors.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -48,6 +52,32 @@ var statusToIcon = {
   warning: 'warning',
   error: 'error'
 };
+var icons = {
+  default: {
+    styles: _react.default.createElement(_style.default, {
+      id: "1855531399"
+    }, "i.jsx-1855531399{color:".concat(_colors.colors.grey700, ";}")),
+    className: "jsx-1855531399"
+  },
+  valid: {
+    styles: _react.default.createElement(_style.default, {
+      id: "317361377"
+    }, "i.jsx-317361377{color:".concat(_colors.colors.blue600, ";}")),
+    className: "jsx-317361377"
+  },
+  warning: {
+    styles: _react.default.createElement(_style.default, {
+      id: "1097909025"
+    }, "i.jsx-1097909025{color:".concat(_colors.colors.yellow500, ";}")),
+    className: "jsx-1097909025"
+  },
+  error: {
+    styles: _react.default.createElement(_style.default, {
+      id: "1838749421"
+    }, "i.jsx-1838749421{color:".concat(_colors.colors.red500, ";}")),
+    className: "jsx-1838749421"
+  }
+};
 
 function markActive(list, value) {
   if (!value) {
@@ -64,10 +94,6 @@ function markActive(list, value) {
     return item;
   });
 }
-
-var _ref2 =
-/*#__PURE__*/
-_react.default.createElement("span", null, "\u200B");
 
 var SelectField =
 /*#__PURE__*/
@@ -173,9 +199,9 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var _this3 = this,
-          _rx2,
-          _rx3,
-          _rx4;
+          _cx2,
+          _cx3,
+          _cx4;
 
       var legendWidth = this.shrink() ? {
         width: "".concat(this.state.labelWidth, "px")
@@ -195,62 +221,66 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elContainer = c;
         },
-        className: (0, _styles.rx)('base', _defineProperty({
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', _defineProperty({
           selected: !!this.props.value,
           disabled: this.props.disabled
-        }, "size-".concat(this.props.size), true))
+        }, "size-".concat(this.props.size), true)) || "")
       }, _react.default.createElement("div", {
         ref: function ref(c) {
           return _this3.elSelect = c;
         },
-        className: (0, _styles.rx)('select', (_rx2 = {}, _defineProperty(_rx2, "kind-".concat(this.props.kind), true), _defineProperty(_rx2, "status-".concat(this.props.status), true), _defineProperty(_rx2, "disabled", this.props.disabled), _rx2)),
-        onClick: this.onToggle
+        onClick: this.onToggle,
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('select', (_cx2 = {}, _defineProperty(_cx2, "kind-".concat(this.props.kind), true), _defineProperty(_cx2, "status-".concat(this.props.status), true), _defineProperty(_cx2, "disabled", this.props.disabled), _cx2)) || "")
       }, _react.default.createElement("label", {
         ref: this.labelRef,
-        className: (0, _styles.rx)('label', (_rx3 = {}, _defineProperty(_rx3, "".concat(this.props.status), true), _defineProperty(_rx3, "".concat(this.props.size), true), _defineProperty(_rx3, "".concat(this.props.kind), true), _defineProperty(_rx3, 'has-icon', !!this.props.icon), _defineProperty(_rx3, "required", this.props.required), _defineProperty(_rx3, "disabled", this.props.disabled), _defineProperty(_rx3, "focused", this.isFocused()), _defineProperty(_rx3, "shrink", !!selected), _rx3))
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', (_cx3 = {}, _defineProperty(_cx3, "".concat(this.props.status), true), _defineProperty(_cx3, "".concat(this.props.size), true), _defineProperty(_cx3, "".concat(this.props.kind), true), _defineProperty(_cx3, 'has-icon', !!this.props.icon), _defineProperty(_cx3, "required", this.props.required), _defineProperty(_cx3, "disabled", this.props.disabled), _defineProperty(_cx3, "focused", this.isFocused()), _defineProperty(_cx3, "shrink", !!selected), _cx3)) || "")
       }, this.props.label), this.props.kind === 'outlined' && _react.default.createElement("fieldset", {
-        className: (0, _styles.rx)('flatline', (_rx4 = {}, _defineProperty(_rx4, "".concat(this.props.status), true), _defineProperty(_rx4, "focused", this.isFocused()), _defineProperty(_rx4, "idle", !this.isFocused()), _defineProperty(_rx4, "filled", this.state.text), _rx4))
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('flatline', (_cx4 = {}, _defineProperty(_cx4, "".concat(this.props.status), true), _defineProperty(_cx4, "focused", this.isFocused()), _defineProperty(_cx4, "idle", !this.isFocused()), _defineProperty(_cx4, "filled", this.state.text), _cx4)) || "")
       }, _react.default.createElement("legend", {
-        className: (0, _styles.default)('legend'),
-        style: legendWidth
-      }, _ref2)), this.props.icon && _react.default.createElement("div", {
-        className: (0, _styles.default)('lead-icon-field')
+        style: legendWidth,
+        className: "jsx-".concat(_styles.default.__hash) + " " + "legend"
+      }, _react.default.createElement("span", {
+        className: "jsx-".concat(_styles.default.__hash)
+      }, "\u200B"))), this.props.icon && _react.default.createElement("div", {
+        className: "jsx-".concat(_styles.default.__hash) + " " + "lead-icon-field"
       }, _react.default.createElement(_Icon.default, {
         name: this.props.icon,
-        className: (0, _styles.default)('icon')
-      })), _react.default.createElement("div", {
-        className: (0, _styles.rx)('input-field', {
+        className: icons.default.className
+      }), icons.default.styles), _react.default.createElement("div", {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('input-field', {
           disabled: this.props.disabled
-        })
+        }) || "")
       }, _react.default.createElement("div", {
-        className: (0, _styles.rx)('value')
+        className: "jsx-".concat(_styles.default.__hash) + " " + "value"
       }, selected)), _react.default.createElement("div", {
-        className: (0, _styles.rx)('trail-icon-field')
+        className: "jsx-".concat(_styles.default.__hash) + " " + "trail-icon-field"
       }, this.props.status !== 'default' && _react.default.createElement(_Icon.default, {
         name: statusToIcon[this.props.status],
-        className: (0, _styles.default)('icon', _defineProperty({}, "icon-".concat(this.props.status), true))
-      })), _react.default.createElement("div", {
-        className: (0, _styles.rx)('trail-icon-field', {
+        className: icons[this.props.status].className
+      }), icons[this.props.status].styles), _react.default.createElement("div", {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('trail-icon-field', {
           disabled: this.props.disabled
-        })
+        }) || "")
       }, _react.default.createElement(_Icon.default, {
         name: open ? 'arrow_drop_up' : 'arrow_drop_down',
-        className: (0, _styles.default)('arrow-icon', {
+        className: (0, _classnames.default)('arrow-icon', {
           disabled: this.props.disabled
         })
-      }))), this.props.help && _react.default.createElement(_helpers.Help, {
+      }))), this.props.help && _react.default.createElement(_Help.default, {
         text: this.props.help,
         status: this.props.status
       }), open && _react.default.createElement("div", {
-        className: (0, _styles.rx)('menu'),
         ref: function ref(c) {
           return _this3.elMenu = c;
-        }
+        },
+        className: "jsx-".concat(_styles.default.__hash) + " " + "menu"
       }, _react.default.createElement(_Menu.default, {
         list: list,
         size: this.props.size,
         onClick: this.onClick
-      })));
+      })), _react.default.createElement(_style.default, {
+        id: _styles.default.__hash
+      }, _styles.default));
     }
   }]);
 

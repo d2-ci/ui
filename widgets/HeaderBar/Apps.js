@@ -1,9 +1,13 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _style = _interopRequireDefault(require("styled-jsx/style"));
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -15,17 +19,13 @@ var _Icon = _interopRequireDefault(require("../../core/Icon"));
 
 var _InputField = _interopRequireDefault(require("../../core/InputField"));
 
-var _url = require("../../utils/url.js");
+var _utils = require("../../utils");
 
-var _math = require("../../utils/math.js");
+var _classnames = _interopRequireDefault(require("classnames"));
 
-var _styles = _interopRequireWildcard(require("./styles.js"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -45,13 +45,20 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var appIcon = {
+  styles: _react.default.createElement(_style.default, {
+    id: "2331893891"
+  }, "i.jsx-2331893891{cursor:pointer;}"),
+  className: "jsx-2331893891"
+};
+
 function Search(_ref) {
   var value = _ref.value,
       onChange = _ref.onChange,
       onSettingsClick = _ref.onSettingsClick,
       onIconClick = _ref.onIconClick;
   return _react.default.createElement("div", {
-    className: (0, _styles.rx)('search')
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('search') || "")
   }, _react.default.createElement(_InputField.default, {
     value: value,
     name: "filter",
@@ -64,9 +71,11 @@ function Search(_ref) {
     onTrailIconClick: onIconClick
   }), _react.default.createElement(_Icon.default, {
     name: "settings",
-    className: (0, _styles.default)('settings'),
+    className: (0, _classnames.default)('settings'),
     onClick: onSettingsClick
-  }));
+  }), _react.default.createElement(_style.default, {
+    id: _styles.default.__hash
+  }, _styles.default));
 }
 
 Search.defaultProps = {
@@ -85,14 +94,16 @@ function Item(_ref2) {
       img = _ref2.img;
   return _react.default.createElement("a", {
     href: path,
-    className: (0, _styles.rx)('app')
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('app') || "")
   }, _react.default.createElement("img", {
     src: img,
     alt: "app logo",
-    className: (0, _styles.rx)()
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)() || "")
   }), _react.default.createElement("div", {
-    className: (0, _styles.rx)('name')
-  }, name));
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('name') || "")
+  }, name), _react.default.createElement(_style.default, {
+    id: _styles.default.__hash
+  }, _styles.default));
 }
 
 Item.propTypes = {
@@ -105,7 +116,7 @@ function List(_ref3) {
   var apps = _ref3.apps,
       filter = _ref3.filter;
   return _react.default.createElement("div", {
-    className: (0, _styles.rx)('modules')
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('modules') || "")
   }, apps.filter(function (_ref4) {
     var name = _ref4.name;
     return filter.length > 0 ? name.toLowerCase().match(filter.toLowerCase()) : true;
@@ -119,7 +130,9 @@ function List(_ref3) {
       path: path,
       img: img
     });
-  }));
+  }), _react.default.createElement(_style.default, {
+    id: _styles.default.__hash
+  }, _styles.default));
 }
 
 var Apps =
@@ -156,7 +169,7 @@ function (_React$Component) {
 
         var container = _this.elContainer.getBoundingClientRect();
 
-        if (!(0, _math.isPointInRect)(target, apps) && !(0, _math.isPointInRect)(target, container)) {
+        if (!(0, _utils.isPointInRect)(target, apps) && !(0, _utils.isPointInRect)(target, container)) {
           _this.setState({
             show: false
           });
@@ -177,7 +190,7 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSettingsClick", function () {
-      return (0, _url.gotoURL)("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
+      return (0, _utils.gotoURL)("".concat(_this.props.baseURL, "/dhis-web-menu-management"));
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onIconClick", function () {
@@ -205,18 +218,19 @@ function (_React$Component) {
       var _this2 = this;
 
       return _react.default.createElement("div", {
-        className: (0, _styles.rx)('apps'),
         ref: function ref(c) {
           return _this2.elContainer = c;
-        }
+        },
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('apps') || "")
       }, _react.default.createElement(_Icon.default, {
         name: "apps",
-        onClick: this.onToggle
+        onClick: this.onToggle,
+        className: appIcon.className
       }), this.state.show && _react.default.createElement("div", {
-        className: (0, _styles.rx)('contents'),
         ref: function ref(c) {
           return _this2.elApps = c;
-        }
+        },
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('contents') || "")
       }, _react.default.createElement(_Card.default, null, _react.default.createElement(Search, {
         value: this.state.filter,
         onChange: this.onChange,
@@ -225,7 +239,9 @@ function (_React$Component) {
       }), _react.default.createElement(List, {
         apps: this.props.apps,
         filter: this.state.filter
-      }))));
+      }))), appIcon.styles, _react.default.createElement(_style.default, {
+        id: _styles.default.__hash
+      }, _styles.default));
     }
   }]);
 

@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = MenuItem;
 
+var _style = _interopRequireDefault(require("styled-jsx/style"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -13,23 +15,32 @@ var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _index = _interopRequireDefault(require("./index"));
 
-var _styles = _interopRequireWildcard(require("./styles"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var subChevron = {
+  styles: _react.default.createElement(_style.default, {
+    id: "3358657644"
+  }, "i.jsx-3358657644{margin:0 -14px 0 auto;font-size:18px;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"),
+  className: "jsx-3358657644"
+};
 
 function SubMenu(_ref) {
   var size = _ref.size,
       list = _ref.list,
       onClick = _ref.onClick;
   return _react.default.createElement("div", {
-    className: (0, _styles.rx)('sub-menu')
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('sub-menu') || "")
   }, _react.default.createElement(_index.default, {
     size: size,
     list: list,
     onClick: onClick
-  }));
+  }), _react.default.createElement(_style.default, {
+    id: _styles.default.__hash
+  }, _styles.default));
 }
 
 function MenuItem(_ref2) {
@@ -43,33 +54,31 @@ function MenuItem(_ref2) {
       _onClick = _ref2.onClick;
   var hasMenu = list.length > 0;
   return _react.default.createElement("li", {
-    className: (0, _styles.rx)('item', {
-      disabled: disabled,
-      active: active
-    }),
     onClick: function onClick(evt) {
       evt.preventDefault();
       evt.stopPropagation();
 
       _onClick(value);
-    }
-  }, icon && _react.default.createElement(_Icon.default, {
-    name: icon,
-    className: (0, _styles.default)('icon')
-  }), _react.default.createElement("div", {
-    className: (0, _styles.rx)('label')
+    },
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('item', {
+      disabled: disabled,
+      active: active
+    }) || "")
+  }, icon, _react.default.createElement("div", {
+    className: "jsx-".concat(_styles.default.__hash) + " " + "label"
   }, label), hasMenu && _react.default.createElement(_Icon.default, {
     name: "chevron_right",
-    className: (0, _styles.default)('sub-chevron')
+    className: subChevron.className
   }), hasMenu && _react.default.createElement(SubMenu, {
     size: size,
     list: list,
     onClick: _onClick
-  }));
+  }), subChevron.styles, _react.default.createElement(_style.default, {
+    id: _styles.default.__hash
+  }, _styles.default));
 }
 
 MenuItem.defaultProps = {
-  icon: '',
   list: [],
   size: 'default',
   active: false,
@@ -78,7 +87,7 @@ MenuItem.defaultProps = {
 MenuItem.propTypes = {
   label: _propTypes.default.string.isRequired,
   value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
-  icon: _propTypes.default.string,
+  icon: _propTypes.default.element,
   list: _propTypes.default.array,
   active: _propTypes.default.bool,
   disabled: _propTypes.default.bool,

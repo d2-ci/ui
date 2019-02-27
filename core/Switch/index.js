@@ -5,13 +5,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exports.Switch = void 0;
 
+var _style = _interopRequireDefault(require("styled-jsx/style"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _styles = _interopRequireWildcard(require("./styles"));
+var _classnames = _interopRequireDefault(require("classnames"));
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _styles = _interopRequireDefault(require("./styles"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71,20 +73,22 @@ function (_React$Component) {
           status = _this$props.status,
           disabled = _this$props.disabled;
       return _react.default.createElement("label", {
-        className: (0, _styles.rx)(status, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(status, {
           disabled: disabled
-        })
+        }) || "")
       }, _react.default.createElement("input", {
         type: "checkbox",
-        className: (0, _styles.default)('input'),
         disabled: disabled,
         checked: this.props.checked,
-        onChange: this.onChange
+        onChange: this.onChange,
+        className: "jsx-".concat(_styles.default.__hash)
       }), _react.default.createElement("span", {
-        className: (0, _styles.rx)('label', _defineProperty({}, "status-".concat(status), true))
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', _defineProperty({}, "status-".concat(status), true)) || "")
       }, this.props.label), this.props.required && _react.default.createElement("span", {
-        className: (0, _styles.rx)('required')
-      }));
+        className: "jsx-".concat(_styles.default.__hash) + " " + "required"
+      }), _react.default.createElement(_style.default, {
+        id: _styles.default.__hash
+      }, _styles.default));
     }
   }]);
 

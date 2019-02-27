@@ -18,10 +18,12 @@ var _ref2 =
 _react.default.createElement("defs", null);
 
 function LogoIcon(_ref) {
-  var fill = _ref.fill;
+  var fill = _ref.fill,
+      className = _ref.className;
   return _react.default.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 200 182"
+    viewBox: "0 0 200 182",
+    className: className
   }, _ref2, _react.default.createElement("path", {
     fill: fill,
     d: "M191.73,60,109,6.34a19.73,19.73,0,0,0-20.32,0L8.31,58.43a12,12,0,0,0-.25,20.63L88.6,134a19.37,19.37,0,0,0,20.37.25l82.76-53.65a11.88,11.88,0,0,0,0-20.59Zm-91,61.45a4.29,4.29,0,0,1-3.49-.05l-77-52.49L97,19.13a4.76,4.76,0,0,1,3.74,0L179.6,70.28Z"
@@ -41,24 +43,24 @@ LogoIcon.propTypes = {
   fill: _propTypes.default.string
 };
 
-var _ref3 =
-/*#__PURE__*/
-_react.default.createElement(LogoIcon, {
-  fill: "#fff"
-});
-
-var LogoIconWhite = function LogoIconWhite() {
-  return _ref3;
+var LogoIconWhite = function LogoIconWhite(_ref3) {
+  var className = _ref3.className;
+  return _react.default.createElement(LogoIcon, {
+    fill: "#fff",
+    className: className
+  });
 };
 
 exports.LogoIconWhite = LogoIconWhite;
 
 function Logo(_ref4) {
   var fill1 = _ref4.fill1,
-      fill2 = _ref4.fill2;
+      fill2 = _ref4.fill2,
+      className = _ref4.className;
   return _react.default.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 600 182"
+    viewBox: "0 0 600 182",
+    className: className
   }, _react.default.createElement("path", {
     fill: fill1,
     d: "M191.91,60,109.17,6.34a19.75,19.75,0,0,0-20.33,0L8.49,58.43a12,12,0,0,0-.25,20.63L88.78,134a19.39,19.39,0,0,0,20.38.25l82.75-53.65a11.87,11.87,0,0,0,0-20.59Zm-91,61.45a4.29,4.29,0,0,1-3.49-.05l-77-52.49L97.13,19.13a4.76,4.76,0,0,1,3.74,0l78.91,51.15Z"

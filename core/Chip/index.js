@@ -5,15 +5,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exports.Chip = void 0;
 
+var _style = _interopRequireDefault(require("styled-jsx/style"));
+
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _classnames = _interopRequireDefault(require("classnames"));
+
 var _Icon = _interopRequireDefault(require("../Icon"));
 
-var _styles = _interopRequireWildcard(require("./styles"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+var _styles = _interopRequireDefault(require("./styles.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36,6 +38,12 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var _ref =
+/*#__PURE__*/
+_react.default.createElement(_style.default, {
+  id: "957288101"
+}, ".image-icon.jsx-957288101{width:24px;height:24px;margin-left:4px;border-radius:50%;}");
 
 var Chip =
 /*#__PURE__*/
@@ -80,16 +88,16 @@ function (_React$PureComponent) {
       }
 
       if (this.props.type === 'image') {
-        return _react.default.createElement("img", {
+        return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("img", {
           src: icon,
           alt: "chip icon",
-          className: (0, _styles.rx)('image-icon')
-        });
+          className: "jsx-957288101" + " " + "image-icon"
+        }), _ref);
       }
 
       return _react.default.createElement(_Icon.default, {
         name: icon,
-        className: (0, _styles.default)('icon')
+        className: (0, _classnames.default)('icon')
       });
     }
   }, {
@@ -98,7 +106,7 @@ function (_React$PureComponent) {
       if (this.props.onRemove) {
         return _react.default.createElement(_Icon.default, {
           name: "cancel",
-          className: (0, _styles.default)('remove-icon'),
+          className: (0, _classnames.default)('remove-icon'),
           onClick: this.onRemove
         });
       }
@@ -113,18 +121,20 @@ function (_React$PureComponent) {
           dragging = _this$props.dragging,
           overflow = _this$props.overflow;
       return _react.default.createElement("div", {
-        className: (0, _styles.rx)('base', {
+        onClick: this.onClick,
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', {
           selected: selected,
           disabled: disabled,
           dragging: dragging,
           static: !this.props.onClick
-        }),
-        onClick: this.onClick
+        }) || "")
       }, this.showIcon(), _react.default.createElement("span", {
-        className: (0, _styles.rx)('label', {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
           overflow: overflow
-        })
-      }, label), this.showRemove());
+        }) || "")
+      }, label), this.showRemove(), _react.default.createElement(_style.default, {
+        id: _styles.default.__hash
+      }, _styles.default));
     }
   }]);
 

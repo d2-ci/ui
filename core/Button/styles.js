@@ -3,36 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.rx = exports.default = void 0;
+exports.default = void 0;
 
-var _css = _interopRequireDefault(require("../../utils/css"));
+var _colors = require("../colors.js");
 
-require("../../defaults/colors.css");
+var _defaultExport = new String(".base.jsx-3933576805{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;position:relative;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;border:1px solid transparent;border-radius:4px;background-color:transparent;font-weight:400;-webkit-letter-spacing:0.5px;-moz-letter-spacing:0.5px;-ms-letter-spacing:0.5px;letter-spacing:0.5px;-webkit-text-decoration:none;text-decoration:none;text-transform:capitalize;cursor:pointer;-webkit-transition:all 0.15s cubic-bezier(0.4,0,0.6,1);transition:all 0.15s cubic-bezier(0.4,0,0.6,1);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}.base.jsx-3933576805:disabled{cursor:not-allowed;}.base.jsx-3933576805:focus{outline:none;}.base.icon.jsx-3933576805{padding-left:10px;}.size-small.jsx-3933576805{height:28px;padding:0 16px;font-size:14px;line-height:16px;}.size-medium.jsx-3933576805{height:36px;padding:0 16px;font-size:14px;line-height:16px;}.size-large.jsx-3933576805{height:43px;padding:0 24px;font-size:16px;-webkit-letter-spacing:0.57px;-moz-letter-spacing:0.57px;-ms-letter-spacing:0.57px;letter-spacing:0.57px;line-height:19px;}.icon-only.jsx-3933576805 i.jsx-3933576805{margin-right:0;margin-left:0;}.kind-basic.jsx-3933576805{border:1px solid #c4c9cc;background-color:#f9fafb;}.kind-basic.jsx-3933576805:hover{border:1px solid #c4c9cc;background-color:#f3f4f5;}.kind-basic.jsx-3933576805:active,.kind-basic.jsx-3933576805:active.jsx-3933576805:focus{border:1px solid #c5c9cc;background-color:#f3f4f5;box-shadow:0 0 0 1px rgb(0,0,0,0.1) inset;}.kind-basic.jsx-3933576805:focus{border:1px solid ".concat(_colors.theme.primary600, ";background-color:#f9fafb;box-shadow:0 0 0 1px ").concat(_colors.theme.primary600, ";}.kind-basic.jsx-3933576805:disabled{border:1px solid #c4c9cc;background-color:#f9fafb;box-shadow:none;color:").concat(_colors.colors.grey500, ";}.kind-primary.jsx-3933576805{border:1px solid ").concat(_colors.theme.primary800, ";background:linear-gradient(180deg,#1565c0 0%,#0650a3 100%);background-color:#2b61b3;color:#fff;}.kind-primary.jsx-3933576805:hover{border:1px solid ").concat(_colors.theme.primary800, ";background:linear-gradient(180deg,#054fa3 0%,#034793 100%);background-color:#21539f;}.kind-primary.jsx-3933576805:active,.kind-primary.jsx-3933576805:active.jsx-3933576805:focus{border:1px solid ").concat(_colors.theme.primary800, ";background:linear-gradient(180deg,#054fa3 0%,#034793 100%);background-color:#1c4a90;box-shadow:0 0 0 1px rgba(0,0,0,0.18) inset;}.kind-primary.jsx-3933576805:focus{border:1px solid #001d47;background:linear-gradient(180deg,#1565c0 0%,#0650a3 100%);background-color:#285dac;box-shadow:0 0 0 1px #001d47 inset;}.kind-primary.jsx-3933576805:disabled{border:1px solid ").concat(_colors.theme.primary800, ";background:linear-gradient(180deg,#1565c0 0%,#0650a3 100%);background-color:#b6c8e2;box-shadow:none;color:#fff;opacity:0.33;}.kind-secondary.jsx-3933576805{border:1px solid ").concat(_colors.colors.grey300, ";background-color:transparent;}.kind-secondary.jsx-3933576805:hover{border:1px solid ").concat(_colors.colors.grey300, ";background-color:rgba(158,158,158,0.07);}.kind-secondary.jsx-3933576805:active,.kind-secondary.jsx-3933576805:active.jsx-3933576805:focus{border:1px solid ").concat(_colors.colors.grey300, ";background-color:rgba(158,158,158,0.18);box-shadow:none;}.kind-secondary.jsx-3933576805:focus{border:1px solid ").concat(_colors.theme.primary600, ";background-color:transparent;box-shadow:0 0 0 1px ").concat(_colors.theme.primary600, ";}.kind-secondary.jsx-3933576805:disabled{border:1px solid ").concat(_colors.colors.grey300, ";background-color:transparent;box-shadow:none;color:").concat(_colors.colors.grey500, ";}.kind-destructive.jsx-3933576805{border:1px solid #a10b0b;background:linear-gradient(180deg,#d32f2f 0%,#b71c1c 100%);background-color:#b9242b;color:#fff;}.kind-destructive.jsx-3933576805:hover{border:1px solid #a10b0b;background:linear-gradient(180deg,#b81c1c 0%,#b80c0b 100%);background-color:#ac0f1a;}.kind-destructive.jsx-3933576805:active,.kind-destructive.jsx-3933576805:active.jsx-3933576805:focus{border:1px solid #a10b0b;background:linear-gradient(180deg,#b81c1c 0%,#b80c0b 100%);background-color:#ac101b;box-shadow:0 0 0 1px rgba(0,0,0,0.18) inset;}.kind-destructive.jsx-3933576805:focus{border:1px solid #5e0303;background:linear-gradient(180deg,#d32f2f 0%,#b71c1c 100%);background-color:#b72229;box-shadow:0 0 0 1px #5e0303 inset;}.kind-destructive.jsx-3933576805:disabled{border:1px solid #a10b0b;background:linear-gradient(180deg,#d32f2f 0%,#b71c1c 100%);background-color:#e5b5b7;box-shadow:none;color:#fff;opacity:0.33;}@media all and (-ms-high-contrast:none){.base.jsx-3933576805{border-radius:0;}.base.jsx-3933576805 .material-icons.jsx-3933576805{position:relative;top:0;left:0;}}.button-icon.jsx-3933576805{margin-right:10px;color:inherit;font-size:26px;vertical-align:middle;pointer-events:none;}"));
 
-require("../../defaults/common.css");
-
-var _common2 = _interopRequireDefault(require("../../defaults/common.json"));
-
-require("./styles.css");
-
-var _styles2 = _interopRequireDefault(require("./styles.json"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var cx = (0, _css.default)(_objectSpread({}, _common2.default, _styles2.default));
-var _default = cx;
+_defaultExport.__hash = "3933576805";
+var _default = _defaultExport;
 exports.default = _default;
-
-var rx = function rx() {
-  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  return cx.apply(void 0, ['reset'].concat(args));
-};
-
-exports.rx = rx;

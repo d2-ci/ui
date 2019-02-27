@@ -3,36 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.rx = exports.default = void 0;
+exports.default = void 0;
 
-var _css = _interopRequireDefault(require("../../utils/css"));
+var _colors = require("../colors.js");
 
-require("../../defaults/colors.css");
+var _defaultExport = new String(".overlay.jsx-303218478{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:absolute;top:0;right:0;bottom:0;left:0;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;}.base.jsx-303218478{display:inline-block;margin:16px;color:".concat(_colors.theme.primary600, ";-webkit-animation:anim-rotate-jsx-303218478 1.4s linear infinite;animation:anim-rotate-jsx-303218478 1.4s linear infinite;}.base.small.jsx-303218478{width:24px;height:24px;}.base.medium.jsx-303218478{width:50px;height:50px;}.base.large.jsx-303218478{width:80px;height:80px;}.circle.jsx-303218478{stroke:currentColor;stroke-dasharray:80px,200px;stroke-dashoffset:0;-webkit-animation:anim-dash-jsx-303218478 1.4s ease-in-out infinite;animation:anim-dash-jsx-303218478 1.4s ease-in-out infinite;}@-webkit-keyframes anim-rotate-jsx-303218478{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@keyframes anim-rotate-jsx-303218478{100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@-webkit-keyframes anim-dash-jsx-303218478{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}@keyframes anim-dash-jsx-303218478{0%{stroke-dasharray:1px,200px;stroke-dashoffset:0;}50%{stroke-dasharray:100px,200px;stroke-dashoffset:-15px;}100%{stroke-dasharray:100px,200px;stroke-dashoffset:-120px;}}"));
 
-require("../../defaults/common.css");
-
-var _common2 = _interopRequireDefault(require("../../defaults/common.json"));
-
-require("./styles.css");
-
-var _styles2 = _interopRequireDefault(require("./styles.json"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var cx = (0, _css.default)(_objectSpread({}, _common2.default, _styles2.default));
-var _default = cx;
+_defaultExport.__hash = "303218478";
+var _default = _defaultExport;
 exports.default = _default;
-
-var rx = function rx() {
-  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  return cx.apply(void 0, ['reset'].concat(args));
-};
-
-exports.rx = rx;
