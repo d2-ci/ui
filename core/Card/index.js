@@ -29,9 +29,6 @@ function Card(_ref) {
   }, ".base.__jsx-style-dynamic-selector{display:inline-block;position:relative;width:100%;height:100%;border-radius:2px;background:".concat(_colors.colors.white, ";box-shadow:0 0 2px 0 rgba(0,0,0,0.14), 0 2px 2px 0 rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);}")));
 }
 
-Card.defaultProps = {
-  className: ''
-};
 Card.propTypes = {
   className: _propTypes.default.string,
   children: _propTypes.default.node

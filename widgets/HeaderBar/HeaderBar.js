@@ -50,9 +50,10 @@ function HeaderBar(_ref) {
       apps = _ref.apps,
       profile = _ref.profile,
       messages = _ref.messages,
-      interpretations = _ref.interpretations;
+      interpretations = _ref.interpretations,
+      className = _ref.className;
   return _react.default.createElement("header", {
-    className: "jsx-".concat(_styles.default.__hash) + " " + "blue"
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('blue', className) || "")
   }, _react.default.createElement("div", {
     className: "jsx-".concat(_styles.default.__hash)
   }, _react.default.createElement("div", {
@@ -86,6 +87,7 @@ function HeaderBar(_ref) {
 }
 
 HeaderBar.propTypes = {
+  className: _propTypes.default.string,
   baseURL: _propTypes.default.string,
   instanceName: _propTypes.default.string.isRequired,
   appName: _propTypes.default.string,

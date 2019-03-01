@@ -175,7 +175,7 @@ function (_React$Component) {
         width: '0.01px'
       };
       return _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', this.props.className, {
           focused: this.isFocused(),
           disabled: this.props.disabled
         }) || "")
@@ -217,12 +217,6 @@ function (_React$Component) {
 
 exports.InputField = InputField;
 InputField.defaultProps = {
-  value: '',
-  label: '',
-  help: '',
-  placeholder: '',
-  icon: '',
-  trailIcon: '',
   status: 'default',
   size: 'default',
   kind: 'filled',
@@ -233,6 +227,7 @@ InputField.defaultProps = {
   onTrailIconClick: null
 };
 InputField.propTypes = {
+  className: _propTypes.default.string,
   name: _propTypes.default.string.isRequired,
   onChange: _propTypes.default.func.isRequired,
   value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),

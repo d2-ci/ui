@@ -115,7 +115,8 @@ function (_React$Component) {
       var _this$props = this.props,
           required = _this$props.required,
           status = _this$props.status,
-          checked = _this$props.checked;
+          checked = _this$props.checked,
+          className = _this$props.className;
       var state = status === 'default' && checked ? 'checked' : status;
       var name = 'check_box_outline_blank';
 
@@ -131,7 +132,7 @@ function (_React$Component) {
       });
 
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
           disabled: this.props.disabled
         }) || "")
       }, _react.default.createElement("input", {
@@ -155,7 +156,6 @@ function (_React$Component) {
 
 exports.Checkbox = Checkbox;
 Checkbox.defaultProps = {
-  label: '',
   checked: false,
   required: false,
   disabled: false,
@@ -163,6 +163,7 @@ Checkbox.defaultProps = {
   status: 'default'
 };
 Checkbox.propTypes = {
+  className: _propTypes.default.string,
   onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
   label: _propTypes.default.string,

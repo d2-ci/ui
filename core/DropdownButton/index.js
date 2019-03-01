@@ -130,7 +130,7 @@ function (_Component) {
       }, _react.default.createElement("button", {
         disabled: this.props.disabled,
         onClick: this.onToggle,
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), {
+        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
           'icon-only': this.props.icon && !this.props.label && !this.props.children,
           icon: this.props.icon
         }) || "")
@@ -164,11 +164,10 @@ exports.DropdownButton = DropdownButton;
 DropdownButton.defaultProps = {
   size: 'medium',
   kind: 'basic',
-  disabled: false,
-  width: '',
-  icon: null
+  disabled: false
 };
 DropdownButton.propTypes = {
+  className: _propTypes.default.string,
   list: _propTypes.default.array.isRequired,
   width: _propTypes.default.string,
   icon: _propTypes.default.element,

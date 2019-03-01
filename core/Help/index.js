@@ -22,9 +22,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function Help(_ref) {
   var text = _ref.text,
-      status = _ref.status;
+      status = _ref.status,
+      className = _ref.className;
   return _react.default.createElement("p", {
-    className: _style.default.dynamic([["3335312656", [_colors.colors.grey700, _colors.colors.blue600, _colors.colors.red500, _colors.colors.yellow500]]]) + " " + ((0, _classnames.default)('base', _defineProperty({}, "status-".concat(status), true)) || "")
+    className: _style.default.dynamic([["3335312656", [_colors.colors.grey700, _colors.colors.blue600, _colors.colors.red500, _colors.colors.yellow500]]]) + " " + ((0, _classnames.default)('base', className, _defineProperty({}, "status-".concat(status), true)) || "")
   }, text, _react.default.createElement(_style.default, {
     id: "3335312656",
     dynamic: [_colors.colors.grey700, _colors.colors.blue600, _colors.colors.red500, _colors.colors.yellow500]
@@ -35,6 +36,7 @@ Help.defaultProps = {
   status: 'default'
 };
 Help.propTypes = {
+  className: _propTypes.default.string,
   text: _propTypes.default.string.isRequired,
   status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error'])
 };

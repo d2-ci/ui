@@ -119,10 +119,11 @@ function (_React$PureComponent) {
           selected = _this$props.selected,
           disabled = _this$props.disabled,
           dragging = _this$props.dragging,
-          overflow = _this$props.overflow;
+          overflow = _this$props.overflow,
+          className = _this$props.className;
       return _react.default.createElement("div", {
         onClick: this.onClick,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
           selected: selected,
           disabled: disabled,
           dragging: dragging,
@@ -147,11 +148,10 @@ Chip.defaultProps = {
   selected: false,
   disabled: false,
   dragging: false,
-  overflow: true,
-  onClick: undefined,
-  onRemove: undefined
+  overflow: true
 };
 Chip.propTypes = {
+  className: _propTypes.default.className,
   label: _propTypes.default.string.isRequired,
   icon: _propTypes.default.string,
   type: _propTypes.default.oneOf(['icon', 'image']),

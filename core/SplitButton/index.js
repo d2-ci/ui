@@ -134,7 +134,7 @@ function (_Component) {
       }, _react.default.createElement("button", {
         disabled: this.props.disabled,
         onClick: this.props.onClick,
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), {
+        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
           'icon-only': this.props.icon && !this.props.label && !this.props.children,
           icon: this.props.icon
         }) || "")
@@ -171,10 +171,10 @@ exports.SplitButton = SplitButton;
 SplitButton.defaultProps = {
   size: 'medium',
   kind: 'basic',
-  disabled: false,
-  width: ''
+  disabled: false
 };
 SplitButton.propTypes = {
+  className: _propTypes.default.string,
   onClick: _propTypes.default.func.isRequired,
   label: _propTypes.default.string.isRequired,
   list: _propTypes.default.array.isRequired,

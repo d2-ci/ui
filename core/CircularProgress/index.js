@@ -37,11 +37,12 @@ _react.default.createElement(Circle, null);
 
 function CircularProgress(_ref) {
   var size = _ref.size,
-      overlay = _ref.overlay;
+      overlay = _ref.overlay,
+      className = _ref.className;
 
   var loader = _react.default.createElement("div", {
     role: "progressbar",
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', size) || "")
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', size, className) || "")
   }, _ref2, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
@@ -60,6 +61,7 @@ CircularProgress.defaultProps = {
   size: 'medium'
 };
 CircularProgress.propTypes = {
+  className: _propTypes.default.string,
   overlay: _propTypes.default.bool,
   size: _propTypes.default.oneOf(['small', 'medium', 'large'])
 };

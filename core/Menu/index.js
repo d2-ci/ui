@@ -34,9 +34,10 @@ function Menu(_ref) {
   var size = _ref.size,
       width = _ref.width,
       list = _ref.list,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      className = _ref.className;
   return _react.default.createElement(_Card.default, null, _react.default.createElement("ul", {
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', size) || "")
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', size, className) || "")
   }, list.map(function (_ref2, i) {
     var label = _ref2.label,
         value = _ref2.value,
@@ -73,6 +74,7 @@ Menu.defaultProps = {
   size: 'default'
 };
 Menu.propTypes = {
+  className: _propTypes.default.string,
   list: _propTypes.default.arrayOf(_propTypes.default.shape({
     type: _propTypes.default.oneOf(['divider']),
     label: _propTypes.default.string,

@@ -105,7 +105,8 @@ function (_React$Component) {
       var _this$props = this.props,
           required = _this$props.required,
           status = _this$props.status,
-          checked = _this$props.checked;
+          checked = _this$props.checked,
+          className = _this$props.className;
       var state = status === 'default' && checked ? 'checked' : status;
 
       var icon = _react.default.createElement(_Icon.default, {
@@ -114,7 +115,7 @@ function (_React$Component) {
       });
 
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
           disabled: this.props.disabled
         }) || "")
       }, _react.default.createElement("input", {
@@ -140,12 +141,12 @@ function (_React$Component) {
 
 exports.Radio = Radio;
 Radio.defaultProps = {
-  label: '',
   checked: false,
   status: 'default',
   disabled: false
 };
 Radio.propTypes = {
+  className: _propTypes.default.string,
   onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
   value: _propTypes.default.string.isRequired,

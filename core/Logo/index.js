@@ -40,6 +40,7 @@ LogoIcon.defaultProps = {
   fill: '#0080d4'
 };
 LogoIcon.propTypes = {
+  className: _propTypes.default.className,
   fill: _propTypes.default.string
 };
 
@@ -99,6 +100,7 @@ Logo.defaultProps = {
   fill2: '#212225'
 };
 Logo.propTypes = {
+  className: _propTypes.default.string,
   fill1: _propTypes.default.string,
   fill2: _propTypes.default.string
 };
