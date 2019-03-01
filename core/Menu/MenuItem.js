@@ -31,9 +31,10 @@ var subChevron = {
 function SubMenu(_ref) {
   var size = _ref.size,
       list = _ref.list,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      className = _ref.className;
   return _react.default.createElement("div", {
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('sub-menu') || "")
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('sub-menu', className) || "")
   }, _react.default.createElement(_index.default, {
     size: size,
     list: list,
@@ -51,7 +52,8 @@ function MenuItem(_ref2) {
       active = _ref2.active,
       disabled = _ref2.disabled,
       size = _ref2.size,
-      _onClick = _ref2.onClick;
+      _onClick = _ref2.onClick,
+      className = _ref2.className;
   var hasMenu = list.length > 0;
   return _react.default.createElement("li", {
     onClick: function onClick(evt) {
@@ -60,7 +62,7 @@ function MenuItem(_ref2) {
 
       _onClick(value);
     },
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('item', {
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('item', className, {
       disabled: disabled,
       active: active
     }) || "")
@@ -85,6 +87,7 @@ MenuItem.defaultProps = {
   disabled: false
 };
 MenuItem.propTypes = {
+  className: _propTypes.default.string,
   label: _propTypes.default.string.isRequired,
   value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
   icon: _propTypes.default.element,

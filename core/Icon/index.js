@@ -32,11 +32,6 @@ function Icon(_ref) {
   }, _styles.default));
 }
 
-Icon.defaultProps = {
-  name: '',
-  className: '',
-  onClick: undefined
-};
 Icon.propTypes = {
   name: _propTypes.default.string.isRequired,
   className: _propTypes.default.string,

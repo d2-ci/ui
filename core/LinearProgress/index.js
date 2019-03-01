@@ -20,7 +20,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function LinearProgress(_ref) {
   var amount = _ref.amount,
-      margin = _ref.margin;
+      margin = _ref.margin,
+      className = _ref.className;
   var type = typeof amount === 'undefined' ? (0, _classnames.default)('indeterminate') : (0, _classnames.default)('determinate');
   var style = amount ? {
     width: "".concat(amount, "%")
@@ -30,7 +31,7 @@ function LinearProgress(_ref) {
     style: {
       margin: margin
     },
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base') || "")
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className) || "")
   }, _react.default.createElement("div", {
     style: style,
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('progress', type) || "")
@@ -40,6 +41,7 @@ function LinearProgress(_ref) {
 }
 
 LinearProgress.propTypes = {
+  className: _propTypes.default.string,
   amount: _propTypes.default.number,
   margin: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number])
 };

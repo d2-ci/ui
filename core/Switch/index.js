@@ -71,9 +71,10 @@ function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           status = _this$props.status,
-          disabled = _this$props.disabled;
+          disabled = _this$props.disabled,
+          className = _this$props.className;
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(status, {
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)(status, className, {
           disabled: disabled
         }) || "")
       }, _react.default.createElement("input", {
@@ -97,12 +98,12 @@ function (_React$Component) {
 
 exports.Switch = Switch;
 Switch.defaultProps = {
-  label: '',
   checked: false,
   disabled: false,
   status: 'default'
 };
 Switch.propTypes = {
+  className: _propTypes.default.string,
   onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
   checked: _propTypes.default.bool,

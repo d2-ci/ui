@@ -221,7 +221,7 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elContainer = c;
         },
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', _defineProperty({
+        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', this.props.className, _defineProperty({
           selected: !!this.props.value,
           disabled: this.props.disabled
         }, "size-".concat(this.props.size), true)) || "")
@@ -289,9 +289,6 @@ function (_React$Component) {
 
 exports.SelectField = SelectField;
 SelectField.defaultProps = {
-  value: '',
-  icon: '',
-  help: '',
   size: 'default',
   kind: 'filled',
   status: 'default',
@@ -299,6 +296,7 @@ SelectField.defaultProps = {
   required: false
 };
 SelectField.propTypes = {
+  className: _propTypes.default.string,
   onChange: _propTypes.default.func.isRequired,
   name: _propTypes.default.string.isRequired,
   label: _propTypes.default.string.isRequired,

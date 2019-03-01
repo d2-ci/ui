@@ -28,11 +28,12 @@ function Button(_ref) {
       icon = _ref.icon,
       label = _ref.label,
       disabled = _ref.disabled,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      className = _ref.className;
   return _react.default.createElement("button", {
     disabled: disabled,
     onClick: onClick,
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(kind), "size-".concat(size), {
+    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(kind), "size-".concat(size), className, {
       'icon-only': icon && !label && !children,
       icon: icon
     }) || "")
@@ -44,8 +45,6 @@ function Button(_ref) {
 }
 
 Button.defaultProps = {
-  icon: null,
-  label: '',
   kind: 'basic',
   type: 'button',
   size: 'medium',
@@ -53,6 +52,7 @@ Button.defaultProps = {
   onClick: undefined
 };
 Button.propTypes = {
+  className: _propTypes.default.string,
   icon: _propTypes.default.element,
   label: _propTypes.default.string,
   kind: _propTypes.default.oneOf(['basic', 'primary', 'secondary', 'destructive']),
