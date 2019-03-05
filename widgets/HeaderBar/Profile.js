@@ -149,31 +149,42 @@ var list = [{
     className: iconStyle.className
   }),
   label: 'Settings',
-  value: 'settings'
+  value: 'settings',
+  link: "dhis-web-user-profile/#/settings",
+  target: '_self'
 }, {
   icon: _react.default.createElement(_Account.Account, {
     className: iconStyle.className
   }),
   label: 'Account',
-  value: 'account'
+  value: 'account',
+  link: "dhis-web-user-profile/#/account",
+  target: '_self'
 }, {
   icon: _react.default.createElement(_Help.Help, {
     className: iconStyle.className
   }),
   label: 'Help',
-  value: 'help'
+  value: 'help',
+  link: 'https://docs.dhis2.org/master/en/user/html/dhis2_user_manual_en.html',
+  target: '_blank',
+  nobase: true
 }, {
   icon: _react.default.createElement(_Info.Info, {
     className: iconStyle.className
   }),
   label: 'About DHIS2',
-  value: 'about'
+  value: 'about',
+  link: "dhis-web-user-profile/#/aboutPage",
+  target: '_self'
 }, {
   icon: _react.default.createElement(_Exit.Exit, {
     className: iconStyle.className
   }),
   label: 'Logout',
-  value: 'logout'
+  value: 'logout',
+  link: "dhis-web-commons-security/logout.action",
+  target: '_self'
 }];
 
 var _ref4 =
@@ -229,28 +240,6 @@ function (_React$Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClick", function (value) {
-      var baseURL = _this.props.baseURL;
-      var paths = {
-        edit_profile: "".concat(baseURL, "/dhis-web-user-profile/#/profile"),
-        settings: "".concat(baseURL, "/dhis-web-user-profile/#/settings"),
-        account: "".concat(baseURL, "/dhis-web-user-profile/#/account"),
-        about: "".concat(baseURL, "/dhis-web-user-profile/#/aboutPage"),
-        help: 'https://docs.dhis2.org/master/en/user/html/dhis2_user_manual_en.html',
-        logout: "".concat(baseURL, "/dhis-web-commons-security/logout.action")
-      };
-
-      if (typeof paths[value] !== 'undefined') {
-        (0, _utils.gotoURL)(paths[value]);
-      } else {
-        console.warn('onClick: not implemented', value);
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onHeaderClick", function () {
-      return _this.onClick('edit_profile');
-    });
-
     return _this;
   }
 
@@ -292,6 +281,7 @@ function (_React$Component) {
         return null;
       }
 
+      var baseURL = this.props.baseURL;
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elContents = c;
@@ -303,21 +293,28 @@ function (_React$Component) {
         baseURL: this.props.baseURL,
         img: this.props.profile.img,
         name: this.props.profile.name,
-        email: this.props.profile.email,
-        onClick: this.onHeaderClick
+        email: this.props.profile.email
       }), _ref4, _react.default.createElement("ul", {
         className: "jsx-".concat(_styles.default.__hash)
       }, list.map(function (_ref5) {
         var label = _ref5.label,
             value = _ref5.value,
-            icon = _ref5.icon;
-        return _react.default.createElement(_MenuItem.default, {
+            icon = _ref5.icon,
+            link = _ref5.link,
+            target = _ref5.target,
+            nobase = _ref5.nobase;
+        var url = nobase ? link : "".concat(baseURL, "/").concat(link);
+        return _react.default.createElement("a", {
+          href: url,
+          target: target,
+          key: "h-p-".concat(value),
+          className: "jsx-".concat(_styles.default.__hash)
+        }, _react.default.createElement(_MenuItem.default, {
           key: "h-mi-".concat(value),
           label: label,
           value: value,
-          icon: icon,
-          onClick: _this2.onClick
-        });
+          icon: icon
+        }));
       })))), iconStyle.styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));

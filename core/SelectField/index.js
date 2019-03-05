@@ -333,7 +333,7 @@ SelectField.propTypes = {
     value: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]).isRequired
   })).isRequired,
   value: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
-  icon: _propTypes.default.string,
+  icon: _propTypes.default.element,
   help: _propTypes.default.string,
   size: _propTypes.default.oneOf(['default', 'dense']),
   kind: _propTypes.default.oneOf(['filled', 'outlined']),

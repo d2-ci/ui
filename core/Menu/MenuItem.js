@@ -57,10 +57,12 @@ function MenuItem(_ref2) {
   var hasMenu = list.length > 0;
   return _react.default.createElement("li", {
     onClick: function onClick(evt) {
-      evt.preventDefault();
-      evt.stopPropagation();
+      if (_onClick) {
+        evt.preventDefault();
+        evt.stopPropagation();
 
-      _onClick(value);
+        _onClick(value);
+      }
     },
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('item', className, {
       disabled: disabled,
@@ -94,5 +96,5 @@ MenuItem.propTypes = {
   active: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   size: _propTypes.default.string,
-  onClick: _propTypes.default.func.isRequired
+  onClick: _propTypes.default.func
 };
