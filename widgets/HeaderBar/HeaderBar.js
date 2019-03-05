@@ -20,12 +20,24 @@ var _Apps = _interopRequireDefault(require("./Apps"));
 
 var _Profile = _interopRequireDefault(require("./Profile"));
 
+var _Email = require("../../icons/Email.js");
+
+var _Message = require("../../icons/Message.js");
+
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
+var _colors = require("../../core/colors.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var notificationIcon = {
+  styles: _react.default.createElement(_style.default, {
+    id: "3606299726"
+  }, "svg.jsx-3606299726{fill:".concat(_colors.colors.white, ";cursor:pointer;height:24px;width:24px;}")),
+  className: "jsx-3606299726"
+};
 var logotype = {
   styles: _react.default.createElement(_style.default, {
     id: "506544450"
@@ -68,20 +80,23 @@ function HeaderBar(_ref) {
   }, getTitle(instanceName, appName))), _react.default.createElement("div", {
     className: "jsx-".concat(_styles.default.__hash)
   }, _react.default.createElement(_NotificationIcon.default, {
-    icon: "message",
     count: interpretations.count,
     href: "".concat(baseURL, "/dhis-web-interpretation")
-  }), _react.default.createElement(_NotificationIcon.default, {
+  }, _react.default.createElement(_Message.Message, {
+    className: notificationIcon.className
+  })), _react.default.createElement(_NotificationIcon.default, {
     icon: "email",
     count: messages.count,
     href: "".concat(baseURL, "/dhis-web-messaging")
-  }), _react.default.createElement(_Apps.default, {
+  }, _react.default.createElement(_Email.Email, {
+    className: notificationIcon.className
+  })), _react.default.createElement(_Apps.default, {
     apps: apps,
     baseURL: baseURL
   }), _react.default.createElement(_Profile.default, {
     profile: profile,
     baseURL: baseURL
-  })), logotype.styles, _react.default.createElement(_style.default, {
+  })), notificationIcon.styles, logotype.styles, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
 }

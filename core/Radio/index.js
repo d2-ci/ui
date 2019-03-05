@@ -15,11 +15,11 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Icon = _interopRequireDefault(require("../Icon"));
-
 var _colors = require("../colors.js");
 
 var _styles = _interopRequireDefault(require("./styles.js"));
+
+var _Radio = require("../../icons/Radio.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44,33 +44,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var icons = {
   default: {
     styles: _react.default.createElement(_style.default, {
-      id: "1855531399"
-    }, "i.jsx-1855531399{color:".concat(_colors.colors.grey700, ";}")),
-    className: "jsx-1855531399"
+      id: "2469916096"
+    }, "svg.jsx-2469916096{fill:".concat(_colors.colors.grey700, ";height:24px;width:24px;}")),
+    className: "jsx-2469916096"
   },
   checked: {
     styles: _react.default.createElement(_style.default, {
-      id: "1828969326"
-    }, "i.jsx-1828969326{color:".concat(_colors.colors.teal400, ";}")),
-    className: "jsx-1828969326"
+      id: "3230514506"
+    }, "svg.jsx-3230514506{fill:".concat(_colors.colors.teal400, ";height:24px;width:24px;}")),
+    className: "jsx-3230514506"
   },
   valid: {
     styles: _react.default.createElement(_style.default, {
-      id: "317361377"
-    }, "i.jsx-317361377{color:".concat(_colors.colors.blue600, ";}")),
-    className: "jsx-317361377"
+      id: "1378458444"
+    }, "svg.jsx-1378458444{fill:".concat(_colors.colors.blue600, ";height:24px;width:24px;}")),
+    className: "jsx-1378458444"
   },
   warning: {
     styles: _react.default.createElement(_style.default, {
-      id: "1097909025"
-    }, "i.jsx-1097909025{color:".concat(_colors.colors.yellow500, ";}")),
-    className: "jsx-1097909025"
+      id: "3220898470"
+    }, "svg.jsx-3220898470{fill:".concat(_colors.colors.yellow500, ";height:24px;width:24px;}")),
+    className: "jsx-3220898470"
   },
   error: {
     styles: _react.default.createElement(_style.default, {
-      id: "1838749421"
-    }, "i.jsx-1838749421{color:".concat(_colors.colors.red500, ";}")),
-    className: "jsx-1838749421"
+      id: "2028575264"
+    }, "svg.jsx-2028575264{fill:".concat(_colors.colors.red500, ";height:24px;width:24px;}")),
+    className: "jsx-2028575264"
   }
 };
 
@@ -108,12 +108,11 @@ function (_React$Component) {
           checked = _this$props.checked,
           className = _this$props.className;
       var state = status === 'default' && checked ? 'checked' : status;
-
-      var icon = _react.default.createElement(_Icon.default, {
-        name: this.props.checked ? 'radio_button_checked' : 'radio_button_unchecked',
+      var icon = this.props.checked ? _react.default.createElement(_Radio.Checked, {
+        className: icons[state].className
+      }) : _react.default.createElement(_Radio.Unchecked, {
         className: icons[state].className
       });
-
       return _react.default.createElement("label", {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
           disabled: this.props.disabled

@@ -1,5 +1,7 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -17,9 +19,9 @@ var _Button = _interopRequireDefault(require("../Button"));
 
 var _Menu = _interopRequireDefault(require("../Menu"));
 
-var _Icon = _interopRequireDefault(require("../Icon"));
-
 var _utils = require("../../utils");
+
+var _Arrow = require("../../icons/Arrow.js");
 
 var _styles = _interopRequireDefault(require("../Button/styles.js"));
 
@@ -28,8 +30,6 @@ var _styles2 = _interopRequireDefault(require("./styles.js"));
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -48,6 +48,13 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var ArrowIcon = {
+  styles: _react.default.createElement(_style.default, {
+    id: "1039571365"
+  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
+  className: "jsx-1039571365"
+};
 
 var DropdownButton =
 /*#__PURE__*/
@@ -121,7 +128,11 @@ function (_Component) {
         width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
       }
 
-      var icon = open ? 'arrow_drop_up' : 'arrow_drop_down';
+      var icon = open ? _react.default.createElement(_Arrow.ArrowUp, {
+        className: ArrowIcon.className
+      }) : _react.default.createElement(_Arrow.ArrowDown, {
+        className: ArrowIcon.className
+      });
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elContainer = c;
@@ -138,10 +149,7 @@ function (_Component) {
         className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "button-icon"
       }, this.props.icon), _react.default.createElement("span", {
         className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu-label"
-      }, this.props.label), _react.default.createElement(_Icon.default, {
-        className: "menu-icon",
-        name: icon
-      })), open && _react.default.createElement("div", {
+      }, this.props.label), icon), open && _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elMenu = c;
         },
@@ -149,7 +157,7 @@ function (_Component) {
       }, _react.default.createElement(_Menu.default, {
         list: this.props.list,
         onClick: this.props.onClick
-      })), _react.default.createElement(_style.default, {
+      })), ArrowIcon.styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement(_style.default, {
         id: _styles2.default.__hash

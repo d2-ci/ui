@@ -15,11 +15,11 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Menu = _interopRequireDefault(require("../Menu"));
 
-var _Icon = _interopRequireDefault(require("../Icon"));
-
 var _utils = require("../../utils");
 
 var _styles = _interopRequireDefault(require("../Button/styles.js"));
+
+var _Arrow = require("../../icons/Arrow.js");
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
@@ -47,11 +47,11 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var menuIcon = {
+var ArrowIcon = {
   styles: _react.default.createElement(_style.default, {
-    id: "3523342120"
-  }, "i.jsx-3523342120{color:inherit;font-size:24px;vertical-align:middle;pointer-events:none;}"),
-  className: "jsx-3523342120"
+    id: "1039571365"
+  }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
+  className: "jsx-1039571365"
 };
 
 var SplitButton =
@@ -126,6 +126,11 @@ function (_Component) {
         width = this.elContainer ? this.elContainer.getBoundingClientRect()['width'] : 'inherit';
       }
 
+      var icon = open ? _react.default.createElement(_Arrow.ArrowUp, {
+        className: ArrowIcon.className
+      }) : _react.default.createElement(_Arrow.ArrowDown, {
+        className: ArrowIcon.className
+      });
       return _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elContainer = c;
@@ -144,10 +149,7 @@ function (_Component) {
         disabled: this.props.disabled,
         onClick: this.onToggle,
         className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size)) || "")
-      }, _react.default.createElement(_Icon.default, {
-        className: menuIcon.className,
-        name: open ? 'arrow_drop_up' : 'arrow_drop_down'
-      })), open && _react.default.createElement("div", {
+      }, icon), open && _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elMenu = c;
         },
@@ -156,7 +158,7 @@ function (_Component) {
         width: "".concat(width, "px"),
         list: this.props.list,
         onClick: this.props.onClick
-      })), menuIcon.styles, _react.default.createElement(_style.default, {
+      })), ArrowIcon.styles, _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement(_style.default, {
         id: _styles2.default.__hash

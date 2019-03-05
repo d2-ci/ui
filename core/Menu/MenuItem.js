@@ -11,21 +11,21 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Icon = _interopRequireDefault(require("../Icon"));
-
 var _index = _interopRequireDefault(require("./index"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles"));
 
+var _Chevron = require("../../icons/Chevron.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var subChevron = {
   styles: _react.default.createElement(_style.default, {
-    id: "3358657644"
-  }, "i.jsx-3358657644{margin:0 -14px 0 auto;font-size:18px;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"),
-  className: "jsx-3358657644"
+    id: "2023721407"
+  }, "svg.jsx-2023721407{margin:0 -14px 0 auto;width:18px;height:18px;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}"),
+  className: "jsx-2023721407"
 };
 
 function SubMenu(_ref) {
@@ -68,8 +68,7 @@ function MenuItem(_ref2) {
     }) || "")
   }, icon, _react.default.createElement("div", {
     className: "jsx-".concat(_styles.default.__hash) + " " + "label"
-  }, label), hasMenu && _react.default.createElement(_Icon.default, {
-    name: "chevron_right",
+  }, label), hasMenu && _react.default.createElement(_Chevron.ChevronRight, {
     className: subChevron.className
   }), hasMenu && _react.default.createElement(SubMenu, {
     size: size,

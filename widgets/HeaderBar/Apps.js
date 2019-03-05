@@ -15,15 +15,21 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Card = _interopRequireDefault(require("../../core/Card"));
 
-var _Icon = _interopRequireDefault(require("../../core/Icon"));
-
 var _InputField = _interopRequireDefault(require("../../core/InputField"));
 
 var _utils = require("../../utils");
 
+var _Settings = require("../../icons/Settings.js");
+
+var _Apps = require("../../icons/Apps.js");
+
+var _Cancel = require("../../icons/Cancel.js");
+
 var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles.js"));
+
+var _colors = require("../../core/colors.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47,16 +53,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var appIcon = {
   styles: _react.default.createElement(_style.default, {
-    id: "2331893891"
-  }, "i.jsx-2331893891{cursor:pointer;}"),
-  className: "jsx-2331893891"
+    id: "3606299726"
+  }, "svg.jsx-3606299726{fill:".concat(_colors.colors.white, ";cursor:pointer;height:24px;width:24px;}")),
+  className: "jsx-3606299726"
+};
+var trailIcon = {
+  styles: _react.default.createElement(_style.default, {
+    id: "2424046279"
+  }, "svg.jsx-2424046279{fill:".concat(_colors.colors.grey900, ";cursor:pointer;height:24px;width:24px;margin-right:8px;margin-top:4px;}")),
+  className: "jsx-2424046279"
+};
+var settingsIcon = {
+  styles: _react.default.createElement(_style.default, {
+    id: "3823001888"
+  }, "svg.jsx-3823001888{margin:8px 8px 0 16px;color:".concat(_colors.colors.grey900, ";height:24px;width:24px;}")),
+  className: "jsx-3823001888"
 };
 
-function Search(_ref) {
-  var value = _ref.value,
-      onChange = _ref.onChange,
-      onSettingsClick = _ref.onSettingsClick,
-      onIconClick = _ref.onIconClick;
+function TrailIcon(_ref) {
+  var onClick = _ref.onClick;
+  return _react.default.createElement("a", {
+    onClick: onClick
+  }, _react.default.createElement(_Cancel.Cancel, {
+    className: trailIcon.className
+  }));
+}
+
+function Search(_ref2) {
+  var value = _ref2.value,
+      onChange = _ref2.onChange,
+      onSettingsClick = _ref2.onSettingsClick,
+      onIconClick = _ref2.onIconClick;
   return _react.default.createElement("div", {
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('search') || "")
   }, _react.default.createElement(_InputField.default, {
@@ -67,13 +94,15 @@ function Search(_ref) {
     focus: true,
     label: "Search apps",
     onChange: onChange,
-    trailIcon: "cancel",
-    onTrailIconClick: onIconClick
-  }), _react.default.createElement(_Icon.default, {
-    name: "settings",
-    className: (0, _classnames.default)('settings'),
-    onClick: onSettingsClick
-  }), _react.default.createElement(_style.default, {
+    trailIcon: _react.default.createElement(TrailIcon, {
+      onClick: onIconClick
+    })
+  }), _react.default.createElement("a", {
+    onClick: onSettingsClick,
+    className: "jsx-".concat(_styles.default.__hash)
+  }, _react.default.createElement(_Settings.Settings, {
+    className: settingsIcon.className
+  })), trailIcon.styles, settingsIcon.styles, _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
 }
@@ -88,10 +117,10 @@ Search.propTypes = {
   onIconClick: _propTypes.default.func
 };
 
-function Item(_ref2) {
-  var name = _ref2.name,
-      path = _ref2.path,
-      img = _ref2.img;
+function Item(_ref3) {
+  var name = _ref3.name,
+      path = _ref3.path,
+      img = _ref3.img;
   return _react.default.createElement("a", {
     href: path,
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('app') || "")
@@ -112,18 +141,18 @@ Item.propTypes = {
   img: _propTypes.default.string
 };
 
-function List(_ref3) {
-  var apps = _ref3.apps,
-      filter = _ref3.filter;
+function List(_ref4) {
+  var apps = _ref4.apps,
+      filter = _ref4.filter;
   return _react.default.createElement("div", {
     className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('modules') || "")
-  }, apps.filter(function (_ref4) {
-    var name = _ref4.name;
+  }, apps.filter(function (_ref5) {
+    var name = _ref5.name;
     return filter.length > 0 ? name.toLowerCase().match(filter.toLowerCase()) : true;
-  }).map(function (_ref5, idx) {
-    var name = _ref5.name,
-        path = _ref5.path,
-        img = _ref5.img;
+  }).map(function (_ref6, idx) {
+    var name = _ref6.name,
+        path = _ref6.path,
+        img = _ref6.img;
     return _react.default.createElement(Item, {
       key: "app-".concat(name, "-").concat(idx),
       name: name,
@@ -222,11 +251,12 @@ function (_React$Component) {
           return _this2.elContainer = c;
         },
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('apps') || "")
-      }, _react.default.createElement(_Icon.default, {
-        name: "apps",
+      }, _react.default.createElement("a", {
         onClick: this.onToggle,
+        className: "jsx-".concat(_styles.default.__hash)
+      }, _react.default.createElement(_Apps.Apps, {
         className: appIcon.className
-      }), this.state.show && _react.default.createElement("div", {
+      })), this.state.show && _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elApps = c;
         },

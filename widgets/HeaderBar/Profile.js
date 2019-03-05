@@ -15,15 +15,25 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _Card = _interopRequireDefault(require("../../core/Card"));
 
-var _Icon = _interopRequireDefault(require("../../core/Icon"));
-
 var _Divider = _interopRequireDefault(require("../../core/Divider"));
 
 var _Menu = _interopRequireDefault(require("../../core/Menu"));
 
 var _MenuItem = _interopRequireDefault(require("../../core/Menu/MenuItem"));
 
+var _Settings = require("../../icons/Settings.js");
+
+var _Info = require("../../icons/Info.js");
+
+var _Help = require("../../icons/Help.js");
+
+var _Exit = require("../../icons/Exit.js");
+
+var _Account = require("../../icons/Account.js");
+
 var _utils = require("../../utils");
+
+var _colors = require("../../core/colors.js");
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
@@ -130,28 +140,38 @@ Header.propTypes = {
 };
 var iconStyle = {
   styles: _react.default.createElement(_style.default, {
-    id: "1357904100"
-  }, "i.jsx-1357904100{color:rgba(0,0,0,0.7);}"),
-  className: "jsx-1357904100"
+    id: "2762018188"
+  }, "svg.jsx-2762018188{fill:".concat(_colors.colors.grey900, ";cursor:pointer;height:24px;width:24px;}")),
+  className: "jsx-2762018188"
 };
 var list = [{
-  icon: 'settings',
+  icon: _react.default.createElement(_Settings.Settings, {
+    className: iconStyle.className
+  }),
   label: 'Settings',
   value: 'settings'
 }, {
-  icon: 'account_box',
+  icon: _react.default.createElement(_Account.Account, {
+    className: iconStyle.className
+  }),
   label: 'Account',
   value: 'account'
 }, {
-  icon: 'help',
+  icon: _react.default.createElement(_Help.Help, {
+    className: iconStyle.className
+  }),
   label: 'Help',
   value: 'help'
 }, {
-  icon: 'info',
+  icon: _react.default.createElement(_Info.Info, {
+    className: iconStyle.className
+  }),
   label: 'About DHIS2',
   value: 'about'
 }, {
-  icon: 'exit_to_app',
+  icon: _react.default.createElement(_Exit.Exit, {
+    className: iconStyle.className
+  }),
   label: 'Logout',
   value: 'logout'
 }];
@@ -295,10 +315,7 @@ function (_React$Component) {
           key: "h-mi-".concat(value),
           label: label,
           value: value,
-          icon: _react.default.createElement(_Icon.default, {
-            name: icon,
-            className: iconStyle.className
-          }),
+          icon: icon,
           onClick: _this2.onClick
         });
       })))), iconStyle.styles, _react.default.createElement(_style.default, {

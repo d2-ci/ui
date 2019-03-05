@@ -51,12 +51,6 @@ Object.defineProperty(exports, "Help", {
     return _Help.default;
   }
 });
-Object.defineProperty(exports, "Icon", {
-  enumerable: true,
-  get: function get() {
-    return _Icon.default;
-  }
-});
 Object.defineProperty(exports, "InputField", {
   enumerable: true,
   get: function get() {
@@ -127,8 +121,6 @@ var _Divider = _interopRequireDefault(require("./core/Divider"));
 var _DropdownButton = _interopRequireDefault(require("./core/DropdownButton"));
 
 var _Help = _interopRequireDefault(require("./core/Help"));
-
-var _Icon = _interopRequireDefault(require("./core/Icon"));
 
 var _InputField = _interopRequireDefault(require("./core/InputField"));
 

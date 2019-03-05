@@ -15,9 +15,9 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _Icon = _interopRequireDefault(require("../Icon"));
-
 var _Help = _interopRequireDefault(require("../Help"));
+
+var _Status = require("../../icons/Status.js");
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
@@ -45,48 +45,48 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 var statusToIcon = {
-  valid: 'check_circle',
-  warning: 'warning',
-  error: 'error'
+  valid: _react.default.createElement(_Status.Valid, null),
+  warning: _react.default.createElement(_Status.Warning, null),
+  error: _react.default.createElement(_Status.Error, null)
 };
 var icons = {
   default: {
     styles: _react.default.createElement(_style.default, {
-      id: "1762409643"
-    }, "i.jsx-1762409643{color:".concat(_colors.colors.grey700, ";margin-right:8px;}")),
-    className: "jsx-1762409643"
+      id: "3476497423"
+    }, "svg.jsx-3476497423{fill:".concat(_colors.colors.grey700, ";height:24px;width:24px;margin-right:8px;}")),
+    className: "jsx-3476497423"
   },
   valid: {
     styles: _react.default.createElement(_style.default, {
-      id: "2770315503"
-    }, "i.jsx-2770315503{color:".concat(_colors.colors.blue600, ";margin-right:8px;}")),
-    className: "jsx-2770315503"
+      id: "3522955246"
+    }, "svg.jsx-3522955246{fill:".concat(_colors.colors.blue600, ";height:24px;width:24px;margin-right:8px;}")),
+    className: "jsx-3522955246"
   },
   warning: {
     styles: _react.default.createElement(_style.default, {
-      id: "2544824033"
-    }, "i.jsx-2544824033{color:".concat(_colors.colors.yellow500, ";margin-right:8px;}")),
-    className: "jsx-2544824033"
+      id: "3520916525"
+    }, "svg.jsx-3520916525{fill:".concat(_colors.colors.yellow500, ";height:24px;width:24px;margin-right:8px;}")),
+    className: "jsx-3520916525"
   },
   error: {
     styles: _react.default.createElement(_style.default, {
-      id: "3944031765"
-    }, "i.jsx-3944031765{color:".concat(_colors.colors.red500, ";margin-right:8px;}")),
-    className: "jsx-3944031765"
+      id: "898494457"
+    }, "svg.jsx-898494457{fill:".concat(_colors.colors.red500, ";height:24px;width:24px;margin-right:8px;}")),
+    className: "jsx-898494457"
   }
 };
 
-function icon(i) {
+function icon(Icon) {
   var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
   var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'default';
 
-  if (i) {
-    return _react.default.createElement(_react.Fragment, null, _react.default.createElement(_Icon.default, {
-      name: i,
-      onClick: action,
+  if (Icon) {
+    return _react.default.createElement(_react.Fragment, null, _react.default.createElement(Icon.type, _extends({}, Icon.props, {
       className: icons[extra].className
-    }), icons[extra].styles);
+    })), icons[extra].styles);
   }
 
   return null;
@@ -96,7 +96,7 @@ function trailIcon(status, trail, fn) {
   if (status !== 'default') {
     return icon(statusToIcon[status], fn, status);
   } else {
-    return icon(trail, fn);
+    return trail;
   }
 }
 
@@ -203,7 +203,7 @@ function (_React$Component) {
         className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
           disabled: this.props.disabled
         }) || "")
-      }), trailIcon(this.props.status, this.props.trailIcon, this.props.onTrailIconClick)), this.props.help && _react.default.createElement(_Help.default, {
+      }), trailIcon(this.props.status, this.props.trailIcon)), this.props.help && _react.default.createElement(_Help.default, {
         text: this.props.help,
         status: this.props.status
       }), _react.default.createElement(_style.default, {
@@ -223,8 +223,7 @@ InputField.defaultProps = {
   type: 'text',
   focus: false,
   disabled: false,
-  required: false,
-  onTrailIconClick: null
+  required: false
 };
 InputField.propTypes = {
   className: _propTypes.default.string,
@@ -234,9 +233,8 @@ InputField.propTypes = {
   label: _propTypes.default.string,
   placeholder: _propTypes.default.string,
   help: _propTypes.default.string,
-  icon: _propTypes.default.string,
-  trailIcon: _propTypes.default.string,
-  onTrailIconClick: _propTypes.default.func,
+  icon: _propTypes.default.element,
+  trailIcon: _propTypes.default.element,
   status: _propTypes.default.oneOf(['default', 'valid', 'warning', 'error']),
   size: _propTypes.default.oneOf(['default', 'dense']),
   kind: _propTypes.default.oneOf(['filled', 'outlined']),
