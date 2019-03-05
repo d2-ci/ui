@@ -84,7 +84,7 @@ function icon(Icon) {
   var extra = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'default';
 
   if (Icon) {
-    return _react.default.createElement(_react.Fragment, null, _react.default.createElement(Icon.type, _extends({}, Icon.props, {
+    return _react.default.createElement("span", null, _react.default.createElement(Icon.type, _extends({}, Icon.props, {
       className: icons[extra].className
     })), icons[extra].styles);
   }
