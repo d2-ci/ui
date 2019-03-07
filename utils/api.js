@@ -28,7 +28,7 @@ if (IS_PROD) {
   url = typeof DHIS_CONFIG !== 'undefined' ? DHIS_CONFIG.baseUrl : process.env.REACT_APP_DHIS2_BASE_URL;
 
   if (!url) {
-    throw new Error("The environment variable REACT_APP_DHIS2_BASE_URL must be set when the application is built in development mode.");
+    throw new Error('The environment variable REACT_APP_DHIS2_BASE_URL must be set when the application is built in development mode.');
   }
 
   endpoint = "".concat(url, "/api");
