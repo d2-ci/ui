@@ -23,7 +23,7 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
-var _colors = require("../colors.js");
+var _theme = require("../theme.js");
 
 var _Status = require("../../icons/Status.js");
 
@@ -67,26 +67,26 @@ var statusToIcon = {
 var icons = {
   default: {
     styles: _react.default.createElement(_style.default, {
-      id: "2469916096"
-    }, "svg.jsx-2469916096{fill:".concat(_colors.colors.grey700, ";height:24px;width:24px;}")),
-    className: "jsx-2469916096"
+      id: "2215268291"
+    }, "svg.jsx-2215268291{fill:".concat(_theme.colors.grey700, ";height:24px;width:24px;}")),
+    className: "jsx-2215268291"
   },
   valid: {
     styles: _react.default.createElement(_style.default, {
       id: "1378458444"
-    }, "svg.jsx-1378458444{fill:".concat(_colors.colors.blue600, ";height:24px;width:24px;}")),
+    }, "svg.jsx-1378458444{fill:".concat(_theme.colors.blue600, ";height:24px;width:24px;}")),
     className: "jsx-1378458444"
   },
   warning: {
     styles: _react.default.createElement(_style.default, {
       id: "3220898470"
-    }, "svg.jsx-3220898470{fill:".concat(_colors.colors.yellow500, ";height:24px;width:24px;}")),
+    }, "svg.jsx-3220898470{fill:".concat(_theme.colors.yellow500, ";height:24px;width:24px;}")),
     className: "jsx-3220898470"
   },
   error: {
     styles: _react.default.createElement(_style.default, {
       id: "2028575264"
-    }, "svg.jsx-2028575264{fill:".concat(_colors.colors.red500, ";height:24px;width:24px;}")),
+    }, "svg.jsx-2028575264{fill:".concat(_theme.colors.red500, ";height:24px;width:24px;}")),
     className: "jsx-2028575264"
   }
 };
@@ -260,7 +260,7 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elContainer = c;
         },
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', this.props.className, _defineProperty({
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', this.props.className, _defineProperty({
           selected: !!this.props.value,
           disabled: this.props.disabled
         }, "size-".concat(this.props.size), true)) || "")
@@ -269,29 +269,29 @@ function (_React$Component) {
           return _this3.elSelect = c;
         },
         onClick: this.onToggle,
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('select', (_cx2 = {}, _defineProperty(_cx2, "kind-".concat(this.props.kind), true), _defineProperty(_cx2, "status-".concat(this.props.status), true), _defineProperty(_cx2, "disabled", this.props.disabled), _cx2)) || "")
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('select', (_cx2 = {}, _defineProperty(_cx2, "kind-".concat(this.props.kind), true), _defineProperty(_cx2, "status-".concat(this.props.status), true), _defineProperty(_cx2, "disabled", this.props.disabled), _cx2)) || "")
       }, _react.default.createElement("label", {
         ref: this.labelRef,
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', (_cx3 = {}, _defineProperty(_cx3, "".concat(this.props.status), true), _defineProperty(_cx3, "".concat(this.props.size), true), _defineProperty(_cx3, "".concat(this.props.kind), true), _defineProperty(_cx3, 'has-icon', !!this.props.icon), _defineProperty(_cx3, "required", this.props.required), _defineProperty(_cx3, "disabled", this.props.disabled), _defineProperty(_cx3, "focused", this.isFocused()), _defineProperty(_cx3, "shrink", !!selected), _cx3)) || "")
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', (_cx3 = {}, _defineProperty(_cx3, "".concat(this.props.status), true), _defineProperty(_cx3, "".concat(this.props.size), true), _defineProperty(_cx3, "".concat(this.props.kind), true), _defineProperty(_cx3, 'has-icon', !!this.props.icon), _defineProperty(_cx3, "required", this.props.required), _defineProperty(_cx3, "disabled", this.props.disabled), _defineProperty(_cx3, "focused", this.isFocused()), _defineProperty(_cx3, "shrink", !!selected), _cx3)) || "")
       }, this.props.label), this.props.kind === 'outlined' && _react.default.createElement("fieldset", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('flatline', (_cx4 = {}, _defineProperty(_cx4, "".concat(this.props.status), true), _defineProperty(_cx4, "focused", this.isFocused()), _defineProperty(_cx4, "idle", !this.isFocused()), _defineProperty(_cx4, "filled", this.state.text), _cx4)) || "")
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('flatline', (_cx4 = {}, _defineProperty(_cx4, "".concat(this.props.status), true), _defineProperty(_cx4, "focused", this.isFocused()), _defineProperty(_cx4, "idle", !this.isFocused()), _defineProperty(_cx4, "filled", this.state.text), _cx4)) || "")
       }, _react.default.createElement("legend", {
         style: legendWidth,
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "legend"
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "legend"
       }, _react.default.createElement("span", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash)
       }, "\u200B"))), this.props.icon && _react.default.createElement("div", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "lead-icon-field"
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "lead-icon-field"
       }, this.props.icon), _react.default.createElement("div", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('input-field', {
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('input-field', {
           disabled: this.props.disabled
         }) || "")
       }, _react.default.createElement("div", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "value"
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "value"
       }, selected)), _react.default.createElement("div", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "trail-icon-field"
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "trail-icon-field"
       }, this.props.status !== 'default' && trailIcon(this.props.status)), _react.default.createElement("div", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('trail-icon-field', {
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('trail-icon-field', {
           disabled: this.props.disabled
         }) || "")
       }, Arrow)), this.props.help && _react.default.createElement(_Help.default, {
@@ -301,14 +301,14 @@ function (_React$Component) {
         ref: function ref(c) {
           return _this3.elMenu = c;
         },
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "menu"
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "menu"
       }, _react.default.createElement(_Menu.default, {
         list: list,
         size: this.props.size,
         onClick: this.onClick
       })), ArrowIcon.styles, _react.default.createElement(_style.default, {
-        id: _colors.fonts.__hash
-      }, _colors.fonts), _react.default.createElement(_style.default, {
+        id: _theme.fonts.__hash
+      }, _theme.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }

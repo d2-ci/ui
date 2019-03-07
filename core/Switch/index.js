@@ -15,7 +15,7 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles"));
 
-var _colors = require("../colors.js");
+var _theme = require("../theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -76,7 +76,7 @@ function (_React$Component) {
           disabled = _this$props.disabled,
           className = _this$props.className;
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)(status, className, {
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)(status, className, {
           disabled: disabled
         }) || "")
       }, _react.default.createElement("input", {
@@ -84,14 +84,14 @@ function (_React$Component) {
         disabled: disabled,
         checked: this.props.checked,
         onChange: this.onChange,
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash)
       }), _react.default.createElement("span", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', _defineProperty({}, "status-".concat(status), true)) || "")
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', _defineProperty({}, "status-".concat(status), true)) || "")
       }, this.props.label), this.props.required && _react.default.createElement("span", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "required"
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "required"
       }), _react.default.createElement(_style.default, {
-        id: _colors.fonts.__hash
-      }, _colors.fonts), _react.default.createElement(_style.default, {
+        id: _theme.fonts.__hash
+      }, _theme.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }

@@ -15,7 +15,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _colors = require("../colors.js");
+var _theme = require("../theme.js");
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
@@ -44,32 +44,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var icons = {
   default: {
     styles: _react.default.createElement(_style.default, {
-      id: "2469916096"
-    }, "svg.jsx-2469916096{fill:".concat(_colors.colors.grey700, ";height:24px;width:24px;}")),
-    className: "jsx-2469916096"
+      id: "2215268291"
+    }, "svg.jsx-2215268291{fill:".concat(_theme.colors.grey700, ";height:24px;width:24px;}")),
+    className: "jsx-2215268291"
   },
   checked: {
     styles: _react.default.createElement(_style.default, {
       id: "3230514506"
-    }, "svg.jsx-3230514506{fill:".concat(_colors.colors.teal400, ";height:24px;width:24px;}")),
+    }, "svg.jsx-3230514506{fill:".concat(_theme.colors.teal400, ";height:24px;width:24px;}")),
     className: "jsx-3230514506"
   },
   valid: {
     styles: _react.default.createElement(_style.default, {
       id: "1378458444"
-    }, "svg.jsx-1378458444{fill:".concat(_colors.colors.blue600, ";height:24px;width:24px;}")),
+    }, "svg.jsx-1378458444{fill:".concat(_theme.colors.blue600, ";height:24px;width:24px;}")),
     className: "jsx-1378458444"
   },
   warning: {
     styles: _react.default.createElement(_style.default, {
       id: "3220898470"
-    }, "svg.jsx-3220898470{fill:".concat(_colors.colors.yellow500, ";height:24px;width:24px;}")),
+    }, "svg.jsx-3220898470{fill:".concat(_theme.colors.yellow500, ";height:24px;width:24px;}")),
     className: "jsx-3220898470"
   },
   error: {
     styles: _react.default.createElement(_style.default, {
       id: "2028575264"
-    }, "svg.jsx-2028575264{fill:".concat(_colors.colors.red500, ";height:24px;width:24px;}")),
+    }, "svg.jsx-2028575264{fill:".concat(_theme.colors.red500, ";height:24px;width:24px;}")),
     className: "jsx-2028575264"
   }
 };
@@ -114,7 +114,7 @@ function (_React$Component) {
         className: icons[state].className
       });
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
           disabled: this.props.disabled
         }) || "")
       }, _react.default.createElement("input", {
@@ -124,14 +124,14 @@ function (_React$Component) {
         checked: this.props.checked,
         disabled: this.props.disabled,
         onChange: this.onChange,
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash)
       }), icon, _react.default.createElement("span", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
           required: required
         }) || "")
       }, this.props.label), icons[state].styles, _react.default.createElement(_style.default, {
-        id: _colors.fonts.__hash
-      }, _colors.fonts), _react.default.createElement(_style.default, {
+        id: _theme.fonts.__hash
+      }, _theme.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }

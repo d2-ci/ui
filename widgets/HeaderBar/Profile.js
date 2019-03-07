@@ -33,7 +33,7 @@ var _Account = require("../../icons/Account.js");
 
 var _utils = require("../../utils");
 
-var _colors = require("../../core/colors.js");
+var _theme = require("../../core/theme.js");
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
@@ -141,7 +141,7 @@ Header.propTypes = {
 var iconStyle = {
   styles: _react.default.createElement(_style.default, {
     id: "2762018188"
-  }, "svg.jsx-2762018188{fill:".concat(_colors.colors.grey900, ";cursor:pointer;height:24px;width:24px;}")),
+  }, "svg.jsx-2762018188{fill:".concat(_theme.colors.grey900, ";cursor:pointer;height:24px;width:24px;}")),
   className: "jsx-2762018188"
 };
 var list = [{

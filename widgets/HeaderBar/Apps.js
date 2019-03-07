@@ -29,7 +29,7 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
-var _colors = require("../../core/colors.js");
+var _theme = require("../../core/theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54,19 +54,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var appIcon = {
   styles: _react.default.createElement(_style.default, {
     id: "3606299726"
-  }, "svg.jsx-3606299726{fill:".concat(_colors.colors.white, ";cursor:pointer;height:24px;width:24px;}")),
+  }, "svg.jsx-3606299726{fill:".concat(_theme.colors.white, ";cursor:pointer;height:24px;width:24px;}")),
   className: "jsx-3606299726"
 };
 var trailIcon = {
   styles: _react.default.createElement(_style.default, {
     id: "2424046279"
-  }, "svg.jsx-2424046279{fill:".concat(_colors.colors.grey900, ";cursor:pointer;height:24px;width:24px;margin-right:8px;margin-top:4px;}")),
+  }, "svg.jsx-2424046279{fill:".concat(_theme.colors.grey900, ";cursor:pointer;height:24px;width:24px;margin-right:8px;margin-top:4px;}")),
   className: "jsx-2424046279"
 };
 var settingsIcon = {
   styles: _react.default.createElement(_style.default, {
     id: "3823001888"
-  }, "svg.jsx-3823001888{margin:8px 8px 0 16px;color:".concat(_colors.colors.grey900, ";height:24px;width:24px;}")),
+  }, "svg.jsx-3823001888{margin:8px 8px 0 16px;color:".concat(_theme.colors.grey900, ";height:24px;width:24px;}")),
   className: "jsx-3823001888"
 };
 

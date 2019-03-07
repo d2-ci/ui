@@ -15,7 +15,7 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
-var _colors = require("../../core/colors.js");
+var _theme = require("../../core/theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

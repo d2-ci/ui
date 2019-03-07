@@ -15,7 +15,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _classnames = _interopRequireDefault(require("classnames"));
 
-var _colors = require("../colors.js");
+var _theme = require("../theme.js");
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
@@ -44,7 +44,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var removeIcon = {
   styles: _react.default.createElement(_style.default, {
     id: "495350568"
-  }, "svg.jsx-495350568{margin-right:4px;color:".concat(_colors.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}svg.jsx-495350568 hover.jsx-495350568{opacity:0.82;}")),
+  }, "svg.jsx-495350568{margin-right:4px;color:".concat(_theme.colors.grey700, ";height:18px;width:18px;cursor:pointer;opacity:1;pointer-events:all;}svg.jsx-495350568 hover.jsx-495350568{opacity:0.82;}")),
   className: "jsx-495350568"
 };
 
@@ -136,19 +136,19 @@ function (_React$PureComponent) {
           className = _this$props.className;
       return _react.default.createElement("div", {
         onClick: this.onClick,
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
           selected: selected,
           disabled: disabled,
           dragging: dragging,
           static: !this.props.onClick
         }) || "")
       }, this.showIcon(), _react.default.createElement("span", {
-        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
+        className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
           overflow: overflow
         }) || "")
       }, label), this.showRemove(), _react.default.createElement(_style.default, {
-        id: _colors.fonts.__hash
-      }, _colors.fonts), _react.default.createElement(_style.default, {
+        id: _theme.fonts.__hash
+      }, _theme.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }

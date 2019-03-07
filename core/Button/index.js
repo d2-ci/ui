@@ -16,7 +16,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
-var _colors = require("../colors.js");
+var _theme = require("../theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33,15 +33,15 @@ function Button(_ref) {
   return _react.default.createElement("button", {
     disabled: disabled,
     onClick: onClick,
-    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(kind), "size-".concat(size), className, {
+    className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(kind), "size-".concat(size), className, {
       'icon-only': icon && !label && !children,
       icon: icon
     }) || "")
   }, icon && _react.default.createElement("span", {
-    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "button-icon"
+    className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "button-icon"
   }, icon), label || children, _react.default.createElement(_style.default, {
-    id: _colors.fonts.__hash
-  }, _colors.fonts), _react.default.createElement(_style.default, {
+    id: _theme.fonts.__hash
+  }, _theme.fonts), _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
 }

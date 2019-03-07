@@ -28,21 +28,21 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
-var _colors = require("../../core/colors.js");
+var _theme = require("../../core/theme.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var notificationIcon = {
   styles: _react.default.createElement(_style.default, {
     id: "3606299726"
-  }, "svg.jsx-3606299726{fill:".concat(_colors.colors.white, ";cursor:pointer;height:24px;width:24px;}")),
+  }, "svg.jsx-3606299726{fill:".concat(_theme.colors.white, ";cursor:pointer;height:24px;width:24px;}")),
   className: "jsx-3606299726"
 };
 var logotype = {
   styles: _react.default.createElement(_style.default, {
-    id: "506544450"
-  }, "svg.jsx-506544450{width:27px;height:25px;cursor:pointer;}"),
-  className: "jsx-506544450"
+    id: "3071992754"
+  }, "svg.jsx-3071992754{width:27px;height:25px;cursor:pointer;}"),
+  className: "jsx-3071992754"
 };
 
 function getTitle(instanceName) {
@@ -65,20 +65,20 @@ function HeaderBar(_ref) {
       interpretations = _ref.interpretations,
       className = _ref.className;
   return _react.default.createElement("header", {
-    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('blue', className) || "")
+    className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('blue', className) || "")
   }, _react.default.createElement("div", {
-    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
+    className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash)
   }, _react.default.createElement("div", {
-    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "headerbar-logo"
+    className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "headerbar-logo"
   }, _react.default.createElement("a", {
     href: "".concat(baseURL),
-    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
+    className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash)
   }, _react.default.createElement(_Logo.LogoIconWhite, {
     className: logotype.className
   }))), _react.default.createElement("div", {
-    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "headerbar-title"
+    className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "headerbar-title"
   }, getTitle(instanceName, appName))), _react.default.createElement("div", {
-    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
+    className: "jsx-".concat(_theme.fonts.__hash, " jsx-").concat(_styles.default.__hash)
   }, _react.default.createElement(_NotificationIcon.default, {
     count: interpretations.count,
     href: "".concat(baseURL, "/dhis-web-interpretation")
@@ -97,8 +97,8 @@ function HeaderBar(_ref) {
     profile: profile,
     baseURL: baseURL
   })), notificationIcon.styles, logotype.styles, _react.default.createElement(_style.default, {
-    id: _colors.fonts.__hash
-  }, _colors.fonts), _react.default.createElement(_style.default, {
+    id: _theme.fonts.__hash
+  }, _theme.fonts), _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
 }
