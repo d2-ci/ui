@@ -306,7 +306,7 @@ function (_React$Component) {
         list: list,
         size: this.props.size,
         onClick: this.onClick
-      })), _react.default.createElement(_style.default, {
+      })), ArrowIcon.styles, _react.default.createElement(_style.default, {
         id: _colors.fonts.__hash
       }, _colors.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
