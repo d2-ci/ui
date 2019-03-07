@@ -53,11 +53,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-var ArrowIcon = {
+var arrowIcon = {
   styles: _react.default.createElement(_style.default, {
     id: "1039571365"
   }, "svg.jsx-1039571365{fill:inherit;height:24px;width:24px;vertical-align:middle;pointer-events:none;}"),
   className: "jsx-1039571365"
+};
+var menuOverride = {
+  styles: _react.default.createElement(_style.default, {
+    id: "1122726799"
+  }, ".jsx-1122726799{max-height:300px;overflow-y:auto;}"),
+  className: "jsx-1122726799"
 };
 var statusToIcon = {
   valid: _react.default.createElement(_Status.Valid, null),
@@ -252,9 +258,9 @@ function (_React$Component) {
       var selected = this.getLabel();
       var list = markActive(this.props.list, this.props.value);
       var Arrow = open ? _react.default.createElement(_Arrow.ArrowUp, {
-        className: ArrowIcon.className
+        className: arrowIcon.className
       }) : _react.default.createElement(_Arrow.ArrowDown, {
-        className: ArrowIcon.className
+        className: arrowIcon.className
       });
       return _react.default.createElement("div", {
         ref: function ref(c) {
@@ -305,8 +311,9 @@ function (_React$Component) {
       }, _react.default.createElement(_Menu.default, {
         list: list,
         size: this.props.size,
-        onClick: this.onClick
-      })), ArrowIcon.styles, _react.default.createElement(_style.default, {
+        onClick: this.onClick,
+        className: menuOverride.className
+      })), menuOverride.styles, arrowIcon.styles, _react.default.createElement(_style.default, {
         id: _theme.fonts.__hash
       }, _theme.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
