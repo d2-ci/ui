@@ -16,6 +16,8 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles.js"));
 
+var _colors = require("../colors.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Circle() {
@@ -42,8 +44,10 @@ function CircularProgress(_ref) {
 
   var loader = _react.default.createElement("div", {
     role: "progressbar",
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', size, className) || "")
+    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', size, className) || "")
   }, _ref2, _react.default.createElement(_style.default, {
+    id: _colors.fonts.__hash
+  }, _colors.fonts), _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
 

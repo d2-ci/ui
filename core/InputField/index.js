@@ -175,22 +175,22 @@ function (_React$Component) {
         width: '0.01px'
       };
       return _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', this.props.className, {
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', this.props.className, {
           focused: this.isFocused(),
           disabled: this.props.disabled
         }) || "")
       }, _react.default.createElement("div", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('field', (_cx = {}, _defineProperty(_cx, "size-".concat(this.props.size), true), _defineProperty(_cx, "status-".concat(this.props.status), true), _defineProperty(_cx, "kind-".concat(this.props.kind), true), _defineProperty(_cx, "focused", this.isFocused()), _defineProperty(_cx, "filled", this.props.value), _defineProperty(_cx, "disabled", this.props.disabled), _cx)) || "")
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('field', (_cx = {}, _defineProperty(_cx, "size-".concat(this.props.size), true), _defineProperty(_cx, "status-".concat(this.props.status), true), _defineProperty(_cx, "kind-".concat(this.props.kind), true), _defineProperty(_cx, "focused", this.isFocused()), _defineProperty(_cx, "filled", this.props.value), _defineProperty(_cx, "disabled", this.props.disabled), _cx)) || "")
       }, _react.default.createElement("label", {
         ref: this.labelRef,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', (_cx2 = {}, _defineProperty(_cx2, "".concat(this.props.status), true), _defineProperty(_cx2, "".concat(this.props.size), true), _defineProperty(_cx2, "".concat(this.props.kind), true), _defineProperty(_cx2, 'has-icon', !!this.props.icon), _defineProperty(_cx2, "required", this.props.required), _defineProperty(_cx2, "disabled", this.props.disabled), _defineProperty(_cx2, "focused", this.isFocused()), _defineProperty(_cx2, "shrink", this.shrink()), _cx2)) || "")
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', (_cx2 = {}, _defineProperty(_cx2, "".concat(this.props.status), true), _defineProperty(_cx2, "".concat(this.props.size), true), _defineProperty(_cx2, "".concat(this.props.kind), true), _defineProperty(_cx2, 'has-icon', !!this.props.icon), _defineProperty(_cx2, "required", this.props.required), _defineProperty(_cx2, "disabled", this.props.disabled), _defineProperty(_cx2, "focused", this.isFocused()), _defineProperty(_cx2, "shrink", this.shrink()), _cx2)) || "")
       }, this.props.label), this.props.kind === 'outlined' && _react.default.createElement("fieldset", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('flatline', (_cx3 = {}, _defineProperty(_cx3, "".concat(this.props.status), true), _defineProperty(_cx3, "focused", this.isFocused()), _defineProperty(_cx3, "idle", !this.isFocused()), _defineProperty(_cx3, "filled", this.props.value), _cx3)) || "")
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('flatline', (_cx3 = {}, _defineProperty(_cx3, "".concat(this.props.status), true), _defineProperty(_cx3, "focused", this.isFocused()), _defineProperty(_cx3, "idle", !this.isFocused()), _defineProperty(_cx3, "filled", this.props.value), _cx3)) || "")
       }, _react.default.createElement("legend", {
         style: legendWidth,
-        className: "jsx-".concat(_styles.default.__hash) + " " + "legend"
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "legend"
       }, _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash)
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
       }, "\u200B"))), icon(this.props.icon), _react.default.createElement("input", {
         ref: this.inputRef,
         type: this.props.type,
@@ -200,13 +200,15 @@ function (_React$Component) {
         onFocus: this.onFocus,
         onBlur: this.onBlur,
         onChange: this.onChange,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)({
           disabled: this.props.disabled
         }) || "")
       }), trailIcon(this.props.status, this.props.trailIcon)), this.props.help && _react.default.createElement(_Help.default, {
         text: this.props.help,
         status: this.props.status
       }), _react.default.createElement(_style.default, {
+        id: _colors.fonts.__hash
+      }, _colors.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }

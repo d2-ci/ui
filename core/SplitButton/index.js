@@ -25,6 +25,8 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles2 = _interopRequireDefault(require("./styles"));
 
+var _colors = require("../colors.js");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -135,30 +137,32 @@ function (_Component) {
         ref: function ref(c) {
           return _this2.elContainer = c;
         },
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash)
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash)
       }, _react.default.createElement("button", {
         disabled: this.props.disabled,
         onClick: this.props.onClick,
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
           'icon-only': this.props.icon && !this.props.label && !this.props.children,
           icon: this.props.icon
         }) || "")
       }, this.props.icon && _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "button-icon"
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "button-icon"
       }, this.props.icon), this.props.label || this.props.children), _react.default.createElement("button", {
         disabled: this.props.disabled,
         onClick: this.onToggle,
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size)) || "")
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size)) || "")
       }, icon), open && _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elMenu = c;
         },
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu"
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu"
       }, _react.default.createElement(_Menu.default, {
         width: "".concat(width, "px"),
         list: this.props.list,
         onClick: this.props.onClick
       })), ArrowIcon.styles, _react.default.createElement(_style.default, {
+        id: _colors.fonts.__hash
+      }, _colors.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement(_style.default, {
         id: _styles2.default.__hash

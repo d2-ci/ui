@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.theme = exports.colors = void 0;
+exports.fonts = exports.theme = exports.colors = void 0;
 var colors = {
   /* colors */
 
@@ -109,3 +109,6 @@ var theme = {
   secondary050: colors.teal050
 };
 exports.theme = theme;
+var fonts = new String("*.jsx-1540056771{box-sizing:border-box;font-family:Roboto,sans-serif;}");
+exports.fonts = fonts;
+fonts.__hash = "1540056771";

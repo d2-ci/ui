@@ -23,6 +23,8 @@ var _utils = require("../../utils");
 
 var _Arrow = require("../../icons/Arrow.js");
 
+var _colors = require("../colors.js");
+
 var _styles = _interopRequireDefault(require("../Button/styles.js"));
 
 var _styles2 = _interopRequireDefault(require("./styles.js"));
@@ -137,27 +139,29 @@ function (_Component) {
         ref: function ref(c) {
           return _this2.elContainer = c;
         },
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash)
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash)
       }, _react.default.createElement("button", {
         disabled: this.props.disabled,
         onClick: this.onToggle,
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + ((0, _classnames.default)('base', "kind-".concat(this.props.kind), "size-".concat(this.props.size), this.props.className, {
           'icon-only': this.props.icon && !this.props.label && !this.props.children,
           icon: this.props.icon
         }) || "")
       }, this.props.icon && _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "button-icon"
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "button-icon"
       }, this.props.icon), _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu-label"
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu-label"
       }, this.props.label), icon), open && _react.default.createElement("div", {
         ref: function ref(c) {
           return _this2.elMenu = c;
         },
-        className: "jsx-".concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu"
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash, " jsx-").concat(_styles2.default.__hash) + " " + "menu"
       }, _react.default.createElement(_Menu.default, {
         list: this.props.list,
         onClick: this.props.onClick
       })), ArrowIcon.styles, _react.default.createElement(_style.default, {
+        id: _colors.fonts.__hash
+      }, _colors.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default), _react.default.createElement(_style.default, {
         id: _styles2.default.__hash
