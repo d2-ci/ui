@@ -135,7 +135,7 @@ function (_React$Component) {
 
       console.log(icon);
       return _react.default.createElement("label", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
           disabled: this.props.disabled
         }) || "")
       }, _react.default.createElement("input", {
@@ -143,12 +143,14 @@ function (_React$Component) {
         onChange: this.onChange,
         checked: this.props.checked,
         disabled: this.props.disabled,
-        className: "jsx-".concat(_styles.default.__hash)
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
       }), icon, _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
           required: required
         }) || "")
       }, this.props.label), icons[state].styles, _react.default.createElement(_style.default, {
+        id: _colors.fonts.__hash
+      }, _colors.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }

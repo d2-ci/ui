@@ -9,9 +9,17 @@ Object.defineProperty(exports, "HeaderBar", {
     return _HeaderBar.HeaderBar;
   }
 });
+Object.defineProperty(exports, "HeaderBarContainer", {
+  enumerable: true,
+  get: function get() {
+    return _HeaderBarContainer.HeaderBarContainer;
+  }
+});
 exports.default = void 0;
 
 var _HeaderBar = require("./HeaderBar.js");
 
-var _default = _HeaderBar.HeaderBar;
+var _HeaderBarContainer = require("./HeaderBar.Container.js");
+
+var _default = _HeaderBarContainer.HeaderBarContainer;
 exports.default = _default;

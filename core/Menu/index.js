@@ -28,6 +28,8 @@ var _classnames = _interopRequireDefault(require("classnames"));
 
 var _styles = _interopRequireDefault(require("./styles"));
 
+var _colors = require("../colors.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Menu(_ref) {
@@ -37,7 +39,7 @@ function Menu(_ref) {
       onClick = _ref.onClick,
       className = _ref.className;
   return _react.default.createElement(_Card.default, null, _react.default.createElement("ul", {
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', size, className) || "")
+    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', size, className) || "")
   }, list.map(function (_ref2, i) {
     var label = _ref2.label,
         value = _ref2.value,
@@ -66,6 +68,8 @@ function Menu(_ref) {
       onClick: onClick
     });
   })), _react.default.createElement(_style.default, {
+    id: _colors.fonts.__hash
+  }, _colors.fonts), _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
 }

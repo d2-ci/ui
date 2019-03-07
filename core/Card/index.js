@@ -22,8 +22,10 @@ function Card(_ref) {
   var className = _ref.className,
       children = _ref.children;
   return _react.default.createElement("div", {
-    className: _style.default.dynamic([["84828388", [_colors.colors.white]]]) + " " + ((0, _classnames.default)('base', className) || "")
+    className: "jsx-".concat(_colors.fonts.__hash) + " " + _style.default.dynamic([["84828388", [_colors.colors.white]]]) + " " + ((0, _classnames.default)('base', className) || "")
   }, children, _react.default.createElement(_style.default, {
+    id: _colors.fonts.__hash
+  }, _colors.fonts), _react.default.createElement(_style.default, {
     id: "84828388",
     dynamic: [_colors.colors.white]
   }, ".base.__jsx-style-dynamic-selector{display:inline-block;position:relative;width:100%;height:100%;border-radius:2px;background:".concat(_colors.colors.white, ";box-shadow:0 0 2px 0 rgba(0,0,0,0.14), 0 2px 2px 0 rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.2);}")));

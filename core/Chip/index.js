@@ -136,17 +136,19 @@ function (_React$PureComponent) {
           className = _this$props.className;
       return _react.default.createElement("div", {
         onClick: this.onClick,
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('base', className, {
           selected: selected,
           disabled: disabled,
           dragging: dragging,
           static: !this.props.onClick
         }) || "")
       }, this.showIcon(), _react.default.createElement("span", {
-        className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
+        className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('label', {
           overflow: overflow
         }) || "")
       }, label), this.showRemove(), _react.default.createElement(_style.default, {
+        id: _colors.fonts.__hash
+      }, _colors.fonts), _react.default.createElement(_style.default, {
         id: _styles.default.__hash
       }, _styles.default));
     }

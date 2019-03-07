@@ -65,20 +65,20 @@ function HeaderBar(_ref) {
       interpretations = _ref.interpretations,
       className = _ref.className;
   return _react.default.createElement("header", {
-    className: "jsx-".concat(_styles.default.__hash) + " " + ((0, _classnames.default)('blue', className) || "")
+    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + ((0, _classnames.default)('blue', className) || "")
   }, _react.default.createElement("div", {
-    className: "jsx-".concat(_styles.default.__hash)
+    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
   }, _react.default.createElement("div", {
-    className: "jsx-".concat(_styles.default.__hash) + " " + "headerbar-logo"
+    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "headerbar-logo"
   }, _react.default.createElement("a", {
     href: "".concat(baseURL),
-    className: "jsx-".concat(_styles.default.__hash)
+    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
   }, _react.default.createElement(_Logo.LogoIconWhite, {
     className: logotype.className
   }))), _react.default.createElement("div", {
-    className: "jsx-".concat(_styles.default.__hash) + " " + "headerbar-title"
+    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash) + " " + "headerbar-title"
   }, getTitle(instanceName, appName))), _react.default.createElement("div", {
-    className: "jsx-".concat(_styles.default.__hash)
+    className: "jsx-".concat(_colors.fonts.__hash, " jsx-").concat(_styles.default.__hash)
   }, _react.default.createElement(_NotificationIcon.default, {
     count: interpretations.count,
     href: "".concat(baseURL, "/dhis-web-interpretation")
@@ -97,6 +97,8 @@ function HeaderBar(_ref) {
     profile: profile,
     baseURL: baseURL
   })), notificationIcon.styles, logotype.styles, _react.default.createElement(_style.default, {
+    id: _colors.fonts.__hash
+  }, _colors.fonts), _react.default.createElement(_style.default, {
     id: _styles.default.__hash
   }, _styles.default));
 }

@@ -25,8 +25,10 @@ function Help(_ref) {
       status = _ref.status,
       className = _ref.className;
   return _react.default.createElement("p", {
-    className: _style.default.dynamic([["3335312656", [_colors.colors.grey700, _colors.colors.blue600, _colors.colors.red500, _colors.colors.yellow500]]]) + " " + ((0, _classnames.default)('base', className, _defineProperty({}, "status-".concat(status), true)) || "")
+    className: "jsx-".concat(_colors.fonts.__hash) + " " + _style.default.dynamic([["3335312656", [_colors.colors.grey700, _colors.colors.blue600, _colors.colors.red500, _colors.colors.yellow500]]]) + " " + ((0, _classnames.default)('base', className, _defineProperty({}, "status-".concat(status), true)) || "")
   }, text, _react.default.createElement(_style.default, {
+    id: _colors.fonts.__hash
+  }, _colors.fonts), _react.default.createElement(_style.default, {
     id: "3335312656",
     dynamic: [_colors.colors.grey700, _colors.colors.blue600, _colors.colors.red500, _colors.colors.yellow500]
   }, ".base.__jsx-style-dynamic-selector{height:12px;padding-top:8px;padding-left:14px;font-size:12px;line-height:12px;cursor:help;}.status-default.__jsx-style-dynamic-selector{color:".concat(_colors.colors.grey700, ";}.status-valid.__jsx-style-dynamic-selector{color:").concat(_colors.colors.blue600, ";}.status-error.__jsx-style-dynamic-selector{color:").concat(_colors.colors.red500, ";}.status-warning.__jsx-style-dynamic-selector{color:").concat(_colors.colors.yellow500, ";}")));
