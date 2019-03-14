@@ -51,12 +51,6 @@ var removeIcon = {
 var _ref =
 /*#__PURE__*/
 _react.default.createElement(_style.default, {
-  id: "1103371405"
-}, "img.jsx-1103371405{width:24px;height:24px;margin-left:4px;border-radius:50%;}");
-
-var _ref2 =
-/*#__PURE__*/
-_react.default.createElement(_style.default, {
   id: "3458732931"
 }, "span.jsx-3458732931{width:24px;height:24px;margin-left:4px;border-radius:50%;overflow:hidden;}");
 
@@ -102,17 +96,9 @@ function (_React$PureComponent) {
         return;
       }
 
-      if (this.props.type === 'image') {
-        return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("img", {
-          src: icon,
-          alt: "chip icon",
-          className: "jsx-1103371405"
-        }), _ref);
-      }
-
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("span", {
         className: "jsx-3458732931"
-      }, icon), _ref2);
+      }, icon), _ref);
     }
   }, {
     key: "showRemove",
@@ -159,17 +145,15 @@ function (_React$PureComponent) {
 
 exports.Chip = Chip;
 Chip.defaultProps = {
-  type: 'icon',
   selected: false,
   disabled: false,
   dragging: false,
   overflow: true
 };
 Chip.propTypes = {
-  className: _propTypes.default.className,
+  className: _propTypes.default.string,
   label: _propTypes.default.string.isRequired,
   icon: _propTypes.default.element,
-  type: _propTypes.default.oneOf(['icon', 'image']),
   selected: _propTypes.default.bool,
   disabled: _propTypes.default.bool,
   dragging: _propTypes.default.bool,
