@@ -40,7 +40,7 @@ LogoIcon.defaultProps = {
   fill: '#0080d4'
 };
 LogoIcon.propTypes = {
-  className: _propTypes.default.className,
+  className: _propTypes.default.string,
   fill: _propTypes.default.string
 };
 
