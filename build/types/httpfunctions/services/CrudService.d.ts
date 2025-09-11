@@ -130,6 +130,13 @@ export declare class CrudService {
      */
     static listModelTemplatesCrudModelTemplatesGet(): CancelablePromise<Array<ModelTemplateRead>>;
     /**
+     * Delete Model Template
+     * @param modelTemplateId
+     * @returns any Successful Response
+     * @throws ApiError
+     */
+    static deleteModelTemplateCrudModelTemplatesModelTemplateIdDelete(modelTemplateId: number): CancelablePromise<any>;
+    /**
      * List Configured Models
      * List all configured models from the db
      * @returns ModelSpecRead Successful Response

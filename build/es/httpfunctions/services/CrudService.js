@@ -268,6 +268,24 @@ export class CrudService {
     });
   }
   /**
+   * Delete Model Template
+   * @param modelTemplateId
+   * @returns any Successful Response
+   * @throws ApiError
+   */
+  static deleteModelTemplateCrudModelTemplatesModelTemplateIdDelete(modelTemplateId) {
+    return __request(OpenAPI, {
+      method: 'DELETE',
+      url: '/crud/model-templates/{modelTemplateId}',
+      path: {
+        'modelTemplateId': modelTemplateId
+      },
+      errors: {
+        422: `Validation Error`
+      }
+    });
+  }
+  /**
    * List Configured Models
    * List all configured models from the db
    * @returns ModelSpecRead Successful Response
