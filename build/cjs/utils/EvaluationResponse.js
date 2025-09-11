@@ -25,22 +25,19 @@ function sortDhis2WeeklyAndMonthlyTime(a, b) {
 }
 function joinRealAndPredictedData(predictedData, realData) {
   var _predictedData$midran;
-  //number of periods in plot
-  //some code below was commented out to always view full extent
-  //previously rolled the window based on the split period
+  // number of periods in plot
+  // some code below was commented out to always view full extent
+  // previously rolled the window based on the split period
 
-  //const nPeriods = 52 * 3
-  //const predictionEnd = predictedData.periods[predictedData.periods.length - 1]
-  const realPeriodsFiltered = realData.map(item => item.pe)
-  //.filter((period) => period <= predictionEnd)
-  .sort(sortDhis2WeeklyAndMonthlyTime);
-  //.slice(-nPeriods)
+  // const nPeriods = 52 * 3
+  // const predictionEnd = predictedData.periods[predictedData.periods.length - 1]
+  const realPeriodsFiltered = realData.map(item => item.pe).sort(sortDhis2WeeklyAndMonthlyTime);
   const realDataFiltered = realPeriodsFiltered.map(period => {
     var _realData$find$value, _realData$find;
     return (_realData$find$value = (_realData$find = realData.find(item => item.pe === period)) === null || _realData$find === void 0 ? void 0 : _realData$find.value) !== null && _realData$find$value !== void 0 ? _realData$find$value : null;
   });
 
-  //turn prediction arrays into period dicts
+  // turn prediction arrays into period dicts
   const createLookup = (keys, values) => {
     if (!values) {
       return new Map();
@@ -55,7 +52,7 @@ function joinRealAndPredictedData(predictedData, realData) {
   const rangeLookup = createLookup(predictedData.periods, predictedData.ranges.slice());
   const midRangeLookup = createLookup(predictedData.periods, (_predictedData$midran = predictedData.midranges) === null || _predictedData$midran === void 0 ? void 0 : _predictedData$midran.slice());
 
-  //join prediction arrays into longer period arrays
+  // join prediction arrays into longer period arrays
   /*
   const mergePeriodValues = (
       periods: string[],
@@ -70,8 +67,7 @@ function joinRealAndPredictedData(predictedData, realData) {
               result[i] = periodValues.get(period)
           }
       }
-  
-      return result
+       return result
   }
   */
   const mergePeriodValues = (periods, periodValues) => {
@@ -114,19 +110,19 @@ const evaluationResultToViewData = (data, realValues, modelName) => {
   };
   const modelNames = Array.from(new Set(data.map(item => item.modelName || modelName)));
 
-  //loop trough each unique split period (each row / line of plots)
+  // loop trough each unique split period (each row / line of plots)
   return Array.from(new Set(data.map(item => item.splitPeriod))).map(splitPeriod => {
     return {
-      //splitPeriod = cound hold several plots with same splitPeriod
+      // splitPeriod = cound hold several plots with same splitPeriod
       splitPoint: splitPeriod,
-      //loop through each unique orgUnit
+      // loop through each unique orgUnit
       evaluation: Array.from(new Set(data.map(item => item.orgUnit))).map(orgUnit => {
         return {
           orgUnitName: orgUnit,
           orgUnitId: orgUnit,
           models: modelNames.map(mn => {
             const highChartData = createHighChartsData(
-            //pass in data for one orgUnit, for one splitPeriod, for one modelName
+            // pass in data for one orgUnit, for one splitPeriod, for one modelName
             data.filter(o => o.orgUnit === orgUnit && o.splitPeriod === splitPeriod && ((o === null || o === void 0 ? void 0 : o.modelName) || modelName) === mn), quantileFunc);
             const joinedRealAndPredictedData = joinRealAndPredictedData(highChartData, realValues.filter(item => item.ou === orgUnit));
             return {
@@ -141,7 +137,7 @@ const evaluationResultToViewData = (data, realValues, modelName) => {
 };
 exports.evaluationResultToViewData = evaluationResultToViewData;
 function createHighChartsData(plotData, quantileFunc) {
-  //requires that all periods are included in the respone
+  // requires that all periods are included in the respone
   const periods = Array.from(new Set(plotData.map(item => item.period))).sort(sortDhis2WeeklyAndMonthlyTime);
   const ranges = [];
   const averages = [];

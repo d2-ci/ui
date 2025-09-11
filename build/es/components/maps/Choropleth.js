@@ -10,7 +10,7 @@ const Choropleth = ({
 }) => {
   const map = useContext(MapContext);
   useEffect(() => {
-    if (geojson.hasOwnProperty('features')) {
+    if (Object.prototype.hasOwnProperty.call(geojson, 'features')) {
       const features = geojson.features.map(feature => {
         var _prediction$dataValue;
         const value = (_prediction$dataValue = prediction.dataValues.find(d => d.period === period && d.orgUnit === feature.id && d.dataElement === dataElement)) === null || _prediction$dataValue === void 0 ? void 0 : _prediction$dataValue.value;

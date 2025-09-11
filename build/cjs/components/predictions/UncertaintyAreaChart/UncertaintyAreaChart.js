@@ -65,7 +65,7 @@ const getChartOptions = (data, predictionTargetName) => {
       }
     },
     series: [
-    //median
+    // median
     {
       type: 'line',
       data: median,
@@ -73,7 +73,7 @@ const getChartOptions = (data, predictionTargetName) => {
       color: '#004bbd',
       zIndex: 2
     },
-    //high
+    // high
     {
       type: 'arearange',
       name: _d2I18n.default.t('Range'),
@@ -114,7 +114,7 @@ const UncertaintyAreaChart = ({
     className: _UncertaintyAreaChartModule.default.chart
   }, /*#__PURE__*/_react.default.createElement(_highchartsReactOfficial.default, {
     highcharts: _highcharts.default,
-    constructorType: 'chart',
+    constructorType: "chart",
     options: options
   }))));
 };

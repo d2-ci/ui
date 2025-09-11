@@ -4,7 +4,6 @@ function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = 
 /* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
-/* eslint-disable */
 
 export class ApiError extends Error {
   constructor(request, response, message) {

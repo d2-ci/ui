@@ -28,7 +28,7 @@ export const PredictionMap = ({
   const minValue = Math.min(...values);
   const maxValue = Math.max(...values);
   const bins = getEqualIntervals(minValue, maxValue);
-  return orgUnits ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Prediction Maps for ", predictionTargetName), /*#__PURE__*/React.createElement("div", {
+  return orgUnits ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Prediction Maps for", predictionTargetName), /*#__PURE__*/React.createElement("div", {
     className: styles.predictionMapGroup
   }, periods.map((period, index) => {
     return /*#__PURE__*/React.createElement("div", {

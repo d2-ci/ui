@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getUniqeQuantiles = exports.getUniqePeriods = exports.getUniqeOrgUnits = exports.findOrgUnitName = void 0;
-//these functions are used to get the prediction response from the server to display them in the view, add orgUnits names and so on
+// these functions are used to get the prediction response from the server to display them in the view, add orgUnits names and so on
 
 const getUniqePeriods = values => {
   return [...new Set(values.map(v => v.period))];
