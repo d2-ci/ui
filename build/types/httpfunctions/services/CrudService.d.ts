@@ -13,6 +13,7 @@ import type { JobResponse } from '../models/JobResponse';
 import type { ModelConfigurationCreate } from '../models/ModelConfigurationCreate';
 import type { ModelSpecRead } from '../models/ModelSpecRead';
 import type { ModelTemplateRead } from '../models/ModelTemplateRead';
+import type { ModelUpdate } from '../models/ModelUpdate';
 import type { NewClass } from '../models/NewClass';
 import type { PredictionCreate } from '../models/PredictionCreate';
 import type { PredictionRead } from '../models/PredictionRead';
@@ -130,6 +131,13 @@ export declare class CrudService {
      */
     static listModelTemplatesCrudModelTemplatesGet(): CancelablePromise<Array<ModelTemplateRead>>;
     /**
+     * Delete Model Template
+     * @param modelTemplateId
+     * @returns any Successful Response
+     * @throws ApiError
+     */
+    static deleteModelTemplateCrudModelTemplatesModelTemplateIdDelete(modelTemplateId: number): CancelablePromise<any>;
+    /**
      * List Configured Models
      * List all configured models from the db
      * @returns ModelSpecRead Successful Response
@@ -159,6 +167,14 @@ export declare class CrudService {
      * @throws ApiError
      */
     static addModelCrudModelsPost(requestBody: ModelConfigurationCreate): CancelablePromise<ConfiguredModelDB>;
+    /**
+     * Update Model
+     * @param modelId
+     * @param requestBody
+     * @returns ConfiguredModelDB Successful Response
+     * @throws ApiError
+     */
+    static updateModelCrudModelsModelIdPatch(modelId: number, requestBody: ModelUpdate): CancelablePromise<ConfiguredModelDB>;
     /**
      * Debug Entry
      * @returns JobResponse Successful Response

@@ -274,6 +274,24 @@ class CrudService {
     });
   }
   /**
+   * Delete Model Template
+   * @param modelTemplateId
+   * @returns any Successful Response
+   * @throws ApiError
+   */
+  static deleteModelTemplateCrudModelTemplatesModelTemplateIdDelete(modelTemplateId) {
+    return (0, _request.request)(_OpenAPI.OpenAPI, {
+      method: 'DELETE',
+      url: '/crud/model-templates/{modelTemplateId}',
+      path: {
+        'modelTemplateId': modelTemplateId
+      },
+      errors: {
+        422: `Validation Error`
+      }
+    });
+  }
+  /**
    * List Configured Models
    * List all configured models from the db
    * @returns ModelSpecRead Successful Response
@@ -326,6 +344,27 @@ class CrudService {
     return (0, _request.request)(_OpenAPI.OpenAPI, {
       method: 'POST',
       url: '/crud/models',
+      body: requestBody,
+      mediaType: 'application/json',
+      errors: {
+        422: `Validation Error`
+      }
+    });
+  }
+  /**
+   * Update Model
+   * @param modelId
+   * @param requestBody
+   * @returns ConfiguredModelDB Successful Response
+   * @throws ApiError
+   */
+  static updateModelCrudModelsModelIdPatch(modelId, requestBody) {
+    return (0, _request.request)(_OpenAPI.OpenAPI, {
+      method: 'PATCH',
+      url: '/crud/models/{modelId}',
+      path: {
+        'modelId': modelId
+      },
       body: requestBody,
       mediaType: 'application/json',
       errors: {
