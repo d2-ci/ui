@@ -23,7 +23,7 @@ const getSeries = data => {
     marker: {
       enabled: false,
       lineWidth: 2
-      //fillColor: Highcharts.getOptions().colors[2]
+      // fillColor: Highcharts.getOptions().colors[2]
     }
   }, {
     name: 'Predicted Cases',

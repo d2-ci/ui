@@ -10,7 +10,7 @@ export { PredictionMap } from './components/predictions/PredictionMap/Prediction
 export { OverflowButton, Ping, Pill, Card, StatusIndicator } from './ui';
 export { default as SplitPeriodSelector } from './components/evaluation/SplitPeriodSelector/SplitPeriodSelector';
 
-//interfaces
+// interfaces
 
 // Services
 export { CrudService } from './httpfunctions/services/CrudService';

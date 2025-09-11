@@ -16,7 +16,7 @@ export const ComparionPlotWrapper = ({
   const [allOrgUnits, setAllOrgUnits] = useState([]);
   const [selectedSplitPeriod, setSelectedSplitPeriod] = useState(splitPeriods[0]);
 
-  //on intial load
+  // on intial load
   useEffect(() => {
     const defaultSplitPoint = evaluations[0];
     setSelectedOrgUnits(defaultSplitPoint.evaluation.map(evaluationPerOrgUnit => evaluationPerOrgUnit.orgUnitId));
@@ -28,13 +28,13 @@ export const ComparionPlotWrapper = ({
     }));
     setSelectedSplitPeriod(defaultSplitPoint.splitPoint);
     setFilteredEvaluationPlots(defaultSplitPoint.evaluation);
-    //setSelectedOrgUnits(evaluationPerOrgUnits.map((orgUnit) => orgUnit.orgUnitId))
+    // setSelectedOrgUnits(evaluationPerOrgUnits.map((orgUnit) => orgUnit.orgUnitId))
   }, [evaluations, splitPeriods]);
   useEffect(() => {
-    //find selected orgUnits
+    // find selected orgUnits
     const splitPoint = evaluations.find(evaluation => evaluation.splitPoint === selectedSplitPeriod);
 
-    //match on orgUnit
+    // match on orgUnit
     const _filteredEvaluationPlots = selectedOrgUnits === null || selectedOrgUnits === void 0 ? void 0 : selectedOrgUnits.map(orgUnit => {
       // Use find to locate the first matching evaluation for the orgUnit
       return splitPoint.evaluation.find(evaluationPerOrgUnit => evaluationPerOrgUnit.orgUnitId === orgUnit && evaluationPerOrgUnit.orgUnitName.toLocaleLowerCase().includes(searchQuery ? searchQuery.toLocaleLowerCase() : ''));
@@ -49,7 +49,7 @@ export const ComparionPlotWrapper = ({
     className: styles.wrapper
   }, /*#__PURE__*/React.createElement("div", {
     className: styles.filter
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Evaluation: ", evaluationName)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Evaluation:", ' ', evaluationName)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: styles.filterTitle
   }, "Split period:"), /*#__PURE__*/React.createElement(SplitPeriodSelector, {
     splitPeriods: splitPeriods,
@@ -67,7 +67,7 @@ export const ComparionPlotWrapper = ({
     value: orgUnit.id
   }))))), /*#__PURE__*/React.createElement("div", {
     className: styles.plots
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Model: ", modelName)), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Model:", ' ', modelName)), /*#__PURE__*/React.createElement("div", {
     className: styles.searchInput
   }, /*#__PURE__*/React.createElement(InputField, {
     label: "Search for organization units:",

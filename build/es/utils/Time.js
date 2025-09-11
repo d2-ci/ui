@@ -1,7 +1,7 @@
 export const getPeriodNameFromId = periodId => {
   // this should be moved to utils probably
   // or actually just use import { getPeriodNameFromId } from '@dhis2/multi-period-dimension'
-  //console.log('periodId', periodId)
+  // console.log('periodId', periodId)
   if (!periodId) return 'NA';
   if (periodId.length == 4) {
     return periodId;
@@ -26,7 +26,7 @@ export const getPeriodNameFromId = periodId => {
 export const getPeriodISOFromId = periodId => {
   // this should be moved to utils probably
   // or actually just use import { getPeriodNameFromId } from '@dhis2/multi-period-dimension'
-  //console.log('periodId', periodId)
+  // console.log('periodId', periodId)
   if (!periodId) return 'NA';
   if (periodId.length == 4) {
     return periodId;
