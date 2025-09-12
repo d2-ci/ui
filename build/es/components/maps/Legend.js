@@ -23,7 +23,7 @@ const Legend = ({
       }
     }), /*#__PURE__*/React.createElement("span", {
       className: styles.classLabel
-    }, bin.startValue, " - ", bin.endValue));
+    }, bin.startValue, ' ', "-", bin.endValue));
   })));
 };
 export default Legend;

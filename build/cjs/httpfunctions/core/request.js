@@ -12,10 +12,10 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e
 // import { ApiRequestOptions } from './httpfunctions/core/ApiRequestOptions'
 // import { request as __request } from './httpfunctions/core/request'
 
-/* THIS WILL BE COPIED VERBATIM TO src/httpfunctions/core/request.ts 
+/* THIS WILL BE COPIED VERBATIM TO src/httpfunctions/core/request.ts
     by --request option to openapi-typescript-codegen
 
-    ** EXPECT TYPESCRIPT AND IMPORT ERRORS ** 
+    ** EXPECT TYPESCRIPT AND IMPORT ERRORS **
 
     For more info see https://github.com/dhis2-chap/chap-frontend-monorepo/pull/76
 */

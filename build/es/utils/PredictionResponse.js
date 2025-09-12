@@ -1,4 +1,4 @@
-//these functions are used to get the prediction response from the server to display them in the view, add orgUnits names and so on
+// these functions are used to get the prediction response from the server to display them in the view, add orgUnits names and so on
 
 export const getUniqePeriods = values => {
   return [...new Set(values.map(v => v.period))];

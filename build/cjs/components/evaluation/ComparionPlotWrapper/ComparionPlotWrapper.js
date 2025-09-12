@@ -24,7 +24,7 @@ const ComparionPlotWrapper = ({
   const [allOrgUnits, setAllOrgUnits] = (0, _react.useState)([]);
   const [selectedSplitPeriod, setSelectedSplitPeriod] = (0, _react.useState)(splitPeriods[0]);
 
-  //on intial load
+  // on intial load
   (0, _react.useEffect)(() => {
     const defaultSplitPoint = evaluations[0];
     setSelectedOrgUnits(defaultSplitPoint.evaluation.map(evaluationPerOrgUnit => evaluationPerOrgUnit.orgUnitId));
@@ -36,13 +36,13 @@ const ComparionPlotWrapper = ({
     }));
     setSelectedSplitPeriod(defaultSplitPoint.splitPoint);
     setFilteredEvaluationPlots(defaultSplitPoint.evaluation);
-    //setSelectedOrgUnits(evaluationPerOrgUnits.map((orgUnit) => orgUnit.orgUnitId))
+    // setSelectedOrgUnits(evaluationPerOrgUnits.map((orgUnit) => orgUnit.orgUnitId))
   }, [evaluations, splitPeriods]);
   (0, _react.useEffect)(() => {
-    //find selected orgUnits
+    // find selected orgUnits
     const splitPoint = evaluations.find(evaluation => evaluation.splitPoint === selectedSplitPeriod);
 
-    //match on orgUnit
+    // match on orgUnit
     const _filteredEvaluationPlots = selectedOrgUnits === null || selectedOrgUnits === void 0 ? void 0 : selectedOrgUnits.map(orgUnit => {
       // Use find to locate the first matching evaluation for the orgUnit
       return splitPoint.evaluation.find(evaluationPerOrgUnit => evaluationPerOrgUnit.orgUnitId === orgUnit && evaluationPerOrgUnit.orgUnitName.toLocaleLowerCase().includes(searchQuery ? searchQuery.toLocaleLowerCase() : ''));
@@ -57,7 +57,7 @@ const ComparionPlotWrapper = ({
     className: _ComparionPlotWrapperModule.default.wrapper
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _ComparionPlotWrapperModule.default.filter
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Evaluation: ", evaluationName)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Evaluation:", ' ', evaluationName)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: _ComparionPlotWrapperModule.default.filterTitle
   }, "Split period:"), /*#__PURE__*/_react.default.createElement(_SplitPeriodSelector.default, {
     splitPeriods: splitPeriods,
@@ -75,7 +75,7 @@ const ComparionPlotWrapper = ({
     value: orgUnit.id
   }))))), /*#__PURE__*/_react.default.createElement("div", {
     className: _ComparionPlotWrapperModule.default.plots
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Model: ", modelName)), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Model:", ' ', modelName)), /*#__PURE__*/_react.default.createElement("div", {
     className: _ComparionPlotWrapperModule.default.searchInput
   }, /*#__PURE__*/_react.default.createElement(_ui.InputField, {
     label: "Search for organization units:",

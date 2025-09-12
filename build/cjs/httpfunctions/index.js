@@ -69,6 +69,12 @@ Object.defineProperty(exports, "PeriodType", {
     return _PeriodType.PeriodType;
   }
 });
+Object.defineProperty(exports, "VisualizationService", {
+  enumerable: true,
+  get: function () {
+    return _VisualizationService.VisualizationService;
+  }
+});
 var _ApiError = require("./core/ApiError");
 var _CancelablePromise = require("./core/CancelablePromise");
 var _OpenAPI = require("./core/OpenAPI");
@@ -79,3 +85,4 @@ var _CrudService = require("./services/CrudService");
 var _DebugService = require("./services/DebugService");
 var _DefaultService = require("./services/DefaultService");
 var _JobsService = require("./services/JobsService");
+var _VisualizationService = require("./services/VisualizationService");
