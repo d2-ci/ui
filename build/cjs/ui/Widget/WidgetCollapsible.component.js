@@ -57,13 +57,15 @@ const WidgetCollapsible = ({
     className: _WidgetModule.default.headerCollapsible
   }, header, /*#__PURE__*/_react.default.createElement(_IconButton.IconButton, {
     dataTest: "widget-open-close-toggle-button",
-    className: (0, _classnames.default)(_WidgetModule.default.toggleButton, {
-      [_WidgetModule.default.toggleButtonCloseInit]: !animationsReady && !postEffectOpen,
-      [_WidgetModule.default.toggleButtonOpen]: animationsReady && postEffectOpen,
-      [_WidgetModule.default.toggleButtonClose]: animationsReady && !postEffectOpen
-    }),
+    className: _WidgetModule.default.toggleButton,
     onClick: open ? onClose : onOpen
-  }, /*#__PURE__*/_react.default.createElement(_ui.IconChevronUp24, null)))), childrenVisible ? /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: (0, _classnames.default)(_WidgetModule.default.toggleIcon, {
+      [_WidgetModule.default.toggleIconCloseInit]: !animationsReady && !postEffectOpen,
+      [_WidgetModule.default.toggleIconOpen]: animationsReady && postEffectOpen,
+      [_WidgetModule.default.toggleIconClose]: animationsReady && !postEffectOpen
+    })
+  }, /*#__PURE__*/_react.default.createElement(_ui.IconChevronUp24, null))))), childrenVisible ? /*#__PURE__*/_react.default.createElement("div", {
     "data-test": "widget-contents",
     className: (0, _classnames.default)(_WidgetModule.default.children, {
       [_WidgetModule.default.childrenOpen]: animationsReady && open,
