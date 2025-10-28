@@ -21,4 +21,5 @@ export type ModelTemplateDB = {
     name: string;
     id?: (number | null);
     sourceUrl?: (string | null);
+    version?: (string | null);
 };

@@ -18,50 +18,7 @@ export class DefaultService {
     });
   }
   /**
-   * Predict
-   * Start a prediction task using the given data as training data.
-   * Results can be retrieved using the get-results endpoint.
-   * @param requestBody
-   * @returns any Successful Response
-   * @throws ApiError
-   */
-  static predictPredictPost(requestBody) {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/predict',
-      body: requestBody,
-      mediaType: 'application/json',
-      errors: {
-        422: `Validation Error`
-      }
-    });
-  }
-  /**
-   * Evaluate
-   * Start an evaluation task using the given data as training data.
-   * Results can be retrieved using the get-results endpoint.
-   * @param requestBody
-   * @param nSplits
-   * @param stride
-   * @returns any Successful Response
-   * @throws ApiError
-   */
-  static evaluateEvaluatePost(requestBody, nSplits, stride = 1) {
-    return __request(OpenAPI, {
-      method: 'POST',
-      url: '/evaluate',
-      query: {
-        'n_splits': nSplits,
-        'stride': stride
-      },
-      body: requestBody,
-      mediaType: 'application/json',
-      errors: {
-        422: `Validation Error`
-      }
-    });
-  }
-  /**
+   * @deprecated
    * List Models
    * List all available models. These are not validated. Should set up test suite to validate them
    * @returns ModelSpec Successful Response
@@ -74,6 +31,7 @@ export class DefaultService {
     });
   }
   /**
+   * @deprecated
    * List Features
    * List all available features
    * @returns Feature Successful Response

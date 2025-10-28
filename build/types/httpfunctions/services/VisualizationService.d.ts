@@ -3,13 +3,13 @@ import type { VisualizationInfo } from '../models/VisualizationInfo';
 import type { CancelablePromise } from '../core/CancelablePromise';
 export declare class VisualizationService {
     /**
-     * List Visualizations
+     * Get Avilable Metric Plots
      * List available visualizations
      * @param backtestId
      * @returns VisualizationInfo Successful Response
      * @throws ApiError
      */
-    static listVisualizationsVisualizationBacktestIdGet(backtestId: number): CancelablePromise<Array<VisualizationInfo>>;
+    static getAvilableMetricPlotsVisualizationMetricPlotsBacktestIdGet(backtestId: number): CancelablePromise<Array<VisualizationInfo>>;
     /**
      * Get Available Metrics
      * @param backtestId
@@ -25,5 +25,27 @@ export declare class VisualizationService {
      * @returns any Successful Response
      * @throws ApiError
      */
-    static generateVisualizationVisualizationVisualizationNameBacktestIdMetricIdGet(visualizationName: string, backtestId: number, metricId: string): CancelablePromise<any>;
+    static generateVisualizationVisualizationMetricPlotsVisualizationNameBacktestIdMetricIdGet(visualizationName: string, backtestId: number, metricId: string): CancelablePromise<any>;
+    /**
+     * Generate Data Plots
+     * @param visualizationName
+     * @param datasetId
+     * @returns any Successful Response
+     * @throws ApiError
+     */
+    static generateDataPlotsVisualizationDatasetPlotsVisualizationNameDatasetIdGet(visualizationName: string, datasetId: number): CancelablePromise<any>;
+    /**
+     * List Backtest Plot Types
+     * @returns any Successful Response
+     * @throws ApiError
+     */
+    static listBacktestPlotTypesVisualizationBacktestPlotsGet(): CancelablePromise<any>;
+    /**
+     * Generate Backtest Plots
+     * @param visualizationName
+     * @param backtestId
+     * @returns any Successful Response
+     * @throws ApiError
+     */
+    static generateBacktestPlotsVisualizationBacktestPlotsVisualizationNameBacktestIdGet(visualizationName: string, backtestId: number): CancelablePromise<any>;
 }

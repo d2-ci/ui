@@ -143,7 +143,7 @@ export class JobsService {
   /**
    * Get Database Result
    * @param jobId
-   * @returns DataBaseResponse Successful Response
+   * @returns chap_core__rest_api__v1__jobs__DataBaseResponse Successful Response
    * @throws ApiError
    */
   static getDatabaseResultJobsJobIdDatabaseResultGet(jobId) {

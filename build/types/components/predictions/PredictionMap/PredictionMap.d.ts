@@ -1,7 +1,7 @@
-import { FullPredictionResponseExtended } from '../../../interfaces/Prediction';
+import { PredictionOrgUnitSeries } from '../../../interfaces/Prediction';
 interface PredictionMapProps {
-    data: FullPredictionResponseExtended;
+    series: PredictionOrgUnitSeries[];
     predictionTargetName: string;
 }
-export declare const PredictionMap: ({ data, predictionTargetName, }: PredictionMapProps) => import("react/jsx-runtime").JSX.Element | null;
+export declare const PredictionMap: ({ series, predictionTargetName }: PredictionMapProps) => import("react/jsx-runtime").JSX.Element | null;
 export {};

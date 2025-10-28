@@ -111,8 +111,26 @@ export class CrudService {
     });
   }
   /**
+   * Get Backtest Info
+   * @param backtestId
+   * @returns BackTestRead Successful Response
+   * @throws ApiError
+   */
+  static getBacktestInfoCrudBacktestsBacktestIdInfoGet(backtestId) {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/crud/backtests/{backtestId}/info',
+      path: {
+        'backtestId': backtestId
+      },
+      errors: {
+        422: `Validation Error`
+      }
+    });
+  }
+  /**
    * Get Predictions
-   * @returns NewClass Successful Response
+   * @returns PredictionBaseRead Successful Response
    * @throws ApiError
    */
   static getPredictionsCrudPredictionsGet() {
@@ -176,7 +194,7 @@ export class CrudService {
   }
   /**
    * Get Datasets
-   * @returns DataSetRead Successful Response
+   * @returns DataSetInfo Successful Response
    * @throws ApiError
    */
   static getDatasetsCrudDatasetsGet() {
@@ -241,7 +259,7 @@ export class CrudService {
   /**
    * Create Dataset Csv
    * @param formData
-   * @returns DataBaseResponse Successful Response
+   * @returns chap_core__rest_api__v1__jobs__DataBaseResponse Successful Response
    * @throws ApiError
    */
   static createDatasetCsvCrudDatasetsCsvFilePost(formData) {
@@ -250,6 +268,24 @@ export class CrudService {
       url: '/crud/datasets/csvFile',
       formData: formData,
       mediaType: 'multipart/form-data',
+      errors: {
+        422: `Validation Error`
+      }
+    });
+  }
+  /**
+   * Get Dataset Df
+   * @param datasetId
+   * @returns any Successful Response
+   * @throws ApiError
+   */
+  static getDatasetDfCrudDatasetsDatasetIdDfGet(datasetId) {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/crud/datasets/{datasetId}/df',
+      path: {
+        'datasetId': datasetId
+      },
       errors: {
         422: `Validation Error`
       }
@@ -265,24 +301,6 @@ export class CrudService {
     return __request(OpenAPI, {
       method: 'GET',
       url: '/crud/model-templates'
-    });
-  }
-  /**
-   * Delete Model Template
-   * @param modelTemplateId
-   * @returns any Successful Response
-   * @throws ApiError
-   */
-  static deleteModelTemplateCrudModelTemplatesModelTemplateIdDelete(modelTemplateId) {
-    return __request(OpenAPI, {
-      method: 'DELETE',
-      url: '/crud/model-templates/{modelTemplateId}',
-      path: {
-        'modelTemplateId': modelTemplateId
-      },
-      errors: {
-        422: `Validation Error`
-      }
     });
   }
   /**
@@ -310,6 +328,25 @@ export class CrudService {
       url: '/crud/configured-models',
       body: requestBody,
       mediaType: 'application/json',
+      errors: {
+        422: `Validation Error`
+      }
+    });
+  }
+  /**
+   * Delete Configured Model
+   * Soft delete a configured model by setting archived to True
+   * @param configuredModelId
+   * @returns any Successful Response
+   * @throws ApiError
+   */
+  static deleteConfiguredModelCrudConfiguredModelsConfiguredModelIdDelete(configuredModelId) {
+    return __request(OpenAPI, {
+      method: 'DELETE',
+      url: '/crud/configured-models/{configuredModelId}',
+      path: {
+        'configuredModelId': configuredModelId
+      },
       errors: {
         422: `Validation Error`
       }

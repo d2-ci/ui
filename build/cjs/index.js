@@ -20,12 +20,16 @@ var _exportNames = {
   Pill: true,
   Card: true,
   StatusIndicator: true,
+  Tag: true,
+  Widget: true,
   SplitPeriodSelector: true,
   CrudService: true,
   AnalyticsService: true,
   enableQueue: true,
   disableQueue: true,
-  getQueue: true
+  getQueue: true,
+  buildPredictionSeries: true,
+  computeQuantile: true
 };
 Object.defineProperty(exports, "AnalyticsService", {
   enumerable: true,
@@ -111,10 +115,34 @@ Object.defineProperty(exports, "StatusIndicator", {
     return _ui.StatusIndicator;
   }
 });
+Object.defineProperty(exports, "Tag", {
+  enumerable: true,
+  get: function () {
+    return _ui.Tag;
+  }
+});
 Object.defineProperty(exports, "UncertaintyAreaChart", {
   enumerable: true,
   get: function () {
     return _UncertaintyAreaChart.UncertaintyAreaChart;
+  }
+});
+Object.defineProperty(exports, "Widget", {
+  enumerable: true,
+  get: function () {
+    return _ui.Widget;
+  }
+});
+Object.defineProperty(exports, "buildPredictionSeries", {
+  enumerable: true,
+  get: function () {
+    return _PredictionViewModel.buildPredictionSeries;
+  }
+});
+Object.defineProperty(exports, "computeQuantile", {
+  enumerable: true,
+  get: function () {
+    return _PredictionViewModel.computeQuantile;
   }
 });
 Object.defineProperty(exports, "createHighChartsData", {
@@ -184,4 +212,5 @@ var _SplitPeriodSelector = _interopRequireDefault(require("./components/evaluati
 var _CrudService = require("./httpfunctions/services/CrudService");
 var _AnalyticsService = require("./httpfunctions/services/AnalyticsService");
 var _request = require("./httpfunctions/core/request");
+var _PredictionViewModel = require("./utils/PredictionViewModel");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }

@@ -1,6 +1,6 @@
-import { FullPredictionResponseExtended } from '../../../interfaces/Prediction';
+import { PredictionOrgUnitSeries } from '../../../interfaces/Prediction';
 interface PredictionTableProps {
-    data: FullPredictionResponseExtended;
+    series: PredictionOrgUnitSeries;
 }
-export declare const PredictionTable: ({ data }: PredictionTableProps) => import("react/jsx-runtime").JSX.Element;
+export declare const PredictionTable: ({ series }: PredictionTableProps) => import("react/jsx-runtime").JSX.Element;
 export {};

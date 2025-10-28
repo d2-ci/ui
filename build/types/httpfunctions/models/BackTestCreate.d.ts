@@ -3,4 +3,5 @@ export type BackTestCreate = {
     modelId: string;
     name?: (string | null);
     created?: (string | null);
+    modelTemplateVersion?: (string | null);
 };

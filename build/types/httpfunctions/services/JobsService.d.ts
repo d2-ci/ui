@@ -1,4 +1,4 @@
-import type { DataBaseResponse } from '../models/DataBaseResponse';
+import type { chap_core__rest_api__v1__jobs__DataBaseResponse } from '../models/chap_core__rest_api__v1__jobs__DataBaseResponse';
 import type { EvaluationResponse } from '../models/EvaluationResponse';
 import type { FullPredictionResponse } from '../models/FullPredictionResponse';
 import type { JobDescription } from '../models/JobDescription';
@@ -62,8 +62,8 @@ export declare class JobsService {
     /**
      * Get Database Result
      * @param jobId
-     * @returns DataBaseResponse Successful Response
+     * @returns chap_core__rest_api__v1__jobs__DataBaseResponse Successful Response
      * @throws ApiError
      */
-    static getDatabaseResultJobsJobIdDatabaseResultGet(jobId: string): CancelablePromise<DataBaseResponse>;
+    static getDatabaseResultJobsJobIdDatabaseResultGet(jobId: string): CancelablePromise<chap_core__rest_api__v1__jobs__DataBaseResponse>;
 }

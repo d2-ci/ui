@@ -1,6 +1,5 @@
 import React from 'react';
 import i18n from '@dhis2/d2-i18n';
-import { getUniqeOrgUnits, getUniqePeriods } from '../../../utils/PredictionResponse';
 import MapItem from '../../maps/MapItem';
 import Choropleth from '../../maps/Choropleth';
 import Legend from '../../maps/Legend';
@@ -8,43 +7,52 @@ import Basemap from '../../maps/Basemap';
 import { getEqualIntervals } from '../../maps/utils';
 import useOrgUnits from '../../../hooks/useOrgUnits';
 import styles from './PredictionMap.module.css';
-import { createFixedPeriodFromPeriodId } from '@dhis2/multi-calendar-dates';
 const colors = ['#FFFFD4', '#FED98E', '#FE9929', '#D95F0E', '#993404'];
 export const PredictionMap = ({
-  data,
+  series,
   predictionTargetName
 }) => {
-  // get all orgunits
-  const orgUnitIds = getUniqeOrgUnits(data.dataValues);
-
-  // load orgunit geoms
+  const orgUnitIds = Array.from(new Set(series.map(s => s.orgUnitId)));
   const {
     orgUnits
   } = useOrgUnits(orgUnitIds);
 
-  // get and classify periods
-  const periods = getUniqePeriods(data.dataValues);
-  const values = data.dataValues.map(d => d.value);
-  const minValue = Math.min(...values);
-  const maxValue = Math.max(...values);
+  // collect periods and labels
+  const periodToLabel = new Map();
+  for (const s of series) {
+    for (const p of s.points) {
+      if (!periodToLabel.has(p.period)) {
+        periodToLabel.set(p.period, p.periodLabel);
+      }
+    }
+  }
+  const periods = Array.from(periodToLabel.keys());
+  const allMedianValues = series.flatMap(s => s.points.map(p => p.quantiles.median));
+  const minValue = Math.min(...allMedianValues);
+  const maxValue = Math.max(...allMedianValues);
   const bins = getEqualIntervals(minValue, maxValue);
-  return orgUnits ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Prediction Maps for", predictionTargetName), /*#__PURE__*/React.createElement("div", {
+  const adaptedPrediction = {
+    dataValues: series.flatMap(s => s.points.map(p => ({
+      orgUnit: s.orgUnitId,
+      period: p.period,
+      dataElement: 'median',
+      value: p.quantiles.median
+    })))
+  };
+  return orgUnits ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: styles.predictionMapGroup
   }, periods.map((period, index) => {
     return /*#__PURE__*/React.createElement("div", {
       className: styles.predictionMapCard,
       key: index
-    }, /*#__PURE__*/React.createElement("h4", null, i18n.t(createFixedPeriodFromPeriodId({
-      periodId: period,
-      calendar: 'gregory'
-    }).displayName)), /*#__PURE__*/React.createElement(MapItem, {
+    }, /*#__PURE__*/React.createElement("h4", null, periodToLabel.get(period) || period), /*#__PURE__*/React.createElement(MapItem, {
       key: period,
       index: index,
       count: periods.length,
       syncId: "prediction-map"
     }, /*#__PURE__*/React.createElement(Basemap, null), /*#__PURE__*/React.createElement(Choropleth, {
       period: period,
-      prediction: data,
+      prediction: adaptedPrediction,
       geojson: orgUnits,
       bins: bins,
       colors: colors

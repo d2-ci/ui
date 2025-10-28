@@ -66,6 +66,27 @@ export class AnalyticsService {
     });
   }
   /**
+   * Get Prediction Entry
+   * return
+   * @param predictionId
+   * @param quantiles
+   * @returns PredictionEntry Successful Response
+   * @throws ApiError
+   */
+  static getPredictionEntryAnalyticsPredictionEntryGet(predictionId, quantiles) {
+    return __request(OpenAPI, {
+      method: 'GET',
+      url: '/analytics/prediction-entry',
+      query: {
+        'predictionId': predictionId,
+        'quantiles': quantiles
+      },
+      errors: {
+        422: `Validation Error`
+      }
+    });
+  }
+  /**
    * Get Evaluation Entries
    * Return quantiles for the forecasts in a backtest. Can optionally be filtered on split period and org units.
    * @param backtestId
@@ -171,7 +192,7 @@ export class AnalyticsService {
   }
   /**
    * Get Data Sources
-   * @returns DataSource Successful Response
+   * @returns ChapDataSource Successful Response
    * @throws ApiError
    */
   static getDataSourcesAnalyticsDataSourcesGet() {

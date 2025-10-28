@@ -1,5 +1,5 @@
 import type { ModelTemplateDB } from './ModelTemplateDB';
-export type ConfiguredModelRead = {
+export type ConfiguredModelRead_Input = {
     userOptionValues?: (Record<string, any> | null);
     additionalContinuousCovariates?: Array<string>;
     name: string;

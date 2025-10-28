@@ -1,32 +1,36 @@
+import React from 'react';
 import i18n from '@dhis2/d2-i18n';
 import styles from './PredictionTable.module.css';
-import React from 'react';
-import { getUniqeOrgUnits, findOrgUnitName, getUniqePeriods, getUniqeQuantiles } from '../../../utils/PredictionResponse';
-import { createFixedPeriodFromPeriodId } from '@dhis2/multi-calendar-dates';
+import { DataTable, DataTableHead, DataTableRow, DataTableBody, DataTableCell, DataTableColumnHeader } from '@dhis2/ui';
 export const PredictionTable = ({
-  data
+  series
 }) => {
-  const dataValues = data.dataValues;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, getUniqeOrgUnits(dataValues).map(ou => {
-    return /*#__PURE__*/React.createElement("div", {
-      key: ou
-    }, /*#__PURE__*/React.createElement("h3", null, i18n.t('Prediction for {{orgUnitName}}', {
-      orgUnitName: findOrgUnitName(ou, dataValues)
-    })), /*#__PURE__*/React.createElement("table", {
-      className: styles.table
-    }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Quantiles"), getUniqePeriods(dataValues).map(p => {
-      return /*#__PURE__*/React.createElement("th", {
-        key: p
-      }, createFixedPeriodFromPeriodId({
-        periodId: p,
-        calendar: 'gregory'
-      }).displayName);
-    }))), /*#__PURE__*/React.createElement("tbody", null, getUniqeQuantiles(dataValues).map(q => /*#__PURE__*/React.createElement("tr", {
-      key: q
-    }, /*#__PURE__*/React.createElement("td", null, q.replaceAll('_', ' ')), getUniqePeriods(dataValues).map(p => {
-      return /*#__PURE__*/React.createElement("td", {
-        key: p
-      }, dataValues.filter(d => d.dataElement === q && d.orgUnit === ou && d.period === p)[0].value);
-    }))))));
-  }));
+  var _series$orgUnitId;
+  const orgUnitId = (_series$orgUnitId = series.orgUnitId) !== null && _series$orgUnitId !== void 0 ? _series$orgUnitId : 'ou';
+  const periods = series.points.map(p => p.periodLabel);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    key: orgUnitId
+  }, /*#__PURE__*/React.createElement(DataTable, {
+    className: styles.table
+  }, /*#__PURE__*/React.createElement(DataTableHead, null, /*#__PURE__*/React.createElement(DataTableRow, null, /*#__PURE__*/React.createElement(DataTableColumnHeader, {
+    className: styles.headerRight
+  }, i18n.t('Quantiles')), periods.map((label, idx) => /*#__PURE__*/React.createElement(DataTableColumnHeader, {
+    className: styles.headerRight,
+    key: `${orgUnitId}-${idx}`
+  }, label)))), /*#__PURE__*/React.createElement(DataTableBody, null, /*#__PURE__*/React.createElement(DataTableRow, null, /*#__PURE__*/React.createElement(DataTableCell, {
+    align: "left"
+  }, i18n.t('Quantile median')), series.points.map((pt, idx) => /*#__PURE__*/React.createElement(DataTableCell, {
+    key: `median-${idx}`,
+    align: "left"
+  }, pt.quantiles.median))), /*#__PURE__*/React.createElement(DataTableRow, null, /*#__PURE__*/React.createElement(DataTableCell, {
+    className: styles.quantile_low
+  }, i18n.t('quantile low')), series.points.map((pt, idx) => /*#__PURE__*/React.createElement(DataTableCell, {
+    key: `low-${idx}`,
+    className: styles.quantile_low
+  }, pt.quantiles.quantile_low))), /*#__PURE__*/React.createElement(DataTableRow, null, /*#__PURE__*/React.createElement(DataTableCell, {
+    className: styles.quantile_high
+  }, i18n.t('quantile high')), series.points.map((pt, idx) => /*#__PURE__*/React.createElement(DataTableCell, {
+    key: `high-${idx}`,
+    className: styles.quantile_high
+  }, pt.quantiles.quantile_high)))))));
 };

@@ -4,7 +4,6 @@ import type { Feature } from '../models/Feature';
 import type { FullPredictionResponse } from '../models/FullPredictionResponse';
 import type { HealthResponse } from '../models/HealthResponse';
 import type { ModelSpec } from '../models/ModelSpec';
-import type { PredictionRequest } from '../models/PredictionRequest';
 import type { State } from '../models/State';
 import type { SystemInfoResponse } from '../models/SystemInfoResponse';
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -16,26 +15,7 @@ export declare class DefaultService {
      */
     static faviconfaviconIcoGet(): CancelablePromise<any>;
     /**
-     * Predict
-     * Start a prediction task using the given data as training data.
-     * Results can be retrieved using the get-results endpoint.
-     * @param requestBody
-     * @returns any Successful Response
-     * @throws ApiError
-     */
-    static predictPredictPost(requestBody: PredictionRequest): CancelablePromise<Record<string, any>>;
-    /**
-     * Evaluate
-     * Start an evaluation task using the given data as training data.
-     * Results can be retrieved using the get-results endpoint.
-     * @param requestBody
-     * @param nSplits
-     * @param stride
-     * @returns any Successful Response
-     * @throws ApiError
-     */
-    static evaluateEvaluatePost(requestBody: PredictionRequest, nSplits?: (number | null), stride?: number): CancelablePromise<Record<string, any>>;
-    /**
+     * @deprecated
      * List Models
      * List all available models. These are not validated. Should set up test suite to validate them
      * @returns ModelSpec Successful Response
@@ -43,6 +23,7 @@ export declare class DefaultService {
      */
     static listModelsListModelsGet(): CancelablePromise<Array<ModelSpec>>;
     /**
+     * @deprecated
      * List Features
      * List all available features
      * @returns Feature Successful Response

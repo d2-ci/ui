@@ -58,3 +58,25 @@ Object.keys(_StatusIndicator).forEach(function (key) {
     }
   });
 });
+var _Tag = require("./Tag");
+Object.keys(_Tag).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _Tag[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _Tag[key];
+    }
+  });
+});
+var _Widget = require("./Widget");
+Object.keys(_Widget).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _Widget[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function () {
+      return _Widget[key];
+    }
+  });
+});
