@@ -49,13 +49,15 @@ export const WidgetCollapsible = ({
     className: styles.headerCollapsible
   }, header, /*#__PURE__*/React.createElement(IconButton, {
     dataTest: "widget-open-close-toggle-button",
-    className: cx(styles.toggleButton, {
-      [styles.toggleButtonCloseInit]: !animationsReady && !postEffectOpen,
-      [styles.toggleButtonOpen]: animationsReady && postEffectOpen,
-      [styles.toggleButtonClose]: animationsReady && !postEffectOpen
-    }),
+    className: styles.toggleButton,
     onClick: open ? onClose : onOpen
-  }, /*#__PURE__*/React.createElement(IconChevronUp24, null)))), childrenVisible ? /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", {
+    className: cx(styles.toggleIcon, {
+      [styles.toggleIconCloseInit]: !animationsReady && !postEffectOpen,
+      [styles.toggleIconOpen]: animationsReady && postEffectOpen,
+      [styles.toggleIconClose]: animationsReady && !postEffectOpen
+    })
+  }, /*#__PURE__*/React.createElement(IconChevronUp24, null))))), childrenVisible ? /*#__PURE__*/React.createElement("div", {
     "data-test": "widget-contents",
     className: cx(styles.children, {
       [styles.childrenOpen]: animationsReady && open,
