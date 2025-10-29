@@ -11,6 +11,7 @@ var _exportNames = {
   joinRealAndPredictedData: true,
   ConditionalTooltip: true,
   ResultPlot: true,
+  ComparisonPlot: true,
   ComparisonPlotList: true,
   ComparionPlotWrapper: true,
   PredictionTable: true,
@@ -47,6 +48,12 @@ Object.defineProperty(exports, "ComparionPlotWrapper", {
   enumerable: true,
   get: function () {
     return _ComparionPlotWrapper.ComparionPlotWrapper;
+  }
+});
+Object.defineProperty(exports, "ComparisonPlot", {
+  enumerable: true,
+  get: function () {
+    return _ComparisonPlot.ComparisonPlot;
   }
 });
 Object.defineProperty(exports, "ComparisonPlotList", {
@@ -203,6 +210,7 @@ Object.keys(_index).forEach(function (key) {
 var _EvaluationResponse = require("./utils/EvaluationResponse");
 var _ConditionalTooltip = require("./utils/ConditionalTooltip");
 var _ResultPlot = require("./components/evaluation/ResultPlot/ResultPlot");
+var _ComparisonPlot = require("./components/evaluation/ComparisonPlot/ComparisonPlot");
 var _ComparisonPlotList = require("./components/evaluation/ComparisonPlotList/ComparisonPlotList");
 var _ComparionPlotWrapper = require("./components/evaluation/ComparionPlotWrapper/ComparionPlotWrapper");
 var _PredictionTable = require("./components/predictions/PredictionTable/PredictionTable");

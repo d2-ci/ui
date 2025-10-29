@@ -4,6 +4,7 @@ export { evaluationResultToViewData, getSplitPeriod, createHighChartsData, joinR
 export { ConditionalTooltip } from './utils/ConditionalTooltip';
 export type { EvaluationEntryExtend, HighChartsData, EvaluationForSplitPoint, EvaluationPerOrgUnit, ModelData, } from './interfaces/Evaluation';
 export { ResultPlot } from './components/evaluation/ResultPlot/ResultPlot';
+export { ComparisonPlot } from './components/evaluation/ComparisonPlot/ComparisonPlot';
 export { ComparisonPlotList } from './components/evaluation/ComparisonPlotList/ComparisonPlotList';
 export { ComparionPlotWrapper } from './components/evaluation/ComparionPlotWrapper/ComparionPlotWrapper';
 export { PredictionTable } from './components/predictions/PredictionTable/PredictionTable';
