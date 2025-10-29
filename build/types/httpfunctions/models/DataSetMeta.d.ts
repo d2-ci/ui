@@ -1,0 +1,13 @@
+import type { DataSource } from './DataSource';
+export type DataSetMeta = {
+    name: string;
+    dataSources?: (Array<DataSource> | null);
+    type?: (string | null);
+    id: number;
+    covariates?: Array<string>;
+    firstPeriod?: (string | null);
+    lastPeriod?: (string | null);
+    orgUnits?: (Array<string> | null);
+    created?: (string | null);
+    periodType?: (string | null);
+};
