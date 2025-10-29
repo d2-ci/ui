@@ -130,7 +130,7 @@ export class CrudService {
   }
   /**
    * Get Predictions
-   * @returns PredictionBaseRead Successful Response
+   * @returns PredictionInfo Successful Response
    * @throws ApiError
    */
   static getPredictionsCrudPredictionsGet() {
@@ -159,7 +159,7 @@ export class CrudService {
   /**
    * Get Prediction
    * @param predictionId
-   * @returns PredictionRead Successful Response
+   * @returns PredictionInfo Successful Response
    * @throws ApiError
    */
   static getPredictionCrudPredictionsPredictionIdGet(predictionId) {

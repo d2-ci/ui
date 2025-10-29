@@ -1,3 +1,4 @@
+import type { BackTestPlotType } from '../models/BackTestPlotType';
 import type { Metric } from '../models/Metric';
 import type { VisualizationInfo } from '../models/VisualizationInfo';
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -36,10 +37,10 @@ export declare class VisualizationService {
     static generateDataPlotsVisualizationDatasetPlotsVisualizationNameDatasetIdGet(visualizationName: string, datasetId: number): CancelablePromise<any>;
     /**
      * List Backtest Plot Types
-     * @returns any Successful Response
+     * @returns BackTestPlotType Successful Response
      * @throws ApiError
      */
-    static listBacktestPlotTypesVisualizationBacktestPlotsGet(): CancelablePromise<any>;
+    static listBacktestPlotTypesVisualizationBacktestPlotsGet(): CancelablePromise<Array<BackTestPlotType>>;
     /**
      * Generate Backtest Plots
      * @param visualizationName

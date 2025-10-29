@@ -17,4 +17,4 @@ export { default as SplitPeriodSelector } from './components/evaluation/SplitPer
 export { CrudService } from './httpfunctions/services/CrudService';
 export { AnalyticsService } from './httpfunctions/services/AnalyticsService';
 export { enableQueue, disableQueue, getQueue } from './httpfunctions/core/request';
-export { buildPredictionSeries, computeQuantile } from './utils/PredictionViewModel';
+export { buildPredictionSeries } from './utils/PredictionViewModel';

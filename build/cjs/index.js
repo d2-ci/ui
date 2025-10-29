@@ -29,8 +29,7 @@ var _exportNames = {
   enableQueue: true,
   disableQueue: true,
   getQueue: true,
-  buildPredictionSeries: true,
-  computeQuantile: true
+  buildPredictionSeries: true
 };
 Object.defineProperty(exports, "AnalyticsService", {
   enumerable: true,
@@ -144,12 +143,6 @@ Object.defineProperty(exports, "buildPredictionSeries", {
   enumerable: true,
   get: function () {
     return _PredictionViewModel.buildPredictionSeries;
-  }
-});
-Object.defineProperty(exports, "computeQuantile", {
-  enumerable: true,
-  get: function () {
-    return _PredictionViewModel.computeQuantile;
   }
 });
 Object.defineProperty(exports, "createHighChartsData", {

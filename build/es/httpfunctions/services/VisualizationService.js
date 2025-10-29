@@ -87,7 +87,7 @@ export class VisualizationService {
   }
   /**
    * List Backtest Plot Types
-   * @returns any Successful Response
+   * @returns BackTestPlotType Successful Response
    * @throws ApiError
    */
   static listBacktestPlotTypesVisualizationBacktestPlotsGet() {

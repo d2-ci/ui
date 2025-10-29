@@ -1,4 +1,4 @@
-import { FullPredictionResponse, PredictionResponse, PredictionRead } from '../httpfunctions';
+import { FullPredictionResponse, PredictionResponse, PredictionInfo } from '../httpfunctions';
 export interface FullPredictionResponseExtended extends FullPredictionResponse {
     diseaseId: string;
     dataValues: Array<PredictionResponseExtended>;
@@ -18,4 +18,4 @@ export interface PredictionOrgUnitSeries {
     orgUnitName: string;
     points: PredictionPointVM[];
 }
-export type { PredictionRead };
+export type { PredictionInfo };

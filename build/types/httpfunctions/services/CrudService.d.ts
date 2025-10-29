@@ -13,9 +13,8 @@ import type { JobResponse } from '../models/JobResponse';
 import type { ModelConfigurationCreate } from '../models/ModelConfigurationCreate';
 import type { ModelSpecRead } from '../models/ModelSpecRead';
 import type { ModelTemplateRead } from '../models/ModelTemplateRead';
-import type { PredictionBaseRead } from '../models/PredictionBaseRead';
 import type { PredictionCreate } from '../models/PredictionCreate';
-import type { PredictionRead } from '../models/PredictionRead';
+import type { PredictionInfo } from '../models/PredictionInfo';
 import type { CancelablePromise } from '../core/CancelablePromise';
 export declare class CrudService {
     /**
@@ -70,10 +69,10 @@ export declare class CrudService {
     static getBacktestInfoCrudBacktestsBacktestIdInfoGet(backtestId: number): CancelablePromise<BackTestRead>;
     /**
      * Get Predictions
-     * @returns PredictionBaseRead Successful Response
+     * @returns PredictionInfo Successful Response
      * @throws ApiError
      */
-    static getPredictionsCrudPredictionsGet(): CancelablePromise<Array<PredictionBaseRead>>;
+    static getPredictionsCrudPredictionsGet(): CancelablePromise<Array<PredictionInfo>>;
     /**
      * Create Prediction
      * @param requestBody
@@ -84,10 +83,10 @@ export declare class CrudService {
     /**
      * Get Prediction
      * @param predictionId
-     * @returns PredictionRead Successful Response
+     * @returns PredictionInfo Successful Response
      * @throws ApiError
      */
-    static getPredictionCrudPredictionsPredictionIdGet(predictionId: number): CancelablePromise<PredictionRead>;
+    static getPredictionCrudPredictionsPredictionIdGet(predictionId: number): CancelablePromise<PredictionInfo>;
     /**
      * Delete Prediction
      * @param predictionId

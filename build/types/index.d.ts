@@ -13,9 +13,9 @@ export { OverflowButton, Ping, Pill, Card, StatusIndicator, Tag, Widget } from '
 export type { PillVariant } from './ui/Pill';
 export type { TagVariant } from './ui/Tag';
 export { default as SplitPeriodSelector } from './components/evaluation/SplitPeriodSelector/SplitPeriodSelector';
-export type { FullPredictionResponseExtended, PredictionResponseExtended, PredictionOrgUnitSeries, PredictionPointVM, QuantileKey, } from './interfaces/Prediction';
+export type { FullPredictionResponseExtended, PredictionResponseExtended, PredictionOrgUnitSeries, PredictionPointVM, QuantileKey, PredictionInfo, } from './interfaces/Prediction';
 export type { VisualizationInfo, } from './httpfunctions/models/VisualizationInfo';
 export { CrudService } from './httpfunctions/services/CrudService';
 export { AnalyticsService } from './httpfunctions/services/AnalyticsService';
 export { enableQueue, disableQueue, getQueue, } from './httpfunctions/core/request';
-export { buildPredictionSeries, computeQuantile } from './utils/PredictionViewModel';
+export { buildPredictionSeries } from './utils/PredictionViewModel';
