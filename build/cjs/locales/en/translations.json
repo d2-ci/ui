@@ -1,0 +1,14 @@
+{
+    "Median Prediction for {{predictionTargetName}}": "Median Prediction for {{predictionTargetName}}",
+    "Quantiles": "Quantiles",
+    "Quantile 0.1 (low)": "Quantile 0.1 (low)",
+    "Quantile 0.25": "Quantile 0.25",
+    "Quantile 0.5 (median)": "Quantile 0.5 (median)",
+    "Quantile 0.75": "Quantile 0.75",
+    "Quantile 0.9 (high)": "Quantile 0.9 (high)",
+    "Prediction for {{predictionTargetName}} for {{orgUnitName}}": "Prediction for {{predictionTargetName}} for {{orgUnitName}}",
+    "Quantile median": "Quantile median",
+    "Quantiles Outer": "Quantiles Outer",
+    "Quantiles Middle": "Quantiles Middle",
+    "More": "More"
+}
