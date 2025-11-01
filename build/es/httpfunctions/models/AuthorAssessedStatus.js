@@ -1,7 +1,7 @@
 /* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
-/* eslint-disable */
+
 export let AuthorAssessedStatus = /*#__PURE__*/function (AuthorAssessedStatus) {
   AuthorAssessedStatus["GRAY"] = "gray";
   AuthorAssessedStatus["RED"] = "red";

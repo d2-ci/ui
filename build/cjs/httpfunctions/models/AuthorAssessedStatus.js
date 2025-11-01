@@ -7,7 +7,6 @@ exports.AuthorAssessedStatus = void 0;
 /* generated using openapi-typescript-codegen -- do not edit */
 /* istanbul ignore file */
 /* tslint:disable */
-/* eslint-disable */
 let AuthorAssessedStatus = exports.AuthorAssessedStatus = /*#__PURE__*/function (AuthorAssessedStatus) {
   AuthorAssessedStatus["GRAY"] = "gray";
   AuthorAssessedStatus["RED"] = "red";
