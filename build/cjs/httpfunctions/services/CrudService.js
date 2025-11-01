@@ -62,13 +62,31 @@ class CrudService {
   /**
    * Get Backtest
    * @param backtestId
-   * @returns BackTestFull Successful Response
+   * @returns BackTest Successful Response
    * @throws ApiError
    */
-  static getBacktestCrudBacktestsBacktestIdGet(backtestId) {
+  static getBacktestCrudBacktestsBacktestIdFullGet(backtestId) {
     return (0, _request.request)(_OpenAPI.OpenAPI, {
       method: 'GET',
-      url: '/crud/backtests/{backtestId}',
+      url: '/crud/backtests/{backtestId}/full',
+      path: {
+        'backtestId': backtestId
+      },
+      errors: {
+        422: `Validation Error`
+      }
+    });
+  }
+  /**
+   * Get Backtest Info
+   * @param backtestId
+   * @returns BackTestRead Successful Response
+   * @throws ApiError
+   */
+  static getBacktestInfoCrudBacktestsBacktestIdInfoGet(backtestId) {
+    return (0, _request.request)(_OpenAPI.OpenAPI, {
+      method: 'GET',
+      url: '/crud/backtests/{backtestId}/info',
       path: {
         'backtestId': backtestId
       },
@@ -111,24 +129,6 @@ class CrudService {
       },
       body: requestBody,
       mediaType: 'application/json',
-      errors: {
-        422: `Validation Error`
-      }
-    });
-  }
-  /**
-   * Get Backtest Info
-   * @param backtestId
-   * @returns BackTestRead Successful Response
-   * @throws ApiError
-   */
-  static getBacktestInfoCrudBacktestsBacktestIdInfoGet(backtestId) {
-    return (0, _request.request)(_OpenAPI.OpenAPI, {
-      method: 'GET',
-      url: '/crud/backtests/{backtestId}/info',
-      path: {
-        'backtestId': backtestId
-      },
       errors: {
         422: `Validation Error`
       }

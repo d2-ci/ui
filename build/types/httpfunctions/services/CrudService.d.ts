@@ -1,5 +1,5 @@
+import type { BackTest } from '../models/BackTest';
 import type { BackTestCreate } from '../models/BackTestCreate';
-import type { BackTestFull } from '../models/BackTestFull';
 import type { BackTestRead } from '../models/BackTestRead';
 import type { BackTestUpdate } from '../models/BackTestUpdate';
 import type { Body_create_dataset_csv_crud_datasets_csvFile_post } from '../models/Body_create_dataset_csv_crud_datasets_csvFile_post';
@@ -41,10 +41,17 @@ export declare class CrudService {
     /**
      * Get Backtest
      * @param backtestId
-     * @returns BackTestFull Successful Response
+     * @returns BackTest Successful Response
      * @throws ApiError
      */
-    static getBacktestCrudBacktestsBacktestIdGet(backtestId: number): CancelablePromise<BackTestFull>;
+    static getBacktestCrudBacktestsBacktestIdFullGet(backtestId: number): CancelablePromise<BackTest>;
+    /**
+     * Get Backtest Info
+     * @param backtestId
+     * @returns BackTestRead Successful Response
+     * @throws ApiError
+     */
+    static getBacktestInfoCrudBacktestsBacktestIdInfoGet(backtestId: number): CancelablePromise<BackTestRead>;
     /**
      * Delete Backtest
      * @param backtestId
@@ -60,13 +67,6 @@ export declare class CrudService {
      * @throws ApiError
      */
     static updateBacktestCrudBacktestsBacktestIdPatch(backtestId: number, requestBody: BackTestUpdate): CancelablePromise<BackTestRead>;
-    /**
-     * Get Backtest Info
-     * @param backtestId
-     * @returns BackTestRead Successful Response
-     * @throws ApiError
-     */
-    static getBacktestInfoCrudBacktestsBacktestIdInfoGet(backtestId: number): CancelablePromise<BackTestRead>;
     /**
      * Get Predictions
      * @returns PredictionInfo Successful Response
