@@ -29,7 +29,8 @@ var _exportNames = {
   enableQueue: true,
   disableQueue: true,
   getQueue: true,
-  buildPredictionSeries: true
+  buildPredictionSeries: true,
+  parseOrgUnits: true
 };
 Object.defineProperty(exports, "AnalyticsService", {
   enumerable: true,
@@ -187,6 +188,12 @@ Object.defineProperty(exports, "joinRealAndPredictedData", {
     return _EvaluationResponse.joinRealAndPredictedData;
   }
 });
+Object.defineProperty(exports, "parseOrgUnits", {
+  enumerable: true,
+  get: function () {
+    return _utils.parseOrgUnits;
+  }
+});
 var _UncertaintyAreaChart = require("./components/predictions/UncertaintyAreaChart/UncertaintyAreaChart");
 var _index = require("./httpfunctions/index");
 Object.keys(_index).forEach(function (key) {
@@ -214,4 +221,5 @@ var _CrudService = require("./httpfunctions/services/CrudService");
 var _AnalyticsService = require("./httpfunctions/services/AnalyticsService");
 var _request = require("./httpfunctions/core/request");
 var _PredictionViewModel = require("./utils/PredictionViewModel");
+var _utils = require("./components/maps/utils");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }

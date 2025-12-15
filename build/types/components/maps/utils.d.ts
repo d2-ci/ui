@@ -20,7 +20,7 @@ interface GeoFeature {
         coordinates: any;
     };
 }
-interface FeatureCollection {
+export interface FeatureCollection {
     type: 'FeatureCollections';
     features: GeoFeature[];
 }

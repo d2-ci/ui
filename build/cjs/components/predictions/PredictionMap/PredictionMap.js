@@ -11,19 +11,14 @@ var _Choropleth = _interopRequireDefault(require("../../maps/Choropleth"));
 var _Legend = _interopRequireDefault(require("../../maps/Legend"));
 var _Basemap = _interopRequireDefault(require("../../maps/Basemap"));
 var _utils = require("../../maps/utils");
-var _useOrgUnits = _interopRequireDefault(require("../../../hooks/useOrgUnits"));
 var _PredictionMapModule = _interopRequireDefault(require("./PredictionMap.module.css"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const colors = ['#FFFFD4', '#FED98E', '#FE9929', '#D95F0E', '#993404'];
 const PredictionMap = ({
   series,
-  predictionTargetName
+  predictionTargetName,
+  orgUnits
 }) => {
-  const orgUnitIds = Array.from(new Set(series.map(s => s.orgUnitId)));
-  const {
-    orgUnits
-  } = (0, _useOrgUnits.default)(orgUnitIds);
-
   // collect periods and labels
   const periodToLabel = new Map();
   for (const s of series) {
@@ -46,7 +41,7 @@ const PredictionMap = ({
       value: p.quantiles.median
     })))
   };
-  return orgUnits ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
     className: _PredictionMapModule.default.predictionMapGroup
   }, periods.map((period, index) => {
     return /*#__PURE__*/_react.default.createElement("div", {
@@ -70,6 +65,6 @@ const PredictionMap = ({
     }),
     bins: bins,
     colors: colors
-  })) : null;
+  }));
 };
 exports.PredictionMap = PredictionMap;

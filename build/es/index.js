@@ -18,3 +18,6 @@ export { CrudService } from './httpfunctions/services/CrudService';
 export { AnalyticsService } from './httpfunctions/services/AnalyticsService';
 export { enableQueue, disableQueue, getQueue } from './httpfunctions/core/request';
 export { buildPredictionSeries } from './utils/PredictionViewModel';
+
+// Map utilities
+export { parseOrgUnits } from './components/maps/utils';
