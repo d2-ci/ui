@@ -18,12 +18,12 @@ const PERIOD_TYPES = exports.PERIOD_TYPES = {
  * Converts a date range to an array of DHIS2 Period objects.
  * @param start - The start date string
  * @param end - The end date string
- * @param periodType - The period type ('week' or 'month')
+ * @param periodType - The period type (PERIOD_TYPES.WEEK or PERIOD_TYPES.MONTH)
  * @returns An array of Period objects
  */
 const toDHIS2PeriodData = (start, end, periodType) => {
-  if (periodType === 'week') return getWeeks(start, end);
-  if (periodType === 'month') return getMonths(start, end);
+  if (periodType.toUpperCase() === PERIOD_TYPES.WEEK) return getWeeks(start, end);
+  if (periodType.toUpperCase() === PERIOD_TYPES.MONTH) return getMonths(start, end);
   console.error('Invalid period type:', periodType);
   return [];
 };

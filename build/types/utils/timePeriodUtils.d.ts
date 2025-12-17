@@ -15,10 +15,10 @@ export interface Period {
  * Converts a date range to an array of DHIS2 Period objects.
  * @param start - The start date string
  * @param end - The end date string
- * @param periodType - The period type ('week' or 'month')
+ * @param periodType - The period type (PERIOD_TYPES.WEEK or PERIOD_TYPES.MONTH)
  * @returns An array of Period objects
  */
-export declare const toDHIS2PeriodData: (start: string, end: string, periodType: string) => Period[];
+export declare const toDHIS2PeriodData: (start: string, end: string, periodType: keyof typeof PERIOD_TYPES) => Period[];
 /**
  * Converts a basic ISO format period to an extended ISO format.
  * @param periodId - The period ID in basic format (e.g., "202001" for months, "2024W01" for weeks)

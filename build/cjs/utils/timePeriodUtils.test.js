@@ -14,19 +14,19 @@ var _timePeriodUtils = require("./timePeriodUtils");
 (0, _vitest.describe)('toDHIS2PeriodData', () => {
   (0, _vitest.describe)('month periods', () => {
     (0, _vitest.it)('should generate correct month periods for a single month', () => {
-      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-01', '2024-01', _timePeriodUtils.PERIOD_TYPES.MONTH.toLowerCase());
+      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-01', '2024-01', _timePeriodUtils.PERIOD_TYPES.MONTH);
       (0, _vitest.expect)(result).toHaveLength(1);
       (0, _vitest.expect)(result[0].id).toBe('202401');
     });
     (0, _vitest.it)('should generate correct month periods for multiple months', () => {
-      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-01', '2024-03', _timePeriodUtils.PERIOD_TYPES.MONTH.toLowerCase());
+      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-01', '2024-03', _timePeriodUtils.PERIOD_TYPES.MONTH);
       (0, _vitest.expect)(result).toHaveLength(3);
       (0, _vitest.expect)(result[0].id).toBe('202401');
       (0, _vitest.expect)(result[1].id).toBe('202402');
       (0, _vitest.expect)(result[2].id).toBe('202403');
     });
     (0, _vitest.it)('should generate correct month periods spanning years', () => {
-      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2023-11', '2024-02', _timePeriodUtils.PERIOD_TYPES.MONTH.toLowerCase());
+      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2023-11', '2024-02', _timePeriodUtils.PERIOD_TYPES.MONTH);
       (0, _vitest.expect)(result).toHaveLength(4);
       (0, _vitest.expect)(result[0].id).toBe('202311');
       (0, _vitest.expect)(result[1].id).toBe('202312');
@@ -34,26 +34,26 @@ var _timePeriodUtils = require("./timePeriodUtils");
       (0, _vitest.expect)(result[3].id).toBe('202402');
     });
     (0, _vitest.it)('should include start and end dates for each month period', () => {
-      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-01', '2024-01', _timePeriodUtils.PERIOD_TYPES.MONTH.toLowerCase());
+      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-01', '2024-01', _timePeriodUtils.PERIOD_TYPES.MONTH);
       (0, _vitest.expect)(result[0].startDate).toBeDefined();
       (0, _vitest.expect)(result[0].endDate).toBeDefined();
     });
   });
   (0, _vitest.describe)('week periods', () => {
     (0, _vitest.it)('should generate correct week periods for a single week', () => {
-      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-W01', '2024-W01', _timePeriodUtils.PERIOD_TYPES.WEEK.toLowerCase());
+      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-W01', '2024-W01', _timePeriodUtils.PERIOD_TYPES.WEEK);
       (0, _vitest.expect)(result).toHaveLength(1);
       (0, _vitest.expect)(result[0].id).toBe('2024W1');
     });
     (0, _vitest.it)('should generate correct week periods for multiple weeks', () => {
-      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-W01', '2024-W03', _timePeriodUtils.PERIOD_TYPES.WEEK.toLowerCase());
+      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-W01', '2024-W03', _timePeriodUtils.PERIOD_TYPES.WEEK);
       (0, _vitest.expect)(result).toHaveLength(3);
       (0, _vitest.expect)(result[0].id).toBe('2024W1');
       (0, _vitest.expect)(result[1].id).toBe('2024W2');
       (0, _vitest.expect)(result[2].id).toBe('2024W3');
     });
     (0, _vitest.it)('should include start and end dates for each week period', () => {
-      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-W01', '2024-W01', _timePeriodUtils.PERIOD_TYPES.WEEK.toLowerCase());
+      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-W01', '2024-W01', _timePeriodUtils.PERIOD_TYPES.WEEK);
       (0, _vitest.expect)(result[0].startDate).toBeDefined();
       (0, _vitest.expect)(result[0].endDate).toBeDefined();
     });

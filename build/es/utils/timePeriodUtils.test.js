@@ -12,19 +12,19 @@ describe('PERIOD_TYPES', () => {
 describe('toDHIS2PeriodData', () => {
   describe('month periods', () => {
     it('should generate correct month periods for a single month', () => {
-      const result = toDHIS2PeriodData('2024-01', '2024-01', PERIOD_TYPES.MONTH.toLowerCase());
+      const result = toDHIS2PeriodData('2024-01', '2024-01', PERIOD_TYPES.MONTH);
       expect(result).toHaveLength(1);
       expect(result[0].id).toBe('202401');
     });
     it('should generate correct month periods for multiple months', () => {
-      const result = toDHIS2PeriodData('2024-01', '2024-03', PERIOD_TYPES.MONTH.toLowerCase());
+      const result = toDHIS2PeriodData('2024-01', '2024-03', PERIOD_TYPES.MONTH);
       expect(result).toHaveLength(3);
       expect(result[0].id).toBe('202401');
       expect(result[1].id).toBe('202402');
       expect(result[2].id).toBe('202403');
     });
     it('should generate correct month periods spanning years', () => {
-      const result = toDHIS2PeriodData('2023-11', '2024-02', PERIOD_TYPES.MONTH.toLowerCase());
+      const result = toDHIS2PeriodData('2023-11', '2024-02', PERIOD_TYPES.MONTH);
       expect(result).toHaveLength(4);
       expect(result[0].id).toBe('202311');
       expect(result[1].id).toBe('202312');
@@ -32,26 +32,26 @@ describe('toDHIS2PeriodData', () => {
       expect(result[3].id).toBe('202402');
     });
     it('should include start and end dates for each month period', () => {
-      const result = toDHIS2PeriodData('2024-01', '2024-01', PERIOD_TYPES.MONTH.toLowerCase());
+      const result = toDHIS2PeriodData('2024-01', '2024-01', PERIOD_TYPES.MONTH);
       expect(result[0].startDate).toBeDefined();
       expect(result[0].endDate).toBeDefined();
     });
   });
   describe('week periods', () => {
     it('should generate correct week periods for a single week', () => {
-      const result = toDHIS2PeriodData('2024-W01', '2024-W01', PERIOD_TYPES.WEEK.toLowerCase());
+      const result = toDHIS2PeriodData('2024-W01', '2024-W01', PERIOD_TYPES.WEEK);
       expect(result).toHaveLength(1);
       expect(result[0].id).toBe('2024W1');
     });
     it('should generate correct week periods for multiple weeks', () => {
-      const result = toDHIS2PeriodData('2024-W01', '2024-W03', PERIOD_TYPES.WEEK.toLowerCase());
+      const result = toDHIS2PeriodData('2024-W01', '2024-W03', PERIOD_TYPES.WEEK);
       expect(result).toHaveLength(3);
       expect(result[0].id).toBe('2024W1');
       expect(result[1].id).toBe('2024W2');
       expect(result[2].id).toBe('2024W3');
     });
     it('should include start and end dates for each week period', () => {
-      const result = toDHIS2PeriodData('2024-W01', '2024-W01', PERIOD_TYPES.WEEK.toLowerCase());
+      const result = toDHIS2PeriodData('2024-W01', '2024-W01', PERIOD_TYPES.WEEK);
       expect(result[0].startDate).toBeDefined();
       expect(result[0].endDate).toBeDefined();
     });
