@@ -72,7 +72,7 @@ var _timePeriodUtils = require("./timePeriodUtils");
       (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('202312', _timePeriodUtils.PERIOD_TYPES.MONTH)).toBe('2023-12');
     });
     (0, _vitest.it)('should handle lowercase period type', () => {
-      (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('202401', 'month')).toBe('2024-01');
+      (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('202401', _timePeriodUtils.PERIOD_TYPES.MONTH)).toBe('2024-01');
     });
     (0, _vitest.it)('should return original value for invalid month format', () => {
       (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('invalid', _timePeriodUtils.PERIOD_TYPES.MONTH)).toBe('invalid');
@@ -84,7 +84,7 @@ var _timePeriodUtils = require("./timePeriodUtils");
       (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('2024W52', _timePeriodUtils.PERIOD_TYPES.WEEK)).toBe('2024-W52');
     });
     (0, _vitest.it)('should handle lowercase period type', () => {
-      (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('2024W01', 'week')).toBe('2024-W01');
+      (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('2024W01', _timePeriodUtils.PERIOD_TYPES.WEEK)).toBe('2024-W01');
     });
     (0, _vitest.it)('should return original value for invalid week format', () => {
       (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('invalid', _timePeriodUtils.PERIOD_TYPES.WEEK)).toBe('invalid');
