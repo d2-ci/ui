@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { PERIOD_TYPES, toDHIS2PeriodData, convertServerToClientPeriod, comparePeriods, sortPeriods, getLastNPeriods } from '../timePeriodUtils';
+import { PERIOD_TYPES, MAX_YEAR_SPAN, toDHIS2PeriodData, convertServerToClientPeriod, comparePeriods, sortPeriods, getLastNPeriods } from '../timePeriodUtils';
 describe('PERIOD_TYPES', () => {
   it('should have the correct period type values', () => {
     expect(PERIOD_TYPES.DAY).toBe('DAY');
@@ -70,6 +70,17 @@ describe('toDHIS2PeriodData', () => {
       expect(result[1].startDate).toEqual(new Date('2024-01-01'));
       expect(result[1].endDate).toEqual(new Date('2024-01-07'));
     });
+    it('should handle ISO week 53 in years that have it', () => {
+      // 2020 has 53 weeks (ISO week 53 runs from Monday 2020-12-28 to Sunday 2021-01-03)
+      const result = toDHIS2PeriodData('2020-W53', '2021-W01', PERIOD_TYPES.WEEK);
+      expect(result).toHaveLength(2);
+      expect(result[0].id).toBe('2020W53');
+      expect(result[0].startDate).toEqual(new Date('2020-12-28'));
+      expect(result[0].endDate).toEqual(new Date('2021-01-03'));
+      expect(result[1].id).toBe('2021W1');
+      expect(result[1].startDate).toEqual(new Date('2021-01-04'));
+      expect(result[1].endDate).toEqual(new Date('2021-01-10'));
+    });
   });
   describe('invalid inputs', () => {
     it('should return empty array for invalid period type', () => {
@@ -92,7 +103,7 @@ describe('toDHIS2PeriodData', () => {
       const result = toDHIS2PeriodData('2024-1', '2024-3', PERIOD_TYPES.WEEK);
       expect(result).toEqual([]);
     });
-    it('should return empty array for unreasonable date range (>100 years)', () => {
+    it(`should return empty array for date range exceeding MAX_YEAR_SPAN (${MAX_YEAR_SPAN} years)`, () => {
       const result = toDHIS2PeriodData('1900-01', '2100-01', PERIOD_TYPES.MONTH);
       expect(result).toEqual([]);
     });

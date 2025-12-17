@@ -6,6 +6,7 @@ export const PERIOD_TYPES = {
   YEAR: 'YEAR',
   ANY: 'ANY'
 };
+export const MAX_YEAR_SPAN = 100;
 // This page seems ai-generated, but it's actually a result of hard manual labour.
 
 /**
@@ -41,7 +42,7 @@ const getWeeks = (start, end) => {
       return [];
     }
     const yearDifference = getISOWeekYear(endDate) - getISOWeekYear(startDate);
-    if (yearDifference > 100) {
+    if (yearDifference > MAX_YEAR_SPAN) {
       return [];
     }
     const weeks = [];
@@ -88,9 +89,9 @@ const getMonths = (start, end) => {
       return [];
     }
 
-    // Safety check for unreasonable date ranges
+    // Safety check for date ranges exceeding MAX_YEAR_SPAN
     const yearDifference = endDate.getFullYear() - startDate.getFullYear();
-    if (yearDifference > 100) {
+    if (yearDifference > MAX_YEAR_SPAN) {
       return [];
     }
     const months = [];

@@ -5,6 +5,7 @@ export declare const PERIOD_TYPES: {
     readonly YEAR: "YEAR";
     readonly ANY: "ANY";
 };
+export declare const MAX_YEAR_SPAN = 100;
 export type PeriodType = typeof PERIOD_TYPES[keyof typeof PERIOD_TYPES];
 export interface Period {
     startDate: Date | undefined;

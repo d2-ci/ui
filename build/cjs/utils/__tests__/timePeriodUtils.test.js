@@ -72,6 +72,17 @@ var _timePeriodUtils = require("../timePeriodUtils");
       (0, _vitest.expect)(result[1].startDate).toEqual(new Date('2024-01-01'));
       (0, _vitest.expect)(result[1].endDate).toEqual(new Date('2024-01-07'));
     });
+    (0, _vitest.it)('should handle ISO week 53 in years that have it', () => {
+      // 2020 has 53 weeks (ISO week 53 runs from Monday 2020-12-28 to Sunday 2021-01-03)
+      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2020-W53', '2021-W01', _timePeriodUtils.PERIOD_TYPES.WEEK);
+      (0, _vitest.expect)(result).toHaveLength(2);
+      (0, _vitest.expect)(result[0].id).toBe('2020W53');
+      (0, _vitest.expect)(result[0].startDate).toEqual(new Date('2020-12-28'));
+      (0, _vitest.expect)(result[0].endDate).toEqual(new Date('2021-01-03'));
+      (0, _vitest.expect)(result[1].id).toBe('2021W1');
+      (0, _vitest.expect)(result[1].startDate).toEqual(new Date('2021-01-04'));
+      (0, _vitest.expect)(result[1].endDate).toEqual(new Date('2021-01-10'));
+    });
   });
   (0, _vitest.describe)('invalid inputs', () => {
     (0, _vitest.it)('should return empty array for invalid period type', () => {
@@ -94,7 +105,7 @@ var _timePeriodUtils = require("../timePeriodUtils");
       const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-1', '2024-3', _timePeriodUtils.PERIOD_TYPES.WEEK);
       (0, _vitest.expect)(result).toEqual([]);
     });
-    (0, _vitest.it)('should return empty array for unreasonable date range (>100 years)', () => {
+    (0, _vitest.it)(`should return empty array for date range exceeding MAX_YEAR_SPAN (${_timePeriodUtils.MAX_YEAR_SPAN} years)`, () => {
       const result = (0, _timePeriodUtils.toDHIS2PeriodData)('1900-01', '2100-01', _timePeriodUtils.PERIOD_TYPES.MONTH);
       (0, _vitest.expect)(result).toEqual([]);
     });

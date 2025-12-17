@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.toDHIS2PeriodData = exports.sortPeriods = exports.getLastNPeriods = exports.convertServerToClientPeriod = exports.comparePeriods = exports.PERIOD_TYPES = void 0;
+exports.toDHIS2PeriodData = exports.sortPeriods = exports.getLastNPeriods = exports.convertServerToClientPeriod = exports.comparePeriods = exports.PERIOD_TYPES = exports.MAX_YEAR_SPAN = void 0;
 var _dateFns = require("date-fns");
 const PERIOD_TYPES = exports.PERIOD_TYPES = {
   DAY: 'DAY',
@@ -12,6 +12,7 @@ const PERIOD_TYPES = exports.PERIOD_TYPES = {
   YEAR: 'YEAR',
   ANY: 'ANY'
 };
+const MAX_YEAR_SPAN = exports.MAX_YEAR_SPAN = 100;
 // This page seems ai-generated, but it's actually a result of hard manual labour.
 
 /**
@@ -48,7 +49,7 @@ const getWeeks = (start, end) => {
       return [];
     }
     const yearDifference = (0, _dateFns.getISOWeekYear)(endDate) - (0, _dateFns.getISOWeekYear)(startDate);
-    if (yearDifference > 100) {
+    if (yearDifference > MAX_YEAR_SPAN) {
       return [];
     }
     const weeks = [];
@@ -95,9 +96,9 @@ const getMonths = (start, end) => {
       return [];
     }
 
-    // Safety check for unreasonable date ranges
+    // Safety check for date ranges exceeding MAX_YEAR_SPAN
     const yearDifference = endDate.getFullYear() - startDate.getFullYear();
-    if (yearDifference > 100) {
+    if (yearDifference > MAX_YEAR_SPAN) {
       return [];
     }
     const months = [];
