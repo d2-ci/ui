@@ -1,7 +1,7 @@
 "use strict";
 
 var _vitest = require("vitest");
-var _timePeriodUtils = require("./timePeriodUtils");
+var _timePeriodUtils = require("../timePeriodUtils");
 (0, _vitest.describe)('PERIOD_TYPES', () => {
   (0, _vitest.it)('should have the correct period type values', () => {
     (0, _vitest.expect)(_timePeriodUtils.PERIOD_TYPES.DAY).toBe('DAY');

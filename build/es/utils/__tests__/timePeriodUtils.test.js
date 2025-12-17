@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { PERIOD_TYPES, toDHIS2PeriodData, convertServerToClientPeriod, comparePeriods, sortPeriods, getLastNPeriods } from './timePeriodUtils';
+import { PERIOD_TYPES, toDHIS2PeriodData, convertServerToClientPeriod, comparePeriods, sortPeriods, getLastNPeriods } from '../timePeriodUtils';
 describe('PERIOD_TYPES', () => {
   it('should have the correct period type values', () => {
     expect(PERIOD_TYPES.DAY).toBe('DAY');
