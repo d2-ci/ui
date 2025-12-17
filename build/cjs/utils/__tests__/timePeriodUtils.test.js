@@ -46,9 +46,12 @@ var _timePeriodUtils = require("../timePeriodUtils");
   });
   (0, _vitest.describe)('week periods', () => {
     (0, _vitest.it)('should generate correct week periods for a single week', () => {
+      // ISO week 1 of 2024 starts on Monday 2024-01-01 and ends on Sunday 2024-01-07
       const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-W01', '2024-W01', _timePeriodUtils.PERIOD_TYPES.WEEK);
       (0, _vitest.expect)(result).toHaveLength(1);
       (0, _vitest.expect)(result[0].id).toBe('2024W1');
+      (0, _vitest.expect)(result[0].startDate).toEqual(new Date('2024-01-01'));
+      (0, _vitest.expect)(result[0].endDate).toEqual(new Date('2024-01-07'));
     });
     (0, _vitest.it)('should generate correct week periods for multiple weeks', () => {
       const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-W01', '2024-W03', _timePeriodUtils.PERIOD_TYPES.WEEK);
@@ -57,11 +60,17 @@ var _timePeriodUtils = require("../timePeriodUtils");
       (0, _vitest.expect)(result[1].id).toBe('2024W2');
       (0, _vitest.expect)(result[2].id).toBe('2024W3');
     });
-    (0, _vitest.it)('should include correct start and end dates for each week period', () => {
+    (0, _vitest.it)('should include correct start and end dates for week periods crossing years', () => {
+      // ISO week 52 of 2023 starts on Monday 2023-12-25 and ends on Sunday 2023-12-31
       // ISO week 1 of 2024 starts on Monday 2024-01-01 and ends on Sunday 2024-01-07
-      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2024-W01', '2024-W01', _timePeriodUtils.PERIOD_TYPES.WEEK);
-      (0, _vitest.expect)(result[0].startDate).toEqual(new Date('2024-01-01'));
-      (0, _vitest.expect)(result[0].endDate).toEqual(new Date('2024-01-07'));
+      const result = (0, _timePeriodUtils.toDHIS2PeriodData)('2023-W52', '2024-W01', _timePeriodUtils.PERIOD_TYPES.WEEK);
+      (0, _vitest.expect)(result).toHaveLength(2);
+      (0, _vitest.expect)(result[0].id).toBe('2023W52');
+      (0, _vitest.expect)(result[0].startDate).toEqual(new Date('2023-12-25'));
+      (0, _vitest.expect)(result[0].endDate).toEqual(new Date('2023-12-31'));
+      (0, _vitest.expect)(result[1].id).toBe('2024W1');
+      (0, _vitest.expect)(result[1].startDate).toEqual(new Date('2024-01-01'));
+      (0, _vitest.expect)(result[1].endDate).toEqual(new Date('2024-01-07'));
     });
   });
   (0, _vitest.describe)('invalid inputs', () => {
