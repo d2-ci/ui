@@ -125,9 +125,6 @@ var _timePeriodUtils = require("../timePeriodUtils");
       (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('202401', _timePeriodUtils.PERIOD_TYPES.MONTH)).toBe('2024-01');
       (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('202312', _timePeriodUtils.PERIOD_TYPES.MONTH)).toBe('2023-12');
     });
-    (0, _vitest.it)('should handle lowercase period type', () => {
-      (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('202401', _timePeriodUtils.PERIOD_TYPES.MONTH)).toBe('2024-01');
-    });
     (0, _vitest.it)('should return original value for invalid month format', () => {
       (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('invalid', _timePeriodUtils.PERIOD_TYPES.MONTH)).toBe('invalid');
     });
@@ -136,9 +133,6 @@ var _timePeriodUtils = require("../timePeriodUtils");
     (0, _vitest.it)('should convert server week format to client format', () => {
       (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('2024W01', _timePeriodUtils.PERIOD_TYPES.WEEK)).toBe('2024-W01');
       (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('2024W52', _timePeriodUtils.PERIOD_TYPES.WEEK)).toBe('2024-W52');
-    });
-    (0, _vitest.it)('should handle lowercase period type', () => {
-      (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('2024W01', _timePeriodUtils.PERIOD_TYPES.WEEK)).toBe('2024-W01');
     });
     (0, _vitest.it)('should return original value for invalid week format', () => {
       (0, _vitest.expect)((0, _timePeriodUtils.convertServerToClientPeriod)('invalid', _timePeriodUtils.PERIOD_TYPES.WEEK)).toBe('invalid');
@@ -262,11 +256,7 @@ var _timePeriodUtils = require("../timePeriodUtils");
     });
     (0, _vitest.it)('should handle periods spanning years', () => {
       const result = (0, _timePeriodUtils.getLastNPeriods)('2024W02', _timePeriodUtils.PERIOD_TYPES.WEEK, 4);
-      (0, _vitest.expect)(result).toHaveLength(4);
-      (0, _vitest.expect)(result[0]).toMatch(/^2023W/);
-      (0, _vitest.expect)(result[1]).toMatch(/^2023W/);
-      (0, _vitest.expect)(result[2]).toBe('2024W01');
-      (0, _vitest.expect)(result[3]).toBe('2024W02');
+      (0, _vitest.expect)(result).toEqual(['2023W51', '2023W52', '2024W01', '2024W02']);
     });
     (0, _vitest.it)('should return single period when count is 1', () => {
       const result = (0, _timePeriodUtils.getLastNPeriods)('2024W10', _timePeriodUtils.PERIOD_TYPES.WEEK, 1);

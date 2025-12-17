@@ -151,10 +151,6 @@ describe('convertServerToClientPeriod', () => {
             expect(convertServerToClientPeriod('202312', PERIOD_TYPES.MONTH)).toBe('2023-12');
         });
 
-        it('should handle lowercase period type', () => {
-            expect(convertServerToClientPeriod('202401', PERIOD_TYPES.MONTH)).toBe('2024-01');
-        });
-
         it('should return original value for invalid month format', () => {
             expect(convertServerToClientPeriod('invalid', PERIOD_TYPES.MONTH)).toBe('invalid');
         });
@@ -164,10 +160,6 @@ describe('convertServerToClientPeriod', () => {
         it('should convert server week format to client format', () => {
             expect(convertServerToClientPeriod('2024W01', PERIOD_TYPES.WEEK)).toBe('2024-W01');
             expect(convertServerToClientPeriod('2024W52', PERIOD_TYPES.WEEK)).toBe('2024-W52');
-        });
-
-        it('should handle lowercase period type', () => {
-            expect(convertServerToClientPeriod('2024W01', PERIOD_TYPES.WEEK)).toBe('2024-W01');
         });
 
         it('should return original value for invalid week format', () => {
@@ -317,11 +309,7 @@ describe('getLastNPeriods', () => {
 
         it('should handle periods spanning years', () => {
             const result = getLastNPeriods('2024W02', PERIOD_TYPES.WEEK, 4);
-            expect(result).toHaveLength(4);
-            expect(result[0]).toMatch(/^2023W/);
-            expect(result[1]).toMatch(/^2023W/);
-            expect(result[2]).toBe('2024W01');
-            expect(result[3]).toBe('2024W02');
+            expect(result).toEqual(['2023W51', '2023W52', '2024W01', '2024W02']);
         });
 
         it('should return single period when count is 1', () => {
