@@ -6,18 +6,19 @@ export const PERIOD_TYPES = {
   YEAR: 'YEAR',
   ANY: 'ANY'
 };
+export const MAX_YEAR_SPAN = 100;
 // This page seems ai-generated, but it's actually a result of hard manual labour.
 
 /**
  * Converts a date range to an array of DHIS2 Period objects.
  * @param start - The start date string
  * @param end - The end date string
- * @param periodType - The period type ('week' or 'month')
+ * @param periodType - The period type (PERIOD_TYPES.WEEK or PERIOD_TYPES.MONTH)
  * @returns An array of Period objects
  */
 export const toDHIS2PeriodData = (start, end, periodType) => {
-  if (periodType === 'week') return getWeeks(start, end);
-  if (periodType === 'month') return getMonths(start, end);
+  if (periodType.toUpperCase() === PERIOD_TYPES.WEEK) return getWeeks(start, end);
+  if (periodType.toUpperCase() === PERIOD_TYPES.MONTH) return getMonths(start, end);
   console.error('Invalid period type:', periodType);
   return [];
 };
@@ -41,7 +42,7 @@ const getWeeks = (start, end) => {
       return [];
     }
     const yearDifference = getISOWeekYear(endDate) - getISOWeekYear(startDate);
-    if (yearDifference > 100) {
+    if (yearDifference > MAX_YEAR_SPAN) {
       return [];
     }
     const weeks = [];
@@ -88,9 +89,9 @@ const getMonths = (start, end) => {
       return [];
     }
 
-    // Safety check for unreasonable date ranges
+    // Safety check for date ranges exceeding MAX_YEAR_SPAN
     const yearDifference = endDate.getFullYear() - startDate.getFullYear();
-    if (yearDifference > 100) {
+    if (yearDifference > MAX_YEAR_SPAN) {
       return [];
     }
     const months = [];
