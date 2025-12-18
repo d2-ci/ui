@@ -29,7 +29,13 @@ var _exportNames = {
   enableQueue: true,
   disableQueue: true,
   getQueue: true,
-  buildPredictionSeries: true
+  buildPredictionSeries: true,
+  PERIOD_TYPES: true,
+  toDHIS2PeriodData: true,
+  convertServerToClientPeriod: true,
+  sortPeriods: true,
+  comparePeriods: true,
+  getLastNPeriods: true
 };
 Object.defineProperty(exports, "AnalyticsService", {
   enumerable: true,
@@ -77,6 +83,12 @@ Object.defineProperty(exports, "OverflowButton", {
   enumerable: true,
   get: function () {
     return _ui.OverflowButton;
+  }
+});
+Object.defineProperty(exports, "PERIOD_TYPES", {
+  enumerable: true,
+  get: function () {
+    return _timePeriodUtils.PERIOD_TYPES;
   }
 });
 Object.defineProperty(exports, "Pill", {
@@ -145,6 +157,18 @@ Object.defineProperty(exports, "buildPredictionSeries", {
     return _PredictionViewModel.buildPredictionSeries;
   }
 });
+Object.defineProperty(exports, "comparePeriods", {
+  enumerable: true,
+  get: function () {
+    return _timePeriodUtils.comparePeriods;
+  }
+});
+Object.defineProperty(exports, "convertServerToClientPeriod", {
+  enumerable: true,
+  get: function () {
+    return _timePeriodUtils.convertServerToClientPeriod;
+  }
+});
 Object.defineProperty(exports, "createHighChartsData", {
   enumerable: true,
   get: function () {
@@ -169,6 +193,12 @@ Object.defineProperty(exports, "evaluationResultToViewData", {
     return _EvaluationResponse.evaluationResultToViewData;
   }
 });
+Object.defineProperty(exports, "getLastNPeriods", {
+  enumerable: true,
+  get: function () {
+    return _timePeriodUtils.getLastNPeriods;
+  }
+});
 Object.defineProperty(exports, "getQueue", {
   enumerable: true,
   get: function () {
@@ -185,6 +215,18 @@ Object.defineProperty(exports, "joinRealAndPredictedData", {
   enumerable: true,
   get: function () {
     return _EvaluationResponse.joinRealAndPredictedData;
+  }
+});
+Object.defineProperty(exports, "sortPeriods", {
+  enumerable: true,
+  get: function () {
+    return _timePeriodUtils.sortPeriods;
+  }
+});
+Object.defineProperty(exports, "toDHIS2PeriodData", {
+  enumerable: true,
+  get: function () {
+    return _timePeriodUtils.toDHIS2PeriodData;
   }
 });
 var _UncertaintyAreaChart = require("./components/predictions/UncertaintyAreaChart/UncertaintyAreaChart");
@@ -214,4 +256,5 @@ var _CrudService = require("./httpfunctions/services/CrudService");
 var _AnalyticsService = require("./httpfunctions/services/AnalyticsService");
 var _request = require("./httpfunctions/core/request");
 var _PredictionViewModel = require("./utils/PredictionViewModel");
+var _timePeriodUtils = require("./utils/timePeriodUtils");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
