@@ -19,3 +19,4 @@ export { CrudService } from './httpfunctions/services/CrudService';
 export { AnalyticsService } from './httpfunctions/services/AnalyticsService';
 export { enableQueue, disableQueue, getQueue, } from './httpfunctions/core/request';
 export { buildPredictionSeries } from './utils/PredictionViewModel';
+export { PERIOD_TYPES, type PeriodType, type Period, toDHIS2PeriodData, convertServerToClientPeriod, sortPeriods, comparePeriods, getLastNPeriods, } from './utils/timePeriodUtils';
