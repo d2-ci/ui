@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2025-12-09T10:09:29.248Z\n"
+"PO-Revision-Date: 2025-12-09T10:09:29.249Z\n"
+
+msgid "Median prediction"
+msgstr "Median prediction"
+
+msgid "80% prediction interval"
+msgstr "80% prediction interval"
+
+msgid "50% prediction interval"
+msgstr "50% prediction interval"
+
+msgid "Median Prediction for {{predictionTargetName}}"
+msgstr "Median Prediction for {{predictionTargetName}}"
+
+msgid "Quantiles"
+msgstr "Quantiles"
+
+msgid "Quantile 0.1 (low)"
+msgstr "Quantile 0.1 (low)"
+
+msgid "Quantile 0.25"
+msgstr "Quantile 0.25"
+
+msgid "Quantile 0.5 (median)"
+msgstr "Quantile 0.5 (median)"
+
+msgid "Quantile 0.75"
+msgstr "Quantile 0.75"
+
+msgid "Quantile 0.9 (high)"
+msgstr "Quantile 0.9 (high)"
+
+msgid "Actual Cases"
+msgstr "Actual Cases"
+
+msgid "Prediction for {{predictionTargetName}} for {{orgUnitName}}"
+msgstr "Prediction for {{predictionTargetName}} for {{orgUnitName}}"
+
+msgid "Number of cases"
+msgstr "Number of cases"
+
+msgid "More"
+msgstr "More"
