@@ -1,3 +1,4 @@
+import i18n from '@dhis2/d2-i18n';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 import React from 'react';
@@ -26,7 +27,7 @@ const getSeries = data => {
       // fillColor: Highcharts.getOptions().colors[2]
     }
   }, {
-    name: 'Predicted Cases',
+    name: i18n.t('Median prediction'),
     type: 'line',
     color: '#004bbd',
     data: data.averages.slice(),
@@ -37,7 +38,7 @@ const getSeries = data => {
       enabled: false
     }
   }, {
-    name: 'Quantiles Outer',
+    name: i18n.t('80% prediction interval'),
     data: data.ranges.slice(),
     type: 'arearange',
     lineWidth: 0,
@@ -48,7 +49,7 @@ const getSeries = data => {
       enabled: false
     }
   }, {
-    name: 'Quantiles Middle',
+    name: i18n.t('50% prediction interval'),
     data: data.midranges.slice(),
     type: 'arearange',
     lineWidth: 1,
@@ -112,7 +113,8 @@ const getOptions = ({
     },
     tooltip: {
       shared: true,
-      valueSuffix: ' cases'
+      valueSuffix: ' cases',
+      valueDecimals: 2
     },
     plotOptions: {
       series: {
