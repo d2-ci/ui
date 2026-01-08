@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ResultPlot = void 0;
+var _d2I18n = _interopRequireDefault(require("@dhis2/d2-i18n"));
 var _highchartsReactOfficial = _interopRequireDefault(require("highcharts-react-official"));
 var _highcharts = _interopRequireDefault(require("highcharts"));
 var _react = _interopRequireDefault(require("react"));
@@ -33,7 +34,7 @@ const getSeries = data => {
       // fillColor: Highcharts.getOptions().colors[2]
     }
   }, {
-    name: 'Predicted Cases',
+    name: _d2I18n.default.t('Median prediction'),
     type: 'line',
     color: '#004bbd',
     data: data.averages.slice(),
@@ -44,7 +45,7 @@ const getSeries = data => {
       enabled: false
     }
   }, {
-    name: 'Quantiles Outer',
+    name: _d2I18n.default.t('80% prediction interval'),
     data: data.ranges.slice(),
     type: 'arearange',
     lineWidth: 0,
@@ -55,7 +56,7 @@ const getSeries = data => {
       enabled: false
     }
   }, {
-    name: 'Quantiles Middle',
+    name: _d2I18n.default.t('50% prediction interval'),
     data: data.midranges.slice(),
     type: 'arearange',
     lineWidth: 1,
@@ -119,7 +120,8 @@ const getOptions = ({
     },
     tooltip: {
       shared: true,
-      valueSuffix: ' cases'
+      valueSuffix: ' cases',
+      valueDecimals: 2
     },
     plotOptions: {
       series: {
