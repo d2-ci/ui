@@ -5,18 +5,13 @@ import Choropleth from '../../maps/Choropleth';
 import Legend from '../../maps/Legend';
 import Basemap from '../../maps/Basemap';
 import { getEqualIntervals } from '../../maps/utils';
-import useOrgUnits from '../../../hooks/useOrgUnits';
 import styles from './PredictionMap.module.css';
 const colors = ['#FFFFD4', '#FED98E', '#FE9929', '#D95F0E', '#993404'];
 export const PredictionMap = ({
   series,
-  predictionTargetName
+  predictionTargetName,
+  orgUnits
 }) => {
-  const orgUnitIds = Array.from(new Set(series.map(s => s.orgUnitId)));
-  const {
-    orgUnits
-  } = useOrgUnits(orgUnitIds);
-
   // collect periods and labels
   const periodToLabel = new Map();
   for (const s of series) {
@@ -39,7 +34,7 @@ export const PredictionMap = ({
       value: p.quantiles.median
     })))
   };
-  return orgUnits ? /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     className: styles.predictionMapGroup
   }, periods.map((period, index) => {
     return /*#__PURE__*/React.createElement("div", {
@@ -63,5 +58,5 @@ export const PredictionMap = ({
     }),
     bins: bins,
     colors: colors
-  })) : null;
+  }));
 };

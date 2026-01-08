@@ -35,7 +35,8 @@ var _exportNames = {
   convertServerToClientPeriod: true,
   sortPeriods: true,
   comparePeriods: true,
-  getLastNPeriods: true
+  getLastNPeriods: true,
+  parseOrgUnits: true
 };
 Object.defineProperty(exports, "AnalyticsService", {
   enumerable: true,
@@ -217,6 +218,12 @@ Object.defineProperty(exports, "joinRealAndPredictedData", {
     return _EvaluationResponse.joinRealAndPredictedData;
   }
 });
+Object.defineProperty(exports, "parseOrgUnits", {
+  enumerable: true,
+  get: function () {
+    return _utils.parseOrgUnits;
+  }
+});
 Object.defineProperty(exports, "sortPeriods", {
   enumerable: true,
   get: function () {
@@ -257,4 +264,5 @@ var _AnalyticsService = require("./httpfunctions/services/AnalyticsService");
 var _request = require("./httpfunctions/core/request");
 var _PredictionViewModel = require("./utils/PredictionViewModel");
 var _timePeriodUtils = require("./utils/timePeriodUtils");
+var _utils = require("./components/maps/utils");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
